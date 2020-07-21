@@ -7,6 +7,7 @@ import {BrowserRouter as Router,Switch,Route} from 'react-router-dom';
 import CreatAccount  from './components/content/inscription/create_account'
 
 function App() {
+  const test = 'test';
   return (
     <Router>
       <Header />
