@@ -57,7 +57,7 @@ export default function Firstdiv() {
                             
                             <Link  style={{borderRadius:'30px',paddingBottom:'10px',paddingTop:'10px',paddingLeft:'30px',paddingRight:'30px'}}  className="btn btn-secondary" to="/creat-account">S'INSCRIRE GRATUITEMENT</Link>
                             
-                            <button style={{color:'#707070',marginLeft:'30px',borderRadius:'30px',paddingBottom:'10px',paddingTop:'10px',paddingLeft:'30px',paddingRight:'30px'}} className="btn btn-light" >SE CONNECTER</button>
+                            <Link to = '/login' style={{color:'#707070',marginLeft:'30px',borderRadius:'30px',paddingBottom:'10px',paddingTop:'10px',paddingLeft:'30px',paddingRight:'30px'}} className="btn btn-light" >SE CONNECTER</Link>
                         </div>
                     </div>
                 </div>
