@@ -1,0 +1,34 @@
+
+.cree_ton_compte{
+    text-align: center;
+    font-family: KGFallForYouBold;
+    font-size: 32px;
+    margin-top:50px;
+}
+
+.quel_classe {
+    text-transform: uppercase;
+    color: #707070;
+    font-family: Rubik-Bold;
+    font-size: 16px;
+    text-align: center;
+}
+
+.niveaux{
+    border: 1px solid #707070;
+    padding: 10px 10px 10px 10px;
+}
+
+
+
+
+@font-face{
+    font-family: KGFallForYouBold;
+    src: url('../../../fonts/KGFallForYouBold.ttf');
+}
+
+
+@font-face{
+    font-family: Rubik-Bold;
+    src: url('../../../fonts/Rubik-Bold.ttf');
+}
