@@ -1,0 +1,37 @@
+
+.items_footer{
+    
+    padding: 30px;
+    
+    color: white;
+    font-size: 11px;
+    font-family: Rubik-Medium;
+}
+
+.items_container{
+    padding: 20px;
+}
+
+.icons {
+
+    padding: 20px;
+}
+
+.copyright{
+
+    font-family: Rubik-Regular;
+    font-size: 9px;
+    color: white;
+}
+
+
+
+@font-face{
+    font-family: Rubik-Medium;
+    src: url('../../fonts/Rubik-Medium.ttf');
+}
+
+@font-face{
+    font-family: Rubik-Regular;
+    src: url('../../fonts/Rubik-Regular.ttf');
+}

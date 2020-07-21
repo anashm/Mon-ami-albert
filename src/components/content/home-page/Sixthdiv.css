@@ -1,0 +1,32 @@
+.title_page{
+
+    padding:10px;
+    font-family: KGFallForYouBold;
+    font-size: 32px;
+}
+
+.slide_title {
+
+    font-family: Rubik-Medium;
+    color: #333333;
+}
+
+.text_slide{
+
+    font-family: Rubik-Regular;
+}
+
+@font-face{
+    font-family: Rubik-Medium;
+    src: url('../../../fonts/Rubik-Medium.ttf');
+}
+
+@font-face{
+    font-family: Rubik-Regular;
+    src: url('../../../fonts/Rubik-Regular.ttf');
+}
+
+@font-face{
+    font-family: KGFallForYouBold;
+    src: url('../../../fonts/KGFallForYouBold.ttf');
+}

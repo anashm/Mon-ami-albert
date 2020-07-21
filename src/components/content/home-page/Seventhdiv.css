@@ -1,0 +1,22 @@
+.title_second_div{
+  
+    font-family: KGFallForYouBold;
+    
+}
+
+.text_div{
+
+    font-family: Rubik-Regular;
+    color: #636363;
+    font-size: 14px;
+}
+
+@font-face{
+    font-family: KGFallForYouBold;
+    src: url('../../../fonts/KGFallForYouBold.ttf');
+}
+
+@font-face{
+    font-family: Rubik-Regular;
+    src: url('../../../fonts/Rubik-Regular.ttf');
+}
