@@ -12,6 +12,7 @@
     font-family: Rubik-Bold;
     font-size: 16px;
     text-align: center;
+    margin-top: 5%;
 }
 
 .niveaux{
@@ -22,6 +23,14 @@
     width: 50px;
 }
 
+.niveaux_clicked{
+
+    border: 1px solid #CBCACD;
+    padding: 10px 10px 10px 10px;
+    color: black;
+    font-family: Rubik-Bold;
+    width: 50px;
+}
 .deja_un_compte{
 
     margin: 60px 100px 0 0;
@@ -31,7 +40,7 @@
     color: #636363;
 }
 
-.spacer{
+.spacers{
     display: inline-block;
     width: 30px;
 }
@@ -44,7 +53,9 @@
     height: 100%;
 } */
 
-
+.email-login-container{
+    margin-top: 15px;
+}
 
 @font-face{
     font-family: KGFallForYouBold;
@@ -55,4 +66,9 @@
 @font-face{
     font-family: Rubik-Bold;
     src: url('../../../fonts/Rubik-Bold.ttf');
+}
+
+@font-face{
+    font-family: Rubik-Regular;
+    src: url('../../../fonts/Rubik-Regular.ttf');
 }

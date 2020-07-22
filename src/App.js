@@ -7,11 +7,10 @@ import HomePage from './components/content/home-page/HomePage';
 import Footer from './components/footer/Footer';
 import {BrowserRouter as Router,Switch,Route} from 'react-router-dom';
 import CreatAccount  from './components/content/inscription/create_account';
-
 import EleveAccount from './components/content/inscription/EleveCompte';
-
-
 import Login from './pages/Login/Login';
+import JeSuisUnComponent from './components/content/inscription/JesuisUnComponent';
+import WichEnseigant from './components/content/inscription/WichEnseignant';
 
 
 function App() {
@@ -25,6 +24,8 @@ function App() {
           <Route exact path="/login" component={Login} />
           <Route exact path="/creat-account" component={CreatAccount} />
           <Route exact path="/eleve-creat-account" component={EleveAccount} />
+          <Route exact path="/individu-create-account" component={JeSuisUnComponent} />
+          <Route exact path="/wich-enseignant" component={WichEnseigant} />
         </Switch>
       </div>
       <Footer />

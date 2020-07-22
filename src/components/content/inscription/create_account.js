@@ -26,19 +26,28 @@ export default function create_account() {
 
                 <div className="col-md-1"></div>
                 <div className="col-md-2">
-                    <img className="images"  src={photo_parent}  width="100%" />
+                    <Link to={{
+                            pathname: "/individu-create-account",
+                            state: {
+                                fonction: "Parent"
+                            }
+                        }}>
+                        <img className="images"  src={photo_parent}  width="100%" />
+                    </Link>
                     <span className="title_image">Parent</span>
                 </div>
 
                 <div className="col-md-1"></div>
                 <div className="col-md-2">
-                    <img className="images"  src={photo_enseignant} width="100%" />
+                    <Link to="/wich-enseignant">
+                        <img className="images"  src={photo_enseignant} width="100%" />
+                    </Link>
                     <span className="title_image">Enseignant</span>
                 </div>
 
                 <div className="col-md-2"></div>
              </div>
-             <p className="deja_un_compte">Vous avez déjà un compte ? <Link to="/"> Connecte-toi </Link></p>
+             <p className="deja_un_compte">Vous avez déjà un compte ? <Link to="/login"> Connecte-toi </Link></p>
              <br></br><br></br>
         </div>
         

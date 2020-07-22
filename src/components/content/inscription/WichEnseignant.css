@@ -1,0 +1,66 @@
+
+.cree_ton_compte{
+    text-align: center;
+    font-family: KGFallForYouBold;
+    font-size: 50px;
+    margin-top:7% !important;
+    letter-spacing: 1px;
+}
+
+.text-avatar{
+    margin-top: 5%;
+    color: #636363;
+    font-size: 14px;
+}
+
+.listes_enseignants{
+    text-align: center;
+    margin-top: 5%;
+}
+
+.title_enseignant{
+    text-transform: uppercase;
+    color: #707070;
+    font-family: Rubik-Bold;
+    font-size: 16px;
+    text-align: center;
+}
+
+.deja_un_compte{
+
+    margin: 60px 0px 0 0;
+    text-align: center;
+    font-family: Rubik-Regular;
+    font-size: 12px;
+    color: #636363;
+}
+
+.spacer{
+    display: block;
+    margin-top: 5%;
+}
+
+.choix-enseignants{
+
+    border: 1px solid #CBCACD;
+    padding: 10px 80px 10px 80px;
+    color: #CBCACD;
+    font-family: Rubik-Bold;
+    width: 50px;
+    
+}
+
+@font-face{
+    font-family: KGFallForYouBold;
+    src: url('../../../fonts/KGFallForYouBold.ttf');
+}
+
+@font-face{
+    font-family: Rubik-Bold;
+    src: url('../../../fonts/Rubik-Bold.ttf');
+}
+
+@font-face{
+    font-family: Rubik-Regular;
+    src: url('../../../fonts/Rubik-Regular.ttf');
+}
