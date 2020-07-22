@@ -13,17 +13,25 @@ const Login = () => {
 
     return (
         <div className = 'login-content-container'>
+
+            <div className="login-title-container">
+                <h2 className="login-title">Connecte-toi</h2>
+            </div>
+
+            <Divider hidden />
+
+
             <div className="social-login-container">
-                <div className="google-login-btn">
+                <div className="google-login-btn-container">
                     <Google />
                 </div>
 
-                <div className="facebook-login-btn">
+                <div className="facebook-login-btn-container">
                     <Facebook/>
                 </div>
             </div>
 
-            <Divider className = 'w-100' horizontal>Or</Divider>
+            <Divider className = 'w-100 my-4' horizontal>Or</Divider>
 
 
             <div className="login-form-container">
