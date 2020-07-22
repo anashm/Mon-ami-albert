@@ -54,7 +54,7 @@ export default function EleveCompte() {
             </div>
             <br></br><br></br><br></br>
             <p className="deja_un_compte">Vous avez déjà un compte ? <Link to="/"> Connecte-toi </Link></p>
-            <br></br><br></br><br></br><br></br>
+            {/* <br></br><br></br><br></br><br></br> */}
         </div>
     )
 }

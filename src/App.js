@@ -19,12 +19,14 @@ function App() {
   return (
     <Router>
       <Header />
+      <div className="main_content">
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/creat-account" component={CreatAccount} />
           <Route exact path="/eleve-creat-account" component={EleveAccount} />
         </Switch>
+      </div>
       <Footer />
      </Router>
   );

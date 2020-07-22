@@ -2,4 +2,19 @@
   text-align: center;
 }
 
+.main_content {
+  min-height:620px;
+  height: auto;
+  /* display: flex;
+  flex-direction: column; */
+}
+
+.footer_container{
+     
+  position:relative;
+  bottom:0;
+  
+
+}
+
 
