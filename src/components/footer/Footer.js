@@ -6,7 +6,7 @@ import twitter_icon from '../../images/twitter-icon.svg';
 
 export default function Footer() {
     return (
-        <div style={{background:'#636363'}}>
+        <div style={{background:'#636363'}} className="footer_container">
          
                 <div className="items_container"> 
                     <center>

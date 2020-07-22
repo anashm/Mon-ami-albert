@@ -1,0 +1,19 @@
+/* Style applied to many elements */
+
+*,
+*::after,
+*::before{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    //font-size: 62.5%;
+    //background-color: $blue-primary;
+}
+
+
+.divider{
+    background-color: transparent !important;
+}
