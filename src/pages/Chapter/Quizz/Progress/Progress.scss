@@ -1,0 +1,39 @@
+.quizz-progress-container{
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5%;
+
+    .profile-container{
+
+    }
+
+    .progress-wrapper{
+        width: 85%;
+
+        .progress{
+            height: 8px;
+            border: 0.4px solid #CBCACD;
+            background-color: white;
+            border-radius: 100px;
+
+            .progression{
+                width: 10%;
+                background-color: #FA4A59;
+            }
+        }
+    }
+
+    .score-container{
+        position: relative;
+
+        .score{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50% , -60%);
+            color: white;
+        }
+    }
+}
