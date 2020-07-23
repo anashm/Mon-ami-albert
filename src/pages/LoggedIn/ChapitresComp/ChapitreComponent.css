@@ -1,0 +1,46 @@
+
+.chapitre-container{
+    border: 1px solid #CBCACD;
+    flex: 1;
+    margin: 30px 10px 10px 10px;
+    background-color: #FFFFFF;
+}
+
+.elements{
+    margin:10px 30px 30px 10px ;
+   
+}
+
+.order-chapitre{
+    font-family: Rubik-Medium;
+    color: #CBCACD;
+}
+
+.title-chapitre{
+
+    font-family: Rubik-Medium;
+    color: #707070;
+}
+
+.progression-bars{
+
+    background-color:#FAFAFA;
+    border-radius: 13px;
+    width: 80%;
+    height: 10px;
+    float: left;
+    border:  1px solid #CBCACD;
+}
+
+.ins-progress{
+
+    background-color: #8fabff;
+    width: 0%;
+    height: 20px;
+    border-radius: 10px;
+}
+
+@font-face{
+    font-family: Rubik-Medium;
+    src: url('../../../fonts/Rubik-Medium.ttf');
+}

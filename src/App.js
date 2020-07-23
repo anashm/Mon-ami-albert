@@ -11,8 +11,14 @@ import EleveAccount from './components/content/inscription/EleveCompte';
 import Login from './pages/Login/Login';
 import JeSuisUnComponent from './components/content/inscription/JesuisUnComponent';
 import WichEnseigant from './components/content/inscription/WichEnseignant';
+<<<<<<< HEAD
 import Chapter from './pages/Chapter/Chapter';
 
+=======
+import SignUp from './components/content/inscription/SignUp';
+import Dashboard from './pages/LoggedIn/Dashboard';
+import Chapitres from './pages/LoggedIn/Chapitres';
+>>>>>>> 33b4b60e79cc1061aa862636dc475be0865a7cd1
 
 function App() {
   
@@ -27,7 +33,13 @@ function App() {
           <Route exact path="/eleve-creat-account" component={EleveAccount} />
           <Route exact path="/individu-create-account" component={JeSuisUnComponent} />
           <Route exact path="/wich-enseignant" component={WichEnseigant} />
+<<<<<<< HEAD
           <Route exact path="/chapter" component={Chapter} />
+=======
+          <Route exact path="/sign-up" component={SignUp} />
+          <Route exact path="/dashboard-user" component={Dashboard} />
+          <Route exact path="/chapitres" component={Chapitres} />
+>>>>>>> 33b4b60e79cc1061aa862636dc475be0865a7cd1
         </Switch>
       </div>
       <Footer />
