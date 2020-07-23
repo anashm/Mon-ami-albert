@@ -6,6 +6,8 @@ import Facebook from '../../../pages/Login/Social/Facebook/Facebook';
 import avatar from '../../../images/avatar.png';
 import { Button} from 'semantic-ui-react';
 
+
+
 export default function EleveCompte() {
     const[changeText , setChangeText] = useState('');
     const[changeColor , setChangeColor] = useState(false);
@@ -13,7 +15,13 @@ export default function EleveCompte() {
     const changeNiveau = (niveau) => {
         
         setChangeText(niveau);
-        setChangeColor(true);
+       // setChangeColor(true);
+    }
+
+    const GoToSignUp = () => {
+        
+        console.log('helllo')
+        
     }
   
     return (
@@ -42,7 +50,7 @@ export default function EleveCompte() {
                 
                 <div className="col-md-7">
                     <div className="grid1">
-                        <span className = {`niveaux ${changeColor ? "niveaux_clicked" : ""}`} onClick={() => changeNiveau('CE1')} >CE1&nbsp;</span>
+                        <span className = "niveaux" onClick={() => changeNiveau('CE1')} >CE1&nbsp;</span>
                         <div className="spacers"></div>
                         <span className="niveaux"  onClick={() => changeNiveau('CE2')} >CE2&nbsp;</span>
                         <div className="spacers"></div>
@@ -90,7 +98,14 @@ export default function EleveCompte() {
                 </div>
 
                 <div className="email-login-container">
-                    <Button className = 'submit-btn w-100'>S'inscrire avec un email</Button>
+                   <Link to={{
+                            pathname: "/sign-up",
+                            state: {
+                                fonction:'3e'
+                            }
+                        }}>
+                    <Button onClick={GoToSignUp} className = 'submit-btn w-100'>S'inscrire avec un email</Button>
+                    </Link> 
                 </div>
             </div>
             

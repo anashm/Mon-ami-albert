@@ -1,0 +1,37 @@
+
+
+
+.in-progress {
+    background-color: #8fabff;
+    width: 0%;
+    height: 20px;
+    border-radius: 10px;
+  }
+
+.progression-bar{
+    background-color:#FAFAFA;
+    border-radius: 13px;
+    width: 60%;
+    float: left;
+    border:  1px solid #CBCACD;
+  }
+
+
+  .pourcentage{
+
+    
+    font-family: Rubik-Medium;
+    color: #707070;
+  }
+
+  .title-matiere{
+
+    font-family: Rubik-Medium;
+    color: #707070;
+  }
+
+
+  @font-face{
+    font-family: Rubik-Medium;
+    src: url('../../../fonts/Rubik-Medium.ttf');
+}
