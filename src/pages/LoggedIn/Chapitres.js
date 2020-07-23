@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import ChapitreComponent from './ChapitresComp/ChapitreComponent';
+import './style/Chapitres.css';
+
 
 export default class Chapitres extends Component {
     render() {
         return (
             <div className="container" style={{backgroundColor:'#FAFAFA',margin:'50px 50px 50px 60px'}}>
-                <h3 style={{padding:'40px 20px 10px 30px'}}>Chapitres</h3>
+                <h3 style={{padding:'40px 20px 10px 30px'}} className="chapitres">Chapitres</h3>
                 
                 <div style={{display:'flex'}}>
                     <ChapitreComponent ordre="1" title="Les différentes écritures d'un nombre" />

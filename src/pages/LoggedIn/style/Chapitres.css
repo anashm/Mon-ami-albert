@@ -1,0 +1,9 @@
+.chapitres{
+    color: #707070;
+    font-family: Rubik-Medium;
+}
+
+@font-face{
+    font-family: Rubik-Medium;
+    src: url('../../../fonts/Rubik-Medium.ttf');
+}
