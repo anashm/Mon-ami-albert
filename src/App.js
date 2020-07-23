@@ -11,6 +11,7 @@ import EleveAccount from './components/content/inscription/EleveCompte';
 import Login from './pages/Login/Login';
 import JeSuisUnComponent from './components/content/inscription/JesuisUnComponent';
 import WichEnseigant from './components/content/inscription/WichEnseignant';
+import Chapter from './pages/Chapter/Chapter';
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
           <Route exact path="/eleve-creat-account" component={EleveAccount} />
           <Route exact path="/individu-create-account" component={JeSuisUnComponent} />
           <Route exact path="/wich-enseignant" component={WichEnseigant} />
+          <Route exact path="/chapter" component={Chapter} />
         </Switch>
       </div>
       <Footer />

@@ -1,0 +1,49 @@
+.exercise-container{
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+
+    .exercise-number{
+        padding-right: 20px;
+    }
+
+    .exercise-text{
+        margin: 0;
+        max-width: 80%;
+    }
+    
+    .exercise-icons-container{
+        margin-left: auto;
+
+        i{
+            opacity: 0.6;
+            font-size: 18px;
+            transition: all 0.3s;
+        }
+
+        .download-link{
+
+            &:hover{
+                i{
+                    opacity: 1;
+                }
+            }
+
+        }
+
+        .open-exercise{
+            border: none;
+            margin-left: 10px;
+            background-color: transparent;
+            cursor: pointer;
+            outline: none !important;
+
+            &:hover{
+                
+                i{
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}

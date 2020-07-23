@@ -1,0 +1,61 @@
+.exercices-container{
+
+   
+    padding-bottom: 20px;
+
+    .exercises-title-container{
+        background-color: #707070;
+        padding: 15px 40px;
+        font-family: Rubik , 'sans-serif';
+        border-radius: 4px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        transition: all 0.3s;
+
+        &:hover{
+            opacity: 0.9;
+        }
+
+        .exercises-title{
+            color: white;
+            margin: 0;
+            font-size: 18px;
+            font-weight: 400;
+            
+        }
+
+        .exercises-infos{
+            color: white !important;
+            display: flex;
+            align-items: center;
+
+            .exercises-number{
+                color: #707070;;
+                margin-right: 10px;
+                background-color: white;
+                height: 18px;
+                width: 18px;
+                text-align: center;
+                border-radius: 3px;
+            }
+
+            .show-hide-icon{
+                i{
+                    color: white;
+                    font-size: 20px;
+                }
+            }
+        }
+
+    }
+
+    .exercises-content{
+        padding: 20px 30px;
+        overflow: hidden;
+        transition : all 0.3s;
+        background-color: #FAFAFA;
+    }
+}
+
