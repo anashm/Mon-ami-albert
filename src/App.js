@@ -15,7 +15,10 @@ import Chapter from './pages/Chapter/Chapter';
 import SignUp from './components/content/inscription/SignUp';
 import Dashboard from './pages/LoggedIn/Dashboard';
 import Chapitres from './pages/LoggedIn/Chapitres';
-
+import Quizz from './pages/Chapter/Quizz/Quizz';
+import SignUp from './components/content/inscription/SignUp';
+import Dashboard from './pages/LoggedIn/Dashboard';
+import Chapitres from './pages/LoggedIn/Chapitres';
 
 function App() {
   
@@ -31,6 +34,7 @@ function App() {
           <Route exact path="/individu-create-account" component={JeSuisUnComponent} />
           <Route exact path="/wich-enseignant" component={WichEnseigant} />
           <Route exact path="/chapter" component={Chapter} />
+          <Route exact path="/quizz" component={Quizz} />
           <Route exact path="/sign-up" component={SignUp} />
           <Route exact path="/dashboard-user" component={Dashboard} />
           <Route exact path="/chapitres" component={Chapitres} />
