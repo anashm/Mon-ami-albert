@@ -1,31 +1,47 @@
-import React,{useState} from 'react';
+import React,{useState, Component,useEffect,useContext } from 'react';
 import './EleveCompte.css';
 import {Link} from 'react-router-dom';
 import Google from '../../../pages/Login/Social/Google/Google';
 import Facebook from '../../../pages/Login/Social/Facebook/Facebook';
 import avatar from '../../../images/avatar.png';
 import { Button} from 'semantic-ui-react';
+import NiveauComponent from './NiveauComponent';
+import database from '../../../firebase';
+import {AuthContext} from '../../../providers/LoginContext';
 
+    
 
-
-export default function EleveCompte() {
-    const[changeText , setChangeText] = useState('');
-    const[changeColor , setChangeColor] = useState(false);
-
-    const changeNiveau = (niveau) => {
+ const  EleveCompte = () =>  {
+    //const value=useContext(AuthContext)
+    useEffect(() => {
         
-        setChangeText(niveau);
-       // setChangeColor(true);
-    }
+        /* database.collection('users').onSnapshot(snapshot => {
+            console.log(snapshot.docs.map(doc => doc.data()))
+        }) */
 
-    const GoToSignUp = () => {
         
-        console.log('helllo')
-        
-    }
-  
-    return (
-        
+        var ref = database.ref('schoolLevels/all')
+        ref.on("value", snapshot => {
+            const messageObject = snapshot.val();
+            setNiveaux(messageObject)
+           /*  const messageList = Object.keys(messageObject).map(key => {
+                console.log(key)
+            }) */
+               
+           
+        })
+        /* ref.once('value').then(function(snapshot){
+            snapshot.forEach( child => {
+               // setNiveaux(child.val())
+                console.log(child.val())
+            })
+        }) */
+    }, []);
+
+    const [childData, setChildData] = useState("");
+    const [niveaux ,setNiveaux] = useState([]);
+
+    return (        
         <div className="container">
             <p  className="cree_ton_compte"><center>  CREE TON COMPTE </center></p>
 
@@ -37,7 +53,7 @@ export default function EleveCompte() {
                              <img src={avatar} style={{width : '70%'}} /> 
                         </div>
                         
-                        <p className="text-avatar"> Je suis un élève de <b>{changeText}</b>&nbsp;&nbsp;
+                        <p className="text-avatar"> Je suis un élève de <b> {childData} </b>&nbsp;&nbsp;
                         <Link to="/creat-account"> Modifier </Link></p>
                     </div>
             </div>
@@ -49,38 +65,28 @@ export default function EleveCompte() {
                 <div className="col-md-3"></div>
                 
                 <div className="col-md-7">
-                    <div className="grid1">
-                        <span className = "niveaux" onClick={() => changeNiveau('CE1')} >CE1&nbsp;</span>
-                        <div className="spacers"></div>
-                        <span className="niveaux"  onClick={() => changeNiveau('CE2')} >CE2&nbsp;</span>
-                        <div className="spacers"></div>
-                        <span className="niveaux" onClick={() => changeNiveau('CM1')}>CM1&nbsp;</span>
-                        <div className="spacers"></div>
-                        <span className="niveaux" onClick={() => changeNiveau('CM2')}>CM2&nbsp;</span>
-                        <div className="spacers"></div>
-                        <span className="niveaux"onClick={() => changeNiveau('6e')}>6e&nbsp;&nbsp;</span>
-                        <div className="spacers"></div>
-                        <span className="niveaux" onClick={() => changeNiveau('5e')}>5e&nbsp;&nbsp;</span>
-                        <div className="spacers"></div>
-                        <span className="niveaux" onClick={() => changeNiveau('4e')}>4e&nbsp;&nbsp;</span>
+                    <div className="grid1"> 
+                        {niveaux.map( (niveau,index) => {
+                         return (
+                                <span>
+                                <NiveauComponent 
+                                    key={index} 
+                                    niveau={niveau}
+                                    passChildData={setChildData} 
+                                    />  
+                                    <div className="spacers"></div>
+                                    
+                                </span>
+                                )                   
+                            
+                           
+                        }) }          
+                      
+                     
                     </div>
-                    <br></br><br></br>
+                    
 
-                    <div className="grid1">
-                        <span className="niveaux" onClick={() => changeNiveau('3e')}> 3e&nbsp;&nbsp;</span>
-                        <div className="spacers"></div>
-                        <span className="niveaux" onClick={() => changeNiveau('2nde')}>2nde</span>
-                        <div className="spacers"></div>
-                        <span className="niveaux" onClick={() => changeNiveau('1ère')}> 1ère</span>
-                        <div className="spacers"></div>
-                        <span className="niveaux" onClick={() => changeNiveau('TL')}>TL&nbsp;&nbsp;</span>
-                        <div className="spacers"></div>
-                        <span className="niveaux" onClick={() => changeNiveau('TS')}>TS&nbsp;&nbsp;</span>
-                        <div className="spacers"></div>
-                        <span className="niveaux" onClick={() => changeNiveau('TES')}>TES&nbsp;</span>
-                        <div className="spacers"></div>
-                        <span className="niveaux" onClick={() => changeNiveau('TES')}>TES&nbsp;</span>
-                    </div>
+                   
                 </div>
 
 
@@ -104,11 +110,15 @@ export default function EleveCompte() {
                                 fonction:'3e'
                             }
                         }}>
-                    <Button onClick={GoToSignUp} className = 'submit-btn w-100'>S'inscrire avec un email</Button>
+                    <Button  className = 'submit-btn w-100'>S'inscrire avec un email</Button>
                     </Link> 
                 </div>
             </div>
-            
+           
         </div>
     )
+  
 }
+
+
+export default EleveCompte;

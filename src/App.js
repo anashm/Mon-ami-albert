@@ -16,9 +16,9 @@ import SignUp from './components/content/inscription/SignUp';
 import Dashboard from './pages/LoggedIn/Dashboard';
 import Chapitres from './pages/LoggedIn/Chapitres';
 import Quizz from './pages/Chapter/Quizz/Quizz';
-import SignUp from './components/content/inscription/SignUp';
-import Dashboard from './pages/LoggedIn/Dashboard';
-import Chapitres from './pages/LoggedIn/Chapitres';
+import FadeIn from 'react-fade-in';
+import {LoginProvider} from './providers/LoginContext'
+
 
 function App() {
   
@@ -26,19 +26,23 @@ function App() {
     <Router>
       <Header />
       <div className="main_content">
-        <Switch>
-          <Route exact path="/" component={HomePage} />
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/creat-account" component={CreatAccount} />
-          <Route exact path="/eleve-creat-account" component={EleveAccount} />
-          <Route exact path="/individu-create-account" component={JeSuisUnComponent} />
-          <Route exact path="/wich-enseignant" component={WichEnseigant} />
-          <Route exact path="/chapter" component={Chapter} />
-          <Route exact path="/quizz" component={Quizz} />
-          <Route exact path="/sign-up" component={SignUp} />
-          <Route exact path="/dashboard-user" component={Dashboard} />
-          <Route exact path="/chapitres" component={Chapitres} />
-        </Switch>
+       {/*  <FadeIn  delay="1000"> */}
+       <LoginProvider>
+          <Switch>
+            <Route exact path="/" component={HomePage} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/creat-account" component={CreatAccount} />
+            <Route exact path="/eleve-creat-account" component={EleveAccount} />
+            <Route exact path="/individu-create-account" component={JeSuisUnComponent} />
+            <Route exact path="/wich-enseignant" component={WichEnseigant} />
+            <Route exact path="/chapter" component={Chapter} />
+            <Route exact path="/quizz" component={Quizz} />
+            <Route exact path="/sign-up" component={SignUp} />
+            <Route exact path="/dashboard-user" component={Dashboard} />
+            <Route exact path="/chapitres" component={Chapitres} />
+          </Switch>
+          </LoginProvider>
+       {/*  </FadeIn> */}
       </div>
       <Footer />
      </Router>

@@ -1,5 +1,4 @@
 import React , { useState } from 'react';
-
 import { Icon } from 'semantic-ui-react';
 import Exercise from './Exercise/Exercise';
 import exercises from './ex';

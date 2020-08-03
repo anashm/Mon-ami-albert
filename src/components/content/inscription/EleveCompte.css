@@ -20,7 +20,12 @@
     padding: 10px 10px 10px 10px;
     color: #CBCACD;
     font-family: Rubik-Bold;
-    width: 50px;
+    display: inline-block;
+    width: 100px;
+}
+
+.niveaux:hover{
+    cursor: pointer;
 }
 
 .niveaux_clicked{
@@ -29,7 +34,8 @@
     padding: 10px 10px 10px 10px;
     color: black;
     font-family: Rubik-Bold;
-    width: 50px;
+    display: inline-block;
+    width: 100px;
 }
 .deja_un_compte{
 

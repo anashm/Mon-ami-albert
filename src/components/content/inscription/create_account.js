@@ -7,6 +7,9 @@ import {Link} from 'react-router-dom';
 
 
 export default function create_account() {
+
+    
+
     return (
         <div className="container">
              <p  className="cree_ton_compte"><center>  CREE TON COMPTE </center></p>
@@ -49,6 +52,8 @@ export default function create_account() {
              </div>
              <p className="deja_un_compte">Vous avez déjà un compte ? <Link to="/login"> Connecte-toi </Link></p>
              <br></br><br></br>
+
+            
         </div>
         
     )

@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component,useState } from 'react'
 import MatiereComponent from './Matieres/MatiereComponent';
 import LogoMath from '../../images/Logo-math.png';
 import LogoPhysique from '../../images/logo-physique.png';
@@ -9,12 +9,59 @@ import LogoSVT from '../../images/logo-svt.png';
 import LogoIng from '../../images/logo-ing.png';
 import LogoJeux from '../../images/logo-jeux.png';
 import { Link } from 'react-router-dom';
+import Modal from 'react-bootstrap/Modal';
 
-export default class Dashboard extends Component {
-    render() {
+const  Dashboard = () => {
+
+    const listStyle = {
+       
+        marginTop: "-1px", /* Prevent double borders */
+       
+        padding: "12px",
+        textDecoration: "none",
+        fontSize: "18px",
+        
+        display: "block",
+        position: "relative",
+        color:'#707070'
+    }
+
+    const fleche = {
+        cursor: "pointer",
+        position: "absolute",
+        top: "5%",
+        right: "0%",
+        padding: "12px 16px",
+    }
+    const [niveaux , setNiveaux] = useState('');
+    
+    const [ modalOpen , setModalOpen  ] = useState(false);
+
+    const [ valueNiveau ,setValueNiveau] =useState('');
+   
+    const handleShowModal = () => setModalOpen(true);
+    const handleCloseModal = () => setModalOpen(false);
+
+    const ChoixNiveau = (niveau) => {
+        setValueNiveau(niveau)
+        handleCloseModal()
+    }
+   /*  if( valueNiveau != '' ) {
+        niveaux = <center>  valueNiveau </center>
+    }
+    else {
+        niveaux = <center> TROISIEME  </center>
+    } */
+   // render() {
         return (
             <div className="container">
-                <p  className="cree_ton_compte"><center> TROISIEME </center></p>
+                <p  className="cree_ton_compte" onClick = {handleShowModal}>
+                    { (valueNiveau )  ?  
+                    <center> {valueNiveau} </center>
+                        :
+                        <center>TROISIEME</center>
+                    } 
+                </p>
 
                     <div className="row">
                         <div className="col-md-6">
@@ -55,8 +102,54 @@ export default class Dashboard extends Component {
                         </div>
                     </div> 
                     
-                  
+                    <Modal
+                    size="md"
+                    aria-labelledby="contained-modal-title-vcenter"
+                    centered
+                    show={modalOpen}
+                    onHide={handleCloseModal}
+                    >
+                    <Modal.Header closeButton>
+                        <Modal.Title id="contained-modal-title-vcenter">
+                            <h4 style={{color:'#707070'}}>ALLER EN ...</h4> 
+                        </Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body >
+                        <div className="container">
+                            <div className="row">
+                                <div className="col-md-6">
+                                    <ul >
+                                    <li style={listStyle}>CE1 <span style={fleche} onClick={() => ChoixNiveau('CE1')}>&gt;</span> </li>
+                                    <li style={listStyle}>CM1 <span style={fleche} onClick={() => ChoixNiveau('CM1')}>&gt;</span> </li>
+                                    <li style={listStyle}>Sixième <span style={fleche} onClick={() =>ChoixNiveau('Sixième')}>&gt;</span> </li>
+                                    <li style={listStyle}>Quatrième <span style={fleche} onClick={() =>ChoixNiveau('Quatrième')}>&gt;</span> </li>
+                                    </ul>
+                                </div>
+
+                                <div className="col-md-6">
+                                    <ul >
+                                        <li style={listStyle}>CE2 <span style={fleche} onClick={() =>ChoixNiveau('CE2')}>&gt;</span> </li>
+                                        <li style={listStyle}>CM2 <span style={fleche} onClick={() =>ChoixNiveau('CM2')}>&gt;</span> </li>
+                                        <li style={listStyle}>Cinquième <span style={fleche} onClick={() =>ChoixNiveau('Cinquième')}>&gt;</span> </li>
+                                        <li style={listStyle}>Troisième <span style={fleche} onClick={() =>ChoixNiveau('Troisième')}>&gt;</span> </li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                            
+
+                            
+                 
+                        </div>
+                        
+                    </Modal.Body>
+
+                    </Modal>      
             </div>
+
+            
         )
-    }
+   // }
 }
+
+export default Dashboard;
