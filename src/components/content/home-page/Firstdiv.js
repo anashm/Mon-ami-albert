@@ -29,7 +29,8 @@ const PopUp = ({ closeToast }) => (
     </div>
   )
 
-export default function Firstdiv() {
+export default function Firstdiv( props ) {
+    
     useEffect(() => {
         setTimeout(() => { toast(<PopUp />)  },2000); 
         

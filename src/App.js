@@ -1,4 +1,4 @@
-import React from 'react';
+import React ,{useEffect ,useContext,useState} from 'react';
 import Header from './components/header/Header'
 import './App.css';
 import 'semantic-ui-css/semantic.min.css';
@@ -18,16 +18,25 @@ import Chapitres from './pages/LoggedIn/Chapitres';
 import Quizz from './pages/Chapter/Quizz/Quizz';
 import FadeIn from 'react-fade-in';
 import {LoginProvider} from './providers/LoginContext'
+import {LoggedinProvider} from './providers/sessionLoggedIn/LoggedinContext';
+
 
 
 function App() {
+
+
+
+
+
   
+  
+ 
   return (
     <Router>
-      <Header />
+      <Header  />
       <div className="main_content">
        {/*  <FadeIn  delay="1000"> */}
-       <LoginProvider>
+       {/* <LoginProvider> */}
           <Switch>
             <Route exact path="/" component={HomePage} />
             <Route exact path="/login" component={Login} />
@@ -38,10 +47,12 @@ function App() {
             <Route exact path="/chapter" component={Chapter} />
             <Route exact path="/quizz" component={Quizz} />
             <Route exact path="/sign-up" component={SignUp} />
-            <Route exact path="/dashboard-user" component={Dashboard} />
+           {/*  <LoggedinProvider> */}
+              <Route exact path="/dashboard-user" component={Dashboard} />
+            {/* </LoggedinProvider> */}
             <Route exact path="/chapitres" component={Chapitres} />
           </Switch>
-          </LoginProvider>
+          {/* </LoginProvider> */}
        {/*  </FadeIn> */}
       </div>
       <Footer />

@@ -1,10 +1,29 @@
-import React from 'react';
+import React,{useState,useEffect,useContext} from 'react';
 import './Header.css';
 import logo from '../../images/MON_AMIALBERT2.svg';
 import { FaPhoneAlt  } from 'react-icons/fa'
 import {Link} from 'react-router-dom';
+import {FirebaseContext} from '../../firebase'
+
 
 export default function Header() {
+   
+    const firebase = useContext(FirebaseContext)
+
+    const [logout , setLogout] =useState(false);
+
+    const HandleLogout = () => {
+        setLogout(true)
+    }
+
+    useEffect( () => {
+        if(logout){
+            firebase.signOutUser()
+            console.log('deconnexion')
+        }
+    }, [logout])
+
+
     return (  
         <header>   
             <div className="container" style={{marginTop:'20px'}}>
@@ -21,6 +40,7 @@ export default function Header() {
                     </div>
                     <div className="col-md-2">
                         <span className="contact">Contact</span>
+                        <span onClick={HandleLogout}>Déconnexion</span>
                     </div>
                 </div>
             </div>

@@ -6,37 +6,13 @@ import Facebook from '../../../pages/Login/Social/Facebook/Facebook';
 import avatar from '../../../images/avatar.png';
 import { Button} from 'semantic-ui-react';
 import NiveauComponent from './NiveauComponent';
-import database from '../../../firebase';
+//import database from '../../../firebase';
 import {AuthContext} from '../../../providers/LoginContext';
 
     
 
- const  EleveCompte = () =>  {
-    //const value=useContext(AuthContext)
-    useEffect(() => {
-        
-        /* database.collection('users').onSnapshot(snapshot => {
-            console.log(snapshot.docs.map(doc => doc.data()))
-        }) */
-
-        
-        var ref = database.ref('schoolLevels/all')
-        ref.on("value", snapshot => {
-            const messageObject = snapshot.val();
-            setNiveaux(messageObject)
-           /*  const messageList = Object.keys(messageObject).map(key => {
-                console.log(key)
-            }) */
-               
-           
-        })
-        /* ref.once('value').then(function(snapshot){
-            snapshot.forEach( child => {
-               // setNiveaux(child.val())
-                console.log(child.val())
-            })
-        }) */
-    }, []);
+ const  EleveCompte = ( props ) =>  {
+    
 
     const [childData, setChildData] = useState("");
     const [niveaux ,setNiveaux] = useState([]);
@@ -100,7 +76,7 @@ import {AuthContext} from '../../../providers/LoginContext';
                 </div>
 
                 <div className="facebook-login-btn-container">
-                    <Facebook/>
+                    <Facebook navigation={props} />
                 </div>
 
                 <div className="email-login-container">

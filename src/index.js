@@ -2,11 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import Firebase , {FirebaseContext}  from './firebase';
+import UserState from './Context/UserContext/UserState'
+
 
 ReactDOM.render(
-  <React.StrictMode>
+  <FirebaseContext.Provider value={new Firebase()}>
+    <UserState>
     <App />
-  </React.StrictMode>,
+    </UserState>
+  </FirebaseContext.Provider>,
   document.getElementById('root')
 );
 

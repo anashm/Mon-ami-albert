@@ -1,4 +1,4 @@
-import React, { Component,useState } from 'react'
+import React, { Component,useState,useContext,useEffect } from 'react'
 import MatiereComponent from './Matieres/MatiereComponent';
 import LogoMath from '../../images/Logo-math.png';
 import LogoPhysique from '../../images/logo-physique.png';
@@ -10,17 +10,47 @@ import LogoIng from '../../images/logo-ing.png';
 import LogoJeux from '../../images/logo-jeux.png';
 import { Link } from 'react-router-dom';
 import Modal from 'react-bootstrap/Modal';
+import {LoggedinContext} from '../../providers/sessionLoggedIn/LoggedinContext';
+import { useHistory , Redirect } from "react-router-dom";
+import {FirebaseContext} from '../../firebase'
 
-const  Dashboard = () => {
+const  Dashboard = (props) => {
+
+    const firebase = useContext(FirebaseContext)
+  const[loggenIn,setloggenIn] = useState(null);
+
+  const[redirect ,setRedirect] = useState(false); 
+
+    useEffect(() => {
+   
+        firebase.auth.onAuthStateChanged( user => {
+          if(user){
+            
+            console.log(user)
+           ///history.push('/dashboard-user')
+          }
+          else{
+           //history.push('/')
+           console.log('not login');
+           props.history.push('/')
+          }
+        });
+      }, [])
+
+   // const value=useContext(LoggedinContext)
+
+   
+    
+        //console.log(value)
+   
+    
+    
 
     const listStyle = {
-       
         marginTop: "-1px", /* Prevent double borders */
-       
         padding: "12px",
         textDecoration: "none",
         fontSize: "18px",
-        
         display: "block",
         position: "relative",
         color:'#707070'
@@ -33,12 +63,10 @@ const  Dashboard = () => {
         right: "0%",
         padding: "12px 16px",
     }
-    const [niveaux , setNiveaux] = useState('');
-    
-    const [ modalOpen , setModalOpen  ] = useState(false);
 
+    const [niveaux , setNiveaux] = useState('');   
+    const [ modalOpen , setModalOpen  ] = useState(false);
     const [ valueNiveau ,setValueNiveau] =useState('');
-   
     const handleShowModal = () => setModalOpen(true);
     const handleCloseModal = () => setModalOpen(false);
 
@@ -46,20 +74,16 @@ const  Dashboard = () => {
         setValueNiveau(niveau)
         handleCloseModal()
     }
-   /*  if( valueNiveau != '' ) {
-        niveaux = <center>  valueNiveau </center>
-    }
-    else {
-        niveaux = <center> TROISIEME  </center>
-    } */
-   // render() {
+
+    
+  
         return (
             <div className="container">
                 <p  className="cree_ton_compte" onClick = {handleShowModal}>
                     { (valueNiveau )  ?  
                     <center> {valueNiveau} </center>
                         :
-                        <center>TROISIEME</center>
+                    <center>TROISIEME </center>
                     } 
                 </p>
 

@@ -1,5 +1,6 @@
 import firebase from "firebase";
-
+import app from 'firebase/app';
+import 'firebase/auth';
 
 /* const firebaseConfig = {
     apiKey: "AIzaSyBTyIDl28CRc5HwKRKf-V457xpIIvTbOgw",
@@ -23,13 +24,33 @@ import firebase from "firebase";
     measurementId: "G-B8FVGWC5ZB"
   };
 
-  /* admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount), // Or credential
-    databaseURL: 'https://monamialber-74a5e.firebaseio.com/'
-  }); */
 
-  const firebaseApp = firebase.initializeApp(firebaseConfig);
+  class Firebase {
+      constructor () {
+        app.initializeApp(firebaseConfig);
+        this.auth = app.auth();
+      }
 
-  //const database = firebaseApp.firestore();
+      signupUser = (email,password) => 
+        this.auth.createUserWithEmailAndPassword(email,password);
+      
+
+      loginUser = (email,password) => 
+        this.auth.signInWithEmailAndPassword(email,password)
+      
+
+      signOutUser = () => 
+        this.auth.signOut()
+
+        loginFacebook = () => 
+          this.auth.loginFacebook()
+      
+  }
+
+  export default Firebase;
+
+ /*  const firebaseApp = firebase.initializeApp(firebaseConfig);
+
+
   const database = firebaseApp.database();
-  export default database;
+  export default database; */

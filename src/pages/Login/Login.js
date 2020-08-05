@@ -8,7 +8,7 @@ import { Divider } from 'semantic-ui-react';
 
 import './style/Login.scss';
 
-const Login = () => {
+const Login = (props) => {
 
 
     return (
@@ -27,7 +27,7 @@ const Login = () => {
                 </div>
 
                 <div className="facebook-login-btn-container">
-                    <Facebook/>
+                    <Facebook navigation={props}/>
                 </div>
             </div>
 
@@ -35,7 +35,7 @@ const Login = () => {
 
 
             <div className="login-form-container">
-                    <LoginForm />
+                    <LoginForm navigation={props} />
             </div>
         </div>
     )

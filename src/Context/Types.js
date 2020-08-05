@@ -1,0 +1,1 @@
+export const GET_CONNECTED_USER = "GET_CONNECTED_USER";

@@ -3,7 +3,7 @@ import './MatiereComponent.css';
 
 
 const MatiereComponent = (props) => {
-    console.log(props.title)
+    
     return (
         <div className="matiere-container">
             {/* <div className="row">
