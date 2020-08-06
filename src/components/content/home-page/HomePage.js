@@ -1,5 +1,5 @@
-import React from 'react'
-import FirstDiv from './Firstdiv';
+import React , { Fragment } from 'react'
+import HeroSection from './HeroSection';
 import SecondDiv from './Seconddiv';
 import ThirdDiv from './Thirddiv';
 import FourthDiv from './Fourthdiv';
@@ -8,7 +8,9 @@ import Sixthdiv from './Sixthdiv';
 import Seventhdiv from './Seventhdiv';
 import Lastdiv from './Lastdiv';
 
-import { useContext, useEffect } from 'react';
+import './style/homapage.scss';
+
+import { useContext, useEffect , useState} from 'react';
 import UserContext from '../../../Context/UserContext/UserContext';
 import firebase from 'firebase';
 
@@ -16,14 +18,13 @@ import firebase from 'firebase';
 export default function HomePage(props) {
 
     const userContext = useContext(UserContext);
-
     //console.log(userContext);
 
     useEffect(() => {
 
         firebase.auth().onAuthStateChanged( user => {
             if(user){
-              console.log(user);
+             // console.log(user);
               userContext.get_connected_user(user);
             }else{
               console.log('not logged in')
@@ -39,9 +40,8 @@ export default function HomePage(props) {
     
 
     return (
-        <>
-            { console.log(userContext) }
-            <FirstDiv user={props} />
+        <Fragment>
+            <HeroSection userConnected={userContext.user} />
             <SecondDiv />
             <ThirdDiv /> 
             <FourthDiv />
@@ -49,6 +49,6 @@ export default function HomePage(props) {
             <Sixthdiv />
             <Seventhdiv /> 
             <Lastdiv />
-        </>
+        </Fragment>
     )
 }

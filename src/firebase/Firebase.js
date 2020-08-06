@@ -25,6 +25,7 @@ import 'firebase/auth';
   };
 
 
+  
   class Firebase {
       constructor () {
         app.initializeApp(firebaseConfig);
@@ -44,6 +45,10 @@ import 'firebase/auth';
 
         loginFacebook = () => 
           this.auth.loginFacebook()
+
+         getData = () => 
+            app.database();
+        
       
   }
 

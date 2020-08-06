@@ -8,14 +8,28 @@ import { Button} from 'semantic-ui-react';
 import NiveauComponent from './NiveauComponent';
 //import database from '../../../firebase';
 import {AuthContext} from '../../../providers/LoginContext';
-
+import {FirebaseContext} from '../../../firebase'
     
 
  const  EleveCompte = ( props ) =>  {
     
+    const Firebase = useContext(FirebaseContext)
+
 
     const [childData, setChildData] = useState("");
     const [niveaux ,setNiveaux] = useState([]);
+
+
+    useEffect(() => {
+            const database = Firebase.getData();
+            const ref = database.ref('schoolLevels/all');
+            ref.on("value", snapshot => {
+            // const messageObject = snapshot.val();
+                setNiveaux(snapshot.val())
+             
+            })
+    }, []);
+    //console.log(ref)
 
     return (        
         <div className="container">
@@ -83,7 +97,7 @@ import {AuthContext} from '../../../providers/LoginContext';
                    <Link to={{
                             pathname: "/sign-up",
                             state: {
-                                fonction:'3e'
+                                fonction:childData
                             }
                         }}>
                     <Button  className = 'submit-btn w-100'>S'inscrire avec un email</Button>

@@ -5,7 +5,6 @@ import * as serviceWorker from './serviceWorker';
 import Firebase , {FirebaseContext}  from './firebase';
 import UserState from './Context/UserContext/UserState';
 
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 ReactDOM.render(

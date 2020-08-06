@@ -1,6 +1,7 @@
 import React ,{useEffect ,useContext,useState} from 'react';
 import Header from './components/header/Header'
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import 'semantic-ui-css/semantic.min.css';
 import './style/_style.scss';
 import HomePage from './components/content/home-page/HomePage';
@@ -22,21 +23,12 @@ import {LoggedinProvider} from './providers/sessionLoggedIn/LoggedinContext';
 
 
 
-function App() {
+const  App = () => {
 
-
-
-
-
-  
-  
- 
   return (
     <Router>
       <Header  />
       <div className="main_content">
-       {/*  <FadeIn  delay="1000"> */}
-       {/* <LoginProvider> */}
           <Switch>
             <Route exact path="/" component={HomePage} />
             <Route exact path="/login" component={Login} />
@@ -47,17 +39,25 @@ function App() {
             <Route exact path="/chapter" component={Chapter} />
             <Route exact path="/quizz" component={Quizz} />
             <Route exact path="/sign-up" component={SignUp} />
-           {/*  <LoggedinProvider> */}
-              <Route exact path="/dashboard-user" component={Dashboard} />
-            {/* </LoggedinProvider> */}
+            <Route exact path="/dashboard-user" component={Dashboard} />
             <Route exact path="/chapitres" component={Chapitres} />
           </Switch>
+          
+          {/* </LoggedinProvider> */}
+          {/*  <LoggedinProvider> */}
           {/* </LoginProvider> */}
-       {/*  </FadeIn> */}
+          {/*  </FadeIn> */}
+          {/*  <FadeIn  delay="1000"> */}
+          {/* <LoginProvider> */}
+        
       </div>
-      <Footer />
-     </Router>
+    </Router>
+
+
+  
   );
 }
 
 export default App;
+
+

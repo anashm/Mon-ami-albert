@@ -17,9 +17,75 @@ body{
 .divider{
     background-color: transparent !important;
     font-weight: 500 !important;
-
 }
 
 .ui.label{
     font-weight: 500 !important;
 }
+
+
+//Title
+.main-sectiontitle{
+    font-size: 40px;
+    text-transform: uppercase;
+    font-family: KGFallForYouBold , 'sans-serif';
+    position: relative;
+    width: 100%;
+
+    &.overlined-left{
+        
+        &::after{
+            position: absolute;
+            content: '';
+            width: 20%;
+            height: 2px;
+            background-color: #333333;
+            top: -10px;
+            left: 0;
+        }
+    }
+
+    &.overlined-center{
+        &::after{
+            position: absolute;
+            content: '';
+            width: 20%;
+            height: 2px;
+            background-color: #333333;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+}
+
+//cards
+.horizontal-card-conatiner{
+    display: flex;
+    align-items: center;
+}
+
+
+//buttons
+.primary-link-button{
+    display: inline-block;
+    background-color: #707070;
+    padding: 5px 30px;
+    color: white;
+    text-transform: uppercase;
+    font-size: 11px;
+    border-radius: 50px;
+    cursor: pointer;
+    border: 2px solid #707070;
+    transition: all 0.3s;
+    width: 50%;
+    text-align: center;
+    letter-spacing: 1px;
+
+    &:hover{
+        background-color: transparent;
+        color: #707070;
+    }
+
+}
+

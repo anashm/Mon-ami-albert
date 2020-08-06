@@ -6,58 +6,37 @@ import icon_programme  from '../../../images/programme.svg';
 import icon_evaluation  from '../../../images/Evaluation.svg';
 import icon_challenge  from '../../../images/challenge.svg';
 
+import Title from '../../general/Title/Title';
+import HorizontalCard from '../../general/HorizontalCard/HorizontalCard';
+import PrimaryLinkButton from '../../general/PrimaryLinkButton/PrimaryLinkButton';
 
-export default function Seconddiv() {
+import { Divider } from 'semantic-ui-react'
+
+
+
+const SchoolInfosSection = ()  => {
     
     return (
-        <div className = 'container-fluid'  style={{background:'#FAFAFA',marginTop:'50px'}}>
-
+        <section className="container-fluid school-infos-Section">
             <div className="container">
-            <div  style={{padding:'100px 0'}}>
-                <div className="row justify-content-around">
-                    <div className="col-md-5">
-                        <span className="title_second_div" style={{fontSize:'30px'}} > <hr className="hr_div"></hr>QU'EST-CE QUE JE PROPOSE ?</span>
-                        <div >
-                            <div style={{float:"left"}}> <img src={image_einsten} style={{width : '70%'}} /> </div>
-                            
-                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam</p>
-                        </div> 
-                        <button style={{borderRadius:'30px',padding:'10px 30px'}}  className="btn btn-secondary decouvrir">DECOUVRIR MON AMI ALBERT</button>
+                <div className="row">
+                    <div className="description-container">
+                        <Title text = "Qu'est-ce que je propose ?" leftOverlined />
+                        <Divider hidden/>
+                        <HorizontalCard 
+                        img = {image_einsten} 
+                        text = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam' />
+                        <Divider hidden/>
+                        <PrimaryLinkButton 
+                            text = 'découvrez mon ami albert'
+                            link = '/'
+                        />
                     </div>
-                    <div className="col-md-5">
-                        <div className="row">
-                            <div className="col-md-6">
-                                <img src={icon_programme} style={{width:'20%'}} />
-                                <span className="title_quatre_icons">UN PROGRAMME MOTIVANT</span>
-                                <p style={{fontSize:'12px'}}>Lorem ipsum dolor sit amet, consetetur sadipscing.</p>   
-                            </div>
-
-                            <div className="col-md-6">
-                                <img src={icon_evaluation} style={{width:'20%'}} />
-                                <span className="title_quatre_icons">EVALUATION CONTINUE</span>
-                                <p style={{fontSize:'12px'}}>Lorem ipsum dolor sit amet, consetetur sadipscing.</p>  
-                            </div>
-                            <div className="w-100" style={{marginTop:'30px'}}></div>
-
-                            <div className="col-md-6">
-                                <img src={icon_progression} style={{width:'20%'}} />
-                                <span className="title_quatre_icons">SUIVI DE PROGRESSION</span>
-                                <p style={{fontSize:'12px'}}>Lorem ipsum dolor sit amet, consetetur sadipscing.</p>  
-                            </div>
-
-                            <div className="col-md-6">
-                                <img src={icon_challenge} style={{width:'23%'}} />
-                                <span className="title_quatre_icons">CHALLENGE QUOTIDIEN</span>
-                                <p style={{fontSize:'12px'}}>Lorem ipsum dolor sit amet, consetetur sadipscing.</p>  
-                            </div>
-                        </div>
-                        
-                    </div>
-                </div>               
-                
+                    <div className="propositions-container"></div>
+                </div>
             </div>
-            </div>
-            
-        </div>
+        </section>
     )
 }
+
+export default SchoolInfosSection;
