@@ -35,9 +35,9 @@ const JesuisUnComponent = (props) => {
                         <Google />
                     </div>
 
-                    <div className="facebook-login-btn-container">
+                    {/* <div className="facebook-login-btn-container">
                         <Facebook/>
-                    </div>
+                    </div> */}
                 </div>
                     
                 <p className="deja_un_compte">Vous avez déjà un compte ? <Link to="/login"> Connecte-toi </Link></p>

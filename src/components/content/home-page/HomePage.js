@@ -23,7 +23,7 @@ export default function HomePage(props) {
 
         firebase.auth().onAuthStateChanged( user => {
             if(user){
-              console.log(user);
+             // console.log(user);
               userContext.get_connected_user(user);
             }else{
               console.log('not logged in')
@@ -40,8 +40,8 @@ export default function HomePage(props) {
 
     return (
         <>
-                { console.log(userContext) }
-            <FirstDiv user={props} />
+         
+            <FirstDiv userConnected={userContext} />
             <SecondDiv />
             <ThirdDiv /> 
             <FourthDiv />

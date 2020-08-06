@@ -5,36 +5,64 @@ import { Link } from 'react-router-dom';
 import { Button} from 'semantic-ui-react';
 import Animation from './AnimationLottie';
 import {FirebaseContext} from '../../../firebase'
+import firebase from 'firebase';
+
 
 const  SignUp = (props) => {
 
-    const firebase = useContext(FirebaseContext)
+    const Firebase = useContext(FirebaseContext)
 
-    console.log(firebase)
-
+   
+    console.log(props.childData)
     const data = {
         first_name : '',
         last_name : '',
         email : '',
         password : '',
-        re_password : ''
+        re_password : '',
+        usersRef : firebase.database().ref('users')
     }
     const [SignUpData,setSignUpData] = useState(data);
     const [error , setError] = useState('');
 
+    
     const handleChange = (e) => {
         setSignUpData({...SignUpData,[e.target.id] : e.target.value})
         
     }
 
+    const saveUser = (createdUser) => {
+       
+        return data.usersRef.child(createdUser.user.uid).set({
+            lastName: SignUpData.last_name,
+            firstName: SignUpData.first_name,
+            level:props.location.state.fonction
+        });
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        
-        firebase.signupUser(SignUpData.email,SignUpData.password)
-        .then(user => {
+       
+        Firebase.signupUser(SignUpData.email,SignUpData.password)
+        .then(createdUser => {
             setSignUpData({...data})
-            console.log(user)
-            //props.history.push('/dashboard-user')
+
+            console.log(createdUser.user.uid)
+           /*  createdUser.user.updateProfile({
+                displayName : SignUpData.last_name,
+                first_name:SignUpData.first_name
+            }) */
+           
+                saveUser(createdUser).then( () => {
+                    console.log('user saved') ;
+              
+                })
+            
+            .catch(err => {
+                console.error(err);
+               
+            })
+
         })
         .catch(errors => {
             setError(errors)
@@ -59,7 +87,7 @@ const  SignUp = (props) => {
                              <img src={avatar} style={{width : '70%'}} /> 
                         </div>
                         
-                        <p className="text-avatar"> Je suis un <b> {props.location.state.fonction}</b>.&nbsp;&nbsp;
+                        <p className="text-avatar"> Je suis un élève de <b> {props.location.state.fonction}</b>.&nbsp;&nbsp;
                         <Link to="/creat-account"> Modifier </Link></p>
                     </div>
                 </div>
@@ -69,32 +97,32 @@ const  SignUp = (props) => {
                 <center>{errorMsg}</center>
                 <form onSubmit={handleSubmit}>
                     <div className="form-sign-up">
-                        <div class="row">
+                        <div className="row">
 
-                            <div class="col">
-                                <input type="text" onChange={handleChange} value={SignUpData.first_name} class="form-control" placeholder="First name" id="first_name" />
+                            <div className="col">
+                                <input type="text" onChange={handleChange} value={SignUpData.first_name} className="form-control" placeholder="First name" id="first_name" />
                             </div>
 
-                            <div class="col">
-                                <input type="text" onChange={handleChange} value={SignUpData.last_name} class="form-control" placeholder="Last name" id="last_name" />
+                            <div className="col">
+                                <input type="text" onChange={handleChange} value={SignUpData.last_name} className="form-control" placeholder="Last name" id="last_name" />
                             </div>
 
                             
                         </div>
-                        <div class="row">
-                            <div class="col">
-                                <input type="email" onChange={handleChange} value={SignUpData.email} class="form-control" placeholder="Email" id="email" />
+                        <div className="row">
+                            <div className="col">
+                                <input type="email" onChange={handleChange} value={SignUpData.email} className="form-control" placeholder="Email" id="email" />
                             </div>
                         </div>
 
-                        <div class="row">
-                            <div class="col">
-                                <input type="password" onChange={handleChange} value={SignUpData.password} class="form-control" placeholder="Password" id="password" />
+                        <div className="row">
+                            <div className="col">
+                                <input type="password" onChange={handleChange} value={SignUpData.password} className="form-control" placeholder="Password" id="password" />
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col">
-                                <input type="password" onChange={handleChange} value={SignUpData.re_password} class="form-control" placeholder="Re enter Password" id="re_password" />
+                        <div className="row">
+                            <div className="col">
+                                <input type="password" onChange={handleChange} value={SignUpData.re_password} className="form-control" placeholder="Re enter Password" id="re_password" />
                             </div>
                         </div>
 

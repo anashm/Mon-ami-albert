@@ -4,12 +4,14 @@ import logo from '../../images/MON_AMIALBERT2.svg';
 import { FaPhoneAlt  } from 'react-icons/fa'
 import {Link} from 'react-router-dom';
 import {FirebaseContext} from '../../firebase'
-
+import UserContext from '../../Context/UserContext/UserContext';
 
 export default function Header() {
-   
+
+    const userContext = useContext(UserContext);
     const firebase = useContext(FirebaseContext)
 
+    const connectedUser = userContext.user;
     const [logout , setLogout] =useState(false);
 
     const HandleLogout = () => {
@@ -39,8 +41,11 @@ export default function Header() {
                         <span className="phone_number"> <FaPhoneAlt  /> &nbsp;&nbsp; 05 22 33 44 55</span>
                     </div>
                     <div className="col-md-2">
-                        <span className="contact">Contact</span>
-                        <span onClick={HandleLogout}>Déconnexion</span>
+                        
+                        {
+                            connectedUser ? <span className="contact" onClick={HandleLogout}>Déconnexion</span>  :  <span className="contact">Contact</span>
+                        }
+                        
                     </div>
                 </div>
             </div>

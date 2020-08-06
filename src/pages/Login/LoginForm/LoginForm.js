@@ -25,7 +25,7 @@ const LoginForm = (props) => {
         .then(user => {
             setEmail('')
             setPassword('')
-            console.log(user , userContext.get_connected_user(user))
+           
             userContext.get_connected_user(user);
             props.navigation.history.push('/dashboard-user')
         })

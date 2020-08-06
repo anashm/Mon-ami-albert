@@ -31,12 +31,23 @@ const PopUp = ({ closeToast }) => (
 
 export default function Firstdiv( props ) {
     
+    
     useEffect(() => {
         setTimeout(() => { toast(<PopUp />)  },2000); 
         
       }, []);
     
    
+      const btns =  (props.userConnected.user)  ? 
+      (<div>
+          <Link  style={{borderRadius:'30px',paddingBottom:'10px',paddingTop:'10px',paddingLeft:'30px',paddingRight:'30px',width:'90%'}}  className="btn btn-secondary" to="/dashboard-user">GO TO DASHBOARD</Link>
+      </div>)
+       : (<div >
+                            
+        <Link  style={{borderRadius:'30px',paddingBottom:'10px',paddingTop:'10px',paddingLeft:'30px',paddingRight:'30px'}}  className="btn btn-secondary" to="/creat-account">S'INSCRIRE GRATUITEMENT</Link>
+        
+        <Link to = '/login' style={{color:'#707070',marginLeft:'30px',borderRadius:'30px',paddingBottom:'10px',paddingTop:'10px',paddingLeft:'30px',paddingRight:'30px'}} className="btn btn-light" >SE CONNECTER</Link>
+        </div>)
     return ( 
         <div>    
             <div className="container">
@@ -54,12 +65,7 @@ export default function Firstdiv( props ) {
                         <br></br>
                         <p className="text">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam</p>
                         <br></br>
-                        <div >
-                            
-                            <Link  style={{borderRadius:'30px',paddingBottom:'10px',paddingTop:'10px',paddingLeft:'30px',paddingRight:'30px'}}  className="btn btn-secondary" to="/creat-account">S'INSCRIRE GRATUITEMENT</Link>
-                            
-                            <Link to = '/login' style={{color:'#707070',marginLeft:'30px',borderRadius:'30px',paddingBottom:'10px',paddingTop:'10px',paddingLeft:'30px',paddingRight:'30px'}} className="btn btn-light" >SE CONNECTER</Link>
-                        </div>
+                        {btns}
                     </div>
                 </div>
             </div>
