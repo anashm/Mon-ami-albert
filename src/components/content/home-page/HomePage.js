@@ -40,7 +40,7 @@ export default function HomePage(props) {
 
     return (
         <>
-                { console.log(userContext) }
+            { console.log(userContext) }
             <FirstDiv user={props} />
             <SecondDiv />
             <ThirdDiv /> 

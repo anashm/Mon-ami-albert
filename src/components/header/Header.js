@@ -10,30 +10,28 @@ export default function Header() {
    
     const firebase = useContext(FirebaseContext)
 
-    const [logout , setLogout] =useState(false);
+    const [logout , setLogout] = useState(false);
 
     const HandleLogout = () => {
-        setLogout(true)
+        setLogout(true);
     }
 
     useEffect( () => {
         if(logout){
             firebase.signOutUser()
-            console.log('deconnexion')
+            console.log('deconnexion');
         }
     }, [logout])
 
 
     return (  
         <header>   
-            <div className="container" style={{marginTop:'20px'}}>
+            <div className="container">
+
                 <div className="row">
                     <div className="logo col-md-2" style={{color:'#636363'}}>
-                        <Link to="/"> <img src={logo} style={{width:'70%'}} /> </Link>
+                        <Link to="/"> <img src={logo} style={{width:'70%'}} alt = '' /> </Link>
                         
-                    </div>
-                    <div className="col-md-6">
-
                     </div>
                     <div className="col-md-2">
                         <span className="phone_number"> <FaPhoneAlt  /> &nbsp;&nbsp; 05 22 33 44 55</span>
