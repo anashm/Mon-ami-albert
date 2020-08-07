@@ -1,6 +1,6 @@
-import React from 'react'
-import FirstDiv from './Firstdiv';
-import SecondDiv from './Seconddiv';
+import React , { Fragment } from 'react'
+import HeroSection from './HeroSection';
+import SchoolInfosSection from './SchoolInfosSection';
 import ThirdDiv from './Thirddiv';
 import FourthDiv from './Fourthdiv';
 import Fifthdiv from './Fifthdiv';
@@ -8,7 +8,9 @@ import Sixthdiv from './Sixthdiv';
 import Seventhdiv from './Seventhdiv';
 import Lastdiv from './Lastdiv';
 
-import { useContext, useEffect } from 'react';
+import './style/homapage.scss';
+
+import { useContext, useEffect , useState} from 'react';
 import UserContext from '../../../Context/UserContext/UserContext';
 import firebase from 'firebase';
 
@@ -16,7 +18,6 @@ import firebase from 'firebase';
 export default function HomePage(props) {
 
     const userContext = useContext(UserContext);
-
     //console.log(userContext);
 
     useEffect(() => {
@@ -39,16 +40,15 @@ export default function HomePage(props) {
     
 
     return (
-        <>
-         
-            <FirstDiv userConnected={userContext} />
-            <SecondDiv />
+        <Fragment>
+            <HeroSection userConnected={userContext.user} />
+            <SchoolInfosSection />
             <ThirdDiv /> 
             <FourthDiv />
             <Fifthdiv />
             <Sixthdiv />
             <Seventhdiv /> 
             <Lastdiv />
-        </>
+        </Fragment>
     )
 }

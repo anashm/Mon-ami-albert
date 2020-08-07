@@ -17,9 +17,159 @@ body{
 .divider{
     background-color: transparent !important;
     font-weight: 500 !important;
-
 }
 
 .ui.label{
     font-weight: 500 !important;
 }
+
+
+//Title
+.main-sectiontitle{
+    font-size: 50px;
+    text-transform: uppercase;
+    font-family: KGFallForYouBold , 'sans-serif';
+    position: relative;
+    width: 100%;
+
+    @include media('<=phone'){
+        font-size: 30px;
+        text-align: center;
+    }
+
+    &.overlined-left{
+        
+        &::after{
+            position: absolute;
+            content: '';
+            width: 15%;
+            height: 2px;
+            background-color: #333333;
+            top: -10px;
+            left: 0;
+
+            @include media('<=phone'){
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+    }
+
+    &.overlined-center{
+        &::after{
+            position: absolute;
+            content: '';
+            width: 15%;
+            height: 2px;
+            background-color: #333333;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+}
+
+//cards
+.horizontal-card-conatiner{
+    display: flex;
+    align-items: center;
+
+    .horizontal-card-image-container{
+        width: 40%;
+        @include media('<=phone'){
+            flex: 1;
+        }
+
+        img{
+            width: 100%;
+        }
+    }
+
+    .horizontal-card-text-container{
+        font-size: 16px;
+        padding: 20px;
+        padding-right: 50px;
+        line-height: 25px;
+        color: #636363;
+
+        @include media('<=phone'){
+            padding-right: 0;
+            flex:2;
+        }
+    }
+}
+
+
+//buttons
+.primary-link-button{
+    display: inline-block;
+    background-color: #707070;
+    padding: 8px 30px;
+    font-weight: 400;
+    color: white;
+    text-transform: uppercase;
+    font-size: 12px;
+    border-radius: 50px;
+    cursor: pointer;
+    border: 2px solid #707070;
+    transition: all 0.3s;
+    width: 50%;
+    text-align: center;
+    letter-spacing: 1.2px;
+
+    @include media('<=phone'){
+        width: 100%;
+    }
+
+    &:hover{
+        background-color: transparent;
+        color: #707070;
+    }
+
+}
+
+//proposition
+
+.propositions-container{
+    display: flex;
+    flex-wrap: wrap;
+    @include media('<=phone'){
+        flex-direction: column;
+        justify-content: space-around;
+        padding: 10% 0;
+    }
+}
+
+.proposition-container{
+    flex: 0 0 50%;
+    padding: 3% 2%;
+    max-width: 50%;
+    flex-wrap: wrap;
+
+   
+    @include media('<=phone'){
+        max-width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 3.5% 20%;
+        text-align: center;
+    }
+    
+
+    .proposition-image{
+        height: 50px;
+        width: auto;
+    }
+
+    .proposition-title{
+        text-transform: uppercase;
+        font-size: 16px;
+    }
+
+    .proposition-text{
+        font-size: 16px;
+        color: #636363;
+    }
+}
+

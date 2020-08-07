@@ -6,9 +6,10 @@ import image_math  from '../../../images/math.png';
 
 export default function Fifthdiv() {
     return (
-        <div className="container"  style={{marginTop:'30px'}}>
-            <br></br><br></br>
-            <h5 className="title_page"><center><hr className="hr"></hr> DECOUVRE UN CHAPITRE GRATUITEMENT </center></h5>
+        <div className="container">
+            
+            <h5 className="title_page"> DECOUVRE UN CHAPITRE GRATUITEMENT </h5>
+
             <div className="row">
                     <div className="col-md-1"></div>    
                     <div className="first_image">
