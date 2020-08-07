@@ -1,4 +1,4 @@
-import  {GET_CONNECTED_USER} from "../Types"
+import  {GET_CONNECTED_USER,GET_USER_INFORMATIONS} from "../Types"
 
 export default ( state , action) => {
 
@@ -7,6 +7,12 @@ export default ( state , action) => {
             return ({
                 ...state,
                 user: action.payload
+            });
+        
+        case(GET_USER_INFORMATIONS):
+            return ({
+                ...state,
+                user_informations : action.payload
             })
     
         default:

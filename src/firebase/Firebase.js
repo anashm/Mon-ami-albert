@@ -48,6 +48,11 @@ import 'firebase/auth';
 
          getData = () => 
             app.database();
+            
+        
+         /*  retrieveData = () => {
+             return firebase.initializeApp(firebaseConfig);
+          } */
         
       
   }

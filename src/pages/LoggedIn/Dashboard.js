@@ -10,32 +10,50 @@ import LogoIng from '../../images/logo-ing.png';
 import LogoJeux from '../../images/logo-jeux.png';
 import { Link } from 'react-router-dom';
 import Modal from 'react-bootstrap/Modal';
-import {LoggedinContext} from '../../providers/sessionLoggedIn/LoggedinContext';
 import { useHistory , Redirect } from "react-router-dom";
-import {FirebaseContext} from '../../firebase'
+import {FirebaseContext} from '../../firebase';
+import UserContext from '../../Context/UserContext/UserContext';
+
+
+
 
 const  Dashboard = (props) => {
 
-    const firebase = useContext(FirebaseContext)
-  const[loggenIn,setloggenIn] = useState(null);
+  const firebase = useContext(FirebaseContext)
+  const userContext = useContext(UserContext)
 
-  const[redirect ,setRedirect] = useState(false); 
-
+  const [infosLevel , setinfosLevel ] = useState(null)
+    
+    
     useEffect(() => {
+
+        //setInfos(userContext.user_informations)
    
         firebase.auth.onAuthStateChanged( user => {
           if(user){
+            //code if realod page pour garder context api values
+            userContext.get_connected_user(user);
+            const userId = user.uid;
+                      
+            const database = firebase.getData();
+            const reference =  database.ref('users/'+userId)
+      
+           
+  
+            reference.once("value", user_informations => {
+                userContext.get_user_informations(user_informations.val());
+               setinfosLevel(user_informations.val().level)
+              
+            })
             
-            console.log(user)
-           ///history.push('/dashboard-user')
           }
           else{
-           //history.push('/')
+
            console.log('not login');
            props.history.push('/')
           }
         });
-      }, [])
+      }, []);
 
    // const value=useContext(LoggedinContext)
 
@@ -78,12 +96,14 @@ const  Dashboard = (props) => {
     
   
         return (
+           
             <div className="container">
+               
                 <p  className="cree_ton_compte" onClick = {handleShowModal}>
                     { (valueNiveau )  ?  
                     <center> {valueNiveau} </center>
                         :
-                    <center>TROISIEME </center>
+                    <center>{infosLevel}</center>
                     } 
                 </p>
 

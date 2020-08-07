@@ -1,11 +1,12 @@
 import React , { useState,useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Form, Message , Checkbox  , Divider} from 'semantic-ui-react';
-import {FirebaseContext} from '../../../firebase'
-import UserContext from '../../../Context/UserContext/UserContext'
+import {FirebaseContext} from '../../../firebase';
+import UserContext from '../../../Context/UserContext/UserContext';
 
 
 const LoginForm = (props) => {
+
     const firebase = useContext(FirebaseContext)
     const userContext = useContext(UserContext);
 
@@ -22,13 +23,38 @@ const LoginForm = (props) => {
         e.preventDefault();
 
         firebase.loginUser(email,password)
-        .then(user => {
+        .then( user => {
             setEmail('')
             setPassword('')
            
-            userContext.get_connected_user(user);
-            props.navigation.history.push('/dashboard-user')
-        })
+           userContext.get_connected_user(user);
+
+            return new Promise( (resolve , reject) => {
+                if(user){
+                    resolve(user)
+                }else{
+                    reject('error')
+                }
+            });
+
+          //userContext.get_user_informations(user)
+        }).then( user => {
+            const userId = user.user.uid;
+                      
+            const database = firebase.getData();
+            const reference = database.ref('users/'+userId);
+         
+            
+           
+            
+            reference.once("value", user_information => {
+                userContext.get_user_informations(user_information.val());
+              
+            }).then(  props.navigation.history.push('/dashboard-user'))
+           
+           
+        
+        } ) 
         .catch(errors => {
             if(errors.message == 'There is no user record corresponding to this identifier. The user may have been deleted.')
        
