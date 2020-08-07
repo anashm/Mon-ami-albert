@@ -9,12 +9,36 @@ import icon_challenge  from '../../../images/challenge.svg';
 import Title from '../../general/Title/Title';
 import HorizontalCard from '../../general/HorizontalCard/HorizontalCard';
 import PrimaryLinkButton from '../../general/PrimaryLinkButton/PrimaryLinkButton';
+import Propositions from '../../general/Proposistions/Proposistions';
 
 import { Divider } from 'semantic-ui-react'
 
 
 
 const SchoolInfosSection = ()  => {
+
+    const propositions = [
+        {
+            img: icon_programme,
+            title: 'un programme motivant',
+            text: 'Lorem ipsum dolor sit amet, consetetur sadipscing.'
+        },
+        {
+            img: icon_evaluation,
+            title: 'évaluation continue',
+            text: 'Lorem ipsum dolor sit amet, consetetur sadipscing.'
+        },
+        {
+            img: icon_progression,
+            title: 'suivi de progression',
+            text: 'Lorem ipsum dolor sit amet, consetetur sadipscing.'
+        },
+        {
+            img: icon_challenge,
+            title: 'challenge quotidien',
+            text: 'Lorem ipsum dolor sit amet, consetetur sadipscing.'
+        }
+    ]
     
     return (
         <section className="container-fluid school-infos-Section">
@@ -32,7 +56,8 @@ const SchoolInfosSection = ()  => {
                             link = '/'
                         />
                     </div>
-                    <div className="propositions-container"></div>
+
+                    <Propositions propositions = { propositions } />
                 </div>
             </div>
         </section>

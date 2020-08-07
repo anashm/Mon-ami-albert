@@ -1,6 +1,6 @@
 import React , { Fragment } from 'react'
 import HeroSection from './HeroSection';
-import SecondDiv from './Seconddiv';
+import SchoolInfosSection from './SchoolInfosSection';
 import ThirdDiv from './Thirddiv';
 import FourthDiv from './Fourthdiv';
 import Fifthdiv from './Fifthdiv';
@@ -42,7 +42,7 @@ export default function HomePage(props) {
     return (
         <Fragment>
             <HeroSection userConnected={userContext.user} />
-            <SecondDiv />
+            <SchoolInfosSection />
             <ThirdDiv /> 
             <FourthDiv />
             <Fifthdiv />
