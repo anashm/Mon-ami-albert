@@ -63,10 +63,10 @@ const HeroSection = ( {userConnected} ) => {
                                 { !userConnected ? 
                                     ( 
                                         <Fragment>
-                                            <Link className = 'hero-section-button register-button' to = '/' > s'inscrire gratuitement </Link>
+                                            <Link className = 'hero-section-button register-button' to = '/creat-account' > s'inscrire gratuitement </Link>
                                             <Link className = 'hero-section-button login-button' to = '/login'> Se connecter </Link> 
                                         </Fragment>
-                                    ) : <Link className = 'hero-section-button dashboard-button' to = '/'> Tableau de bord </Link> }
+                                    ) : <Link className = 'hero-section-button dashboard-button' to = '/dashboard-user'> Tableau de bord </Link> }
                                 
                                 
                             </div>

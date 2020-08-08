@@ -16,8 +16,9 @@ import {Divider} from 'semantic-ui-react';
 import './style/Chapter.scss';
 
 
-const Chapter = () => {
+const Chapter = ({match}) => {
 
+    
     /* Component data */
 
     const history = useHistory();
@@ -71,7 +72,7 @@ const Chapter = () => {
             <div className="chapter-content">
                 { coursesContent && <div className="chapter-exercises-container"> <Courses courses = 'No Courses available' /> </div>}
                 { quizzContent && <div className="chapter-courses-container"> <Quizz quizz = 'quizz' /> </div> }
-                { exercisesContent &&  <div className="chapter-quizz-container">  <Exrecises exercises = 'exercices' /> </div>}  
+                { exercisesContent &&  <div className="chapter-quizz-container">  <Exrecises urlParams = {match.params} exercises = 'exercices' /> </div>}  
             </div>
         </section>
     );

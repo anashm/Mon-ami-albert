@@ -24,6 +24,7 @@ const LoginForm = (props) => {
 
         firebase.loginUser(email,password)
         .then( user => {
+            console.log('hnaya1')
             setEmail('')
             setPassword('')
            
@@ -39,6 +40,7 @@ const LoginForm = (props) => {
 
           //userContext.get_user_informations(user)
         }).then( user => {
+            console.log('hnaya2')
             const userId = user.user.uid;
                       
             const database = firebase.getData();
@@ -56,8 +58,8 @@ const LoginForm = (props) => {
         
         } ) 
         .catch(errors => {
-            if(errors.message == 'There is no user record corresponding to this identifier. The user may have been deleted.')
-       
+                if(errors.message == 'There is no user record corresponding to this identifier. The user may have been deleted.')
+             
                 setError('There is no user record corresponding to this identifier.')
                 setEmail('')
                 setPassword('')

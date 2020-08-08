@@ -1,0 +1,30 @@
+
+
+
+.matiere_component{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.matiere_component > *{
+    flex: 0 0 50%;
+    max-width: 50%;
+
+}
+
+.niveaux_school{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.niveaux_school > *{
+    flex: 0 0 50%;
+    max-width: 50%;
+
+}
+
+.cree_ton_compte{
+    cursor: pointer;
+}

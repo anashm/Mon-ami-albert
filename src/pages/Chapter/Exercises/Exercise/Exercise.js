@@ -1,22 +1,26 @@
-import React , { useState } from 'react'
+import React , { useState,useEffect } from 'react'
 import { Icon } from 'semantic-ui-react';
 import Modal from 'react-bootstrap/Modal';
 import './Exercise.scss';
 
-const Exercise = ( { title , content , downloadLink , index } ) => {
+const Exercise = ( { title ,   downloadLink , index , enonce_intitule , enonce_choices  , corrige_intitule ,corrige_choices } ) => {
 
+  
     const [ modalOpen , setModalOpen  ] = useState(false);
 
     const handleShowModal = () => setModalOpen(true);
     const handleCloseModal = () => setModalOpen(false);
 
-
+    /* useEffect(() => {
+        console.log('hnaya')
+    }, []) */
 
     return (
         <div className = 'exercise-container'>
             <div className="exercise-number"> <span> { index } </span> </div>
 
-            <p className="exercise-text" onClick = {handleShowModal}> { content } </p>
+            <p className="exercise-text" onClick = {handleShowModal}> { title } </p>
+           
 
             <div className="exercise-icons-container">
                 <a href= {downloadLink} className = 'download-link'> <span><Icon name='file pdf'/></span></a>
@@ -36,7 +40,12 @@ const Exercise = ( { title , content , downloadLink , index } ) => {
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <p> { content } </p>
+                    <h3>Enoncé</h3>
+                    <p> { enonce_intitule } </p>
+                    <p> { enonce_choices } </p>
+                   <h3>Corrigé</h3>  
+                    <p> { corrige_intitule } </p>
+                    <p> { corrige_choices } </p>
                 </Modal.Body>
             
             </Modal>

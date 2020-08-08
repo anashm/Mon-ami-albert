@@ -7,7 +7,6 @@ import avatar from '../../../images/avatar.png';
 import { Button} from 'semantic-ui-react';
 import NiveauComponent from './NiveauComponent';
 //import database from '../../../firebase';
-import {AuthContext} from '../../../providers/LoginContext';
 import {FirebaseContext} from '../../../firebase'
     
 
@@ -21,12 +20,13 @@ import {FirebaseContext} from '../../../firebase'
 
 
     useEffect(() => {
+      
             const database = Firebase.getData();
-            const ref = database.ref('schoolLevels/all');
-            ref.on("value", snapshot => {
+            const ref_niveaux = database.ref('schoolLevels/all');
+            ref_niveaux.on("value", snapshot => {
             // const messageObject = snapshot.val();
                 setNiveaux(snapshot.val())
-             
+                console.log(snapshot.val())
             })
     }, []);
     //console.log(ref)
