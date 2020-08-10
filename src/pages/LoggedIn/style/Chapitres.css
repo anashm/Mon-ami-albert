@@ -3,6 +3,21 @@
     font-family: Rubik-Medium;
 }
 
+.chapters{
+    display: flex;
+    flex-wrap: wrap;
+   
+    justify-content: space-between;
+}
+
+.chapters > *{
+    flex: 0 0 30%;
+    max-width: 30%;
+
+}
+
+
+
 @font-face{
     font-family: Rubik-Medium;
     src: url('../../../fonts/Rubik-Medium.ttf');

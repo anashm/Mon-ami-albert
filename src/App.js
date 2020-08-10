@@ -37,11 +37,11 @@ const  App = () => {
             <Route exact path="/eleve-creat-account" component={EleveAccount} />
             <Route exact path="/individu-create-account" component={JeSuisUnComponent} />
             <Route exact path="/wich-enseignant" component={WichEnseigant} />
-            <Route exact path="/chapter" component={Chapter} />
+            <Route exact path="/chapter/:matieres/:chapitre" component={Chapter} />
             <Route exact path="/quizz" component={Quizz} />
             <Route exact path="/sign-up" component={SignUp} />
             <Route exact path="/dashboard-user" component={Dashboard} />
-            <Route exact path="/chapitres" component={Chapitres} />
+            <Route exact path="/chapitres/:matieres" component={Chapitres} />
           </Switch>
           
           {/* </LoggedinProvider> */}

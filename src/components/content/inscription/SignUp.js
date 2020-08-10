@@ -13,7 +13,7 @@ const  SignUp = (props) => {
     const Firebase = useContext(FirebaseContext)
 
    
-    console.log(props.childData)
+
     const data = {
         first_name : '',
         last_name : '',
@@ -47,7 +47,7 @@ const  SignUp = (props) => {
         .then(createdUser => {
             setSignUpData({...data})
 
-            console.log(createdUser.user.uid)
+ 
            /*  createdUser.user.updateProfile({
                 displayName : SignUpData.last_name,
                 first_name:SignUpData.first_name
@@ -55,14 +55,8 @@ const  SignUp = (props) => {
            
                 saveUser(createdUser).then( () => {
                     console.log('user saved') ;
-              
+                    props.history.push('/dashboard-user')
                 })
-            
-            .catch(err => {
-                console.error(err);
-               
-            })
-
         })
         .catch(errors => {
             setError(errors)

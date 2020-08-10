@@ -2,7 +2,7 @@ import firebase from "firebase";
 import app from 'firebase/app';
 import 'firebase/auth';
 
-/* const firebaseConfig = {
+const firebaseConfig = {
     apiKey: "AIzaSyBTyIDl28CRc5HwKRKf-V457xpIIvTbOgw",
     authDomain: "monamialber-74a5e.firebaseapp.com",
     databaseURL: "https://monamialber-74a5e.firebaseio.com",
@@ -11,9 +11,9 @@ import 'firebase/auth';
     messagingSenderId: "234370662586",
     appId: "1:234370662586:web:35046d3cac9b18e59e4283",
     measurementId: "G-861ZMKD57K"
-  }; */
+  };
 
-  var firebaseConfig = {
+  /* var firebaseConfig = {
     apiKey: "AIzaSyAmdGLad1MoT8LmbbadYCZVM2Ykzdz1wm4",
     authDomain: "monamialbertdev.firebaseapp.com",
     databaseURL: "https://monamialbertdev.firebaseio.com",
@@ -22,7 +22,7 @@ import 'firebase/auth';
     messagingSenderId: "605978872478",
     appId: "1:605978872478:web:7d1c63debc1f6e1ccac98f",
     measurementId: "G-B8FVGWC5ZB"
-  };
+  }; */
 
 
   
@@ -48,6 +48,11 @@ import 'firebase/auth';
 
          getData = () => 
             app.database();
+            
+        
+         /*  retrieveData = () => {
+             return firebase.initializeApp(firebaseConfig);
+          } */
         
       
   }
