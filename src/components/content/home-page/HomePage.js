@@ -7,6 +7,9 @@ import Fifthdiv from './Fifthdiv';
 import Sixthdiv from './Sixthdiv';
 import Seventhdiv from './Seventhdiv';
 import Lastdiv from './Lastdiv';
+import ApplicationSection from './Application/ApplictaionSection';
+import ClassesSection from './ClassesSection/ClassesSection';
+import FreeChapterSection from './FreeChapterSection/FreeChapterSection';
 
 import './style/homapage.scss';
 
@@ -44,11 +47,18 @@ export default function HomePage(props) {
             <HeroSection userConnected={userContext.user} />
             <SchoolInfosSection />
             <ThirdDiv /> 
-            <FourthDiv />
-            <Fifthdiv />
-            <Sixthdiv />
-            <Seventhdiv /> 
-            <Lastdiv />
+            <FreeChapterSection />
+            <ApplicationSection />
+            <ClassesSection />
+            {/*
+              <FourthDiv />
+              <Fifthdiv />
+              <Sixthdiv />
+              <Seventhdiv /> 
+              <Lastdiv />
+            
+            */}
+           
         </Fragment>
     )
 }

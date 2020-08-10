@@ -7,15 +7,17 @@ import Title from '../../general/Title/Title'
 
 const Thirddiv = () => {
 
-    const reasons = [
+    const reasonsLeft = [
         'Soutien scolaire pour toute les classes',
         'Cours et exercices dans toutes les matières',
         'Cours et exercices dans toutes les matières',
+    ];
+
+    const reasonsRight = [
         'des Professeurs en ligne et par chat',
         'Assistance parents par téléphone',
         'Service personnalisé sur la moyenne'
     ]
-
 
 
     return (
@@ -25,11 +27,11 @@ const Thirddiv = () => {
 
             <div className="container">
                 <div className="row">
-                    <Reasons reasons = {reasons} />
+                    <Reasons reasons = {reasonsLeft} left />
                     <div className="school-choice-image-container">
                         <img src={image_einsten} alt=""/>
                     </div>
-                    <Reasons reasons = {reasons} />
+                    <Reasons reasons = {reasonsRight} right />
                 </div>
             </div>
         </section>

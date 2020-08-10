@@ -23,8 +23,103 @@ body{
     font-weight: 500 !important;
 }
 
+//buttons
+
+.download-btn-link{
+
+    display: inline-block;
+    background-color: #000000;
+    padding: 10px 25px;
+    margin-right: 20px;
+    
+    border-radius: 5px;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+
+    @include media('<=phone'){
+        padding: 10px 15px;
+        width: 70%;
+        justify-content: center;
+        margin-right: 0;
+        margin: auto;
+        margin-bottom: 20px;
+
+    }
+
+   
+
+    .img{
+
+       
+
+        img{
+            width: 30px;
+        }
+
+        padding-right: 10px;
+    }
+
+    .text{
+        color: white;
+        letter-spacing: 1px;
+        font-family: Rubik , 'sans-serif';
+
+       
+
+        .title{
+            font-size: 14px;
+        }
+    }
+
+    &:hover{
+        color: white;
+        transform: translateY(-3px);
+    }
+
+
+    
+    span{
+        display: block;
+
+        &.title{
+            text-transform: uppercase;
+        }
+    }
+}
+
+
+
+
+//paragraphe
+.paragraphe{
+    max-width: 80%;
+    color: #636363;
+    font-size: 15px;
+    font-family: Rubik , 'sans-serif';
+    font-weight: 400;
+
+
+    @include media('<=phone'){
+        max-width: 100%;
+        padding: 0 3%;
+        text-align: justify;
+    }
+}
+
 
 //Title
+
+.medium-title{
+    font-size: 20px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-family: Rubik , 'sans-serif';
+    font-weight: 500;
+    color: #333333;
+}
+
+
 .main-sectiontitle{
     font-size: 50px;
     text-transform: uppercase;
@@ -33,7 +128,7 @@ body{
     width: 100%;
 
     @include media('<=phone'){
-        font-size: 30px;
+        font-size: 25px;
         text-align: center;
     }
 
@@ -42,10 +137,10 @@ body{
         &::after{
             position: absolute;
             content: '';
-            width: 15%;
+            width: 100px;
             height: 2px;
             background-color: #333333;
-            top: -10px;
+            top: -15px;
             left: 0;
 
             @include media('<=phone'){
@@ -59,10 +154,10 @@ body{
         &::after{
             position: absolute;
             content: '';
-            width: 15%;
+            width: 100px;
             height: 2px;
             background-color: #333333;
-            top: -10px;
+            top: -15px;
             left: 50%;
             transform: translateX(-50%);
         }
@@ -152,7 +247,7 @@ body{
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding: 3.5% 20%;
+        padding: 3.5% 15%;
         text-align: center;
     }
     

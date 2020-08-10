@@ -25,10 +25,11 @@ import {LoggedinProvider} from './providers/sessionLoggedIn/LoggedinContext';
 
 const  App = () => {
 
+
   return (
     <Router>
       <Header  />
-      <div className="main_content">
+      <main className="main_content">
           <Switch>
             <Route exact path="/" component={HomePage} />
             <Route exact path="/login" component={Login} />
@@ -50,7 +51,9 @@ const  App = () => {
           {/*  <FadeIn  delay="1000"> */}
           {/* <LoginProvider> */}
         
-      </div>
+      </main>
+
+      <Footer />
     </Router>
 
 

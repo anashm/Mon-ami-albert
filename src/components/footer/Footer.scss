@@ -1,0 +1,66 @@
+.main-footer{
+    background-color: #707070;
+    padding: 3% 0;
+
+    @include media('<=phone'){
+        padding: 10% 0;
+    }
+
+    .footer-link-container{
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+        font-family: Rubik , 'sans-serif';
+
+        @include media('<=phone'){
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-link{
+            color: white;
+            text-transform: uppercase;
+            transition: all 0.3s;
+
+            @include media('<=phone'){
+                padding: 10px;
+            }
+
+            &:hover{
+                color: #ddd;
+            }
+        }
+    }
+
+    .social-icons-container{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        padding: 3% 0;
+
+        @include media('<=phone'){
+            padding: 30px;
+        }
+
+        .footer-icon-link{
+            padding: 0 20px;
+            transition: all 0.3s;
+
+
+            &:hover{
+                transform: scale(1.2);
+            }
+        }
+    }
+
+    .rights-text{
+        text-align: center;
+        width: 100%;
+        color: white;
+        font-family: Rubik , 'sans-serif';
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 13px;
+        font-weight: 300;
+    }
+}

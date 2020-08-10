@@ -1,0 +1,36 @@
+.classes-section{
+
+    width: 100%;
+    padding-top: 3%;
+    background-color: #FAFAFA;
+
+    @include media('<=phone'){
+        padding-top: 15%;
+    }
+
+
+    .row{
+        justify-content: space-around;
+        padding: 5% 0;
+
+        @include media('<=phone'){
+            flex-direction: column;
+        }
+    }
+
+
+    .classes-container{
+
+        @include media('<=phone'){
+            padding: 20px 0;
+        }
+
+        .class-title{
+            font-size: 15px;
+            font-family: Rubik , 'sans-serif';
+            color: #707070;
+            text-transform: capitalize;
+            letter-spacing: 0.5px;
+        }
+    }
+}
