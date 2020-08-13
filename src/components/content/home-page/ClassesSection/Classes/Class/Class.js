@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Class = ({ text }) => {
+const Class = ({ name }) => {
     return (
         <p className="class-title">
-            { text }
+            { name }
         </p>
     )
 }

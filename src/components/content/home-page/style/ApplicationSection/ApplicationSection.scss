@@ -1,5 +1,7 @@
 .application-section{
 
+    padding: 5% 0;
+
     @include media('<=phone'){
         padding: 20% 0;
         padding-bottom: 10%;

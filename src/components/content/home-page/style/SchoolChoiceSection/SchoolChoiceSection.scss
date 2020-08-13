@@ -1,9 +1,10 @@
 .school-choice-reason-section{
 
-    padding: 8% 0;
+    padding-top: 6%;
+    padding-bottom: 3%;
 
     @include media('<=phone'){
-        padding: 20% 0;
+        padding: 10% 0;
     }
 
     .row{

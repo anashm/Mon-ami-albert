@@ -47,13 +47,15 @@ export default function HomePage(props) {
             <HeroSection userConnected={userContext.user} />
             <SchoolInfosSection />
             <ThirdDiv /> 
+            <FourthDiv />
             <FreeChapterSection />
+            <Sixthdiv />
             <ApplicationSection />
             <ClassesSection />
             {/*
-              <FourthDiv />
+            
               <Fifthdiv />
-              <Sixthdiv />
+            
               <Seventhdiv /> 
               <Lastdiv />
             

@@ -1,4 +1,4 @@
-import React from 'react';
+import React , { useEffect , useState } from 'react';
 import './Fourthdiv.css';
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
@@ -10,6 +10,8 @@ import image_slide_4 from '../../../images/Ellipse_6.png';
 import image_slide_5 from '../../../images/Ellipse_7.png';
 import image_slide_6 from '../../../images/Ellipse_5.png';
 
+import Instructor from './Instructors/Instructor/Instructor';
+import Title from '../../general/Title/Title';
 
 function SampleNextArrow(props) {
     const { className, style, onClick } = props;
@@ -33,7 +35,7 @@ function SampleNextArrow(props) {
     );
   }
 
-const photos = [
+const instructors = [
     {
         name : 'PROFESSEUR OTHMANE',
         url : image_slide_1,
@@ -66,38 +68,54 @@ const photos = [
     },
 ]
 
-export default function Fourthdiv() {
-    const settings = {
+ const Fourthdiv = () => {
+    const [ settings , setSettings ] = useState({
         dots: false,
         infinite: true,
         speed: 500,
         slidesToShow: 3,
         slidesToScroll: 1,
-        nextArrow: <SampleNextArrow />,
-        prevArrow: <SamplePrevArrow />
-      };
+    })
+
+    const handleResize = (size) => {
+        console.log('triggered')
+        if(size < 451){
+            setSettings({
+                ...settings,
+                slidesToShow: 1,
+            })
+        }else if(size < 768 ){
+            setSettings( prev =>  ({
+                ...prev,
+                slidesToShow: 2,
+            }))
+        }else{
+            setSettings({
+                ...settings,
+                slidesToShow: 3,
+            })
+        }
+    }
+
+    useEffect(() => {
+        window.addEventListener('resize' , e => handleResize(e.currentTarget.innerWidth) );
+        handleResize(window.innerWidth);
+    } , []);
+
     return (
-        <div  style={{background:'#FAFAFA',marginTop:'30px'}}>
-            <br></br><br></br>
-             <h5 className="title_page"><center><hr className="hr"></hr> QUI CONCOIVENT LES COURS ? </center></h5>
+        <section  className = 'container-fluid instructors-card-container'>
             <div className="container">
-                
-                 <div style={{padding:50}}>  
+                <div className="row">
+                    <Title text = 'QUI CONCOIVENT LES COURS ? ' textcentered centerOverlined />
+                </div>
+                <div className = 'slider-container'>  
                     <Slider {...settings}>
-                        { photos.map( (photo) => {
-                            return(
-                                <div>
-                                    <img src={photo.url} width='60%' style={{margin:'20%'}} />
-                                    <span className="slide_title">{photo.name}</span>
-                                    <p className="text_slide" >{photo.text}</p>
-                                </div>
-                            )
-                            
-                        }) }
+                        { instructors.map( (instructor , index) => <Instructor key = {index} img = { instructor.url } name = { instructor.name} description = { instructor.text } />) }
                     </Slider>
                 </div> 
             </div>
-            
-        </div>
-    )
+        </section>
+    );
 }
+
+export default Fourthdiv;

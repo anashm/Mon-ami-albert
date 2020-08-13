@@ -2,6 +2,12 @@
 
 .free-chapter-section{
     padding-bottom: 4%;
+    padding-top: 5%;
+
+    @include media('<=phone'){
+        padding-bottom: 10%;
+        padding-top: 15%;
+    }
 
     .row{
 
@@ -14,6 +20,7 @@
             @include media('<=phone'){
                 display: block;
                 flex: 0 0 100%;
+                padding-top: 8%;
             }
 
             a{
