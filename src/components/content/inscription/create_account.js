@@ -5,6 +5,8 @@ import photo_parent from '../../../images/parent.png';
 import photo_enseignant from '../../../images/enseignant.png';
 import {Link} from 'react-router-dom';
 
+import Title from '../../general/Title/Title';
+
 
 export default function create_account() {
 
@@ -12,7 +14,9 @@ export default function create_account() {
 
     return (
         <div className="container">
-             <p  className="cree_ton_compte"><center>  CREE TON COMPTE </center></p>
+             <p  className="cree_ton_compte"><center> </center></p>
+
+             <Title text = 'CREE TON COMPTE' textcentered centerOverlined />
           
              <p className="span_description">Si vous abonnez votre enfant, choisissez le profil parent.</p>
 

@@ -26,11 +26,21 @@
 
         @include media('<=phone'){
             width: 50%;
-            padding-left: 8%;
+            padding: 0 5%;
             flex: unset;
+        }
+
+
+        &:nth-child(3) , &:nth-child(4){
+
+            @include media('<=phone'){
+                padding-top:  10%;
+            }
         }
         
         &:nth-child(2) , &:nth-child(3) , &:nth-child(4){
+
+
             .class-names-container{
                 overflow: hidden;
             }
@@ -38,9 +48,18 @@
 
         .class-names-container{
 
-            max-height: 430px;
+            max-height: 350px;
             overflow-y: scroll;
             overflow-x: hidden;
+
+            &::-webkit-scrollbar {
+                width: 5px;
+                border-radius: 10px;
+            }
+
+            &::-webkit-scrollbar-thumb{
+                border-radius: 10px;
+            }
         }
 
         .subinfos-container{

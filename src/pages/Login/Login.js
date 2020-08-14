@@ -4,6 +4,8 @@ import Google from './Social/Google/Google';
 import Facebook from './Social/Facebook/Facebook';
 import LoginForm from './LoginForm/LoginForm' 
 
+import Title from '../../components/general/Title/Title';
+
 import { Divider } from 'semantic-ui-react';
 
 import './style/Login.scss';
@@ -14,9 +16,7 @@ const Login = (props) => {
     return (
         <div className = 'login-content-container'>
 
-            <div className="login-title-container">
-                <h2 className="login-title">Connecte-toi</h2>
-            </div>
+            <Title text = 'Connecte toi' textcentered centerOverlined />
 
             <Divider hidden />
 

@@ -7,6 +7,8 @@ import Animation from './AnimationLottie';
 import {FirebaseContext} from '../../../firebase'
 import firebase from 'firebase';
 
+import Title from '../../general/Title/Title';
+
 
 const  SignUp = (props) => {
 
@@ -71,7 +73,8 @@ const  SignUp = (props) => {
 
     return (
         <div className="container">               
-                <p  className="cree_ton_compte"><center>  CREEZ VOTRE COMPTE </center></p>
+                <p  className="cree_ton_compte"><center>   </center></p>
+                <Title text = 'CREEZ VOTRE COMPTE' textcentered centerOverlined />
 
                 <div className="row" style={{marginTop:'-2%'}}>
                     <div className="col-md-4"></div>
@@ -85,7 +88,6 @@ const  SignUp = (props) => {
                         <Link to="/creat-account"> Modifier </Link></p>
                     </div>
                 </div>
-                <br></br><br></br><br></br>
 
 
                 <center>{errorMsg}</center>

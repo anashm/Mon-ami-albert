@@ -7,7 +7,9 @@ import avatar from '../../../images/avatar.png';
 import { Button} from 'semantic-ui-react';
 import NiveauComponent from './NiveauComponent';
 //import database from '../../../firebase';
-import {FirebaseContext} from '../../../firebase'
+import {FirebaseContext} from '../../../firebase';
+
+import Title from '../../general/Title/Title';
     
 
  const  EleveCompte = ( props ) =>  {
@@ -33,7 +35,9 @@ import {FirebaseContext} from '../../../firebase'
 
     return (        
         <div className="container">
-            <p  className="cree_ton_compte"><center>  CREE TON COMPTE </center></p>
+            <p  className="cree_ton_compte"><center>   </center></p>
+
+            <Title text = 'CREE TON COMPTE' textcentered centerOverlined />
 
             <div className="row" style={{marginTop:'-2%'}}>
                     <div className="col-md-4"></div>
@@ -51,10 +55,9 @@ import {FirebaseContext} from '../../../firebase'
             <p className="quel_classe">En quelle classe es-tu (2019-2020) ?</p>
 
 
-            <div className="row" style={{marginTop:'60px'}}>
-                <div className="col-md-3"></div>
+            <div className="row">
                 
-                <div className="col-md-7">
+                <div className="col">
                     <div className="grid1"> 
                         {niveaux.map( (niveau,index) => {
                          return (
@@ -80,9 +83,7 @@ import {FirebaseContext} from '../../../firebase'
                 </div>
 
 
-                <div className="col-md-3"></div>
             </div>
-            <br></br><br></br><br></br>
             <p className="deja_un_compte">Vous avez déjà un compte ? <Link to="/login"> Connecte-toi </Link></p>
             <div className="social-login-container">
                 <div className="google-login-btn-container">
