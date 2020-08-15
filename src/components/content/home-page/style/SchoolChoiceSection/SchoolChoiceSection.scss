@@ -1,0 +1,84 @@
+.school-choice-reason-section{
+
+    padding-top: 6%;
+    padding-bottom: 3%;
+
+    @include media('<=phone'){
+        padding: 10% 0;
+    }
+
+    .row{
+        padding: 7% 0;
+
+        @include media('<=phone'){
+            flex-direction: column;
+            justify-content: space-around;
+        }
+    }
+
+    .reasons-container{
+        flex: 1;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+
+        .reason-container{
+            display: flex;
+            justify-content: center;
+            text-transform: uppercase;
+            font-size: 12px;
+            max-width: 70%;
+            align-items: center;
+            margin: 0 auto;
+            color: #707070;
+            font-weight: 600;
+
+
+        @include media('<=phone'){
+            margin: 10px auto;
+        }
+
+            .separator{
+                width: 2px;
+                background-color: red;
+                height: 100%;
+            }
+
+            .reason-number{
+                font-size: 50px;
+                font-weight: 500;
+                font-family: Rubik , 'sans-serif';
+                padding-right: 15px;
+                color: #333333;
+                width: 50px;
+
+            }
+
+            .reason-text{
+                padding-left: 15px;
+                text-align: left;
+                width: calc(100% - 50px);
+                border-left: 2px solid;
+            }
+
+        }
+    }
+
+    .school-choice-image-container{
+        flex: 1;
+        display: flex;
+        justify-content: center;
+
+        @include media('<=phone'){
+           padding: 30px 0;
+        }
+
+
+        img{
+            width: 100%;
+            max-width: 200px;
+        }
+    }
+
+}

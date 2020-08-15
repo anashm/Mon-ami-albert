@@ -8,6 +8,18 @@
     border-radius: 10px;
   }
 
+  .matiere-container{
+    display: flex;
+  }
+
+  .details-matieres{
+    width:80%
+  }
+  .image_container{
+    width: 20%;
+    display: flex;
+    justify-content: flex-end;
+  }
 .progression-bar{
     background-color:#FAFAFA;
     border-radius: 13px;

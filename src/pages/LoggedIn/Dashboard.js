@@ -1,5 +1,6 @@
-import React, { Component,useState } from 'react'
+import React, { Component,useState,useContext,useEffect } from 'react'
 import MatiereComponent from './Matieres/MatiereComponent';
+import './style/Dashboard.css';
 import LogoMath from '../../images/Logo-math.png';
 import LogoPhysique from '../../images/logo-physique.png';
 import LogoAnglais from '../../images/logo-anglais.png';
@@ -10,97 +11,162 @@ import LogoIng from '../../images/logo-ing.png';
 import LogoJeux from '../../images/logo-jeux.png';
 import { Link } from 'react-router-dom';
 import Modal from 'react-bootstrap/Modal';
+import { useHistory , Redirect } from "react-router-dom";
+import {FirebaseContext} from '../../firebase';
+import UserContext from '../../Context/UserContext/UserContext';
+import NiveauxSchool from './Matieres/NiveauxSchoolComponent'
 
-const  Dashboard = () => {
 
-    const listStyle = {
-       
-        marginTop: "-1px", /* Prevent double borders */
-       
-        padding: "12px",
-        textDecoration: "none",
-        fontSize: "18px",
-        
-        display: "block",
-        position: "relative",
-        color:'#707070'
-    }
 
-    const fleche = {
-        cursor: "pointer",
-        position: "absolute",
-        top: "5%",
-        right: "0%",
-        padding: "12px 16px",
-    }
-    const [niveaux , setNiveaux] = useState('');
+const  Dashboard = (props) => {
+
+  const firebase = useContext(FirebaseContext)
+  const userContext = useContext(UserContext)
+
+  const [infosLevel , setinfosLevel ] = useState(null)
+  const [ niveauxSchool , setNiveauxSchool ] = useState([])
+  const [ useConnectedId , setUserConnectedId ] = useState(null);  
+
+  const matieres = [
+      {
+         title : "Mathématiques",
+         logo : LogoMath,
+         urlParam : "Mathematique"
+      },
+      {
+        title : "Physique",
+        logo : LogoPhysique,
+        urlParam : "Physique"
+     },
+     {
+        title : "Anglais",
+        logo : LogoAnglais,
+        urlParam : "Anglais"
+     },
+     {
+        title : "Histoire Géo",
+        logo : LogoGeo,
+        urlParam : "Histoire-Geo"
+     },
+     {
+        title : "Philosophie",
+        logo : LogoPhilo,
+        urlParam : "Philosophie"
+     },
+     {
+        title : "SVT",
+        logo : LogoSVT,
+        urlParam : "SVT"
+     },
+     {
+        title : "Ingénierie",
+        logo : LogoIng,
+        urlParam : "Ingenierie"
+     },
+     {
+        title : "Jeux",
+        logo : LogoJeux,
+        urlParam : "Jeux"
+     }
+
+  ]
     
-    const [ modalOpen , setModalOpen  ] = useState(false);
-
-    const [ valueNiveau ,setValueNiveau] =useState('');
+    useEffect(() => {
    
-    const handleShowModal = () => setModalOpen(true);
-    const handleCloseModal = () => setModalOpen(false);
+        firebase.auth.onAuthStateChanged( user => {
+          if(user){
+            //code if realod page pour garder context api values
+            userContext.get_connected_user(user);
+            const userId = user.uid;                      
+            const database = firebase.getData();
+            const reference =  database.ref('users/'+userId)
+      
+            setUserConnectedId(userId)
+  
+            reference.once("value", user_informations => {
+                userContext.get_user_informations(user_informations.val());
+                if(user_informations.val())
+                    setinfosLevel(user_informations.val().level)
+              
+            })
+            
+            
+          }
+          else{
+
+           console.log('not login');
+           props.history.push('/')
+          }
+        });
+      }, []);
+
+   
+    
+  
+
+    const [niveaux , setNiveaux] = useState('');   
+    const [ modalOpen , setModalOpen  ] = useState(false);
+    const [ valueNiveau ,setValueNiveau] =useState('');
+
+
+    const handleShowModal = () => {
+        const database = firebase.getData();
+        const ref_niveaux = database.ref('schoolLevels/all');
+            ref_niveaux.on("value", snapshot => {
+            // const messageObject = snapshot.val();
+                setNiveauxSchool(snapshot.val())
+                
+               
+            })
+        setModalOpen(true);
+
+    }
+
+    const handleCloseModal = () =>{ 
+        
+        setModalOpen(false);
+        setinfosLevel( userContext.user_informations.level)
+    }
 
     const ChoixNiveau = (niveau) => {
+
         setValueNiveau(niveau)
         handleCloseModal()
     }
-   /*  if( valueNiveau != '' ) {
-        niveaux = <center>  valueNiveau </center>
-    }
-    else {
-        niveaux = <center> TROISIEME  </center>
-    } */
-   // render() {
+
+    
+    
+  
         return (
+           
             <div className="container">
+               
                 <p  className="cree_ton_compte" onClick = {handleShowModal}>
-                    { (valueNiveau )  ?  
-                    <center> {valueNiveau} </center>
-                        :
-                        <center>TROISIEME</center>
-                    } 
+                    {
+                        (infosLevel) ? <span>{infosLevel}</span> : <span>Terminale</span>
+                    }
+                    
                 </p>
 
-                    <div className="row">
-                        <div className="col-md-6">
-                            <Link to="/chapitres">
-                                <MatiereComponent title="Mathématiques" logo={LogoMath} />
-                            </Link>
-                        </div>
-                        <div className="col-md-6">
-                            <MatiereComponent title="Physique" logo={LogoPhysique} /> 
-                        </div>
-                    </div>
+      
+                <div className="matiere_component">
+                    { matieres.map( (matiere , index) => {
+                        return (
+                            <Link key={index} to={`/chapitres/${matiere.urlParam}`} >
+                                <MatiereComponent
+                                
+                                 title={matiere.title}
+                                 logo={matiere.logo} />
+                            </Link>  
+                        )
+                        
+                    }) }
+                </div>
+                    
+                    
                     
 
-                    <div className="row">
-                        <div className="col-md-6">
-                            <MatiereComponent title="Anglais" logo={LogoAnglais} />
-                        </div>
-                        <div className="col-md-6">
-                            <MatiereComponent title="Histoire Géo" logo={LogoGeo} />
-                        </div>
-                    </div>    
-                    
-                    <div className="row">
-                        <div className="col-md-6">
-                            <MatiereComponent title="Philosophie" logo={LogoPhilo} />
-                        </div>
-                        <div className="col-md-6">
-                            <MatiereComponent title="SVT" logo={LogoSVT} />
-                        </div>
-                    </div>   
-
-                    <div className="row">
-                        <div className="col-md-6">
-                            <MatiereComponent title="Ingénierie" logo={LogoIng} />
-                        </div>
-                        <div className="col-md-6">
-                             <MatiereComponent title="Jeux" logo={LogoJeux} />
-                        </div>
-                    </div> 
+                     
                     
                     <Modal
                     size="md"
@@ -115,27 +181,23 @@ const  Dashboard = () => {
                         </Modal.Title>
                     </Modal.Header>
                     <Modal.Body >
-                        <div className="container">
-                            <div className="row">
-                                <div className="col-md-6">
-                                    <ul >
-                                    <li style={listStyle}>CE1 <span style={fleche} onClick={() => ChoixNiveau('CE1')}>&gt;</span> </li>
-                                    <li style={listStyle}>CM1 <span style={fleche} onClick={() => ChoixNiveau('CM1')}>&gt;</span> </li>
-                                    <li style={listStyle}>Sixième <span style={fleche} onClick={() =>ChoixNiveau('Sixième')}>&gt;</span> </li>
-                                    <li style={listStyle}>Quatrième <span style={fleche} onClick={() =>ChoixNiveau('Quatrième')}>&gt;</span> </li>
-                                    </ul>
-                                </div>
+                        <div className="niveaux_school">
+                           
+                           { niveauxSchool.map( (niveau,index) => {
+                               return (
+                                    <div >
+                                       
+                                        <NiveauxSchool
+                                         key={index}
+                                         userConnected={useConnectedId}
+                                         title={niveau} />
+                                        
+                                    </div>
+                               )
+                              
+                           })
 
-                                <div className="col-md-6">
-                                    <ul >
-                                        <li style={listStyle}>CE2 <span style={fleche} onClick={() =>ChoixNiveau('CE2')}>&gt;</span> </li>
-                                        <li style={listStyle}>CM2 <span style={fleche} onClick={() =>ChoixNiveau('CM2')}>&gt;</span> </li>
-                                        <li style={listStyle}>Cinquième <span style={fleche} onClick={() =>ChoixNiveau('Cinquième')}>&gt;</span> </li>
-                                        <li style={listStyle}>Troisième <span style={fleche} onClick={() =>ChoixNiveau('Troisième')}>&gt;</span> </li>
-                                    </ul>
-                                </div>
-
-                            </div>
+                           }
                             
 
                             

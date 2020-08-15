@@ -18,7 +18,7 @@ const Quizz = () => {
                 <DownloadButton/>
                 <Divider hidden />
                 <Divider hidden />
-                <QuizzForm multiple />
+                <QuizzForm single />
                 <Divider hidden />
             </div>
         </div>

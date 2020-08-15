@@ -5,6 +5,8 @@ import photo_parent from '../../../images/parent.png';
 import photo_enseignant from '../../../images/enseignant.png';
 import {Link} from 'react-router-dom';
 
+import Title from '../../general/Title/Title';
+
 
 export default function create_account() {
 
@@ -12,7 +14,9 @@ export default function create_account() {
 
     return (
         <div className="container">
-             <p  className="cree_ton_compte"><center>  CREE TON COMPTE </center></p>
+             <p  className="cree_ton_compte"><center> </center></p>
+
+             <Title text = 'CREE TON COMPTE' textcentered centerOverlined />
           
              <p className="span_description">Si vous abonnez votre enfant, choisissez le profil parent.</p>
 
@@ -29,22 +33,22 @@ export default function create_account() {
 
                 <div className="col-md-1"></div>
                 <div className="col-md-2">
-                    <Link to={{
+                    {/* <Link to={{
                             pathname: "/individu-create-account",
                             state: {
                                 fonction: "Parent"
                             }
-                        }}>
-                        <img className="images"  src={photo_parent}  width="100%" />
-                    </Link>
+                        }}> */}
+                        <img className="images"  src={photo_parent}  width="100%"  />
+                    {/* </Link> */}
                     <span className="title_image">Parent</span>
                 </div>
 
                 <div className="col-md-1"></div>
                 <div className="col-md-2">
-                    <Link to="/wich-enseignant">
+                    {/* <Link to="/wich-enseignant"> */}
                         <img className="images"  src={photo_enseignant} width="100%" />
-                    </Link>
+                    {/* </Link> */}
                     <span className="title_image">Enseignant</span>
                 </div>
 

@@ -1,0 +1,16 @@
+
+.niveaux_elements{
+    display: flex;
+    padding-bottom: 10px;
+}
+
+.niveaux_elements > * {
+    color: #707070;
+    font-size: 18px;
+    cursor: pointer;
+  
+}
+
+.title_niveaux{
+    width: 80%;
+}

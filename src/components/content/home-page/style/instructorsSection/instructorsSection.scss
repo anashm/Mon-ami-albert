@@ -1,0 +1,48 @@
+.instructors-card-container{
+
+    background-color: #FAFAFA;
+    padding: 6% 0;
+
+    @include media('<=phone'){
+        padding: 12% 0;
+    }
+
+    .slider-container{
+        padding-top: 5%;
+
+        @include media('<=phone'){
+            padding-top: 10%;
+        }
+
+    }
+
+
+    .instructor-card-container{
+
+
+
+        .instructor-img-container{
+            display: flex;
+            justify-content: center;
+
+            img{
+                width: 100px;
+            }
+        }
+
+        .instructor-name{
+            text-align: center;
+            color: #636363;
+            text-transform: uppercase;
+            font-size: 18px;
+        }
+
+        .instructor-description{
+            text-align: center;
+            max-width: 60%;
+            margin: 0 auto;
+            color: #636363;
+            font-size: 13px;
+        }
+    }
+}

@@ -1,3 +1,33 @@
+.enonce-container{
+    border-color: #d2f4ff;
+    border-style: solid;
+    border-width: 1px 1px 1px 3px;
+    padding: 3px 0px 3px 0px;
+    margin: 5px 0px 0px 5px;
+    background: #f8f9f0;
+    margin-bottom: 20px;
+}
+
+.pdf-displayer{
+
+    max-width: 800px;
+  width: 100%;
+  display: table;
+  margin: 0 auto;
+  padding: 20px 50px;
+}
+
+.corrige-container{
+    background-color: #FBEFF2;
+    border-width: 0px 1px 1px 3px;
+    border-style: solid;
+    padding: 3px 0px 3px 0px;
+    border-color: #d2f4ff;
+}
+
+.enonce-choix{
+    padding-inline-start: 40px;
+}
 .exercise-container{
     display: flex;
     align-items: center;
@@ -7,6 +37,7 @@
         padding-right: 20px;
     }
 
+   
     .exercise-text{
         margin: 0;
         max-width: 80%;

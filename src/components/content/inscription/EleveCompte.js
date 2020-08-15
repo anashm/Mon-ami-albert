@@ -6,44 +6,38 @@ import Facebook from '../../../pages/Login/Social/Facebook/Facebook';
 import avatar from '../../../images/avatar.png';
 import { Button} from 'semantic-ui-react';
 import NiveauComponent from './NiveauComponent';
-import database from '../../../firebase';
-import {AuthContext} from '../../../providers/LoginContext';
+//import database from '../../../firebase';
+import {FirebaseContext} from '../../../firebase';
 
+import Title from '../../general/Title/Title';
     
 
- const  EleveCompte = () =>  {
-    //const value=useContext(AuthContext)
-    useEffect(() => {
-        
-        /* database.collection('users').onSnapshot(snapshot => {
-            console.log(snapshot.docs.map(doc => doc.data()))
-        }) */
+ const  EleveCompte = ( props ) =>  {
+    
+    const Firebase = useContext(FirebaseContext)
 
-        
-        var ref = database.ref('schoolLevels/all')
-        ref.on("value", snapshot => {
-            const messageObject = snapshot.val();
-            setNiveaux(messageObject)
-           /*  const messageList = Object.keys(messageObject).map(key => {
-                console.log(key)
-            }) */
-               
-           
-        })
-        /* ref.once('value').then(function(snapshot){
-            snapshot.forEach( child => {
-               // setNiveaux(child.val())
-                console.log(child.val())
-            })
-        }) */
-    }, []);
 
     const [childData, setChildData] = useState("");
     const [niveaux ,setNiveaux] = useState([]);
 
+
+    useEffect(() => {
+      
+            const database = Firebase.getData();
+            const ref_niveaux = database.ref('schoolLevels/all');
+            ref_niveaux.on("value", snapshot => {
+            // const messageObject = snapshot.val();
+                setNiveaux(snapshot.val())
+                console.log(snapshot.val())
+            })
+    }, []);
+    //console.log(ref)
+
     return (        
         <div className="container">
-            <p  className="cree_ton_compte"><center>  CREE TON COMPTE </center></p>
+            <p  className="cree_ton_compte"><center>   </center></p>
+
+            <Title text = 'CREE TON COMPTE' textcentered centerOverlined />
 
             <div className="row" style={{marginTop:'-2%'}}>
                     <div className="col-md-4"></div>
@@ -61,10 +55,9 @@ import {AuthContext} from '../../../providers/LoginContext';
             <p className="quel_classe">En quelle classe es-tu (2019-2020) ?</p>
 
 
-            <div className="row" style={{marginTop:'60px'}}>
-                <div className="col-md-3"></div>
+            <div className="row">
                 
-                <div className="col-md-7">
+                <div className="col">
                     <div className="grid1"> 
                         {niveaux.map( (niveau,index) => {
                          return (
@@ -90,24 +83,22 @@ import {AuthContext} from '../../../providers/LoginContext';
                 </div>
 
 
-                <div className="col-md-3"></div>
             </div>
-            <br></br><br></br><br></br>
             <p className="deja_un_compte">Vous avez déjà un compte ? <Link to="/login"> Connecte-toi </Link></p>
             <div className="social-login-container">
-                <div className="google-login-btn-container">
+                {/* <div className="google-login-btn-container">
                     <Google />
-                </div>
+                </div> */}
 
                 <div className="facebook-login-btn-container">
-                    <Facebook/>
+                    <Facebook navigation={props} />
                 </div>
 
                 <div className="email-login-container">
                    <Link to={{
                             pathname: "/sign-up",
                             state: {
-                                fonction:'3e'
+                                fonction:childData
                             }
                         }}>
                     <Button  className = 'submit-btn w-100'>S'inscrire avec un email</Button>

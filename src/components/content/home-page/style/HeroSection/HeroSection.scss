@@ -1,0 +1,182 @@
+@import '../../../../../style//breakpoints';
+
+
+.hero-section{
+
+    padding-top: 2%;
+    padding-bottom: 2%;
+
+
+
+    .hero-section-content-container{
+        width: 80%;
+        margin: 0 auto;
+        display: flex;
+
+
+        @include media('<=phone'){
+            display: block;
+            width: 100%;
+        }
+
+        .hero-section-image-container{
+
+            flex: 1;
+            display: flex;
+            align-items: center;
+            position: relative;
+
+            @include media('<=phone'){
+                justify-content: center;
+                margin-left: 10px;
+            }
+
+            img{
+                width: 80%;
+                max-width: 300px;
+
+                @include media('<=phone'){
+                    max-width: 250px;
+                }
+            }
+
+            .play-btn-container{
+                position: absolute;
+                left: 65%;
+                top: 22%;
+                cursor: pointer;
+                transition: all 0.3s;
+
+                img{
+                    box-shadow: 0px 1px 10px 3px rgba(0, 0, 0, 0.09);
+                    border-radius: 50%;
+                }
+
+                &:hover{
+                    transform: scale(1.2);
+                }
+
+                @include media('<=phone'){
+                    left: 70%;
+                }
+            }
+        }
+
+        .hero-section-description-container{
+
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+
+            @include media('<=phone'){
+               margin-top: 5%;
+            }
+
+
+       
+
+            .hero-section-title{
+                font-family: KGFallForYouBold;
+                font-size: 50px;
+                color: #333333;
+                line-height: 60px;
+                text-transform: uppercase;
+
+                @include media('<=phone'){
+                    font-size: 30px;
+                    text-align: center;
+                    line-height: 35px;
+                }
+
+            }
+
+            .hero-section-paragraphe{
+                font-size: 13px;
+                color: #636363;
+                font-family: Rubik , 'sans-serif';
+                padding: 20px 0;
+
+                @include media('<=phone'){
+                    text-align: center;
+                    padding: 0 5%;
+                    padding-top: 4%;
+                    padding-bottom: 2%;
+                    font-size: 15px;
+                }
+
+            }
+
+            .hero-section-buttons-container{
+
+                display: flex;
+                justify-content: start;
+
+                @include media('<=phone'){
+                    flex-direction: column;
+                }
+
+
+                .hero-section-button{
+
+                    padding: 8px 30px;
+                    margin-right: 20px;
+                    font-size: 12px;
+                    border-radius: 50px;
+                    text-transform: uppercase;
+                    letter-spacing: 1px;
+                    font-weight: 700;
+                    text-align: center;
+                    transition: all 0.3s;
+
+
+                    @include media('<=phone'){
+                        margin-right: 0;
+                        margin-bottom: 20px;
+                        text-align: center;
+                        padding: 10px 25px;
+
+
+                    }
+    
+    
+                    &.register-button{
+                        background-color: #707070;
+                        color: white;
+                        border: 2px solid #707070;
+
+                        &:hover{
+                            background-color: transparent;
+                            color: #707070;
+                        }
+                    }
+    
+                    &.login-button{
+                        color: #707070;
+                        border: 2px solid #707070;
+
+                        &:hover{
+                            background-color: #707070;
+                            color: white;
+
+                        }
+
+                    }
+    
+                    &.dashboard-button{
+                        background-color: #707070;
+                        color: white;
+                        border: 2px solid #707070;
+
+                        &:hover{
+                            background-color: transparent;
+                            color: #707070;
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+}

@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from './components/header/Header'
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import 'semantic-ui-css/semantic.min.css';
 import './style/_style.scss';
 import HomePage from './components/content/home-page/HomePage';
@@ -16,18 +17,19 @@ import SignUp from './components/content/inscription/SignUp';
 import Dashboard from './pages/LoggedIn/Dashboard';
 import Chapitres from './pages/LoggedIn/Chapitres';
 import Quizz from './pages/Chapter/Quizz/Quizz';
-import FadeIn from 'react-fade-in';
-import {LoginProvider} from './providers/LoginContext'
 
 
-function App() {
-  
+
+
+
+
+const  App = () => {
+
+
   return (
     <Router>
-      <Header />
-      <div className="main_content">
-       {/*  <FadeIn  delay="1000"> */}
-       <LoginProvider>
+      <Header  />
+      <main className="main_content">
           <Switch>
             <Route exact path="/" component={HomePage} />
             <Route exact path="/login" component={Login} />
@@ -35,18 +37,31 @@ function App() {
             <Route exact path="/eleve-creat-account" component={EleveAccount} />
             <Route exact path="/individu-create-account" component={JeSuisUnComponent} />
             <Route exact path="/wich-enseignant" component={WichEnseigant} />
-            <Route exact path="/chapter" component={Chapter} />
+            <Route exact path="/chapter/:matieres/:chapitre" component={Chapter} />
             <Route exact path="/quizz" component={Quizz} />
             <Route exact path="/sign-up" component={SignUp} />
             <Route exact path="/dashboard-user" component={Dashboard} />
-            <Route exact path="/chapitres" component={Chapitres} />
+            <Route exact path="/chapitres/:matieres" component={Chapitres} />
+            
           </Switch>
-          </LoginProvider>
-       {/*  </FadeIn> */}
-      </div>
+          
+          {/* </LoggedinProvider> */}
+          {/*  <LoggedinProvider> */}
+          {/* </LoginProvider> */}
+          {/*  </FadeIn> */}
+          {/*  <FadeIn  delay="1000"> */}
+          {/* <LoginProvider> */}
+        
+      </main>
+
       <Footer />
-     </Router>
+    </Router>
+
+
+  
   );
 }
 
 export default App;
+
+
