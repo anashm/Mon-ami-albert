@@ -7,15 +7,39 @@ import Title from '../../general/Title/Title'
 
 const Thirddiv = () => {
 
-    const reasons = [
-        'Soutien scolaire pour toute les classes',
-        'Cours et exercices dans toutes les matières',
-        'Cours et exercices dans toutes les matières',
-        'des Professeurs en ligne et par chat',
-        'Assistance parents par téléphone',
-        'Service personnalisé sur la moyenne'
-    ]
+    const reasonsLeft = [
+        {
+            index: 1,
+            text: 'Soutien scolaire pour toute les classes'
+        },
 
+        {
+            index: 2,
+            text:  'Cours et exercices dans toutes les matières',
+        },
+
+        {
+            index: 3,
+            text:   'Cours et exercices dans toutes les matières',
+        }
+    ];
+
+    const reasonsRight = [
+        {
+            index: 4,
+            text: 'Soutien scolaire pour toute les classes'
+        },
+
+        {
+            index: 5,
+            text:  'Cours et exercices dans toutes les matières',
+        },
+
+        {
+            index: 6,
+            text:   'Cours et exercices dans toutes les matières',
+        }
+    ];
 
 
     return (
@@ -25,11 +49,11 @@ const Thirddiv = () => {
 
             <div className="container">
                 <div className="row">
-                    <Reasons reasons = {reasons} />
+                    <Reasons reasons = {reasonsLeft} left />
                     <div className="school-choice-image-container">
                         <img src={image_einsten} alt=""/>
                     </div>
-                    <Reasons reasons = {reasons} />
+                    <Reasons reasons = {reasonsRight} right />
                 </div>
             </div>
         </section>

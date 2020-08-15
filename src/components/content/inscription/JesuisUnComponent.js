@@ -4,6 +4,7 @@ import avatar from '../../../images/adulte_avatar.png';
 import { Link } from 'react-router-dom';
 import Google from '../../../pages/Login/Social/Google/Google';
 import Facebook from '../../../pages/Login/Social/Facebook/Facebook';
+import Title from '../../general/Title/Title';
 
 const JesuisUnComponent = (props) => {
     
@@ -13,8 +14,9 @@ const JesuisUnComponent = (props) => {
       },[]) */
     
         return (
-            <div className="container">
-                <p  className="cree_ton_compte"><center>  CREEZ VOTRE COMPTE </center></p>
+            <div className="container mt-20-percent">
+
+                <Title text = 'CREEZ VOTRE COMPTE' textcentered centerOverlined  />
 
                 <div className="row" style={{marginTop:'-2%'}}>
                     <div className="col-md-4"></div>

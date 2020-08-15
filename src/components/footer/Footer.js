@@ -4,37 +4,77 @@ import facebook_icon from '../../images/facebook-icon.svg';
 import instagram_icon from '../../images/instagram-icon.svg';
 import twitter_icon from '../../images/twitter-icon.svg';
 
-export default function Footer() {
+import FooterIcon from './Icons/FooterIcon';
+import FooterLink from './FooterLink/FooterLink';
+
+const  Footer = () => {
+
+
+    const footerLinks = [
+        { 
+            title: 'qUI SUIS-JE ?',
+            link : '#'
+        },
+        { 
+            title: 'pARENT',
+            link : '#'
+        },
+        { 
+            title: 'ENSEIGNANT',
+            link : '#'
+        },
+        { 
+            title: 'méthodologie',
+            link : '#'
+        },
+        { 
+            title: 'contact',
+            link : '#'
+        },
+        { 
+            title: 'aide',
+            link : '#'
+        },
+        { 
+            title: 'mention légales',
+            link : '#'
+        }
+    ];
+
+    const footerIcons = [
+        {
+            img: facebook_icon,
+            link: '#'
+        },
+        {
+            img: instagram_icon,
+            link: '#'
+        },
+        {
+            img: twitter_icon,
+            link: '#'
+        }
+    ];
+
     return (
-       
-            <div style={{background:'#636363'}} className="footer_container">
-            
-                    <div className="items_container"> 
-                        <center>
-                            <span className="items_footer">QUI SUIS JE?</span>
-                            <span className="items_footer">PARENT</span>
-                            <span className="items_footer">ENSEIGNANT   </span>
-                            <span className="items_footer">METHODOLOGIE</span>
-                            <span className="items_footer">CONTACT</span>                  
-                            <span className="items_footer">AIDE</span>                
-                            <span className="items_footer">MENTION LEGALES</span>
-                    </center>
-                </div>  
-
-                <div className="social-icons">
-                    <center>
-                        <img className="icons" src={facebook_icon} /> 
-                        <img className="icons" src={instagram_icon} /> 
-                        <img className="icons" src={twitter_icon} /> 
-                    </center>
-                    
+        <footer className="container-fluid main-footer">
+            <div className="container">
+                <div className="row">
+                    <div className="footer-link-container">
+                        { footerLinks.map(footerLink => <FooterLink link = { footerLink.link } text = { footerLink.title } />) }
+                    </div>
                 </div>
-
-                <div className="copyright">
-                        <center>©&nbsp;&nbsp;&nbsp;mon ami albert 2020</center>
+                <div className="row">
+                    <div className="social-icons-container">
+                        { footerIcons.map(footerIcon =>  <FooterIcon link = {footerIcon.link} img = {footerIcon.img}  /> ) }
+                    </div>
                 </div>
-                
+                <div className="row">
+                    <p className="rights-text">mon ami albert 2020</p>
+                </div>
             </div>
-       
+        </footer>
     )
 }
+
+export default Footer;

@@ -46,3 +46,17 @@
     font-family: Rubik-Regular;
     src: url('../../../fonts/Rubik-Regular.ttf');
 }
+
+@media only screen and (max-width: 460px) {
+    .images{
+        width: 30%;
+        display: block;
+        margin: 20px auto;
+    }
+
+    .title_image{
+        display: block;
+        text-align: center;
+        margin: 0;
+    }
+  }

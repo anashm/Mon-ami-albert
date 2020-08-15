@@ -8,7 +8,7 @@ const HorizontalCard = ( { img , text } ) => {
             </div>
             <p className="horizontal-card-text-container"> { text } </p>
         </div>
-    )
+    );
 }
 
 export default HorizontalCard;
