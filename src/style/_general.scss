@@ -23,8 +23,12 @@ body{
     font-weight: 500 !important;
 }
 
-.mt-20-percent{
-    margin-top: 20%;
+
+@media only screen and (max-width: 450px) {
+    .mt-20-percent{
+        margin-top: 20%;
+    }
+    
 }
 
 //buttons

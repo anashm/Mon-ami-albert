@@ -78,8 +78,7 @@ const HamburgerMenu = () => {
                 </div>
             </div>
         </Fragment>
-       
-    )
+    );
 }
 
-export default HamburgerMenu
+export default HamburgerMenu;

@@ -1,4 +1,4 @@
-import React ,{useEffect ,useContext,useState} from 'react';
+import React from 'react';
 import Header from './components/header/Header'
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -17,9 +17,7 @@ import SignUp from './components/content/inscription/SignUp';
 import Dashboard from './pages/LoggedIn/Dashboard';
 import Chapitres from './pages/LoggedIn/Chapitres';
 import Quizz from './pages/Chapter/Quizz/Quizz';
-import FadeIn from 'react-fade-in';
-import {LoginProvider} from './providers/LoginContext'
-import {LoggedinProvider} from './providers/sessionLoggedIn/LoggedinContext';
+
 
 
 
