@@ -22,9 +22,9 @@ const Login = (props) => {
 
 
             <div className="social-login-container">
-                <div className="google-login-btn-container">
+                {/* <div className="google-login-btn-container">
                     <Google />
-                </div>
+                </div> */}
 
                 <div className="facebook-login-btn-container">
                     <Facebook navigation={props}/>

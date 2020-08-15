@@ -58,9 +58,12 @@ const LoginForm = (props) => {
         
         } ) 
         .catch(errors => {
+           
                 if(errors.message == 'There is no user record corresponding to this identifier. The user may have been deleted.')
-             
-                setError('There is no user record corresponding to this identifier.')
+                    setError('There is no user record corresponding to this identifier.')
+                else 
+                    setError(errors.message)
+                    
                 setEmail('')
                 setPassword('')
         })
@@ -108,7 +111,7 @@ const LoginForm = (props) => {
                 <Divider hidden />
                 {btn}
 
-                <p className = 'subscribe-text text-center'> <span> Pas encore de compte ? </span>  <small className = 'login-link subscribe-link'> <Link to = '/'> Inscris-toi </Link> </small> </p>
+                <p className = 'subscribe-text text-center'> <span> Pas encore de compte ? </span>  <small className = 'login-link subscribe-link'> <Link to = '/creat-account'> Inscris-toi </Link> </small> </p>
                 
             </Form>
         </div>

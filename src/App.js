@@ -23,6 +23,8 @@ import {LoggedinProvider} from './providers/sessionLoggedIn/LoggedinContext';
 
 
 
+
+
 const  App = () => {
 
   return (
@@ -41,6 +43,7 @@ const  App = () => {
             <Route exact path="/sign-up" component={SignUp} />
             <Route exact path="/dashboard-user" component={Dashboard} />
             <Route exact path="/chapitres/:matieres" component={Chapitres} />
+            
           </Switch>
           
           {/* </LoggedinProvider> */}

@@ -85,9 +85,9 @@ import {FirebaseContext} from '../../../firebase'
             <br></br><br></br><br></br>
             <p className="deja_un_compte">Vous avez déjà un compte ? <Link to="/login"> Connecte-toi </Link></p>
             <div className="social-login-container">
-                <div className="google-login-btn-container">
+                {/* <div className="google-login-btn-container">
                     <Google />
-                </div>
+                </div> */}
 
                 <div className="facebook-login-btn-container">
                     <Facebook navigation={props} />

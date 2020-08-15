@@ -85,7 +85,8 @@ const  Dashboard = (props) => {
   
             reference.once("value", user_informations => {
                 userContext.get_user_informations(user_informations.val());
-               setinfosLevel(user_informations.val().level)
+                if(user_informations.val())
+                    setinfosLevel(user_informations.val().level)
               
             })
             
@@ -141,11 +142,10 @@ const  Dashboard = (props) => {
             <div className="container">
                
                 <p  className="cree_ton_compte" onClick = {handleShowModal}>
-                    { (valueNiveau )  ?  
-                    <span> {valueNiveau} </span>
-                        :
-                    <span>{infosLevel}</span>
-                    } 
+                    {
+                        (infosLevel) ? <span>{infosLevel}</span> : <span>Terminale</span>
+                    }
+                    
                 </p>
 
       
