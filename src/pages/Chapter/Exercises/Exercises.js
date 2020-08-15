@@ -7,8 +7,13 @@ import { useHistory } from "react-router-dom";
 import {FirebaseContext} from '../../../firebase';
 import UserContext from '../../../Context/UserContext/UserContext';
 
-const Exercises = ({urlParams}) => {
 
+const Exercises = ({urlParams}) => {
+    
+   
+ 
+
+    
     var matiere =  urlParams.matieres;
     var chapitre = urlParams.chapitre;
 
@@ -22,6 +27,8 @@ const Exercises = ({urlParams}) => {
     const history = useHistory()
     useEffect(() => {
        
+        
+        
 
         firebase.auth.onAuthStateChanged( user => {
           if(user){
@@ -86,7 +93,7 @@ const Exercises = ({urlParams}) => {
                         <Exercise 
                             key = { index }
                             index = {index+1} 
-                            title = {exercice.contenu.enonce.title} 
+                            title = {exercice.contenu.enonce.titre_exercice} 
                             enonce_intitule = {exercice.contenu.enonce.intitule}
                             enonce_choices = {exercice.contenu.enonce.choices}
                             corrige_intitule = {exercice.contenu.corrige.intitule}
@@ -97,12 +104,13 @@ const Exercises = ({urlParams}) => {
 
                      )
                     
-                })  :  <p>No exercices</p>} 
+                })  :  <p>No Exercices available</p>} 
               
                 
             </div>
 
-
+           
+            
         </div>
 
     );

@@ -38,7 +38,8 @@ const  Chapitres = ({match}) => {
                 const reference_chapitres = database.ref('schoolLevels/'+user_informations.val().level+'/subjects/'+matiere+'/all')
                     reference_chapitres.on("value", chapitres => {
                     
-                        setChapitresTitle(chapitres.val())
+                        const chapitres_liste = chapitres.val();
+                        chapitres_liste  ?  setChapitresTitle(chapitres_liste) : setChapitresTitle([])
     
                     })
                 })
@@ -65,7 +66,7 @@ const  Chapitres = ({match}) => {
                 <h2 className="exercises-title">Chapitres</h2>
 
                 <div className="exercises-infos">
-                    <div className="exercises-number"> 9 </div>
+                    <div className="exercises-number"> {chapitresTitle ? chapitresTitle.length : 0} </div>
                     <div className="show-hide-icon">
                         <span> <Icon name= {` ${ openTab ? 'minus square outline' : 'plus square outline' } `} link size='small' className = 'minus-icon' /> </span>
                     </div>
@@ -77,14 +78,17 @@ const  Chapitres = ({match}) => {
             <div className="exercises-content" style = { { transform: `${!openTab ? 'scaleY(0)' : 'scaleY(1)'}` , transformOrigin: '100% 0%' } } >
                 <div className="chapters">
 
-                    {chapitresTitle.map( (chapitre,index) => {
+                    
+                    {  chapitresTitle.map( (chapitre,index) => {
                         return (
                             <Link to={`/chapter/${matiere}/${chapitre}`}> 
                                 <ChapitreComponent ordre={index+1} title={chapitre} />
                             </Link>
                         )
                         
-                    })}
+                    })  }
+
+                   
                    
                    
                 </div>   

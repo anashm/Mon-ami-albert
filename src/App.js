@@ -21,6 +21,8 @@ import Quizz from './pages/Chapter/Quizz/Quizz';
 
 
 
+
+
 const  App = () => {
 
 
@@ -40,6 +42,7 @@ const  App = () => {
             <Route exact path="/sign-up" component={SignUp} />
             <Route exact path="/dashboard-user" component={Dashboard} />
             <Route exact path="/chapitres/:matieres" component={Chapitres} />
+            
           </Switch>
           
           {/* </LoggedinProvider> */}
