@@ -16,7 +16,7 @@ const Courses = ({ urlParams }) => {
     const history = useHistory()
 
     const [ courses_user , setCoursesUser ] = useState([])
-    
+    const [infoLevel ,setinfosLevel] = useState(null)
 
     useEffect(() => {
        
@@ -30,11 +30,12 @@ const Courses = ({ urlParams }) => {
       
                 reference.once("value", user_informations => {
                 userContext.get_user_informations(user_informations.val());
-              //  setinfosLevel(user_informations.val().level)
-                
-                
-                    const reference_exercices = database.ref('schoolLevels/Terminale/subjects/'+matiere+'/'+chapitre+'/cours')
+                setinfosLevel(user_informations.val().level)
+               
+          
+                    const reference_exercices = database.ref('schoolLevels/'+user_informations.val().level+'/subjects/'+matiere+'/'+chapitre+'/cours')
 
+                   
                     reference_exercices.once("value", cours_collection => {
                         const courses = cours_collection.val();
                         setCoursesUser(courses);              
@@ -54,7 +55,7 @@ const Courses = ({ urlParams }) => {
 
     return (
         <div>
-           
+         
             {courses_user.map( (cours,index) => {
                 return(
                     <div key={index}>

@@ -20,7 +20,7 @@ import Quizz from './pages/Chapter/Quizz/Quizz';
 import FadeIn from 'react-fade-in';
 import {LoginProvider} from './providers/LoginContext'
 import {LoggedinProvider} from './providers/sessionLoggedIn/LoggedinContext';
-
+import TestPDF from './pages/Chapter/Exercises/Exercise/TestPDF'
 
 
 
@@ -44,7 +44,7 @@ const  App = () => {
             <Route exact path="/sign-up" component={SignUp} />
             <Route exact path="/dashboard-user" component={Dashboard} />
             <Route exact path="/chapitres/:matieres" component={Chapitres} />
-            
+            <Route exact path="/test-pdf" component={TestPDF} />
           </Switch>
           
           {/* </LoggedinProvider> */}
