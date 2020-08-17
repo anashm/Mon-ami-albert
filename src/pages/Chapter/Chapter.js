@@ -71,7 +71,7 @@ const Chapter = ({match}) => {
             </div>
 
             <div className="chapter-content">
-                { coursesContent && <div className="chapter-exercises-container"> <Courses /> </div>}
+                { coursesContent && <div className="chapter-exercises-container"> <Courses urlParams = {match.params} /> </div>}
                 { quizzContent && <div className="chapter-courses-container"> <Quizz quizz = 'quizz' /> </div> }
                 { exercisesContent &&  <div className="chapter-quizz-container">  <Exrecises urlParams = {match.params} exercises = 'exercices' /> </div>}  
             </div>
