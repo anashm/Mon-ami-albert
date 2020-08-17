@@ -16,7 +16,6 @@ const  NiveauxSchoolComponent = (props) => {
     const handleChangeLevel = () => {
         const level = props.title;
         const userId=props.userConnected;
-
         const database = firebase.getData();
         const usersRef =  database.ref('users/'+userId)
 
@@ -29,10 +28,10 @@ const  NiveauxSchoolComponent = (props) => {
     }
 
     return (
-       <div className="niveaux_elements">
-           <span className="title_niveaux" onClick={handleChangeLevel}>{props.title} </span>
+        <div className="niveaux_elements" onClick = {props.clicked}>
+            <span className="title_niveaux" onClick={handleChangeLevel}>{props.title} </span>
             <span className="arrow_niveaux">&gt;</span> 
-       </div> 
+        </div> 
         
     )
 }

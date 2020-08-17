@@ -4,12 +4,11 @@ import {FirebaseContext} from '../../../firebase';
 import UserContext from '../../../Context/UserContext/UserContext';
 import './Courses.css';
 import MathJax from 'react-mathjax-preview'
-import { Accordion,Card,Button } from 'react-bootstrap';
 
 const Courses = ({ urlParams }) => {
 
-    var matiere =  urlParams.matieres;
-    var chapitre = urlParams.chapitre;
+    let matiere =  urlParams.matieres;
+    let chapitre = urlParams.chapitre;
 
     const firebase = useContext(FirebaseContext)
     const userContext = useContext(UserContext)

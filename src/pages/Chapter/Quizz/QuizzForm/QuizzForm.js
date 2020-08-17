@@ -4,16 +4,20 @@ import { Checkbox, Form , Button } from 'semantic-ui-react';
 
 import './QuizzForm.scss';
 
-const QuizzForm = ({ single , multiple }) => {
+const QuizzForm = ({ single , multiple , title , choices , correct , next_step , current_index , question_limit }) => {
+
+    console.log(next_step , current_index)
 
     const [ Response , setResponse ] = useState('');
-    const [ Responses , setResponses ] = useState([]);
+    const [answer , setAnswer] = useState('');
     const [ loading , setLoading ] = useState(false);
 
     const handleClick = (e , titleProps) => {
-        const { checked , value } = titleProps;
+        const { checked , value , id } = titleProps;
         console.log(checked , value , e.target.value);
         setResponse(value);
+        setAnswer(id);
+
     }
 
     const handleMultipleSelectClick = (e , titleProps) => {
@@ -24,7 +28,20 @@ const QuizzForm = ({ single , multiple }) => {
     const handleSubmit = e => {
         e.preventDefault();
         console.log(Response);
-        setLoading(true)
+
+        if(answer === correct){
+            alert('found');
+
+            if(current_index < question_limit){
+                next_step(current_index + 1);
+            }else{
+                alert('that is all');
+            }
+        }else{
+            alert('try again');
+        }
+
+
     }
 
 
@@ -58,24 +75,26 @@ const QuizzForm = ({ single , multiple }) => {
     if(multiple){
         return (
             <div className = 'quizz-form-container'>
-                <h2 className="quizz-form-title"> Dans quel cas une écriture fractionnaire est-elle une fraction ? </h2>
+                <h2 className="quizz-form-title"> { title } </h2>
                 <Form loading = { loading } className = 'quizz-form'  onSubmit = { e => handleSubmit(e) }>
                     {
-                        responses.map(response => {
-                            return(
-                                <div className="response-container">
-                                
-                                <Form.Field
-                                    control = {Checkbox} 
-                                    name = { response.name } 
-                                    id = { response.id } 
-                                    defaultChecked = { false } 
-                                    label= { response.label } 
-                                    onClick = { (e , data) => handleMultipleSelectClick(e , data) } 
-                                    value = { response.value }  />
-                                </div>
-                            )
-                        })
+                        choices.length > 0 ? (
+                            choices.map( (choice , index) => {
+                                return(
+                                    <div className="response-container" key = {choice}>
+                                    
+                                    <Form.Field
+                                        control = {Checkbox} 
+                                        name = { choice } 
+                                        id = { `${ index + 1 }` } 
+                                        defaultChecked = { false } 
+                                        label= { choice } 
+                                        onClick = { (e , data) => handleMultipleSelectClick(e , data) } 
+                                        value = { choice }  
+                                         />
+                                    </div>
+                                )
+                            })): null
                     }
                     <Form.Field className = 'quizz-submit-btn' control={Button}>Valider</Form.Field>
 
@@ -86,42 +105,45 @@ const QuizzForm = ({ single , multiple }) => {
         return (
       
             <div className = 'quizz-form-container'>
-                <h2 className="quizz-form-title"> Dans quel cas une écriture fractionnaire est-elle une fraction ? </h2>
+                <h2 className="quizz-form-title"> { title } </h2>
                 <Form loading = { loading }  className = 'quizz-form' onSubmit = { handleSubmit }>
                     {
-                        responses.map(response => {
+                        choices.length > 0 ? (
+                        choices.map( (choice , index) => {
                             if(Response.length < 0){
                                 return(
-                                    <div className="response-container">
+                                    <div className="response-container" key = {choice}>
                                     
                                     <Form.Field
                                         control = {Checkbox} 
-                                            name = { response.name } 
-                                            id = { response.id } 
+                                            name = { choice } 
+                                            id = { `${ index + 1 }` } 
                                             defaultChecked = { false } 
-                                            label= { response.label } 
+                                            label= { choice } 
                                             onClick = { (e , data) => handleClick(e , data) } 
-                                            checked = { Response ===  response.value } 
-                                            value = { response.value }  />
+                                            checked = { Response ===  choice } 
+                                            value = { choice } 
+                                             />
                                     </div>
                                 )
                             }else{
                                 return(
-                                    <div className="response-container">
+                                    <div className="response-container" key = {choice}>
                                     
                                         <Form.Field
                                         control = {Checkbox} 
-                                            name = { response.name } 
-                                            id = { response.id } 
+                                            name = { choice } 
+                                            id = { `${ index + 1 }` } 
                                             defaultChecked = { false } 
-                                            label= { response.label } 
+                                            label= { choice } 
                                             onClick = { (e , data) => handleClick(e , data) } 
-                                            checked = { Response ===  response.value } 
-                                            value = { response.value }  />
+                                            checked = { Response ===  choice } 
+                                            value = { choice } 
+                                            />
                                     </div>
                                 )
                             }
-                        })
+                        })) : null
                     }
 
                     <Form.Field className = 'quizz-submit-btn' control={Button}>Valider</Form.Field>
