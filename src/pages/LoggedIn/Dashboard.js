@@ -139,7 +139,7 @@ const  Dashboard = (props) => {
   
         return (
            
-            <div className="container">
+            <div className="container dashboard-section">
                
                 <p  className="cree_ton_compte" onClick = {handleShowModal}>
                     {
@@ -154,7 +154,6 @@ const  Dashboard = (props) => {
                         return (
                             <Link key={index} to={`/chapitres/${matiere.urlParam}`} >
                                 <MatiereComponent
-                                
                                  title={matiere.title}
                                  logo={matiere.logo} />
                             </Link>  
@@ -190,7 +189,9 @@ const  Dashboard = (props) => {
                                         <NiveauxSchool
                                          key={index}
                                          userConnected={useConnectedId}
-                                         title={niveau} />
+                                         title={niveau} 
+                                         clicked = { handleCloseModal }
+                                         />
                                         
                                     </div>
                                )

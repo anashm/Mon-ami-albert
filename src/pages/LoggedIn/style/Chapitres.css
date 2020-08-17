@@ -4,18 +4,45 @@
 }
 
 .chapters{
-    display: flex;
-    flex-wrap: wrap;
-   
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 30px;
 }
 
-.chapters > *{
-    flex: 0 0 30%;
-    max-width: 30%;
-
+.chapter-section{
+    padding: 3% 0;
 }
 
+.chapter-section .exercises-content{
+    padding: 3% 4%;
+}
+
+.chapter-section .exercises-title-container {
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.chapter-section  .exercises-content{
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+
+.chapters a > div{
+    margin: 0;
+}
+
+@media only screen and (max-width: 900px) {
+    .chapters{
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    .chapters{
+        grid-template-columns: 1fr;
+    }
+}
 
 
 @font-face{

@@ -23,6 +23,8 @@ const Chapter = ({match}) => {
 
     const history = useHistory();
 
+    console.log(match)
+
 
 
 
@@ -44,8 +46,7 @@ const Chapter = ({match}) => {
         setQuizzContent(true);
         setCoursesContent(false);
         setExercisesContent(false);
-        history.push('/quizz');
-
+        history.push(`/quizz/${match.params.matieres}/${match.params.chapitre}`);
     }
 
     const handleChapterExercisesButton = () => {
@@ -70,7 +71,7 @@ const Chapter = ({match}) => {
             </div>
 
             <div className="chapter-content">
-                { coursesContent && <div className="chapter-exercises-container"> <Courses urlParams = {match.params}  /> </div>}
+                { coursesContent && <div className="chapter-exercises-container"> <Courses /> </div>}
                 { quizzContent && <div className="chapter-courses-container"> <Quizz quizz = 'quizz' /> </div> }
                 { exercisesContent &&  <div className="chapter-quizz-container">  <Exrecises urlParams = {match.params} exercises = 'exercices' /> </div>}  
             </div>
