@@ -17,15 +17,14 @@ import SignUp from './components/content/inscription/SignUp';
 import Dashboard from './pages/LoggedIn/Dashboard';
 import Chapitres from './pages/LoggedIn/Chapitres';
 import Quizz from './pages/Chapter/Quizz/Quizz';
-<<<<<<< HEAD
 import FadeIn from 'react-fade-in';
 import {LoginProvider} from './providers/LoginContext'
 import {LoggedinProvider} from './providers/sessionLoggedIn/LoggedinContext';
 import TestPDF from './pages/Chapter/Exercises/Exercise/TestPDF'
-=======
 
 
->>>>>>> 13eddea482be39e18666142c9f4471b1a7161d5d
+
+
 
 
 
