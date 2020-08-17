@@ -23,13 +23,6 @@ import {LoggedinProvider} from './providers/sessionLoggedIn/LoggedinContext';
 import TestPDF from './pages/Chapter/Exercises/Exercise/TestPDF'
 
 
-<<<<<<< HEAD
-
-
-
-=======
->>>>>>> b2b1e6b4c4d862bedae18b20898ed8c447f43329
-
 
 
 const  App = () => {
