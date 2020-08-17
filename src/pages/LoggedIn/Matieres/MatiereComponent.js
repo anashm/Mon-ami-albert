@@ -6,22 +6,17 @@ const MatiereComponent = (props) => {
     
     return (
         <div className="matiere-container">
-           
-
             <div className="image_container">
                 <img src={props.logo}   />
             </div>
            
             <div className="details-matieres">
-                <br></br>
                 <p className="title-matiere">{props.title}</p>
                 <div className="progression-bar">
                     <div className="in-progress"></div>
+                    <span className="pourcentage" >0%</span>
                 </div>
-                <span className="pourcentage" style={{float:'left',marginLeft:'1%'}}>0%</span>
             </div>
-          
-
         </div>
     )
 }

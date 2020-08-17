@@ -23,9 +23,12 @@ import {LoggedinProvider} from './providers/sessionLoggedIn/LoggedinContext';
 import TestPDF from './pages/Chapter/Exercises/Exercise/TestPDF'
 
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> b2b1e6b4c4d862bedae18b20898ed8c447f43329
 
 
 
@@ -44,7 +47,7 @@ const  App = () => {
             <Route exact path="/individu-create-account" component={JeSuisUnComponent} />
             <Route exact path="/wich-enseignant" component={WichEnseigant} />
             <Route exact path="/chapter/:matieres/:chapitre" component={Chapter} />
-            <Route exact path="/quizz" component={Quizz} />
+            <Route exact path="/quizz/:matieres/:chapitre" component={Quizz} />
             <Route exact path="/sign-up" component={SignUp} />
             <Route exact path="/dashboard-user" component={Dashboard} />
             <Route exact path="/chapitres/:matieres" component={Chapitres} />

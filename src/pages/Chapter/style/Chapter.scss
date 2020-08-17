@@ -1,3 +1,5 @@
+
+
 .chapter-page-container{
     padding: 2% 0;
 
@@ -9,11 +11,23 @@
 
     .chapter-title{
         font-size: 20px;
+
+        @media only screen and (max-width: 460px) {
+            padding: 0 5%;
+        }
     }
 
     .chapter-features-container{
 
         padding: 40px 50px;
+
+        @media only screen and (max-width: 460px) {
+            padding: 10% 5%;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 5%;
+        }
+
         .chapter-btn{
 
         }
@@ -21,6 +35,10 @@
 
     .chapter-content{
         padding: 0 50px;
+
+        @media only screen and (max-width: 460px) {
+            padding: 3% 5%;
+        }
     }
 
    

@@ -94,7 +94,7 @@ const Exercise = ( { title ,   downloadLink , index , enonce_intitule , enonce_c
             { loader ? <Dimmer active inverted><Loader /></Dimmer> : ''} 
                
                <div style={{display: 'flex',justifyContent: 'flex-end'}}>
-                        <Pdf targetRef={reference_pdf} filename="post.pdf">
+                        <Pdf targetRef={reference_pdf} filename="exercices.pdf">
                             {({ toPdf }) => 
                                 <div className = 'download-btn-container'>
                                     
