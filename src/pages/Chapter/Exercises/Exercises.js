@@ -6,13 +6,14 @@ import './Exercises.scss';
 import { useHistory } from "react-router-dom";
 import {FirebaseContext} from '../../../firebase';
 import UserContext from '../../../Context/UserContext/UserContext';
+import Pdf from "react-to-pdf";
+import PDF from './Exercise/TestPDF';
 
 
 const Exercises = ({urlParams}) => {
-    
-   
- 
 
+    const refs = React.createRef();
+    
     
     var matiere =  urlParams.matieres;
     var chapitre = urlParams.chapitre;
@@ -43,9 +44,9 @@ const Exercises = ({urlParams}) => {
                 reference.once("value", user_informations => {
                 userContext.get_user_informations(user_informations.val());
               //  setinfosLevel(user_informations.val().level)
+                   
                 
-                
-                    const reference_exercices = database.ref('schoolLevels/Terminale/subjects/'+matiere+'/'+chapitre+'/exercice')
+                    const reference_exercices = database.ref('schoolLevels/'+user_informations.val().level+'/subjects/'+matiere+'/'+chapitre+'/exercice')
 
                     reference_exercices.once("value", exercice_chapitre => {
                         const exercices_user = exercice_chapitre.val();
@@ -106,7 +107,8 @@ const Exercises = ({urlParams}) => {
                     
                 })  :  <p>No Exercices available</p>} 
               
-                
+            
+      
             </div>
 
            
