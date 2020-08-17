@@ -1,4 +1,4 @@
-import React , { useContext , useEffect , useState } from 'react';
+import React , { useContext , useEffect , useState , Fragment} from 'react';
 
 import { Divider } from 'semantic-ui-react'
 import Progress from './Progress/Progress';
@@ -13,6 +13,13 @@ import './Quizz.scss';
 import {FirebaseContext} from '../../../firebase';
 import UserContext from '../../../Context/UserContext/UserContext';
 import { useHistory } from "react-router-dom";
+
+import { Alert } from 'react-bootstrap';
+
+import { MathComponent } from 'mathjax-react'
+
+
+
 
 
 
@@ -33,26 +40,43 @@ const Quizz = ({ match }) => {
     const [quizzQuestions , setQuizzQuestions] = useState([]);
     const [ currentIndex , setCurrentIndex ] = useState(0);
 
+    const [loading , setLoading] = useState(true);
+
     const handle_next_step = index => {
         setCurrentIndex(index);
     }
 
+    const handleCurrentIndex = index => setCurrentIndex(index);
+
     const handleQuizzQuestions = quizzQuestions => {
 
-       const newQuizz = quizzQuestions.questions.map(quizzQuestion => {
-            const questions = quizzQuestion.choices.split("#");
-            return [{
-                ...quizzQuestion,
-                choices: questions
-            }]
-        });
+        if(quizzQuestions){
+            const newQuizz = quizzQuestions.questions.map(quizzQuestion => {
+                const questions = quizzQuestion.choices.split("#");
+                return [{
+                    ...quizzQuestion,
+                    choices: questions
+                }]
+            });
+    
+            setQuizzQuestions(newQuizz);
+            setLoading(false)
+        }else{
+            setQuizzQuestions([]);
+            setLoading(false)
+        }
 
-        setQuizzQuestions(newQuizz);
+     
     };
 
 
     useEffect(() => {
         console.log(userContext);
+
+        if(userContext.user_current_question_index !== 0){
+            handleCurrentIndex(userContext.user_current_question_index);
+        }
+
 
         firebase.auth.onAuthStateChanged( user => {
             if(user){
@@ -68,10 +92,7 @@ const Quizz = ({ match }) => {
                     userContext.get_user_informations(user_informations.val());
                     //  setinfosLevel(user_informations.val().level)
                     console.log(matiere , chapitre)
-                    
-                    
                     const reference_exercices = database.ref(`schoolLevels/Terminale/subjects/${matiere}/${chapitre}/quiz`);
-
     
                     reference_exercices.once("value", quizz => {
                         console.log(quizz.val())
@@ -94,19 +115,26 @@ const Quizz = ({ match }) => {
             <div className = 'quizz-container'>
                 <div className="container">
                     { console.log(quizzQuestions.length ? quizzQuestions : [])}
-                    <Progress/>
-                    <Divider hidden />
-                    <DownloadButton/>
-                    <Divider hidden />
+
+                    { (quizzQuestions.length !== 0 && !loading) && (
+                        <Fragment>
+                            <Progress/>
+                            <Divider hidden />
+                            {/*<DownloadButton/>*/}                            
+                            <Divider hidden />
+                        </Fragment>
+                    )
+                    
+                    }
                     <Divider hidden />
 
-                        <div className={`loader-container ${quizzQuestions.length > 0 ? 'd-none' : '' }`} style = {{ height: '30vh' , position: 'relative' }}>
-                            <Dimmer active inverted>
-                                <Loader inverted content='Wait please...' />
-                            </Dimmer>
-                        </div>
+                    <div className={`loader-container ${ loading ? '' : 'd-none' }`} style = {{ height: '30vh' , position: 'relative' }}>
+                        <Dimmer active inverted>
+                            <Loader inverted content='Wait please...' />
+                        </Dimmer>
+                    </div>
 
-                        { quizzQuestions.length > 0 &&
+                    { quizzQuestions.length > 0 &&
                         <QuizzForm single 
                             title = {` ${quizzQuestions.length ? quizzQuestions[currentIndex][0].question : 'quizzQuestions' } ` } 
                             choices = {quizzQuestions.length ? quizzQuestions[currentIndex][0].choices : []} 
@@ -117,15 +145,16 @@ const Quizz = ({ match }) => {
                         />
                         
                     }
+
+                    { (quizzQuestions.length === 0 && !loading) &&
                         
-                
-
-                   
-
-                 
-
-                   
+                        <Alert variant= 'secondary'>
+                            No Quizz
+                        </Alert>
+                    }
+                    
                     <Divider hidden />
+
                 </div>
             </div>
         );

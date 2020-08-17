@@ -7,7 +7,7 @@ const MatiereComponent = (props) => {
     return (
         <div className="matiere-container">
             <div className="image_container">
-                <img src={props.logo}   />
+                <img src={props.logo} alt = ""   />
             </div>
            
             <div className="details-matieres">
