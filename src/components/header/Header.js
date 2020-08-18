@@ -5,12 +5,11 @@ import { FaPhoneAlt  } from 'react-icons/fa'
 import {Link} from 'react-router-dom';
 import {FirebaseContext} from '../../firebase'
 import UserContext from '../../Context/UserContext/UserContext';
-
 import HamburgerMenu from './Menu/HamburgerMenu/HamburgerMenu';
-
 import { useHistory } from "react-router-dom";
+import Avatar from '../../images/avatar.png'
 
-
+import { Dropdown } from 'react-bootstrap';
 
 const Header = () =>  {
 
@@ -55,7 +54,24 @@ const Header = () =>  {
 
                         <div className="logout-container">
                             {!logout ? 
-                                <span className="logout-link contact-style" onClick={HandleLogout}>Déconnexion</span>  : null
+                                ( 
+                                <div className="div_logout_container">
+                                    <Dropdown>
+                                    <Dropdown.Toggle variant="success" id="dropdown-basic">
+                                        <img src={Avatar} width='20%'  />
+                                    </Dropdown.Toggle>
+
+                                    <Dropdown.Menu>
+                                        <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+                                        <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+                                        <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                                    </Dropdown.Menu>
+                                    </Dropdown>
+                                    {/* <img src={Avatar} width='20%' /> */}
+                                    <span className="logout-link contact-style" onClick={HandleLogout}>Déconnexion</span>
+                                </div>
+                                ) 
+                                 : null
                             }
                         </div>
                     </div>

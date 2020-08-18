@@ -5,6 +5,11 @@
     src: url('../../fonts/Rubik-Medium.ttf');
 }
 
+.div_logout_container{
+  display: flex;
+  justify-content: space-between;
+}
+
 .header{
     padding-top: 3%;
     padding-bottom: 3%;
@@ -88,7 +93,7 @@
                 .logout-link{
                     display: block;
                     background-color: #707070;
-                    padding: 5px 20px;
+                    padding: 5px 10px;
                     color: white;
                     text-transform: uppercase;
                     font-size: 11px;
