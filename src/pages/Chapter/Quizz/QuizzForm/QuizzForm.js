@@ -1,10 +1,9 @@
 import React , { useState , useContext } from 'react';
 
 import { Checkbox, Form , Button } from 'semantic-ui-react';
-
 import './QuizzForm.scss';
 import UserContext from '../../../../Context/UserContext/UserContext';
-import MathJax from 'react-mathjax-preview'
+import MathJax from 'react-mathjax-preview';
 
 
 
@@ -51,7 +50,8 @@ const QuizzForm = ({  multiple , title , choices , correct , next_step , current
         }else if(count === question_limit){
             if(answer === correct){
                 if(current_index <= question_limit){
-                    alert('found');
+                    //alert('found');$
+
                     setFoundAnswer(foundAnswer+1);
                     setResponse('');
                     userContext.update_user_progression((foundAnswer+1)/question_limit);
@@ -61,7 +61,7 @@ const QuizzForm = ({  multiple , title , choices , correct , next_step , current
             }else{
                 if(current_index <= question_limit){
                     setResponse('');
-                    alert('Not found');
+                    //alert('Not found');
                 }else{
                     alert('that is all');
                 }
@@ -70,7 +70,7 @@ const QuizzForm = ({  multiple , title , choices , correct , next_step , current
         }else{
             if(answer === correct){
                 if(current_index <= question_limit){
-                    alert('found');
+                    //alert('found');
                     setTimeout(() => {
                         next_step(current_index + 1);
                         setShowAnswer(false);
@@ -89,9 +89,9 @@ const QuizzForm = ({  multiple , title , choices , correct , next_step , current
                         setShowAnswer(false);
                     } , 2000 );
                     setResponse('');
-                    alert('Not found');
+                    //alert('Not found');
                 }else{
-                    alert('that is all');
+                    //alert('that is all');
                 }
             }
         }

@@ -5,7 +5,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'semantic-ui-css/semantic.min.css';
 import './style/_style.scss';
 import HomePage from './components/content/home-page/HomePage';
-import Footer from './components/footer/Footer';
 import {BrowserRouter as Router,Switch,Route} from 'react-router-dom';
 import CreatAccount  from './components/content/inscription/create_account';
 import EleveAccount from './components/content/inscription/EleveCompte';
@@ -17,19 +16,7 @@ import SignUp from './components/content/inscription/SignUp';
 import Dashboard from './pages/LoggedIn/Dashboard';
 import Chapitres from './pages/LoggedIn/Chapitres';
 import Quizz from './pages/Chapter/Quizz/Quizz';
-import FadeIn from 'react-fade-in';
-import {LoginProvider} from './providers/LoginContext'
-import {LoggedinProvider} from './providers/sessionLoggedIn/LoggedinContext';
 import TestPDF from './pages/Chapter/Exercises/Exercise/TestPDF'
-<<<<<<< HEAD
-=======
-
-
-<<<<<<< HEAD
->>>>>>> 7f6b410fb6237c0e54df595814ff60b9e31cf055
-
-=======
->>>>>>> c891781476f020e3fb1adebe40f75dc578f4b1e6
 
 
 const  App = () => {
