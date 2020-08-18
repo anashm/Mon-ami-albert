@@ -10,6 +10,7 @@ import Lastdiv from './Lastdiv';
 import ApplicationSection from './Application/ApplictaionSection';
 import ClassesSection from './ClassesSection/ClassesSection';
 import FreeChapterSection from './FreeChapterSection/FreeChapterSection';
+import Footer from '../../footer/Footer';
 
 import './style/homapage.scss';
 
@@ -60,7 +61,8 @@ export default function HomePage(props) {
               <Lastdiv />
             
             */}
-           
+            <Footer />
+
         </Fragment>
     )
 }

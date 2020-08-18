@@ -21,8 +21,18 @@ import FadeIn from 'react-fade-in';
 import {LoginProvider} from './providers/LoginContext'
 import {LoggedinProvider} from './providers/sessionLoggedIn/LoggedinContext';
 import TestPDF from './pages/Chapter/Exercises/Exercise/TestPDF'
+<<<<<<< HEAD
+=======
 
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 7f6b410fb6237c0e54df595814ff60b9e31cf055
+
+=======
+>>>>>>> c891781476f020e3fb1adebe40f75dc578f4b1e6
+>>>>>>> c2d59d669705d4d0d2f02137d19372fa58627a9b
 
 
 const  App = () => {
@@ -56,7 +66,6 @@ const  App = () => {
         
       </main>
 
-      <Footer />
     </Router>
 
 

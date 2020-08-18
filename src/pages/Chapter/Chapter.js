@@ -35,7 +35,7 @@ const Chapter = ({match}) => {
 
 
 
-    /* Component functions */
+    /*--- Component functions  ---*/
     const handleChapterCoursesButton = () => {
         setCoursesContent(true);
         setQuizzContent(false);
