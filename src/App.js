@@ -18,6 +18,10 @@ import Chapitres from './pages/LoggedIn/Chapitres';
 import Quizz from './pages/Chapter/Quizz/Quizz';
 import TestPDF from './pages/Chapter/Exercises/Exercise/TestPDF'
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 9c62f8dcc28356fbeee5767ab45d1ce6821e606a
 
 const  App = () => {
 

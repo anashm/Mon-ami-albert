@@ -22,7 +22,7 @@ const QuizzForm = ({  multiple , title , choices , correct , next_step , current
     const [ checkAnswer , setCheckAnswer ] = useState('');
 
 
-    const [ disabled , setDisabled ] = useState(false)
+    const [ disabled , setDisabled ] = useState(false);
 
     const handleClick = (e , titleProps) => {
         const { checked , value , id } = titleProps;

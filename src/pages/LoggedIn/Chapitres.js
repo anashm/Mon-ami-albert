@@ -40,7 +40,7 @@ const  Chapitres = ({match}) => {
                 reference_chapitres.on("value", chapitres => {
                     const chapitres_liste = chapitres.val();
                     chapitres_liste  ?  setChapitresTitle(chapitres_liste) : setChapitresTitle([])
-
+                    
                 });
             })
 
@@ -69,6 +69,24 @@ const  Chapitres = ({match}) => {
                     </div>
                     <div className="exercises-content" style = { { transform: `${!openTab ? 'scaleY(0)' : 'scaleY(1)'}` , transformOrigin: '100% 0%' } } >
                         
+                        {/* {
+                            (chapitresTitle != null) ? 
+                            <div className="chapters">
+                                {  chapitresTitle.map( (chapitre,index) => {
+                                    return (
+                                        <Link to={`/chapter/${matiere}/${chapitre}`} key = {index}> 
+                                            <ChapitreComponent ordre={index+1} title={chapitre} />
+                                        </Link>
+                                    )
+                                    
+                                })  }
+                            </div> : 
+                            <div className="loader-container" style = {{ height: '30vh' }}>
+                                <Dimmer active inverted>
+                                    <Loader inverted content='Wait please...' />
+                                </Dimmer>
+                            </div>
+                        } */}
                         { chapitresTitle.length > 1 &&
                         
                             <div className="chapters">
