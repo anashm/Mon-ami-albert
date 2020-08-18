@@ -2,19 +2,25 @@ import React,{useState,useContext} from 'react';
 import './SignUp.css';
 import avatar from '../../../images/avatar.png';
 import { Link } from 'react-router-dom';
-import { Button} from 'semantic-ui-react';
+import { Button, Form,Select} from 'semantic-ui-react';
 import Animation from './AnimationLottie';
 import {FirebaseContext} from '../../../firebase'
 import firebase from 'firebase';
-
 import Title from '../../general/Title/Title';
 
 
 const  SignUp = (props) => {
 
     const Firebase = useContext(FirebaseContext)
-
+    //const database = Firebase.getData();
    
+    const genderOptions = [
+        { text: 'Etablissement 1', value: 'Etablissement 1' },
+        {  text: 'Etablissement 2', value: 'Etablissement 2' },
+        {  text: 'Etablissement 3', value: 'Etablissement 3' },
+        {  text: 'Etablissement 4', value: 'Etablissement 4' },
+      ]
+      
 
     const data = {
         first_name : '',
@@ -22,24 +28,82 @@ const  SignUp = (props) => {
         email : '',
         password : '',
         re_password : '',
+        etablissement : '',
         usersRef : firebase.database().ref('users')
     }
+
     const [SignUpData,setSignUpData] = useState(data);
     const [error , setError] = useState('');
-
+    const [school , setSchool] = useState('')
     
     const handleChange = (e) => {
+       //alert(e.target.value)
+ 
+      
+       //data.etablissement({value: e.target.value});
         setSignUpData({...SignUpData,[e.target.id] : e.target.value})
-        
+        console.log(school)
     }
+
+    const handleSchoolChange = (e,result) => {
+       
+        console.log(result.value)
+        setSchool(result.value)
+
+    }   
 
     const saveUser = (createdUser) => {
        
         return data.usersRef.child(createdUser.user.uid).set({
             lastName: SignUpData.last_name,
             firstName: SignUpData.first_name,
-            level:props.location.state.fonction
+            level:props.location.state.fonction,
+            points : 50,
+            avatar : 'Boy-3',
+            pays : "fr",
+            etablissement : school,
+           Progression : {
+                Terminal : {
+                    progression :0,
+                    Mathematique : {
+                        progression : 0
+                    }
+                },
+                'Maths Spe' : {
+                    progression :0,
+                    Mathematique : {
+                        progression : 0
+                    }
+                },
+                'Maths Sup' : {
+                    progression :0,
+                    Mathematique : {
+                        progression : 0
+                    }
+                },
+                Première : {
+                    progression :0,
+                    Mathematique : {
+                        progression : 0
+                    }
+                },
+                Seconde : {
+                    progression :0,
+                    Mathematique : {
+                        progression : 0
+                    }
+                },
+                Terminale : {
+                    progression :0,
+                    Mathematique : {
+                        progression : 0
+                    }
+                },
+           }
         });
+        /* return data.usersRef.child(createdUser.user.uid+"/Progression").set({
+
+        }) */
     }
 
     const handleSubmit = (e) => {
@@ -91,8 +155,32 @@ const  SignUp = (props) => {
 
 
                 <center>{errorMsg}</center>
-                <form onSubmit={handleSubmit}>
+                <Form onSubmit={handleSubmit}>
                     <div className="form-sign-up">
+                        <div>
+                            <div className="col">
+                             
+                                    <Form.Field 
+                                        control={Select}
+                                        options={genderOptions}
+                                        label={{ children: 'Gender',
+                                         htmlFor: 'form-select-control-gender' }}
+                                        placeholder='Etablissement'
+                                        onChange = {handleSchoolChange}
+                                        search
+                                        searchInput={{ id: 'form-select-control-gender' }}
+                                    />
+                               
+                                    {/* <select className="form-control" onChange={handleChange} value={SignUpData.etablissement} id="etablissement">
+                                        <option value="Etablissement 1">Etablissement 1</option>
+                                        <option value="Etablissement 2">Etablissement 2</option>
+                                        <option value="Etablissement 3">Etablissement 3</option>
+                                        <option value="Etablissement 4">Etablissement 4</option>
+                                        <option value="Etablissement 5">Etablissement 5</option>
+                                    </select> */}
+                            </div>
+                        </div>
+
                         <div className="row">
 
                             <div className="col">
@@ -111,6 +199,9 @@ const  SignUp = (props) => {
                             </div>
                         </div>
 
+                        
+
+
                         <div className="row">
                             <div className="col">
                                 <input type="password" onChange={handleChange} value={SignUpData.password} className="form-control" placeholder="Password" id="password" />
@@ -127,7 +218,7 @@ const  SignUp = (props) => {
                         {/* </Link>   */}
                         <p className="deja_un_compte">Vous avez déjà un compte ? <Link to="/login"> Connecte-toi </Link></p>
                     </div>
-                </form>
+                </Form>
 
                {/*  { loaded ? <Animation /> : '' } */}
                 

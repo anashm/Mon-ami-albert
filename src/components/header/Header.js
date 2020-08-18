@@ -55,7 +55,8 @@ const Header = () =>  {
                         <div className="logout-container">
                             {!logout ? 
                                 ( 
-                                <div className="div_logout_container">
+                                <span className="logout-link contact-style" onClick={HandleLogout}>Déconnexion</span>
+                                /* <div className="div_logout_container">
                                     <Dropdown>
                                     <Dropdown.Toggle variant="success" id="dropdown-basic">
                                         <img src={Avatar} width='20%'  />
@@ -67,9 +68,9 @@ const Header = () =>  {
                                         <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
                                     </Dropdown.Menu>
                                     </Dropdown>
-                                    {/* <img src={Avatar} width='20%' /> */}
+                                   
                                     <span className="logout-link contact-style" onClick={HandleLogout}>Déconnexion</span>
-                                </div>
+                                </div> */
                                 ) 
                                  : null
                             }
