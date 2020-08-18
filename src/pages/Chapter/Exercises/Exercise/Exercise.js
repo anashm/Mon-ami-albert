@@ -53,12 +53,14 @@ const Exercise = ( { title ,   downloadLink , index , enonce_intitule , enonce_c
     const isValidUrl = (value) => {
         
 		    var res = value.match(/(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g);
-		    if(res == null)
-		        setIsUrl(false);
+            
+            if(res == null)
+		        return 'false';
 		    else
-            setIsUrl(true);
+                return 'true';
 		
     }
+   
    
    
     
@@ -94,7 +96,7 @@ const Exercise = ( { title ,   downloadLink , index , enonce_intitule , enonce_c
             { loader ? <Dimmer active inverted><Loader /></Dimmer> : ''} 
                
                <div style={{display: 'flex',justifyContent: 'flex-end'}}>
-                        <Pdf targetRef={reference_pdf} filename="post.pdf">
+                        <Pdf targetRef={reference_pdf} filename="exercices.pdf">
                             {({ toPdf }) => 
                                 <div className = 'download-btn-container'>
                                     
@@ -104,15 +106,15 @@ const Exercise = ( { title ,   downloadLink , index , enonce_intitule , enonce_c
                </div>
 
                         
-                
+              
                 
 
                <div className="container-pdf" ref={reference_pdf} >
                    
                 <div className="enonce-container" >
                      <h3>Enoncé</h3>
-                    {/*  {isValidUrl(enonce_intitule) ? <img src={enonce_intitule} /> : <p> <MathJax  math={enonce_intitule} /></p>  } */}
-                     <p> <MathJax  math={enonce_intitule} /></p>
+                     {isValidUrl(enonce_intitule) == 'true' ? <img src={enonce_intitule} width='25%' /> : <p> <MathJax  math={enonce_intitule} /></p>  }
+                     {/* <p> <MathJax  math={enonce_intitule} /></p> */}
                      <p className="enonce-choix">
                         {intitule_choices.map( (choix,index) => {
                             return (
@@ -126,8 +128,8 @@ const Exercise = ( { title ,   downloadLink , index , enonce_intitule , enonce_c
                 
                 <div className="corrige-container">             
                     <h3>Corrigé</h3>  
-                    
-                    <p> <MathJax  math={corrige_intitule} /> </p>
+                    {isValidUrl(corrige_intitule) == 'true' ? <img src={corrige_intitule} width='25%'  /> : <p> <MathJax  math={corrige_intitule} /></p>  }
+                    {/* <p> <MathJax  math={corrige_intitule} /> </p> */}
                     <p className="enonce-choix">   
                         {corrige_choix.map( (choix,index) => {
                         return (
