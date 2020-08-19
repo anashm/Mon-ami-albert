@@ -4,7 +4,8 @@ import {
     GET_USER_INFORMATIONS,
     UPDATE_USER_LEVEL,
     UPDATE_USER_PROGRESS,
-    UPDATE_USER_CURRENT_INDEX
+    UPDATE_USER_CURRENT_INDEX,
+    UPDATE_USER_POINTS
 } from '../Types';
 
 import UserReducer from './UserReducer';
@@ -16,7 +17,8 @@ const UserState = ({ children }) => {
         user: null,
         user_informations : null,
         user_progression: 0,
-        user_current_question_index: 0
+        user_current_question_index: 0,
+        user_points : 50
     }
 
     const [ state , dispatch ] = useReducer(UserReducer , initialState);
@@ -37,6 +39,9 @@ const UserState = ({ children }) => {
     
     const update_user_current_question_index = index => dispatch({ type: UPDATE_USER_CURRENT_INDEX , payload: index });
 
+    const update_user_points = points => dispatch({ type: UPDATE_USER_POINTS , payload: points });
+
+
 
     return (
        <UserContext.Provider value={{ 
@@ -44,11 +49,13 @@ const UserState = ({ children }) => {
             user_informations: state.user_informations,
             user_progression: state.user_progression,
             user_current_question_index: state.user_current_question_index,
+            user_points: state.user_points,
             get_connected_user, 
             get_user_informations ,
             update_user_informations,
             update_user_progression,
-            update_user_current_question_index
+            update_user_current_question_index,
+            update_user_points
             }} >
            {children}
        </UserContext.Provider>

@@ -16,11 +16,6 @@ import { useHistory } from "react-router-dom";
 
 import { Alert } from 'react-bootstrap';
 
-import { MathComponent } from 'mathjax-react'
-
-
-
-
 
 
 
@@ -39,11 +34,18 @@ const Quizz = ({ match }) => {
 
     const [quizzQuestions , setQuizzQuestions] = useState([]);
     const [ currentIndex , setCurrentIndex ] = useState(0);
-
     const [loading , setLoading] = useState(true);
+    const [ reset , setReset ] = useState(false);
+
+
 
     const handle_next_step = index => {
-        setCurrentIndex(index);
+        if(index < quizzQuestions.length){
+            console.log(index)
+            setCurrentIndex(index);
+        }else{
+            setReset(true);
+        }
     }
 
     const handleCurrentIndex = index => setCurrentIndex(index);
@@ -60,21 +62,28 @@ const Quizz = ({ match }) => {
             });
     
             setQuizzQuestions(newQuizz);
-            setLoading(false)
+            setLoading(false);
         }else{
             setQuizzQuestions([]);
             setLoading(false)
         }
-
-     
     };
 
 
     useEffect(() => {
-        console.log(userContext);
 
-        if(userContext.user_current_question_index !== 0){
-            handleCurrentIndex(userContext.user_current_question_index);
+        if(userContext.user_current_question_index){
+            console.log(1)
+            if(userContext.user_current_question_index < quizzQuestions.length){
+                handleCurrentIndex(userContext.user_current_question_index);
+            }else{
+                if(userContext.user_current_question_index > -1){
+                    handleCurrentIndex(userContext.user_current_question_index );
+                }else{
+                    handleCurrentIndex(quizzQuestions.length - 1);
+                    setReset(true);
+                }
+            }
         }
 
 
@@ -107,12 +116,13 @@ const Quizz = ({ match }) => {
             }
         });
 
-    } , [firebase]);
+    } , [firebase , userContext.user_current_question_index]);
 
 
     if(userContext.user){
         return (
             <div className = 'quizz-container'>
+                { console.log('nzaou current index' , currentIndex) }
                 <div className="container">
                     { console.log(quizzQuestions.length ? quizzQuestions : [])}
 
@@ -124,8 +134,8 @@ const Quizz = ({ match }) => {
                             <Divider hidden />
                         </Fragment>
                     )
-                    
                     }
+
                     <Divider hidden />
 
                     <div className={`loader-container ${ loading ? '' : 'd-none' }`} style = {{ height: '30vh' , position: 'relative' }}>
@@ -142,19 +152,21 @@ const Quizz = ({ match }) => {
                             current_index = { currentIndex }
                             next_step = { handle_next_step }
                             question_limit = { quizzQuestions.length ? quizzQuestions.length - 1 : 0  }
+                            question_length = { quizzQuestions.length ? quizzQuestions.length : 0  }
+                            course = {matiere}
+                            chapter = {chapitre}
+                            reset = {reset}
+                            resetClicked = { () => {setReset(false) ; setCurrentIndex(0)} }
                         />
-                        
                     }
 
                     { (quizzQuestions.length === 0 && !loading) &&
-                        
                         <Alert variant= 'secondary'>
                             No Quizz
                         </Alert>
                     }
                     
                     <Divider hidden />
-
                 </div>
             </div>
         );

@@ -3,6 +3,29 @@
     box-shadow: 0px 2px 10px #00000029;
     color: #707070;
 
+    .quizz-submit-btn{
+
+        display: flex;
+        justify-content: flex-end;
+
+       
+        button{
+            background-color: #79B600;
+            color: white;
+            padding: 10px 50px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 200;
+            font-family: Rubik , 'sabs-serif';
+            letter-spacing: 1px;
+            transition: all 0.3s;
+
+            &:hover{
+                opacity: 0.8;
+            }
+        }
+    }
+
     .quizz-form-title{
         @media only screen and (max-width: 450px) {
             font-size: 18px;
@@ -18,28 +41,7 @@
         padding-top: 5%;
         font-family: Rubik , 'sabs-serif';
 
-        .quizz-submit-btn{
-
-            display: flex;
-            justify-content: flex-end;
-
-           
-            button{
-                background-color: #79B600;
-                color: white;
-                padding: 10px 50px;
-                border-radius: 30px;
-                font-size: 16px;
-                font-weight: 200;
-                font-family: Rubik , 'sabs-serif';
-                letter-spacing: 1px;
-                transition: all 0.3s;
-
-                &:hover{
-                    opacity: 0.8;
-                }
-            }
-        }
+        
     }
 
     .response-container{
