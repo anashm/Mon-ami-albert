@@ -17,7 +17,7 @@ import Dashboard from './pages/LoggedIn/Dashboard';
 import Chapitres from './pages/LoggedIn/Chapitres';
 import Quizz from './pages/Chapter/Quizz/Quizz';
 import TestPDF from './pages/Chapter/Exercises/Exercise/TestPDF'
-
+import Profil from './components/header/ProfilPage'
 
 
 const  App = () => {
@@ -40,6 +40,7 @@ const  App = () => {
             <Route exact path="/dashboard-user" component={Dashboard} />
             <Route exact path="/chapitres/:matieres" component={Chapitres} />
             <Route exact path="/test-pdf" component={TestPDF} />
+            <Route exact path="/profil" component={Profil} />
           </Switch>
           
           {/* </LoggedinProvider> */}
