@@ -72,19 +72,16 @@ const Quizz = ({ match }) => {
 
     useEffect(() => {
 
-        if(userContext.user_current_question_index){
-            console.log(1)
-            if(userContext.user_current_question_index < quizzQuestions.length){
-                handleCurrentIndex(userContext.user_current_question_index);
-            }else{
-                if(userContext.user_current_question_index > -1){
-                    handleCurrentIndex(userContext.user_current_question_index );
-                }else{
-                    handleCurrentIndex(quizzQuestions.length - 1);
-                    setReset(true);
-                }
-            }
+        console.log( 'final test' , userContext.user_current_question_index);
+
+        if(userContext.user_current_question_index !== null){
+            handleCurrentIndex(userContext.user_current_question_index);
         }
+
+        if(userContext.user_current_question_index == null){
+            handleCurrentIndex(0);
+        }
+
 
 
         firebase.auth.onAuthStateChanged( user => {
@@ -101,14 +98,13 @@ const Quizz = ({ match }) => {
                     userContext.get_user_informations(user_informations.val());
                     //  setinfosLevel(user_informations.val().level)
                     console.log(matiere , chapitre)
-                    const reference_exercices = database.ref(`schoolLevels/Terminale/subjects/${matiere}/${chapitre}/quiz`);
+                    const reference_exercices = database.ref(`schoolLevels/${user_informations.val().level}/subjects/${matiere}/${chapitre}/quiz`);
     
                     reference_exercices.once("value", quizz => {
                         console.log(quizz.val())
                         handleQuizzQuestions(quizz.val());
-
-                    })
-                }) 
+                    });
+                });
             }
             else{
                 console.log('not login');
@@ -116,7 +112,7 @@ const Quizz = ({ match }) => {
             }
         });
 
-    } , [firebase , userContext.user_current_question_index]);
+    } , [firebase , userContext.user_current_question_index , userContext.user_progression , userContext.user_points ]);
 
 
     if(userContext.user){
@@ -156,7 +152,8 @@ const Quizz = ({ match }) => {
                             course = {matiere}
                             chapter = {chapitre}
                             reset = {reset}
-                            resetClicked = { () => {setReset(false) ; setCurrentIndex(0)} }
+                            resetClicked = { () => handleCurrentIndex(0) }
+                            
                         />
                     }
 

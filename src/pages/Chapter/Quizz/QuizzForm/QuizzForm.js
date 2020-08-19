@@ -11,17 +11,16 @@ import {FirebaseContext} from '../../../../firebase';
 
 
 const QuizzForm = ({  multiple ,
-     title , 
-     choices , 
-     correct , 
-     next_step , 
-     current_index , 
-     question_limit , 
-     course , 
-     question_length  , 
-     reset , 
-     resetClicked,
-     chapter }) => {
+    title , 
+    choices , 
+    correct , 
+    next_step , 
+    current_index , 
+    question_limit , 
+    course , 
+    question_length  , 
+    chapter, resetClicked
+     }) => {
 
     const userContext = useContext(UserContext);
     const firebase = useContext(FirebaseContext);
@@ -32,46 +31,76 @@ const QuizzForm = ({  multiple ,
     const [ loading , setLoading ] = useState(false);
     const [ showAnswer , setShowAnswer ] = useState(false);
     const [ checkAnswer , setCheckAnswer ] = useState('');
-    const [ disabled , setDisabled ] = useState(false);
-    const [ userPoints , setUserPoints ] = useState(50);
+    const [ userPoints , setUserPoints ] = useState(0);
 
+
+    const [ finished , setFinished ] = useState(false);
+
+    const [ reset , setReset ] = useState(false);
 
     const database = firebase.getData();
 
-
     useEffect(() => {
+
         firebase.auth.onAuthStateChanged( user => {
             if(user){
                 //code if realod page pour garder context api values
                 userContext.get_connected_user(user);
+
                 const userId = user.uid;                      
-                const reference =  database.ref(`${userContext.user_informations.level}/${course}/progression`);
+                const reference =  database.ref(`users/${userId}/Progression/${userContext.user_informations.level}/${course}/${chapter}`);
 
+                reference.once("value", user_informations => {
+                    //console.log(user_informations.val())
+                    console.log(!user_informations.val());
+                    if(!user_informations.val()){
+                        console.log('we must create a collection');
+                        reference.child(`/progression`).set({
+                            current_question_index:  0,
+                            found_questions : 0,
+                            points: 0,
+                            finished: false,
+                            onReset: false
+                        }).then(() => {
+                            console.log('created');
+                            setFoundAnswer(0);
+                            setUserPoints(0);
+                            userContext.update_user_progression(0);
+                            //update current index
+                            userContext.update_user_current_question_index(0);
+                            //update user points
+                            userContext.update_user_points(0);
+                        })
+                        .catch(e => console.log(e));
+                        //console.log(userContext.user_informations.level)
+                    }else{
+                        const reference =  database.ref(`users/${userId}/Progression/${userContext.user_informations.level}/${course}/${chapter}/progression`);
+                        reference.once('value' , user_informations => {
+                             //console.log(user_informations.val())
+                            const { current_question_index , found_questions , points , finished , onReset } = user_informations.val();
+                            console.log(question_limit , current_question_index , found_questions , points , finished);
+                            userContext.update_user_progression(found_questions/question_length);
+                            //update current index
+                            userContext.update_user_current_question_index(current_question_index);
+                            //update user points
+                            userContext.update_user_points(points);
+                            setFoundAnswer(found_questions);
+                            setUserPoints(points);
+                            
+                            setReset(onReset);
+                            
 
-                if(userContext.user_informations){
-                    //console.log('hello')
-                    reference.once("value", user_informations => {
-                        //console.log(user_informations.val())
-                        const { current_question_index , found_questions, points } = user_informations.val();
-                        console.log(question_limit , current_question_index , found_questions , points);
+                            if(finished){
+                                setFinished(finished);
+                            }
+                        });
+                    }
 
-                        setUserPoints(points);
-                        //update user context progress
-                        userContext.update_user_progression(found_questions/question_length);
-                        //update current index
-                        userContext.update_user_current_question_index(current_question_index);
-                        //update user points
-                        userContext.update_user_points(points);
-                    });
-
-                }
+                });
             }
-            else{
-                console.log('not login');
-            }
-            });
-            
-    }, [firebase]);
+        
+        });
+    } , [firebase]);
 
     const handleResetButton = () => {
         //alert('hello')
@@ -80,25 +109,21 @@ const QuizzForm = ({  multiple ,
         console.log(reference)
         reference.child(`${userContext.user_informations.level}/${course}/${chapter}/progression`).update({
             current_question_index:  0,
-            found_questions :  0,
-            points:  50
+            found_questions : 0,
         }).then(() => {
              //update user context progress
             userContext.update_user_progression(0);
              //update current index
             userContext.update_user_current_question_index(0);
              //update user points
-            userContext.update_user_points(50);
             setFoundAnswer(0);
-            setUserPoints(50);
             resetClicked();
+            setReset(false)
         })
         .catch(e => console.log(e));
         //console.log(userContext.user_informations.level)
+
     }
-
-
-
 
     const handleClick = (e , titleProps) => {
         const { checked , value , id } = titleProps;
@@ -106,7 +131,6 @@ const QuizzForm = ({  multiple ,
         setResponse(value);
         setAnswer(id);
         setCheckAnswer(value);
-
     }
 
     const handleMultipleSelectClick = (e , titleProps) => {
@@ -121,8 +145,7 @@ const QuizzForm = ({  multiple ,
         /*userContext.update_user_current_question_index(current_index);
         setCount(count + 1);
         setShowAnswer(true);*/
-
-        console.log(question_length , question_limit , current_index);
+        //console.log(question_length , question_limit , current_index);
 
         if(current_index < question_limit){
 
@@ -132,21 +155,50 @@ const QuizzForm = ({  multiple ,
                 setShowAnswer(true);
                 alert('found');
                 setFoundAnswer(foundAnswer+1);
-                setUserPoints(userPoints+10);
                 setResponse('');
-
-
                 userContext.update_user_progression((foundAnswer+1)/question_length);
-                userContext.update_user_points(userPoints+10);
-
 
                 if(userContext.user){
+                    let score = 0;
+
+                    if( !finished && ( ((foundAnswer+1)/question_length) <= 0.25) ){
+                        userContext.update_user_points(0);
+                        setUserPoints(0);
+                        score = 0;
+                    }
+    
+                    if( !finished &&  (((foundAnswer+1)/question_length) > 0.25 && ((foundAnswer+1)/question_length) <= 0.5 )){
+                        userContext.update_user_points(20);
+                        setUserPoints(20);
+                        score = 20;
+
+                    }
+    
+    
+                    if( !finished && (((foundAnswer+1)/question_length) > 0.5 && ((foundAnswer+1)/question_length) <= 0.75) ){
+                        userContext.update_user_points(40);
+                        setUserPoints(40);
+                        score = 40;
+                    }
+    
+                    if( !finished && (((foundAnswer+1)/question_length) > 0.75 && ((foundAnswer+1)/question_length) <= 1 )){
+                        userContext.update_user_points(60);
+                        setUserPoints(60);
+                        score = 60;
+                    }
+
+                    if(finished){
+                        score = userPoints;
+                    }
+
+
                     const reference =  database.ref(`users/${userContext.user.uid}/Progression/`);
                     console.log(reference)
-                    reference.child(`${userContext.user_informations.level}/${course}/${chapter}/progression`).set({
+                    reference.child(`${userContext.user_informations.level}/${course}/${chapter}/progression`).update({
                         current_question_index: current_index + 1,
                         found_questions : foundAnswer + 1,
-                        points: userPoints + 10
+                        points: score,
+                        onReset: false
                     }).then(() => {
                         setShowAnswer(false);
                         next_step(current_index + 1);
@@ -154,16 +206,19 @@ const QuizzForm = ({  multiple ,
                     .catch(e => console.log(e));
                     //console.log(userContext.user_informations.level)
                 }
+                
+            }
 
-            }else{
+            if(answer !== correct){
                 setShowAnswer(true);
                 setResponse('');
                 alert('Not found');
 
                 const reference =  database.ref(`users/${userContext.user.uid}/Progression/`);
                 console.log(reference)
-                reference.child(`${userContext.user_informations.level}/${course}/${chapter}/progression`).set({
+                reference.child(`${userContext.user_informations.level}/${course}/${chapter}/progression`).update({
                     current_question_index: current_index + 1,
+                    onReset: false
                 }).then(() => {
                     setShowAnswer(false);
                     next_step(current_index + 1);
@@ -171,44 +226,70 @@ const QuizzForm = ({  multiple ,
                 })
                 .catch(e => console.log(e));
                 //console.log(userContext.user_informations.level)
-
             }
-            setDisabled(true);
-
-
 
         }
-        //test for last question
-        else if(current_index === question_limit) {
+        
+        
+        if(current_index === question_limit){
 
             if(answer === correct){
-                alert('found');
-                //alert('found');$
                 setShowAnswer(true);
-
+                alert('found');
                 setFoundAnswer(foundAnswer+1);
-                setUserPoints(userPoints+10);
                 setResponse('');
-
                 userContext.update_user_progression((foundAnswer+1)/question_length);
-                userContext.update_user_points(userPoints+10);
 
                 if(userContext.user){
+                    let score = 0;
+
+                    if( !finished && ( ((foundAnswer+1)/question_length) <= 0.25) ){
+                        userContext.update_user_points(0);
+                        setUserPoints(0);
+                        score = 0;
+                    }
+    
+                    if( !finished &&  (((foundAnswer+1)/question_length) > 0.25 && ((foundAnswer+1)/question_length) <= 0.5 )){
+                        userContext.update_user_points(20);
+                        setUserPoints(20);
+                        score = 20;
+
+                    }
+    
+                    if( !finished && (((foundAnswer+1)/question_length) > 0.5 && ((foundAnswer+1)/question_length) <= 0.75) ){
+                        userContext.update_user_points(40);
+                        setUserPoints(40);
+                        score = 40;
+                    }
+    
+                    if( !finished && (((foundAnswer+1)/question_length) > 0.75 && ((foundAnswer+1)/question_length) <= 1 )){
+                        userContext.update_user_points(60);
+                        setUserPoints(60);
+                        score = 60;
+                    }
+
+                    if(finished){
+                        score = userPoints;
+                    }
+
+
                     const reference =  database.ref(`users/${userContext.user.uid}/Progression/`);
-                    console.log(reference)
-                    reference.child(`${userContext.user_informations.level}/${course}/${chapter}/progression`).set({
-                        current_question_index: current_index + 1,
+                    console.log(reference);
+                    reference.child(`${userContext.user_informations.level}/${course}/${chapter}/progression`).update({
                         found_questions : foundAnswer + 1,
-                        points: userPoints + 10
+                        points: score,
+                        finished: true,
+                        onReset: true
                     }).then(() => {
                         setShowAnswer(false);
-                        next_step(current_index + 1);
+                        setReset(true)
                     })
                     .catch(e => console.log(e));
                     //console.log(userContext.user_informations.level)
                 }
+            }
 
-            }else{
+            if(answer !== correct){
                 setResponse('');
                 setShowAnswer(true);
                 alert('Not found');
@@ -216,25 +297,24 @@ const QuizzForm = ({  multiple ,
                     const reference =  database.ref(`users/${userContext.user.uid}/Progression/`);
                     console.log(reference)
                     reference.child(`${userContext.user_informations.level}/${course}/${chapter}/progression`).update({
-                        current_question_index: current_index + 1,
+                        finished: true,
+                        onReset: true
                     }).then(() => {
                         setShowAnswer(false);
-                        next_step(current_index + 1);
-                        setResponse('');
+                        setReset(true)
                     })
                     .catch(e => console.log(e));
                     //console.log(userContext.user_informations.level)
                 }
             }
-            setDisabled(true);
 
-        }else{
-
-            alert('that is all');
         }
 
+
+        if(current_index > question_limit){
+            alert('you cannot play again')
+        }
     }
-    
 
     if(multiple){
         return (
