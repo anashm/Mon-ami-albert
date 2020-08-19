@@ -17,7 +17,7 @@ const Progress = () => {
     
     useEffect(() => {
         handleProgression(userContext.user_progression);
-    } , [userContext])
+    } , [userContext.user_progression])
 
 
 
