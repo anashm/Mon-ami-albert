@@ -7,7 +7,7 @@ import Animation from './AnimationLottie';
 import {FirebaseContext} from '../../../firebase'
 import firebase from 'firebase';
 import Title from '../../general/Title/Title';
-
+import etablissements from '../../../json/etablissements.json'
 
 const  SignUp = (props) => {
 
@@ -20,6 +20,14 @@ const  SignUp = (props) => {
         {  text: 'Etablissement 3', value: 'Etablissement 3' },
         {  text: 'Etablissement 4', value: 'Etablissement 4' },
       ]
+      
+      //console.log(etablissements)
+      
+        /* etablissements.map( (etablissement , index) => {
+             
+            text : etablissement.Lycée 
+           
+        }) */
       
 
     const data = {
@@ -63,40 +71,55 @@ const  SignUp = (props) => {
             pays : "fr",
             etablissement : school,
            Progression : {
-                Terminal : {
-                    progression :0,
-                    Mathematique : {
-                        progression : 0
-                    }
-                },
+               
                 'Maths Spe' : {
-                    progression :0,
+                    progression_matiere :0,
                     Mathematique : {
-                        progression : 0
+                        progression : {
+                            points : 50,
+                            found_questions : 0,
+                            current_question_index : 0
+                        }
                     }
                 },
                 'Maths Sup' : {
-                    progression :0,
+                    progression_matiere :0,
                     Mathematique : {
-                        progression : 0
+                        progression : {
+                            points : 50,
+                            found_questions : 0,
+                            current_question_index : 0
+                        }
                     }
                 },
                 Première : {
-                    progression :0,
+                    progression_matiere :0,
                     Mathematique : {
-                        progression : 0
+                        progression : {
+                            points : 50,
+                            found_questions : 0,
+                            current_question_index : 0
+                        }
                     }
                 },
                 Seconde : {
-                    progression :0,
+                    progression_matiere :0,
                     Mathematique : {
-                        progression : 0
+                        progression : {
+                            points : 50,
+                            found_questions : 0,
+                            current_question_index : 0
+                        }
                     }
                 },
                 Terminale : {
-                    progression :0,
+                    progression_matiere :0,
                     Mathematique : {
-                        progression : 0
+                        progression : {
+                            points : 50,
+                            found_questions : 0,
+                            current_question_index : 0
+                        }
                     }
                 },
            }
@@ -162,22 +185,15 @@ const  SignUp = (props) => {
                              
                                     <Form.Field 
                                         control={Select}
-                                        options={genderOptions}
-                                        label={{ children: 'Gender',
-                                         htmlFor: 'form-select-control-gender' }}
+                                        options={etablissements}
+                                      
                                         placeholder='Etablissement'
                                         onChange = {handleSchoolChange}
                                         search
                                         searchInput={{ id: 'form-select-control-gender' }}
                                     />
                                
-                                    {/* <select className="form-control" onChange={handleChange} value={SignUpData.etablissement} id="etablissement">
-                                        <option value="Etablissement 1">Etablissement 1</option>
-                                        <option value="Etablissement 2">Etablissement 2</option>
-                                        <option value="Etablissement 3">Etablissement 3</option>
-                                        <option value="Etablissement 4">Etablissement 4</option>
-                                        <option value="Etablissement 5">Etablissement 5</option>
-                                    </select> */}
+                                  
                             </div>
                         </div>
 

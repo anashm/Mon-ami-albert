@@ -21,7 +21,7 @@ import FadeIn from 'react-fade-in';
 import {LoginProvider} from './providers/LoginContext'
 import {LoggedinProvider} from './providers/sessionLoggedIn/LoggedinContext';
 import TestPDF from './pages/Chapter/Exercises/Exercise/TestPDF'
-
+import Profil from './components/header/ProfilPage'
 
 
 const  App = () => {
@@ -44,6 +44,7 @@ const  App = () => {
             <Route exact path="/dashboard-user" component={Dashboard} />
             <Route exact path="/chapitres/:matieres" component={Chapitres} />
             <Route exact path="/test-pdf" component={TestPDF} />
+            <Route exact path="/profil" component={Profil} />
           </Switch>
           
           {/* </LoggedinProvider> */}
