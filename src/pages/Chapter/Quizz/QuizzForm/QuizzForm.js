@@ -1,6 +1,8 @@
-import React , { useState , useContext , useEffect } from 'react';
+import React , { useState , useContext , useEffect , Fragment } from 'react';
 
 import { Checkbox, Form , Button, Icon } from 'semantic-ui-react';
+import { Modal } from 'react-bootstrap';
+
 import './QuizzForm.scss';
 import UserContext from '../../../../Context/UserContext/UserContext';
 import MathJax from 'react-mathjax-preview';
@@ -8,6 +10,29 @@ import MathJax from 'react-mathjax-preview';
 import {FirebaseContext} from '../../../../firebase';
 
 
+
+const EndModal = props => (
+        <Modal
+            {...props}
+            size="lg"
+            aria-labelledby="contained-modal-title-vcenter"
+            centered
+        >
+            <Modal.Header closeButton>
+            <Modal.Title id="contained-modal-title-vcenter">
+                Modal heading
+            </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+            <h4>Centered Modal</h4>
+            <p>
+                Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
+                dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
+                consectetur ac, vestibulum at eros.
+            </p>
+            </Modal.Body>
+        </Modal>
+)
 
 
 const QuizzForm = ({  multiple ,
@@ -37,6 +62,8 @@ const QuizzForm = ({  multiple ,
     const [ finished , setFinished ] = useState(false);
 
     const [ reset , setReset ] = useState(false);
+    const [modalShow, setModalShow] = React.useState(true);
+
 
     const database = firebase.getData();
 
@@ -153,7 +180,7 @@ const QuizzForm = ({  multiple ,
 
             if(answer === correct){
                 setShowAnswer(true);
-                alert('found');
+                //alert('found');
                 setFoundAnswer(foundAnswer+1);
                 setResponse('');
                 userContext.update_user_progression((foundAnswer+1)/question_length);
@@ -212,7 +239,7 @@ const QuizzForm = ({  multiple ,
             if(answer !== correct){
                 setShowAnswer(true);
                 setResponse('');
-                alert('Not found');
+                //alert('Not found');
 
                 const reference =  database.ref(`users/${userContext.user.uid}/Progression/`);
                 console.log(reference)
@@ -235,7 +262,7 @@ const QuizzForm = ({  multiple ,
 
             if(answer === correct){
                 setShowAnswer(true);
-                alert('found');
+                //alert('found');
                 setFoundAnswer(foundAnswer+1);
                 setResponse('');
                 userContext.update_user_progression((foundAnswer+1)/question_length);
@@ -292,7 +319,7 @@ const QuizzForm = ({  multiple ,
             if(answer !== correct){
                 setResponse('');
                 setShowAnswer(true);
-                alert('Not found');
+                //alert('Not found');
                 if(userContext.user){
                     const reference =  database.ref(`users/${userContext.user.uid}/Progression/`);
                     console.log(reference)
@@ -423,9 +450,15 @@ const QuizzForm = ({  multiple ,
 
                 { reset &&
 
-                    <div className="quizz-submit-btn">
-                        <Button  type='button' onClick = { handleResetButton }> <Icon name = 'redo' /> </Button>
-                    </div>
+
+                    <Fragment >
+                        <EndModal
+                         show={modalShow}
+                         onHide={() => setModalShow(false)} />
+                        <div className="quizz-submit-btn">
+                            <Button  type='button' onClick = { handleResetButton }> <Icon name = 'redo' /> </Button>
+                        </div>
+                    </Fragment>
                     
                 }
 
