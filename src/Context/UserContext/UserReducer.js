@@ -1,4 +1,11 @@
-import  {GET_CONNECTED_USER,GET_USER_INFORMATIONS,UPDATE_USER_LEVEL} from "../Types"
+import  {
+    GET_CONNECTED_USER,
+    GET_USER_INFORMATIONS,
+    UPDATE_USER_LEVEL , 
+    UPDATE_USER_PROGRESS,
+    UPDATE_USER_CURRENT_INDEX,
+    UPDATE_USER_POINTS
+} from "../Types"
 
 export default ( state , action) => {
 
@@ -23,6 +30,23 @@ export default ( state , action) => {
                 level : action.payload
                 
             }
+        });
+        case(UPDATE_USER_PROGRESS):
+        return({
+            ...state,
+            user_progression: action.payload
+        });
+
+        case(UPDATE_USER_CURRENT_INDEX):
+        return({
+            ...state,
+            user_current_question_index: action.payload
+        })
+
+        case(UPDATE_USER_POINTS):
+        return({
+            ...state,
+            user_points: action.payload
         })
     
         default:

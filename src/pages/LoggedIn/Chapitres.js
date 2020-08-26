@@ -12,18 +12,23 @@ import { Dimmer, Loader, Image, Segment } from 'semantic-ui-react'
 
 const  Chapitres = ({match}) => {
 
+    const SCORE_MAX = 60;
+
     
     var matiere = match.params.matieres;
-    const firebase = useContext(FirebaseContext)
-    const userContext = useContext(UserContext)
-    const [infosLevel , setinfosLevel ] = useState(null)
-    const [ chapitresTitle , setChapitresTitle ] = useState([])
+    const firebase = useContext(FirebaseContext);
+    const userContext = useContext(UserContext);
+    const [infosLevel , setinfosLevel ] = useState(null);
+    const [ chapters , setChapters ] = useState([]);
+
 
     const [ loading , setLoading ] = useState(true);
 
-    const history = useHistory()
+    const history = useHistory();
+
+
     useEffect(() => {
-       
+
 
         firebase.auth.onAuthStateChanged( user => {
         if(user){
@@ -34,20 +39,48 @@ const  Chapitres = ({match}) => {
             const reference =  database.ref('users/'+userId)
             reference.once("value", user_informations => {
             userContext.get_user_informations(user_informations.val());
-            setinfosLevel(user_informations.val().level)
+            setinfosLevel(user_informations.val().level);
+
+            const test = []
+
             
             const reference_chapitres = database.ref('schoolLevels/'+user_informations.val().level+'/subjects/'+matiere+'/all')
-                reference_chapitres.on("value", chapitres => {
-                    const chapitres_liste = chapitres.val();
-                    chapitres_liste  ?  setChapitresTitle(chapitres_liste) : setChapitresTitle([])
 
+            reference_chapitres.on("value", chapitres => {
+
+                chapitres.val().map(chapter => {
+
+                    const reference =  database.ref(`users/${userId}/Progression/${user_informations.val().level}/${matiere}/${chapter}/progression`);
+                    
+                    reference.once('value' , data => {
+                        if(data.val()){
+                            test.push(data.val())
+                            console.log(data.val());
+
+                            setChapters(prevState => [...prevState , {
+                                title: chapter,
+                                points: data.val().points
+                            }]);
+                        }
+                        
+                        if(!data.val()){
+                            setChapters(prevState => [...prevState , {
+                                title: chapter,
+                                points: 0
+                            }]);
+                        }
+                    });
+                });
+
+
+               
                 });
             })
 
         }else{
 
-           console.log('not login');
-           history.push('/')
+            console.log('not login');
+            history.push('/')
           }
         });
       }, [firebase]);
@@ -56,12 +89,13 @@ const  Chapitres = ({match}) => {
 
         return (
             <div className="container chapter-section" >
+                { console.log(chapters) }
                 <div className="exercices-container">
                     <div className = 'exercises-title-container ' onClick = { () => setOpenTab(!openTab) } >
                         <h2 className="exercises-title">Chapitres</h2>
 
                         <div className="exercises-infos">
-                            <div className="exercises-number"> {chapitresTitle ? chapitresTitle.length : 0} </div>
+                            <div className="exercises-number"> {chapters ? chapters.length : 0} </div>
                             <div className="show-hide-icon">
                                 <span> <Icon name= {` ${ openTab ? 'minus square outline' : 'plus square outline' } `} link size='small' className = 'minus-icon' /> </span>
                             </div>
@@ -69,8 +103,8 @@ const  Chapitres = ({match}) => {
                     </div>
                     <div className="exercises-content" style = { { transform: `${!openTab ? 'scaleY(0)' : 'scaleY(1)'}` , transformOrigin: '100% 0%' } } >
                         
-                        { chapitresTitle.length > 1 &&
-                        
+                        {/* {
+                            (chapitresTitle != null) ? 
                             <div className="chapters">
                                 {  chapitresTitle.map( (chapitre,index) => {
                                     return (
@@ -80,10 +114,29 @@ const  Chapitres = ({match}) => {
                                     )
                                     
                                 })  }
+                            </div> : 
+                            <div className="loader-container" style = {{ height: '30vh' }}>
+                                <Dimmer active inverted>
+                                    <Loader inverted content='Wait please...' />
+                                </Dimmer>
+                            </div>
+                        } */}
+
+                        { chapters.length > 1 &&
+                        
+                            <div className="chapters">
+                                {  chapters.map( (chapitre,index) => {
+                                    return (
+                                        <Link to={`/chapter/${matiere}/${chapitre.title}`} key = {index}> 
+                                            <ChapitreComponent ordre={index+1} title={chapitre.title} percentage = { Math.floor((chapitre.points/SCORE_MAX)*100) } />
+                                        </Link>
+                                    )
+                                    
+                                })  }
                             </div>
                         }
 
-                        { chapitresTitle.length < 1 && 
+                        { chapters.length < 1 && 
                             <div className="loader-container" style = {{ height: '30vh' }}>
                                 <Dimmer active inverted>
                                     <Loader inverted content='Wait please...' />

@@ -19,12 +19,9 @@ const  NiveauxSchoolComponent = (props) => {
         const database = firebase.getData();
         const usersRef =  database.ref('users/'+userId)
 
-        usersRef.update({
-            "level": level
-        });
-       
-        userContext.update_user_informations(level);
-
+        usersRef.update({ "level": level})
+                .then(() => { userContext.update_user_informations(level);})
+                .catch(err => console.log(err));
     }
 
     return (
@@ -36,4 +33,4 @@ const  NiveauxSchoolComponent = (props) => {
     )
 }
 
-export default NiveauxSchoolComponent
+export default NiveauxSchoolComponent;

@@ -11,9 +11,9 @@ const ChapitreComponent = (props) => {
             
                 <div className="progression-bars">
                     <div className="ins-progress">
-                        <div></div>
+                        <div className = 'bg-green h-100' style = {{ width: `${ props.percentage }%` }}></div>
                     </div>
-                    <span className="pourcentage" >0%</span>
+                    <span className="pourcentage" > {props.percentage} %</span>
                 </div>
             </div>
         </div>

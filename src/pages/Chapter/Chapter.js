@@ -23,10 +23,7 @@ const Chapter = ({match}) => {
 
     const history = useHistory();
 
-    console.log(match)
-
-
-
+    //console.log(match)
 
     /* Component state */
     const [ coursesContent , setCoursesContent ]  = useState(false);
@@ -35,7 +32,7 @@ const Chapter = ({match}) => {
 
 
 
-    /* Component functions */
+    /*--- Component functions  ---*/
     const handleChapterCoursesButton = () => {
         setCoursesContent(true);
         setQuizzContent(false);

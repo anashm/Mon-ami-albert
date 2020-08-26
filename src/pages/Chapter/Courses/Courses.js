@@ -7,7 +7,7 @@ import MathJax from 'react-mathjax-preview'
 
 const Courses = ({ urlParams }) => {
 
-    console.log('hnaya'+urlParams)
+   
     //console.log(urlParams.params.matieres)
     let matiere =  urlParams.matieres;
     let chapitre = urlParams.chapitre;
