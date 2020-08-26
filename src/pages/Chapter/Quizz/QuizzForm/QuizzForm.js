@@ -26,9 +26,7 @@ const EndModal = props => (
             <Modal.Body>
             <h4>Centered Modal</h4>
             <p>
-                Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
-                dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
-                consectetur ac, vestibulum at eros.
+                {props.modalText}
             </p>
             </Modal.Body>
         </Modal>
@@ -64,7 +62,7 @@ const QuizzForm = ({  multiple ,
     const [ reset , setReset ] = useState(false);
     const [modalShow, setModalShow] = React.useState(true);
 
-
+    const [ modalText,setModalText] = useState('');
     const database = firebase.getData();
 
     useEffect(() => {
@@ -274,25 +272,28 @@ const QuizzForm = ({  multiple ,
                         userContext.update_user_points(0);
                         setUserPoints(0);
                         score = 0;
+                        setModalText('partie1')
                     }
     
                     if( !finished &&  (((foundAnswer+1)/question_length) > 0.25 && ((foundAnswer+1)/question_length) <= 0.5 )){
                         userContext.update_user_points(20);
                         setUserPoints(20);
                         score = 20;
-
+                        setModalText('partie2')
                     }
     
                     if( !finished && (((foundAnswer+1)/question_length) > 0.5 && ((foundAnswer+1)/question_length) <= 0.75) ){
                         userContext.update_user_points(40);
                         setUserPoints(40);
                         score = 40;
+                        setModalText('partie3')
                     }
     
                     if( !finished && (((foundAnswer+1)/question_length) > 0.75 && ((foundAnswer+1)/question_length) <= 1 )){
                         userContext.update_user_points(60);
                         setUserPoints(60);
                         score = 60;
+                        setModalText('partie4')
                     }
 
                     if(finished){
@@ -454,6 +455,7 @@ const QuizzForm = ({  multiple ,
                     <Fragment >
                         <EndModal
                          show={modalShow}
+                         modalText = {modalText}
                          onHide={() => setModalShow(false)} />
                         <div className="quizz-submit-btn">
                             <Button  type='button' onClick = { handleResetButton }> <Icon name = 'redo' /> </Button>
