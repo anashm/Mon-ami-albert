@@ -28,15 +28,15 @@ const EndModal = props => (
             </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-<<<<<<< HEAD
+
                 <p> Total Gained Points : {props.points} <i> ( you found { props.found_answer } questions out of { props.total_questions }  )  </i> </p>
                 <p> Quizz Chapter Progression : { props.progress * 100 } % </p>
-=======
+
             <h4>Centered Modal</h4>
             <p>
                 {props.modalText}
             </p>
->>>>>>> e8bb21ae6dfb7c1390a9032fb7c735286565f708
+
             </Modal.Body>
         </Modal>
 )
@@ -489,8 +489,8 @@ const QuizzForm = ({  multiple ,
                         show={modalShow}
                         onHide={() => setModalShow(false)} />
 
-<<<<<<< HEAD
-=======
+
+
                     <Fragment >
                         <EndModal
                          show={modalShow}
@@ -500,7 +500,7 @@ const QuizzForm = ({  multiple ,
                             <Button  type='button' onClick = { handleResetButton }> <Icon name = 'redo' /> </Button>
                         </div>
                     </Fragment>
->>>>>>> e8bb21ae6dfb7c1390a9032fb7c735286565f708
+
                     
                     
                     <div className="quizz-submit-btn">

@@ -48,7 +48,7 @@ import Title from '../../general/Title/Title';
                         </div>
                         
                         <p className="text-avatar"> Je suis un élève de <b> {childData} </b>&nbsp;&nbsp;
-                        <Link to="/creat-account"> Modifier </Link></p>
+                        </p>
                     </div>
             </div>
 
