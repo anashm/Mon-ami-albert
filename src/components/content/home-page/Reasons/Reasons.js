@@ -1,4 +1,4 @@
-import React , { useState } from 'react';
+import React from 'react';
 import Reason from './Reason/Reason';
 
 const Reasons = ({ reasons }) => {

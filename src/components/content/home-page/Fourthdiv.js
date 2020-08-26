@@ -12,8 +12,9 @@ import image_slide_6 from '../../../images/Ellipse_5.png';
 
 import Instructor from './Instructors/Instructor/Instructor';
 import Title from '../../general/Title/Title';
+import Aos from 'aos';
 
-function SampleNextArrow(props) {
+/* function SampleNextArrow(props) {
     const { className, style, onClick } = props;
     return (
       <div
@@ -33,7 +34,7 @@ function SampleNextArrow(props) {
         onClick={onClick}
       />
     );
-  }
+  } */
 
 const instructors = [
     {
@@ -98,6 +99,9 @@ const instructors = [
     }
 
     useEffect(() => {
+        Aos.init({
+            duration: 2000
+        });
         window.addEventListener('resize' , e => handleResize(e.currentTarget.innerWidth) );
         handleResize(window.innerWidth);
     } , []);
@@ -106,9 +110,12 @@ const instructors = [
         <section  className = 'container-fluid instructors-card-container'>
             <div className="container">
                 <div className="row">
-                    <Title text = 'QUI CONCOIVENT LES COURS ? ' textcentered centerOverlined />
+                    <Title 
+                    animation = 'fade'
+                    once = 'false'
+                    text = 'QUI CONCOIVENT LES COURS ? ' textcentered centerOverlined />
                 </div>
-                <div className = 'slider-container'>  
+                <div className = 'slider-container' data-aos= 'fade' data-aos-delay={400} data-aos-once='false'>  
                     <Slider {...settings}>
                         { instructors.map( (instructor , index) => <Instructor key = {index} img = { instructor.url } name = { instructor.name} description = { instructor.text } />) }
                     </Slider>

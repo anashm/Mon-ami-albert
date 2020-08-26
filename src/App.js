@@ -17,7 +17,8 @@ import Dashboard from './pages/LoggedIn/Dashboard';
 import Chapitres from './pages/LoggedIn/Chapitres';
 import Quizz from './pages/Chapter/Quizz/Quizz';
 import TestPDF from './pages/Chapter/Exercises/Exercise/TestPDF'
-import Profil from './components/header/ProfilPage'
+import Profil from './components/header/ProfilPage';
+import 'aos/dist/aos.css';
 
 
 const  App = () => {

@@ -13,6 +13,14 @@ import playBtn from '../../../images/Homepage/video.svg';
 
 import { Modal } from 'react-bootstrap';
 
+import { useLottie } from "lottie-react";
+
+import albert from '../../../animation/homepage/alber-welcome.json';
+
+
+
+
+
 const HomepageModal = props => (
     <Modal
         {...props}
@@ -54,6 +62,15 @@ const PopUp = ({ closeToast }) => (
 
 const HeroSection = ( {userConnected} ) => {
 
+
+    const options = {
+        animationData: albert,
+        loop: true,
+        autoplay: true
+    };
+    
+    const { View } = useLottie(options);
+
     const heroSectionInfos = {
         title: 'Le soutien scolaire de la nouvelle génération',
         text: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam',
@@ -61,6 +78,7 @@ const HeroSection = ( {userConnected} ) => {
     
     
     useEffect(() => {
+
         setTimeout(() => { toast(<PopUp />)  },2000); 
         
     }, []);
@@ -73,9 +91,10 @@ const HeroSection = ( {userConnected} ) => {
                 <div className = 'row'>
                     <div className = 'hero-section-content-container'>
                         <div className = 'hero-section-image-container'>
-                            <img src={photo_einstein} alt=""/>
+                            {/* <img src={photo_einstein} alt=""/> */}
+                            {View}
 
-                            <div className="play-btn-container" role = 'button' onClick = { () => setShowModal(true) }>
+                            <div className="play-btn-container d-none" role = 'button' onClick = { () => setShowModal(true) }>
                                 <img src={playBtn} alt=""/>
                             </div>
                         </div>

@@ -1,8 +1,10 @@
 import React from 'react';
 
-const HorizontalCard = ( { img , text } ) => {
+const HorizontalCard = ( { img , text , animation , delay , once  } ) => {
     return (
-        <div className = 'horizontal-card-conatiner'>
+        <div 
+        data-aos= {animation} data-aos-delay={delay} data-aos-once={once}
+        className = 'horizontal-card-conatiner' >
             <div className="horizontal-card-image-container">
                 <img src={img} alt=""/>
             </div>

@@ -13,7 +13,8 @@ import { Link } from 'react-router-dom';
 import Modal from 'react-bootstrap/Modal';
 import {FirebaseContext} from '../../firebase';
 import UserContext from '../../Context/UserContext/UserContext';
-import NiveauxSchool from './Matieres/NiveauxSchoolComponent'
+import NiveauxSchool from './Matieres/NiveauxSchoolComponent';
+import AOS from 'aos';
 
 
 
@@ -69,6 +70,11 @@ const  Dashboard = (props) => {
 ]
     
     useEffect(() => {
+
+        AOS.init({
+            duration: 800
+        });
+
         firebase.auth.onAuthStateChanged( user => {
             if(user){
                 //code if realod page pour garder context api values
@@ -125,7 +131,7 @@ const  Dashboard = (props) => {
                 <div className="matiere_component">
                     { matieres.map( (matiere , index) => {
                         return (
-                            <Link key={index} to={`/chapitres/${matiere.urlParam}`} >
+                            <Link key={index} to={`/chapitres/${matiere.urlParam}`}data-aos="fade-down" data-aos-delay={50 + index*100}  data-aos-once="true">
                                 <MatiereComponent
                                     title={matiere.title}
                                     logo={matiere.logo} />

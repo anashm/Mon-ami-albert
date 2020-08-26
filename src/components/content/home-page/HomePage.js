@@ -1,4 +1,4 @@
-import React , { Fragment , useContext, useEffect , useState } from 'react'
+import React , { Fragment , useContext, useEffect , useState  } from 'react'
 import HeroSection from './HeroSection';
 import SchoolInfosSection from './SchoolInfosSection';
 import ThirdDiv from './Thirddiv';
@@ -14,11 +14,14 @@ import './style/homapage.scss';
 import UserContext from '../../../Context/UserContext/UserContext';
 import firebase from 'firebase';
 
-import { Dimmer, Loader } from 'semantic-ui-react'
+import { Dimmer, Loader } from 'semantic-ui-react';
+
+
 
 
 
 const HomePage = props => {
+
 
 
     const [ loading , setLoading ] = useState(true);
@@ -27,6 +30,9 @@ const HomePage = props => {
     //console.log(userContext);
 
     useEffect(() => {
+
+    
+
         firebase.auth().onAuthStateChanged( user => {
             if(user){
               userContext.get_connected_user(user);

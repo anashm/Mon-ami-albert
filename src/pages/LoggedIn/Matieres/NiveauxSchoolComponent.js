@@ -7,11 +7,7 @@ import './NiveauxSchoolComponent.css';
 const  NiveauxSchoolComponent = (props) => {
 
     const firebase = useContext(FirebaseContext)
-    
-    
     const userContext = useContext(UserContext)
-    
-
 
     const handleChangeLevel = () => {
         const level = props.title;

@@ -1,4 +1,4 @@
-import React, { Component,useState,useContext,useEffect } from 'react'
+import React, { useState,useContext,useEffect } from 'react'
 import ChapitreComponent from './ChapitresComp/ChapitreComponent';
 import './style/Chapitres.css';
 import { Link } from 'react-router-dom';
@@ -6,7 +6,8 @@ import { Icon } from 'semantic-ui-react';
 import { useHistory  } from "react-router-dom";
 import {FirebaseContext} from '../../firebase';
 import UserContext from '../../Context/UserContext/UserContext';
-import { Dimmer, Loader, Image, Segment } from 'semantic-ui-react'
+import { Dimmer, Loader } from 'semantic-ui-react';
+import AOS from 'aos';
 
 
 
@@ -29,6 +30,10 @@ const  Chapitres = ({match}) => {
 
     useEffect(() => {
 
+            AOS.init({
+                duration: 800
+            });
+
 
         firebase.auth.onAuthStateChanged( user => {
         if(user){
@@ -41,7 +46,6 @@ const  Chapitres = ({match}) => {
             userContext.get_user_informations(user_informations.val());
             setinfosLevel(user_informations.val().level);
 
-            const test = []
 
             
             const reference_chapitres = database.ref('schoolLevels/'+user_informations.val().level+'/subjects/'+matiere+'/all')
@@ -54,8 +58,6 @@ const  Chapitres = ({match}) => {
                     
                     reference.once('value' , data => {
                         if(data.val()){
-                            test.push(data.val())
-                            console.log(data.val());
 
                             setChapters(prevState => [...prevState , {
                                 title: chapter,
@@ -89,7 +91,6 @@ const  Chapitres = ({match}) => {
 
         return (
             <div className="container chapter-section" >
-                { console.log(chapters) }
                 <div className="exercices-container">
                     <div className = 'exercises-title-container ' onClick = { () => setOpenTab(!openTab) } >
                         <h2 className="exercises-title">Chapitres</h2>
@@ -127,7 +128,7 @@ const  Chapitres = ({match}) => {
                             <div className="chapters">
                                 {  chapters.map( (chapitre,index) => {
                                     return (
-                                        <Link to={`/chapter/${matiere}/${chapitre.title}`} key = {index}> 
+                                        <Link to={`/chapter/${matiere}/${chapitre.title}`} key = {index} data-aos-delay={50 + index*50} data-aos="fade-down" data-aos-once="true"> 
                                             <ChapitreComponent ordre={index+1} title={chapitre.title} percentage = { Math.floor((chapitre.points/SCORE_MAX)*100) } />
                                         </Link>
                                     )

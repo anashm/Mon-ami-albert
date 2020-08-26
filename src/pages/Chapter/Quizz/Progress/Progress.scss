@@ -13,14 +13,19 @@
         width: 85%;
 
         .progress{
-            height: 8px;
+            height: 14px;
             border: 0.4px solid #CBCACD;
             background-color: white;
             border-radius: 100px;
 
             .progression{
                 width: 10%;
-                background-color: #FA4A59;
+                background-color: #79B600;
+                border-radius: 100px;
+                background: #1D976C;  /* fallback for old browsers */
+                background: -webkit-linear-gradient(to right, #93F9B9, #1D976C);  /* Chrome 10-25, Safari 5.1-6 */
+                background: linear-gradient(to right, #93F9B9, #1D976C); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+                
             }
         }
     }

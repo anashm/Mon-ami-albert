@@ -7,6 +7,8 @@ import Slider from "react-slick";
 import Testimony from './TestimonySection/Testimony/Testimony';
 import Title from '../../general/Title/Title';
 
+import Aos from 'aos';
+
 
 
 
@@ -62,23 +64,27 @@ export default function Sixthdiv() {
     }
 
     useEffect(() => {
+        Aos.init({
+            duration: 1500
+        })
+
         window.addEventListener('resize' , e => handleResize(e.currentTarget.innerWidth) );
         handleResize(window.innerWidth);
     } , []);
 
 
     return (
-        <div className = 'container-fluid testimony-section-container'>
+        <section className = 'container-fluid testimony-section-container' data-aos= 'fade-up'  data-aos-once= 'false' >
             <div className="container">
-                <div className="row">
+                <div className="row" data-aos= 'fade-up' data-aos-delay = '400' data-aos-once= 'true' >
                     <Title text = "C'EST VOUS QUI EN PARLEZ LE MIEUX" textcentered centerOverlined />
                 </div>
-                <div className = 'testimonies-container'> 
+                <div className = 'testimonies-container'data-aos= 'fade' data-aos-delay = '800' data-aos-once= 'true' > 
                     <Slider {...settings}>
                         { text_slider.map( (slide) => <Testimony />) }
                     </Slider>
                 </div>
             </div>
-        </div>
+        </section>
     )
 }

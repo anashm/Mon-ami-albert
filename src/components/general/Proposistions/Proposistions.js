@@ -7,6 +7,7 @@ const Proposistions = ({ propositions }) => {
             {
                 propositions.map( (proposition , index) => (
                     <Proposition
+                        animate_at = {400 + index*100}
                         key = { index }
                         image = { proposition.img }
                         title = { proposition.title }

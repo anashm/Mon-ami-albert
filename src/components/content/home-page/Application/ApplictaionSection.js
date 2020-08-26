@@ -6,11 +6,24 @@ import DownloadButton from '../../../general/DownloadButton/DownloadButton';
 import phone_img_src from '../../../../images//phones.jpg';
 
 import playstore from '../../../../images/playstore.svg';
-import appleStore from '../../../../images/company.svg'
+import appleStore from '../../../../images/company.svg';
 
-import { Divider } from 'semantic-ui-react'
+import { useLottie } from "lottie-react";
+
+import phoneLottie from '../../../../animation/homepage/phoneLottie.json';
+
+import { Divider } from 'semantic-ui-react';
 
 const ApplictaionSection = () => {
+
+    const options = {
+        animationData: phoneLottie,
+        loop: true,
+        autoplay: true
+    };
+    
+    const { View } = useLottie(options);
+
     return (
         <section className = 'container-fluid application-section'>
             <div className="container">
@@ -27,7 +40,9 @@ const ApplictaionSection = () => {
                     </div>
 
                     <div className="application-section-image-container">
-                        <img src={ phone_img_src } alt=""/>
+                        {/* <img src={ phone_img_src } alt=""/> */}
+
+                        {View}
                     </div>
                 </div>
             </div>

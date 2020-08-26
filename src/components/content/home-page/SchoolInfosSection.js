@@ -1,4 +1,4 @@
-import React from 'react'
+import React , { useEffect } from 'react'
 import './Seconddiv.css';
 import image_einsten  from '../../../images/groupe_de_masque.png';
 import icon_progression  from '../../../images/progression.svg';
@@ -11,11 +11,22 @@ import HorizontalCard from '../../general/HorizontalCard/HorizontalCard';
 import PrimaryLinkButton from '../../general/PrimaryLinkButton/PrimaryLinkButton';
 import Propositions from '../../general/Proposistions/Proposistions';
 
-import { Divider } from 'semantic-ui-react'
+import { Divider } from 'semantic-ui-react';
+
+import AOS from 'aos';
 
 
 
 const SchoolInfosSection = ()  => {
+
+
+    useEffect(() => {
+        AOS.init({
+            duration: 2000,
+            offset: 200
+
+        });
+    } , [])
 
     const propositions = [
         {
@@ -41,17 +52,29 @@ const SchoolInfosSection = ()  => {
     ]
     
     return (
-        <section className="container-fluid school-infos-Section">
+        <section className="container-fluid school-infos-Section" data-aos="fade-up" data-aos-once="false" >
             <div className="container">
                 <div className="row">
                     <div className="description-container">
-                        <Title text = "Qu'est-ce que je propose ?" leftOverlined />
+                        <div>
+                            <Title 
+                            animation = 'fade'
+                            delay = {100}
+                            once = 'true'
+                            text = "Qu'est-ce que je propose ?" leftOverlined data-aos="fade-up" data-aos-once="true"  />
+                        </div>
                         <Divider hidden/>
-                        <HorizontalCard 
+                        <HorizontalCard
+                        animation = 'fade'
+                        delay = {200}
+                        once = 'true'
                         img = {image_einsten} 
                         text = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam' />
                         <Divider hidden/>
                         <PrimaryLinkButton 
+                            animation = 'fade'
+                            delay = {300}
+                            once = 'true'
                             text = 'découvrez mon ami albert'
                             link = '/'
                         />

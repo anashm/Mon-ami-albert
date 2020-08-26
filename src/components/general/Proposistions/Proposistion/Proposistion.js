@@ -1,8 +1,19 @@
-import React from 'react'
+import React , {useEffect} from 'react';
 
-const Proposistion = ({ image , title , text }) => {
+import AOS from 'aos';
+
+
+const Proposistion = ({ image , title , text, animate_at }) => {
+
+    useEffect(() => {
+        AOS.init({
+            duration: 2000
+        });
+    }, []);
+
+
     return (
-        <div className = 'proposition-container'>
+        <div className = 'proposition-container' data-aos="fade-up"  data-aos-delay={animate_at} data-aos-once="true" >
             <img src={ image } alt="" className="proposition-image"/>
             <h3 className="proposition-title"> { title } </h3>
             <p className="proposition-text"> { text } </p>
@@ -10,4 +21,4 @@ const Proposistion = ({ image , title , text }) => {
     )
 }
 
-export default Proposistion
+export default Proposistion;
