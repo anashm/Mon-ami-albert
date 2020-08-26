@@ -20,7 +20,6 @@ import TestPDF from './pages/Chapter/Exercises/Exercise/TestPDF'
 import Profil from './components/header/ProfilPage';
 import 'aos/dist/aos.css';
 
-
 const  App = () => {
 
 

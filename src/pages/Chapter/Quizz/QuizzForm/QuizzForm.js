@@ -28,8 +28,15 @@ const EndModal = props => (
             </Modal.Title>
             </Modal.Header>
             <Modal.Body>
+<<<<<<< HEAD
                 <p> Total Gained Points : {props.points} <i> ( you found { props.found_answer } questions out of { props.total_questions }  )  </i> </p>
                 <p> Quizz Chapter Progression : { props.progress * 100 } % </p>
+=======
+            <h4>Centered Modal</h4>
+            <p>
+                {props.modalText}
+            </p>
+>>>>>>> e8bb21ae6dfb7c1390a9032fb7c735286565f708
             </Modal.Body>
         </Modal>
 )
@@ -64,7 +71,7 @@ const QuizzForm = ({  multiple ,
     const [ reset , setReset ] = useState(false);
     const [modalShow, setModalShow] = React.useState(true);
 
-
+    const [ modalText,setModalText] = useState('');
     const database = firebase.getData();
 
     useEffect(() => {
@@ -279,25 +286,28 @@ const QuizzForm = ({  multiple ,
                         userContext.update_user_points(0);
                         setUserPoints(0);
                         score = 0;
+                        setModalText('partie1')
                     }
     
                     if( !finished &&  (((foundAnswer+1)/question_length) > 0.25 && ((foundAnswer+1)/question_length) <= 0.5 )){
                         userContext.update_user_points(20);
                         setUserPoints(20);
                         score = 20;
-
+                        setModalText('partie2')
                     }
     
                     if( !finished && (((foundAnswer+1)/question_length) > 0.5 && ((foundAnswer+1)/question_length) <= 0.75) ){
                         userContext.update_user_points(40);
                         setUserPoints(40);
                         score = 40;
+                        setModalText('partie3')
                     }
     
                     if( !finished && (((foundAnswer+1)/question_length) > 0.75 && ((foundAnswer+1)/question_length) <= 1 )){
                         userContext.update_user_points(60);
                         setUserPoints(60);
                         score = 60;
+                        setModalText('partie4')
                     }
 
                     if(finished){
@@ -479,6 +489,18 @@ const QuizzForm = ({  multiple ,
                         show={modalShow}
                         onHide={() => setModalShow(false)} />
 
+<<<<<<< HEAD
+=======
+                    <Fragment >
+                        <EndModal
+                         show={modalShow}
+                         modalText = {modalText}
+                         onHide={() => setModalShow(false)} />
+                        <div className="quizz-submit-btn">
+                            <Button  type='button' onClick = { handleResetButton }> <Icon name = 'redo' /> </Button>
+                        </div>
+                    </Fragment>
+>>>>>>> e8bb21ae6dfb7c1390a9032fb7c735286565f708
                     
                     
                     <div className="quizz-submit-btn">
