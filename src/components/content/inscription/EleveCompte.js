@@ -95,14 +95,23 @@ import Title from '../../general/Title/Title';
                 </div>
 
                 <div className="email-login-container">
-                   <Link to={{
+                    {childData ? (<Link to={{
                             pathname: "/sign-up",
                             state: {
                                 fonction:childData
                             }
                         }}>
                     <Button  className = 'submit-btn w-100'>S'inscrire avec un email</Button>
-                    </Link> 
+                    </Link> ) : <Button disabled  className = 'submit-btn w-100'>S'inscrire avec un email</Button>}
+                   
+                  {/*  <Link to={{
+                            pathname: "/sign-up",
+                            state: {
+                                fonction:childData
+                            }
+                        }}>
+                    <Button  className = 'submit-btn w-100'>S'inscrire avec un email</Button>
+                    </Link>  */}
                 </div>
             </div>
            
