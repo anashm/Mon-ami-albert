@@ -78,6 +78,13 @@
         gap: 10px;
     }
 
+    .grid2{
+        display: flex !important;
+        flex-wrap: wrap;
+        margin-top: 40px;
+        justify-content: center;
+        gap: 10px;
+    }
     .main_content{
         min-height: unset;
     }
@@ -104,7 +111,16 @@
     justify-content: center;
     gap: 10px;
 }
-
+.grid2{
+    display: flex !important;
+    flex-wrap: wrap;
+    margin-top: 40px;
+    justify-content: center;
+    gap: 10px;
+}
+.ui.dropdown.search{
+    min-width: 500px;
+}
 /* #root{
     height: 100%;
 } */
