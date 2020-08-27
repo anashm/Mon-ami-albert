@@ -91,9 +91,9 @@ const LoginForm = (props) => {
                     
                 />
                 
-                <div className="login-link-container my-4">
+                {/* <div className="login-link-container my-4">
                     <small className = 'login-link'> <Link to = '/'> Mot de passe oublié ? </Link> </small>
-                </div>
+                </div> */}
 
                 {/* <Form.Field >
                     <Checkbox 
@@ -111,7 +111,7 @@ const LoginForm = (props) => {
                 <Divider hidden />
                 {btn}
 
-                <p className = 'subscribe-text text-center'> <span> Pas encore de compte ? </span>  <small className = 'login-link subscribe-link'> <Link to = '/creat-account'> Inscris-toi </Link> </small> </p>
+                <p className = 'subscribe-text text-center'> <span> Pas encore de compte ? </span>  <small className = 'login-link subscribe-link'> <Link to = '/eleve-creat-account'> Inscris-toi </Link> </small> </p>
                 
             </Form>
         </div>

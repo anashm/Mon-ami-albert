@@ -17,7 +17,64 @@ const Facebook = ( props ) => {
         return data.usersRef.child(createdUser.user.uid).set({
             lastName: 'userFromFacebook',
             firstName: 'userFromFacebook',
-            level:'Terminale'
+            level:'Terminale',
+            points : 50,
+            avatar : 'Boy-3',
+            pays : "fr",
+            etablissement : '',
+           Progression : {
+               
+                'Maths Spe' : {
+                    progression_matiere :0,
+                    Mathematique : {
+                        progression : {
+                            points : 50,
+                            found_questions : 0,
+                            current_question_index : 0
+                        }
+                    }
+                },
+                'Maths Sup' : {
+                    progression_matiere :0,
+                    Mathematique : {
+                        progression : {
+                            points : 50,
+                            found_questions : 0,
+                            current_question_index : 0
+                        }
+                    }
+                },
+                Première : {
+                    progression_matiere :0,
+                    Mathematique : {
+                        progression : {
+                            points : 50,
+                            found_questions : 0,
+                            current_question_index : 0
+                        }
+                    }
+                },
+                Seconde : {
+                    progression_matiere :0,
+                    Mathematique : {
+                        progression : {
+                            points : 50,
+                            found_questions : 0,
+                            current_question_index : 0
+                        }
+                    }
+                },
+                Terminale : {
+                    progression_matiere :0,
+                    Mathematique : {
+                        progression : {
+                            points : 50,
+                            found_questions : 0,
+                            current_question_index : 0
+                        }
+                    }
+                },
+           }
         });
     }
     

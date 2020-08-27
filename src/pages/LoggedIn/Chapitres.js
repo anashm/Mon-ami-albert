@@ -25,6 +25,7 @@ const  Chapitres = ({match}) => {
 
     const [ loading , setLoading ] = useState(true);
 
+
     const history = useHistory();
 
 
@@ -52,28 +53,34 @@ const  Chapitres = ({match}) => {
 
             reference_chapitres.on("value", chapitres => {
 
-                chapitres.val().map(chapter => {
 
-                    const reference =  database.ref(`users/${userId}/Progression/${user_informations.val().level}/${matiere}/${chapter}/progression`);
+                if(chapitres.val()){
                     
-                    reference.once('value' , data => {
-                        if(data.val()){
-
-                            setChapters(prevState => [...prevState , {
-                                title: chapter,
-                                points: data.val().points
-                            }]);
-                        }
-                        
-                        if(!data.val()){
-                            setChapters(prevState => [...prevState , {
-                                title: chapter,
-                                points: 0
-                            }]);
-                        }
+                    chapitres.val().map(chapter => {
+                        const reference =  database.ref(`users/${userId}/Progression/${user_informations.val().level}/${matiere}/${chapter}/progression`);                  
+                        reference.once('value' , data => {
+                            if(data.val()){
+    
+                                setChapters(prevState => [...prevState , {
+                                    title: chapter,
+                                    points: data.val().points
+                                }]);
+                            }
+                            
+                            if(!data.val()){
+                                setChapters(prevState => [...prevState , {
+                                    title: chapter,
+                                    points: 0
+                                }]);
+                            }
+                        });
                     });
-                });
-
+                }
+                
+                //close loader
+                else{
+                 
+                }
 
                
                 });
@@ -104,26 +111,9 @@ const  Chapitres = ({match}) => {
                     </div>
                     <div className="exercises-content" style = { { transform: `${!openTab ? 'scaleY(0)' : 'scaleY(1)'}` , transformOrigin: '100% 0%' } } >
                         
-                        {/* {
-                            (chapitresTitle != null) ? 
-                            <div className="chapters">
-                                {  chapitresTitle.map( (chapitre,index) => {
-                                    return (
-                                        <Link to={`/chapter/${matiere}/${chapitre}`} key = {index}> 
-                                            <ChapitreComponent ordre={index+1} title={chapitre} />
-                                        </Link>
-                                    )
-                                    
-                                })  }
-                            </div> : 
-                            <div className="loader-container" style = {{ height: '30vh' }}>
-                                <Dimmer active inverted>
-                                    <Loader inverted content='Wait please...' />
-                                </Dimmer>
-                            </div>
-                        } */}
+                       
 
-                        { chapters.length > 1 &&
+                        { chapters.length > 1 ?
                         
                             <div className="chapters">
                                 {  chapters.map( (chapitre,index) => {
@@ -134,15 +124,15 @@ const  Chapitres = ({match}) => {
                                     )
                                     
                                 })  }
-                            </div>
+                            </div> : ''
                         }
 
-                        { chapters.length < 1 && 
+                        { chapters.length < 1 ? 
                             <div className="loader-container" style = {{ height: '30vh' }}>
                                 <Dimmer active inverted>
                                     <Loader inverted content='Wait please...' />
                                 </Dimmer>
-                            </div>
+                            </div> : ''
                         }
                         
                     </div>

@@ -8,9 +8,9 @@ import { Button} from 'semantic-ui-react';
 import NiveauComponent from './NiveauComponent';
 //import database from '../../../firebase';
 import {FirebaseContext} from '../../../firebase';
-
+import { Form,Select} from 'semantic-ui-react';
 import Title from '../../general/Title/Title';
-    
+import etablissements from '../../../json/new-etablissements.json';    
 
  const  EleveCompte = ( props ) =>  {
     
@@ -19,19 +19,23 @@ import Title from '../../general/Title/Title';
 
     const [childData, setChildData] = useState("");
     const [niveaux ,setNiveaux] = useState([]);
-
+    const [school , setSchool] = useState('')
 
     useEffect(() => {
       
             const database = Firebase.getData();
             const ref_niveaux = database.ref('schoolLevels/all');
             ref_niveaux.on("value", snapshot => {
-            // const messageObject = snapshot.val();
                 setNiveaux(snapshot.val())
                 console.log(snapshot.val())
             })
     }, []);
-    //console.log(ref)
+
+
+    const handleSchoolChange = (e,result) => {
+        
+        setSchool(result.value)
+    }
 
     return (        
         <div className="container">
@@ -48,7 +52,7 @@ import Title from '../../general/Title/Title';
                         </div>
                         
                         <p className="text-avatar"> Je suis un élève de <b> {childData} </b>&nbsp;&nbsp;
-                        <Link to="/creat-account"> Modifier </Link></p>
+                        </p>
                     </div>
             </div>
 
@@ -78,7 +82,19 @@ import Title from '../../general/Title/Title';
                      
                     </div>
                     
-
+                    <div className="grid2">
+                             
+                        <Form.Field 
+                            control={Select}
+                            options={etablissements}                                     
+                            placeholder='Etablissement'
+                            onChange = {handleSchoolChange}
+                            search
+                            searchInput={{ id: 'form-select-control-gender' }}
+                        />
+                               
+                                  
+                    </div>    
                    
                 </div>
 
@@ -95,10 +111,12 @@ import Title from '../../general/Title/Title';
                 </div>
 
                 <div className="email-login-container">
-                    {childData ? (<Link to={{
+
+                    {(childData && school) ? (<Link to={{
                             pathname: "/sign-up",
                             state: {
-                                fonction:childData
+                                fonction:childData,
+                                etablissement : school
                             }
                         }}>
                     <Button  className = 'submit-btn w-100'>S'inscrire avec un email</Button>

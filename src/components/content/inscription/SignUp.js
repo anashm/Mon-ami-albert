@@ -7,10 +7,11 @@ import Animation from './AnimationLottie';
 import {FirebaseContext} from '../../../firebase'
 import firebase from 'firebase';
 import Title from '../../general/Title/Title';
-import etablissements from '../../../json/etablissements.json'
+import etablissements from '../../../json/new-etablissements.json';
 
 const  SignUp = (props) => {
 
+   
     const Firebase = useContext(FirebaseContext)
     //const database = Firebase.getData();
    
@@ -21,13 +22,7 @@ const  SignUp = (props) => {
         {  text: 'Etablissement 4', value: 'Etablissement 4' },
       ]
       
-      //console.log(etablissements)
-      
-        /* etablissements.map( (etablissement , index) => {
-             
-            text : etablissement.Lycée 
-           
-        }) */
+     
       
 
     const data = {
@@ -44,18 +39,33 @@ const  SignUp = (props) => {
     const [error , setError] = useState('');
     const [school , setSchool] = useState('')
     
-    const handleChange = (e) => {
-       //alert(e.target.value)
- 
-      
+
+    /* const handleChange = (e) => { 
        //data.etablissement({value: e.target.value});
         setSignUpData({...SignUpData,[e.target.id] : e.target.value})
-        console.log(school)
+       
+    } */
+
+    const handleChangeFirstName = (e) => {
+        setSignUpData({...SignUpData,[e.target.id] : e.target.value})
+
+    }
+
+    const handleChangeLastName = (e) => {
+        setSignUpData({...SignUpData,[e.target.id] : e.target.value})
+    }
+
+    const handleChangeEmail = (e) => {
+        setSignUpData({...SignUpData,[e.target.id] : e.target.value})
+    }
+
+    const handleChangePass = (e) => {
+        setSignUpData({...SignUpData,[e.target.id] : e.target.value})
     }
 
     const handleSchoolChange = (e,result) => {
        
-        console.log(result.value)
+
         setSchool(result.value)
 
     }   
@@ -69,7 +79,7 @@ const  SignUp = (props) => {
             points : 50,
             avatar : 'Boy-3',
             pays : "fr",
-            etablissement : school,
+            etablissement : props.location.state.etablissement,
            Progression : {
                
                 'Maths Spe' : {
@@ -172,7 +182,7 @@ const  SignUp = (props) => {
                         </div>
                         
                         <p className="text-avatar"> Je suis un élève de <b> {props.location.state.fonction}</b>.&nbsp;&nbsp;
-                        <Link to="/creat-account"> Modifier </Link></p>
+                        <Link to="/eleve-creat-account"> Modifier </Link></p>
                     </div>
                 </div>
 
@@ -180,13 +190,13 @@ const  SignUp = (props) => {
                 <center>{errorMsg}</center>
                 <Form onSubmit={handleSubmit}>
                     <div className="form-sign-up">
-                        <div>
+                      
+                        {/* <div>
                             <div className="col">
                              
                                     <Form.Field 
                                         control={Select}
-                                        options={etablissements}
-                                      
+                                        options={etablissements}                                     
                                         placeholder='Etablissement'
                                         onChange = {handleSchoolChange}
                                         search
@@ -195,23 +205,23 @@ const  SignUp = (props) => {
                                
                                   
                             </div>
-                        </div>
+                        </div> */}
 
                         <div className="row">
 
                             <div className="col">
-                                <input type="text" onChange={handleChange} value={SignUpData.first_name} className="form-control" placeholder="First name" id="first_name" />
+                                <input type="text" onChange={handleChangeFirstName} value={SignUpData.first_name} className="form-control" placeholder="First name" id="first_name" />
                             </div>
 
                             <div className="col">
-                                <input type="text" onChange={handleChange} value={SignUpData.last_name} className="form-control" placeholder="Last name" id="last_name" />
+                                <input type="text" onChange={handleChangeLastName} value={SignUpData.last_name} className="form-control" placeholder="Last name" id="last_name" />
                             </div>
 
                             
                         </div>
                         <div className="row">
                             <div className="col">
-                                <input type="email" onChange={handleChange} value={SignUpData.email} className="form-control" placeholder="Email" id="email" />
+                                <input type="email" onChange={handleChangeEmail} value={SignUpData.email} className="form-control" placeholder="Email" id="email" />
                             </div>
                         </div>
 
@@ -220,12 +230,12 @@ const  SignUp = (props) => {
 
                         <div className="row">
                             <div className="col">
-                                <input type="password" onChange={handleChange} value={SignUpData.password} className="form-control" placeholder="Password" id="password" />
+                                <input type="password" onChange={handleChangePass}  value={SignUpData.password} className="form-control" placeholder="Password" id="password" />
                             </div>
                         </div>
                         <div className="row">
                             <div className="col">
-                                <input type="password" onChange={handleChange} value={SignUpData.re_password} className="form-control" placeholder="Re enter Password" id="re_password" />
+                                <input type="password" onChange={handleChangePass}  value={SignUpData.re_password} className="form-control" placeholder="Re enter Password" id="re_password" />
                             </div>
                         </div>
 
