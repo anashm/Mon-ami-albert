@@ -151,10 +151,7 @@
 		"text": "Lycée Al Kindi",
 		"value": "Lycée Al Kindi"
 	},
-	{
-		"text": "Lycée Albert Camus",
-		"value": "Lycée Albert Camus"
-	},
+	
 	{
 		"text": "Lycée Antoine de Saint-Exupéry",
 		"value": "Lycée Antoine de Saint-Exupéry"
@@ -1883,10 +1880,7 @@
 		"text": "Lycée Augustin Fresnel",
 		"value": "Lycée Augustin Fresnel"
 	},
-	{
-		"text": "Lycée Blaise Pascal",
-		"value": "Lycée Blaise Pascal"
-	},
+	
 	{
 		"text": "Lycée Charles de Gaulle",
 		"value": "Lycée Charles de Gaulle"
@@ -2507,10 +2501,7 @@
 		"text": "Lycée Albert Calmette",
 		"value": "Lycée Albert Calmette"
 	},
-	{
-		"text": "Lycée Albert Camus",
-		"value": "Lycée Albert Camus"
-	},
+	
 	{
 		"text": "Lycée Alexandra David-Néel",
 		"value": "Lycée Alexandra David-Néel"
@@ -2535,10 +2526,7 @@
 		"text": "Lycée André Honnorat",
 		"value": "Lycée André Honnorat"
 	},
-	{
-		"text": "Lycée Antoine de Saint-Exupéry",
-		"value": "Lycée Antoine de Saint-Exupéry"
-	},
+	
 	{
 		"text": "Lycée Aristide Briand",
 		"value": "Lycée Aristide Briand"
@@ -3543,10 +3531,7 @@
 		"text": "Lycée Clos Maire",
 		"value": "Lycée Clos Maire"
 	},
-	{
-		"text": "Lycée Condorcet",
-		"value": "Lycée Condorcet"
-	},
+	
 	{
 		"text": "Lycée d'Enseignement agricole privé de la Bresse",
 		"value": "Lycée d'Enseignement agricole privé de la Bresse"
@@ -4135,16 +4120,9 @@
 		"text": "Lycée André Maurois",
 		"value": "Lycée André Maurois"
 	},
-	{
-		"text": "Lycée Antoine de Saint-Exupéry"
-	},
-	{
-		"text": "",
-		"value": "Lycée Antoine de Saint-Exupéry"
-	},
-	{
-		"text": ""
-	},
+	
+	
+	
 	{
 		"text": "Lycée Arthur Varoquaux",
 		"value": "Lycée Arthur Varoquaux"
@@ -4157,10 +4135,7 @@
 		"text": "Lycée Beau Jardin",
 		"value": "Lycée Beau Jardin"
 	},
-	{
-		"text": "Lycée Blaise Pascal",
-		"value": "Lycée Blaise Pascal"
-	},
+	
 	{
 		"text": "Lycée Camille Claudel",
 		"value": "Lycée Camille Claudel"
@@ -4177,10 +4152,7 @@
 		"text": "Lycée Charlemagne",
 		"value": "Lycée Charlemagne"
 	},
-	{
-		"text": "Lycée Charles de Foucauld",
-		"value": "Lycée Charles de Foucauld"
-	},
+	
 	{
 		"text": "Lycée Chrestien de Troyes",
 		"value": "Lycée Chrestien de Troyes"
@@ -4193,10 +4165,7 @@
 		"text": "Lycée Clemenceau",
 		"value": "Lycée Clemenceau"
 	},
-	{
-		"text": "Lycée Colbert",
-		"value": "Lycée Colbert"
-	},
+
 	{
 		"text": "Lycée de l'Assomption",
 		"value": "Lycée de l'Assomption"
@@ -5395,20 +5364,12 @@
 		"text": "Lycée André Malraux",
 		"value": "Lycée André Malraux"
 	},
+	
 	{
-		"text": "Lycée André Theuriet"
-	},
-	{
-		"text": "",
+		"text": "Lycée André Theuriet",
 		"value": "Lycée André Theuriet"
 	},
-	{
-		"text": ""
-	},
-	{
-		"text": "Lycée Antoine de Saint-Exupéry",
-		"value": "Lycée Antoine de Saint-Exupéry"
-	},
+	
 	{
 		"text": "Lycée Arnaut Daniel",
 		"value": "Lycée Arnaut Daniel"
@@ -7495,10 +7456,7 @@
 		"text": "Lycée Charles Naveau",
 		"value": "Lycée Charles Naveau"
 	},
-	{
-		"text": "Lycée Condorcet",
-		"value": "Lycée Condorcet"
-	},
+	
 	{
 		"text": "Lycée d'Enseignement agricole privé"
 	},
@@ -8773,10 +8731,7 @@
 		"text": "Lycée agricole privé Saint-François- la Cadène (Fondation d'Auteuil)",
 		"value": "Lycée agricole privé Saint-François- la Cadène (Fondation d'Auteuil)"
 	},
-	{
-		"text": "Lycée Albert Camus",
-		"value": "Lycée Albert Camus"
-	},
+	
 	{
 		"text": "Lycée Albert Einstein (voie générale et technologique)",
 		"value": "Lycée Albert Einstein (voie générale et technologique)"
@@ -9987,10 +9942,7 @@
 		"text": "Lycée Catholique de Pontlevoy",
 		"value": "Lycée Catholique de Pontlevoy"
 	},
-	{
-		"text": "Lycée Charles de Foucauld",
-		"value": "Lycée Charles de Foucauld"
-	},
+	
 	{
 		"text": "Lycée Charles Péguy",
 		"value": "Lycée Charles Péguy"
@@ -10686,10 +10638,7 @@
 		"text": "Lycée Alain",
 		"value": "Lycée Alain"
 	},
-	{
-		"text": "Lycée Albert Camus",
-		"value": "Lycée Albert Camus"
-	},
+	
 	{
 		"text": "Lycée Albert Einstein",
 		"value": "Lycée Albert Einstein"
@@ -10726,10 +10675,7 @@
 		"text": "Lycée André Malraux",
 		"value": "Lycée André Malraux"
 	},
-	{
-		"text": "Lycée Antoine de Saint-Exupéry",
-		"value": "Lycée Antoine de Saint-Exupéry"
-	},
+	
 	{
 		"text": "Lycée Arago",
 		"value": "Lycée Arago"
@@ -10754,10 +10700,7 @@
 		"text": "Lycée Beth Rivkah",
 		"value": "Lycée Beth Rivkah"
 	},
-	{
-		"text": "Lycée Blaise Pascal",
-		"value": "Lycée Blaise Pascal"
-	},
+	
 	{
 		"text": "Lycée Blanche de Castille",
 		"value": "Lycée Blanche de Castille"
@@ -10846,14 +10789,8 @@
 		"text": "Lycée Cognacq-Jay",
 		"value": "Lycée Cognacq-Jay"
 	},
-	{
-		"text": "Lycée Colbert",
-		"value": "Lycée Colbert"
-	},
-	{
-		"text": "Lycée Condorcet",
-		"value": "Lycée Condorcet"
-	},
+	
+	
 	{
 		"text": "Lycée d'Arsonval",
 		"value": "Lycée d'Arsonval"
@@ -12748,10 +12685,7 @@
 		"text": "Lycée agricole privé Pouillé",
 		"value": "Lycée agricole privé Pouillé"
 	},
-	{
-		"text": "Lycée Albert Camus",
-		"value": "Lycée Albert Camus"
-	},
+	
 	{
 		"text": "Lycée Alcide d'Orbigny",
 		"value": "Lycée Alcide d'Orbigny"

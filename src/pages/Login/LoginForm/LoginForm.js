@@ -91,9 +91,9 @@ const LoginForm = (props) => {
                     
                 />
                 
-                <div className="login-link-container my-4">
+                {/* <div className="login-link-container my-4">
                     <small className = 'login-link'> <Link to = '/'> Mot de passe oublié ? </Link> </small>
-                </div>
+                </div> */}
 
                 {/* <Form.Field >
                     <Checkbox 

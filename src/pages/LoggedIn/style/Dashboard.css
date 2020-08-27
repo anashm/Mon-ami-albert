@@ -5,6 +5,10 @@
     gap: 30px;
 }
 
+.cree_ton_compte{
+    cursor: pointer;
+}
+
 .dashboard-section .cree_ton_compte{
     margin: 0 !important;
     padding-top: 3% 0;
