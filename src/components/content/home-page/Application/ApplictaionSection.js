@@ -11,14 +11,16 @@ import appleStore from '../../../../images/company.svg';
 import { useLottie } from "lottie-react";
 
 import phoneLottie from '../../../../animation/homepage/phoneLottie.json';
+import newphoneLottie from '../../../../animation/homepage/newLottiePhone.json';
+
 
 import { Divider } from 'semantic-ui-react';
 
 const ApplictaionSection = () => {
 
     const options = {
-        animationData: phoneLottie,
-        loop: true,
+        animationData: newphoneLottie,
+        loop: false,
         autoplay: true
     };
     
