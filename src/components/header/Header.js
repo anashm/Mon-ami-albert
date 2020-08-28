@@ -75,7 +75,7 @@ const Header = () =>  {
 
                                    {/* <Dropdown text='Mon compte' pointing className='link item'>
                                         <Dropdown.Menu>
-                                            <Dropdown.Header>Profil</Dropdown.Header>
+                                            <Dropdown.Header> <span className="dropdown-header-titles"> Profil </span></Dropdown.Header>
                                             
                                                                                    
                                                 <Dropdown.Item> 
@@ -83,8 +83,11 @@ const Header = () =>  {
                                                     <span className="mon-profil-item-class">Mon Profil</span>
                                                     </Link>                                                       
                                                 </Dropdown.Item>
-                                            
-                                            
+
+                                            <Dropdown.Divider />
+                                            <Dropdown.Header> <span className="dropdown-header-titles"> Classement </span> </Dropdown.Header>
+                                                <Dropdown.Item><span  >Général</span></Dropdown.Item>
+                                                <Dropdown.Item><span  >Lycées</span></Dropdown.Item>
                                             <Dropdown.Divider />
                                             
                                             <Dropdown.Item><span  onClick={HandleLogout}>Déconnexion</span></Dropdown.Item>

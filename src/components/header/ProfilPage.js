@@ -36,6 +36,8 @@ export default function ProfilPage() {
     const [clickedAvatar,setClickedAvatar] = useState(null)
     const [currentPassword,setcurrentPassword] = useState('')
     const [newPassword,setNewPassword] = useState('')
+
+    const[showToast,setShowToast] = useState(false)
     const avatars = [
         {
             image : Boy1,
@@ -146,7 +148,7 @@ export default function ProfilPage() {
 
     
     const getAvatarClicked = (avatar) => {
-        console.log(avatar)        
+             
         setClickedAvatar(avatar)
     }
     
@@ -191,11 +193,11 @@ export default function ProfilPage() {
                         avatar : clickedAvatar
                     }).then(() => {
                         //history.push('/dashboard-user') 
-                              
+                        setShowToast(true)    
                         toast.success("Votre Profil a été mis à jour ! 🧐");
                     })
                 }).catch(function(error) {
-                        
+                        setShowToast(true) 
                         toast.error("Ce mot de passe ne correspond pas à cet utilisateur!");
                   });
                 
@@ -240,8 +242,9 @@ export default function ProfilPage() {
                     <Checkbox label="Modifier le mot de passe"  onChange={HandleCheckedPassword} />
                 </Form.Field>
 
-                <ToastContainer hideProgressBar={true} />
+                {showToast ? <ToastContainer hideProgressBar={true} /> : ''}
                 
+
                 {
                     passwordChecked ? (
                         <div>
