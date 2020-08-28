@@ -30,23 +30,22 @@ const EndModal = props => (
             </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-<<<<<<< HEAD
-                <p> Total Gained Points : {props.points} <i> ( you found { props.found_answer } questions out of { props.total_questions }  )  </i> </p>
-                <p> Quizz Chapter Progression : { props.progress * 100 } % </p>
-=======
 
                 <p> Total Gained Points : {props.points} <i> ( you found { props.found_answer } questions out of { props.total_questions }  )  </i> </p>
                 <p> Quizz Chapter Progression : { props.progress * 100 } % </p>
 
->>>>>>> d08aea3194ac6f0a744b030086eb994101f6d75a
+
+                <p> Total Gained Points : {props.points} <i> ( you found { props.found_answer } questions out of { props.total_questions }  )  </i> </p>
+                <p> Quizz Chapter Progression : { props.progress * 100 } % </p>
+
+
             <h4>Centered Modal</h4>
             <p>
                 {props.modalText}
             </p>
-<<<<<<< HEAD
-=======
 
->>>>>>> d08aea3194ac6f0a744b030086eb994101f6d75a
+
+
             </Modal.Body>
         </Modal>
 )
@@ -530,9 +529,8 @@ const QuizzForm = ({  multiple ,
             { reset &&
                 <Fragment >
 
-<<<<<<< HEAD
                     <QuizzSummary />
-=======
+
                     <EndModal
                         points = {userContext.user_points}
                         progress = { userContext.user_progression }
@@ -559,9 +557,9 @@ const QuizzForm = ({  multiple ,
                         <Button  type='button' onClick = { handleResetButton }> <Icon name = 'redo' /> </Button>
                     </div>
                 </Fragment>
->>>>>>> d08aea3194ac6f0a744b030086eb994101f6d75a
 
-                </Fragment>
+
+               
             }
             </Fragment>
 

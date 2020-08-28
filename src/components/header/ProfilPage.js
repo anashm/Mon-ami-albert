@@ -143,6 +143,7 @@ export default function ProfilPage() {
         setSourceImage(src);
     }
 
+
     
     const getAvatarClicked = (avatar) => {
         console.log(avatar)        
@@ -216,7 +217,7 @@ export default function ProfilPage() {
 
     return (
         <div className = 'login-content-container'>
-            <ToastContainer hideProgressBar={true} />
+            
             <Form onSubmit={handleSubmit}>
 
                 <Form.Field>
@@ -239,6 +240,8 @@ export default function ProfilPage() {
                     <Checkbox label="Modifier le mot de passe"  onChange={HandleCheckedPassword} />
                 </Form.Field>
 
+                <ToastContainer hideProgressBar={true} />
+                
                 {
                     passwordChecked ? (
                         <div>
