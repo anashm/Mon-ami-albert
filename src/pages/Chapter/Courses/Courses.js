@@ -4,7 +4,7 @@ import {FirebaseContext} from '../../../firebase';
 import UserContext from '../../../Context/UserContext/UserContext';
 import './Courses.css';
 import MathJax from 'react-mathjax-preview'
-
+import { Alert } from 'react-bootstrap';
 const Courses = ({ urlParams }) => {
 
    
@@ -39,7 +39,8 @@ const Courses = ({ urlParams }) => {
                    
                     reference_exercices.once("value", cours_collection => {
                         const courses = cours_collection.val();
-                        setCoursesUser(courses);              
+                        if(courses)
+                            setCoursesUser(courses);              
                     })
                 }) 
                      
@@ -56,7 +57,9 @@ const Courses = ({ urlParams }) => {
 
     return (
         <div>
-         
+            { courses_user.length ===0 && <Alert variant= 'secondary'>
+                            No Courses available!
+                        </Alert>  }
             {courses_user.map( (cours,index) => {
                 return(
                     <div key={index}>

@@ -9,10 +9,14 @@ import HamburgerMenu from './Menu/HamburgerMenu/HamburgerMenu';
 import { useHistory } from "react-router-dom";
 import Avatar from '../../images/avatar.png'
 import { Dropdown } from 'react-bootstrap';
+import { Button, Popup  } from 'semantic-ui-react'
+//import { Dropdown } from 'react-bootstrap';
 
 import medal from './assets/images/medal.svg';
 
 const Header = () =>  {
+
+   
 
     const history = useHistory();
 
@@ -72,6 +76,31 @@ const Header = () =>  {
                                     </Dropdown.Menu>
                                     </Dropdown> */}
                                    
+
+                                   {/* <Dropdown text='Mon compte' pointing className='link item'>
+                                        <Dropdown.Menu>
+                                            <Dropdown.Header>Profil</Dropdown.Header>
+                                            
+                                                                                   
+                                                <Dropdown.Item> 
+                                                    <Link to="/profil">                                                                                                           
+                                                    <span className="mon-profil-item-class">Mon Profil</span>
+                                                    </Link>                                                       
+                                                </Dropdown.Item>
+                                            
+                                            
+                                            <Dropdown.Divider />
+                                            
+                                            <Dropdown.Item><span  onClick={HandleLogout}>Déconnexion</span></Dropdown.Item>
+                                           
+                                        </Dropdown.Menu>
+                                    </Dropdown> */}
+                                   {/* <Popup
+                                        content='I will not flip!'
+                                        on='click'
+                                        pinned
+                                        trigger={<Button content='Button' />}
+                                    /> */}
                                     <span className="logout-link contact-style" onClick={HandleLogout}>Déconnexion</span>
                                 </div>
                                 ) 

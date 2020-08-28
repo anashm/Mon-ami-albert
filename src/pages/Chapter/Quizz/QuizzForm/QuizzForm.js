@@ -36,10 +36,16 @@ const EndModal = props => (
                 <p> Total Gained Points : {props.points} <i> ( you found { props.found_answer } questions out of { props.total_questions }  )  </i> </p>
                 <p> Quizz Chapter Progression : { props.progress * 100 } % </p>
 
+
+                <p> Total Gained Points : {props.points} <i> ( you found { props.found_answer } questions out of { props.total_questions }  )  </i> </p>
+                <p> Quizz Chapter Progression : { props.progress * 100 } % </p>
+
+
             <h4>Centered Modal</h4>
             <p>
                 {props.modalText}
             </p>
+
 
             </Modal.Body>
         </Modal>
@@ -552,6 +558,7 @@ const QuizzForm = ({  multiple ,
                     </div>
                 </Fragment>
 
+               
             }
             </Fragment>
 

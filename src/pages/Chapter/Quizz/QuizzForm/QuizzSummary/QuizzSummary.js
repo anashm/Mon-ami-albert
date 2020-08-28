@@ -1,4 +1,4 @@
-import React from 'react';
+import React , {useContext} from 'react';
 import './QuizzSummary.scss';
 
 import { useLottie } from "lottie-react";
@@ -8,8 +8,11 @@ import albertLottie from '../../../../../animation/homepage/alber-welcome.json';
 import lottieTrophee from './assets/lottie/tropheeLottie.json';
 
 import test from './test';
+import UserContext from '../../../../../Context/UserContext/UserContext';
 
 const QuizzSummary = () => {
+
+    const userContext = useContext(UserContext);
 
     const options = {
         animationData: lottieTrophee,
@@ -47,7 +50,7 @@ const QuizzSummary = () => {
                     <div className="empty"></div>
                 </div>
                 <p className="quizz-text-completed"> Vous avez complété le Quiz </p>
-                <p className="gained-points-text"> Vous avez gagné <span className = 'text-green'> 50 points </span> </p>
+                <p className="gained-points-text"> Vous avez gagné <span className = 'text-green'> { userContext.user_points } points </span> </p>
             </div>
 
             <div className="quizz-result-title-container">
