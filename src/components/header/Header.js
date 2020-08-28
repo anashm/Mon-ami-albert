@@ -8,11 +8,8 @@ import UserContext from '../../Context/UserContext/UserContext';
 import HamburgerMenu from './Menu/HamburgerMenu/HamburgerMenu';
 import { useHistory } from "react-router-dom";
 import Avatar from '../../images/avatar.png'
-import { Dropdown } from 'react-bootstrap';
-import { Button, Popup  } from 'semantic-ui-react'
+import { Button, Popup,Dropdown, DropdownMenu } from 'semantic-ui-react'
 //import { Dropdown } from 'react-bootstrap';
-
-import medal from './assets/images/medal.svg';
 
 const Header = () =>  {
 
@@ -52,11 +49,10 @@ const Header = () =>  {
                     </div>
 
                     <div className="contact-container">
-                        <div className="phone-number-container">  
-                            { (!logout && userContext.user_playing_quizz  ) &&  <span className="phone_number"> {  userContext.user_points }  { userContext.user_points > 0 ? 'Points' : 'Point'  } <img src={medal} alt=" "/>   </span>  }
-                            
+                        {/* <div className="phone-number-container">  
+                            <span className="phone_number"> <FaPhoneAlt  /> &nbsp;&nbsp; 05 22 33 44 55</span>
                             { logout ?  <Link to = '/' className="contact-link dark-color">Contact</Link> : null}
-                        </div>
+                        </div> */}
 
                         <div className="logout-container">
                             {!logout ? 
@@ -77,11 +73,11 @@ const Header = () =>  {
                                     </Dropdown> */}
                                    
 
-                                   {/* <Dropdown text='Mon compte' pointing className='link item'>
+                                   <Dropdown text='Mon compte' pointing className='link item'>
                                         <Dropdown.Menu>
-                                            <Dropdown.Header> <span className="dropdown-header-titles"> Profil </span></Dropdown.Header>
-                                            
-                                                                                   
+
+                                            <Dropdown.Header> <span className="dropdown-header-titles"> Profil </span></Dropdown.Header>                                                                                 
+                                                
                                                 <Dropdown.Item> 
                                                     <Link to="/profil">                                                                                                           
                                                     <span className="mon-profil-item-class">Mon Profil</span>
@@ -89,6 +85,7 @@ const Header = () =>  {
                                                 </Dropdown.Item>
 
                                             <Dropdown.Divider />
+
                                             <Dropdown.Header> <span className="dropdown-header-titles"> Classement </span> </Dropdown.Header>
                                                 <Dropdown.Item><span  >Général</span></Dropdown.Item>
                                                 <Dropdown.Item><span  >Lycées</span></Dropdown.Item>
@@ -97,14 +94,14 @@ const Header = () =>  {
                                             <Dropdown.Item><span  onClick={HandleLogout}>Déconnexion</span></Dropdown.Item>
                                            
                                         </Dropdown.Menu>
-                                    </Dropdown> */}
+                                    </Dropdown>
                                    {/* <Popup
                                         content='I will not flip!'
                                         on='click'
                                         pinned
                                         trigger={<Button content='Button' />}
                                     /> */}
-                                    <span className="logout-link contact-style" onClick={HandleLogout}>Déconnexion</span>
+                                    {/* <span className="logout-link contact-style" onClick={HandleLogout}>Déconnexion</span> */}
                                 </div>
                                 ) 
                                  : null
