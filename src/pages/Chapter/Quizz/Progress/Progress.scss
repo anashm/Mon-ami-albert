@@ -10,11 +10,34 @@
     }
 
     .progress-wrapper{
-        width: 85%;
+        width: 80%;
+        align-self: stretch;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+
+        .answer-wrapper{
+            display: flex;
+            justify-content: space-between;
+            padding: 0 10px;
+
+            p{
+                font-size: 16px;
+                font-weight: 600;
+
+                i{
+                    font-size: 18px;
+                }
+            }
+
+            .questions-repo{
+                color: #707070;
+            }
+        }
 
         .progress{
             height: 14px;
-            border: 0.4px solid #CBCACD;
+            border: 1px solid #CBCACD;
             background-color: white;
             border-radius: 100px;
 
@@ -23,8 +46,8 @@
                 background-color: #79B600;
                 border-radius: 100px;
                 background: #1D976C;  /* fallback for old browsers */
-                background: -webkit-linear-gradient(to right, #93F9B9, #1D976C);  /* Chrome 10-25, Safari 5.1-6 */
-                background: linear-gradient(to right, #93F9B9, #1D976C); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+                background: -webkit-linear-gradient(to right, #79B600, #79B600);  /* Chrome 10-25, Safari 5.1-6 */
+                background: linear-gradient(to right, #79B600, #79B600); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
                 
             }
         }

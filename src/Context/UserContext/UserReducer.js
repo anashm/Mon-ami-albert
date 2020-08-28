@@ -4,7 +4,11 @@ import  {
     UPDATE_USER_LEVEL , 
     UPDATE_USER_PROGRESS,
     UPDATE_USER_CURRENT_INDEX,
-    UPDATE_USER_POINTS
+    UPDATE_USER_POINTS,
+    UPDATE_QIZZ_QUESTIONS,
+    UPDATE_USER_CHECKED_FALSE_ANSWER,
+    UPDATE_USER_CHECKED_TRUE_ANSWER,    
+    UPDATE_USER_CHECK_TRUE_ANSWER
 } from "../Types"
 
 export default ( state , action) => {
@@ -47,7 +51,31 @@ export default ( state , action) => {
         return({
             ...state,
             user_points: action.payload
-        })
+        });
+
+        case(UPDATE_QIZZ_QUESTIONS):
+        return({
+            ...state,
+            quizz_questions: action.payload
+        });
+
+        case(UPDATE_USER_CHECKED_FALSE_ANSWER):
+        return({
+            ...state,
+            user_checked_false_answer: action.payload
+        });
+
+        case(UPDATE_USER_CHECKED_TRUE_ANSWER):
+        return({
+            ...state,
+            user_checked_true_answer: action.payload
+        });
+
+        case(UPDATE_USER_CHECK_TRUE_ANSWER):
+        return({
+            ...state,
+            user_check_true_answer: action.payload
+        });
     
         default:
             return state;

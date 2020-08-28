@@ -60,7 +60,7 @@ const Quizz = ({ match }) => {
                     choices: questions
                 }]
             });
-    
+            userContext.update_quizz_questions(newQuizz.length);
             setQuizzQuestions(newQuizz);
             setLoading(false);
         }else{
