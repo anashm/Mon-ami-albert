@@ -21,6 +21,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export default function ProfilPage() {
 
+    
 
     const firebase = useContext(FirebaseContext)
     const userContext = useContext(UserContext)
@@ -136,8 +137,15 @@ export default function ProfilPage() {
         
     }
 
+    const [ sourceImage , setSourceImage] = useState('');
+
+    const handleAvatarClicked = src => {
+        setSourceImage(src);
+    }
+
     
-    const getAvatarClicked = (avatar) => {        
+    const getAvatarClicked = (avatar) => {
+        console.log(avatar)        
         setClickedAvatar(avatar)
     }
     
@@ -148,7 +156,7 @@ export default function ProfilPage() {
     }
     
     const handleSubmit = (e) => {
-       
+      
         e.preventDefault();
    
         
@@ -176,22 +184,24 @@ export default function ProfilPage() {
                       }).catch(function(error) {
                         
                       });
-                      
+                      reference.child(userId).update({
+                        lastName:  firstName,
+                        firstName : lastName,
+                        avatar : clickedAvatar
+                    }).then(() => {
+                        //history.push('/dashboard-user') 
+                              
+                        toast.success("Votre Profil a été mis à jour ! 🧐");
+                    })
                 }).catch(function(error) {
                         
                         toast.error("Ce mot de passe ne correspond pas à cet utilisateur!");
                   });
                 
-                 reference.child(userId).update({
-                    lastName:  firstName,
-                    firstName : lastName,
-                    avatar : clickedAvatar
-                }).then(() => {
-
-                   
-                     
-                        toast.success("Votre Profil a été mis à jour !");
-                })
+                
+                    
+                  
+                 
                
             }
             else{
@@ -221,16 +231,18 @@ export default function ProfilPage() {
                 </Form.Field>
 
                 <Form.Field>
+                    <label>Current Password</label>
+                    <input type="password" placeholder='Current Password' value={currentPassword} onChange={(e) => { setcurrentPassword(e.target.value)}}  />
+                </Form.Field>
+
+                <Form.Field>
                     <Checkbox label="Modifier le mot de passe"  onChange={HandleCheckedPassword} />
                 </Form.Field>
 
                 {
                     passwordChecked ? (
                         <div>
-                             <Form.Field>
-                                <label>Current Password</label>
-                                <input type="password" placeholder='Current Password' value={currentPassword} onChange={(e) => { setcurrentPassword(e.target.value)}}  />
-                            </Form.Field>
+                             
 
                             <Form.Field>
                                 <label>New Password</label>
@@ -255,7 +267,7 @@ export default function ProfilPage() {
                 <div className="images_profil_container">
                     {avatars.map( (avatar , index) => {
                         return(
-                            <Avatar  key={index} getAvatar={getAvatarClicked} logo={avatar.image} name={avatar.name} />
+                            <Avatar avatarClicked = { handleAvatarClicked }  key={index} active = { sourceImage === avatar.image ? 'avatar_clicked' : 'image-avatar' }  getAvatar={getAvatarClicked} logo={avatar.image} name={avatar.name} />
                         )
                        
                     })}
