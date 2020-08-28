@@ -87,6 +87,7 @@ const Quizz = ({ match }) => {
         firebase.auth.onAuthStateChanged( user => {
             if(user){
                 //code if realod page pour garder context api values
+                userContext.update_user_playing_quizz(true)
                 userContext.get_connected_user(user);
                 const userId = user.uid;                      
                 const database = firebase.getData();
@@ -111,6 +112,10 @@ const Quizz = ({ match }) => {
                 history.push('/')
             }
         });
+
+        return () => {
+            userContext.update_user_playing_quizz(false)
+        }
 
     } , [firebase , userContext.user_current_question_index , userContext.user_progression , userContext.user_points ]);
 

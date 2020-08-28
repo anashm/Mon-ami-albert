@@ -69,7 +69,7 @@ const Progress = () => {
 
             <div className="score-container">
                 <img src={svg} alt="heart" width = "50px"/>
-                <div className="score">3</div>
+                {/* <div className="score"> { userContext.user_points } </div>*/}            
             </div>
         </div>
     )
