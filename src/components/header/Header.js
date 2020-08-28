@@ -73,7 +73,7 @@ const Header = () =>  {
                                     </Dropdown> */}
                                    
 
-                                   <Dropdown text='Mon compte' pointing className='link item'>
+                                   {/* <Dropdown text='Mon compte' pointing className='link item'>
                                         <Dropdown.Menu>
 
                                             <Dropdown.Header> <span className="dropdown-header-titles"> Profil </span></Dropdown.Header>                                                                                 
@@ -94,14 +94,14 @@ const Header = () =>  {
                                             <Dropdown.Item><span  onClick={HandleLogout}>Déconnexion</span></Dropdown.Item>
                                            
                                         </Dropdown.Menu>
-                                    </Dropdown>
+                                    </Dropdown> */}
                                    {/* <Popup
                                         content='I will not flip!'
                                         on='click'
                                         pinned
                                         trigger={<Button content='Button' />}
                                     /> */}
-                                    {/* <span className="logout-link contact-style" onClick={HandleLogout}>Déconnexion</span> */}
+                                    <span className="logout-link contact-style" onClick={HandleLogout}>Déconnexion</span>
                                 </div>
                                 ) 
                                  : null
