@@ -30,6 +30,8 @@ const EndModal = props => (
             </Modal.Title>
             </Modal.Header>
             <Modal.Body>
+                <p> Total Gained Points : {props.points} <i> ( you found { props.found_answer } questions out of { props.total_questions }  )  </i> </p>
+                <p> Quizz Chapter Progression : { props.progress * 100 } % </p>
 
                 <p> Total Gained Points : {props.points} <i> ( you found { props.found_answer } questions out of { props.total_questions }  )  </i> </p>
                 <p> Quizz Chapter Progression : { props.progress * 100 } % </p>
@@ -43,7 +45,6 @@ const EndModal = props => (
             <p>
                 {props.modalText}
             </p>
-
 
 
             </Modal.Body>
@@ -530,7 +531,6 @@ const QuizzForm = ({  multiple ,
                 <Fragment >
 
                     <QuizzSummary />
-
                     <EndModal
                         points = {userContext.user_points}
                         progress = { userContext.user_progression }
@@ -557,7 +557,6 @@ const QuizzForm = ({  multiple ,
                         <Button  type='button' onClick = { handleResetButton }> <Icon name = 'redo' /> </Button>
                     </div>
                 </Fragment>
-
 
                
             }

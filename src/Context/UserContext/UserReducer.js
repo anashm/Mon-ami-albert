@@ -8,7 +8,8 @@ import  {
     UPDATE_QIZZ_QUESTIONS,
     UPDATE_USER_CHECKED_FALSE_ANSWER,
     UPDATE_USER_CHECKED_TRUE_ANSWER,    
-    UPDATE_USER_CHECK_TRUE_ANSWER
+    UPDATE_USER_CHECK_TRUE_ANSWER,
+    UPDATE_USER_PLAYING_QUIZZ
 } from "../Types"
 
 export default ( state , action) => {
@@ -75,6 +76,11 @@ export default ( state , action) => {
         return({
             ...state,
             user_check_true_answer: action.payload
+        });
+        case(UPDATE_USER_PLAYING_QUIZZ):
+        return({
+            ...state,
+            user_playing_quizz: action.payload
         });
     
         default:

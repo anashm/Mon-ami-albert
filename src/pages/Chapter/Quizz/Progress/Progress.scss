@@ -57,8 +57,9 @@
         position: relative;
 
         .score{
+            font-size: 18px;
             position: absolute;
-            top: 50%;
+            top: 40%;
             left: 50%;
             transform: translate(-50% , -60%);
             color: white;

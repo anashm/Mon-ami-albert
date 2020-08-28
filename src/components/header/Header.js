@@ -8,8 +8,11 @@ import UserContext from '../../Context/UserContext/UserContext';
 import HamburgerMenu from './Menu/HamburgerMenu/HamburgerMenu';
 import { useHistory } from "react-router-dom";
 import Avatar from '../../images/avatar.png'
-import { Button, Popup,Dropdown } from 'semantic-ui-react'
+import { Dropdown } from 'react-bootstrap';
+import { Button, Popup  } from 'semantic-ui-react'
 //import { Dropdown } from 'react-bootstrap';
+
+import medal from './assets/images/medal.svg';
 
 const Header = () =>  {
 
@@ -50,7 +53,8 @@ const Header = () =>  {
 
                     <div className="contact-container">
                         <div className="phone-number-container">  
-                            <span className="phone_number"> <FaPhoneAlt  /> &nbsp;&nbsp; 05 22 33 44 55</span>
+                            { (!logout && userContext.user_playing_quizz  ) &&  <span className="phone_number"> {  userContext.user_points }  { userContext.user_points > 0 ? 'Points' : 'Point'  } <img src={medal} alt=" "/>   </span>  }
+                            
                             { logout ?  <Link to = '/' className="contact-link dark-color">Contact</Link> : null}
                         </div>
 
