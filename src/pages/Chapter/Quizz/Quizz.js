@@ -141,7 +141,7 @@ const Quizz = ({ match }) => {
 
                     <div className={`loader-container ${ loading ? '' : 'd-none' }`} style = {{ height: '30vh' , position: 'relative' }}>
                         <Dimmer active inverted>
-                            <Loader inverted content='Wait please...' />
+                            <Loader inverted content='Chargement en cours  ...' />
                         </Dimmer>
                     </div>
 

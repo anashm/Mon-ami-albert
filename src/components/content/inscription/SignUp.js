@@ -181,7 +181,7 @@ const  SignUp = (props) => {
                              <img src={avatar} style={{width : '70%'}} /> 
                         </div>
                         
-                        <p className="text-avatar"> Je suis un élève de <b> {props.location.state.fonction}</b>.&nbsp;&nbsp;
+                        <p className="text-avatar"> <b> {props.location.state.fonction}</b>.&nbsp;&nbsp;
                         <Link to="/eleve-creat-account"> Modifier </Link></p>
                     </div>
                 </div>

@@ -5,6 +5,10 @@ import UserContext from '../../../Context/UserContext/UserContext';
 import './Courses.css';
 import MathJax from 'react-mathjax-preview'
 import { Alert } from 'react-bootstrap';
+import {Accordion,Card} from 'react-bootstrap';
+import { Button } from 'semantic-ui-react';
+import {BsArrowDown} from 'react-icons/bs'
+
 const Courses = ({ urlParams }) => {
 
    
@@ -94,35 +98,50 @@ const Courses = ({ urlParams }) => {
                                                         </div>
                                                     : 
                                                         <div>
-                                                            <div className="type-container">
-                                                                <p className="class-type">{type.type}</p> 
-                                                            </div> 
+                                                            
+                                                            <Accordion>
+                                                                <Card>
+                                                                    <Card.Header>
+                                                                    <Accordion.Toggle as={Button} variant="link" eventKey="0">
+                                                                       
+                                                                            <div className="type-container">
+                                                                                <p className="class-type">{type.type}
+                                                                                <span className="icon-down-container"><BsArrowDown /></span>
+                                                                                
+                                                                                </p> 
+                                                                                
+                                                                            </div>
+                                                                            
+                                                                        
+                                                                        
+                                                                         
+                                                                    </Accordion.Toggle>
+                                                                    
+                                                                    </Card.Header>
+
+                                                                    <Accordion.Collapse eventKey="0">
+                                                                    <Card.Body>
+                                                                    {type.lines.map( (line ,index) => {
+                                                            
+                                                                            return (
+                                                                                <div key={index} className="lines-container">
+                                                                                    <p >
+                                                                                        <MathJax   math={line} />
+                                                                                    </p>
+                                                                                
+                                                                            
+                                                                                </div>
+                                                                                    )
+                                                                        })}
+                                                                    </Card.Body>
+                                                                    </Accordion.Collapse>
+                                                                </Card>
+                                                                
+                                                            </Accordion>
+                                                            
                                                             
                                                       
-                                                            {type.lines.map( (line ,index) => {
                                                             
-                                                                return (
-                                                                    <div key={index} className="lines-container">
-                                                                        <p >
-                                                                            <MathJax   math={line} />
-                                                                        </p>
-                                                                    
-                                                                   {/*  <Accordion defaultActiveKey="0">
-                                                                        <Card>
-                                                                            <Card.Header>
-                                                                            <Accordion.Toggle as={Button} variant="link" eventKey="0">
-                                                                                Click me!
-                                                                            </Accordion.Toggle>
-                                                                            </Card.Header>
-                                                                            <Accordion.Collapse eventKey="0">
-                                                                            <Card.Body><MathJax   math={line} /></Card.Body>
-                                                                            </Accordion.Collapse>
-                                                                        </Card>
-                                                    
-                                                                    </Accordion> */}
-                                                                    </div>
-                                                                )
-                                                            })}
                                                          
                                                         </div>     
                                                     }

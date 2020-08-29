@@ -51,7 +51,7 @@ import etablissements from '../../../json/new-etablissements.json';
                              <img src={avatar} style={{width : '70%'}} /> 
                         </div>
                         
-                        <p className="text-avatar"> Je suis un élève de <b> {childData} </b>&nbsp;&nbsp;
+                        <p className="text-avatar">  <b> {childData} </b>&nbsp;&nbsp;
                         </p>
                     </div>
             </div>
