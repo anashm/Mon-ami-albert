@@ -8,7 +8,7 @@ import {FirebaseContext} from '../../firebase';
 import UserContext from '../../Context/UserContext/UserContext';
 import { Dimmer, Loader } from 'semantic-ui-react';
 import AOS from 'aos';
-
+import { Alert } from 'react-bootstrap';
 
 
 const  Chapitres = ({match}) => {
@@ -25,7 +25,7 @@ const  Chapitres = ({match}) => {
 
     const [ loading , setLoading ] = useState(true);
 
-
+    const [dimmer , setDimmer ] = useState(true)
     const history = useHistory();
 
 
@@ -79,7 +79,7 @@ const  Chapitres = ({match}) => {
                 
                 //close loader
                 else{
-                 
+                    setDimmer(false)
                 }
 
                
@@ -129,9 +129,12 @@ const  Chapitres = ({match}) => {
 
                         { chapters.length < 1 ? 
                             <div className="loader-container" style = {{ height: '30vh' }}>
-                                <Dimmer active inverted>
+                                {dimmer ? (<Dimmer active inverted>
                                     <Loader inverted content='Chargement en cours...' />
-                                </Dimmer>
+                                </Dimmer>) :  <Alert variant= 'secondary'>
+                                                No Chapters available!
+                                            </Alert>}
+                                
                             </div> : ''
                         }
                         
