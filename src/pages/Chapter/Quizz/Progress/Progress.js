@@ -44,7 +44,7 @@ const Progress = () => {
                     { userContext.user_checked_false_answer && ( 
                         <Fragment>
                             <div className = 'empty'></div>
-                            <p className="text-red"> <Icon name = 'thumbs down' />  Mauvaise réponse </p>
+                            <p className="text-red shake-horizontal"> <Icon name = 'thumbs down' />  Mauvaise réponse </p>
                             <p className="questions-repo text-center"> {currentIndex+1} / { quizzQuestionsNumber } </p> 
                         </Fragment>) 
                     }
@@ -52,7 +52,7 @@ const Progress = () => {
                     { userContext.user_check_true_answer && 
                         <Fragment>
                             <div className = 'empty'></div>
-                            <p className="text-green"> <Icon name = 'thumbs up' />  Bonne réponse </p>
+                            <p className="text-green bounce-top"> <Icon name = 'thumbs up' />  Bonne réponse </p>
                             <p className="questions-repo text-center"> {currentIndex+1} / { quizzQuestionsNumber } </p> 
                         </Fragment>
                     }

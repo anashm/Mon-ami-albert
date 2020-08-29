@@ -3,11 +3,13 @@ import Classes from './Classes/Classes';
 import Title from '../../../general/Title/Title';
 
 const ClassesSection = () => {
+   
+
 
     const classes = {
         title: 'classes',
         names: [
-            'Terminale S' , 'Terminale ES ' , 'Terminale L' , 'Première' , 'Première S' , 'Première ES' , 'Première L' , 'Seconde' , 'Troisième' , 'Quatrième' , 'Cinquième' , 'Sixième' , 'CM2' , 'CM1' , 'CE2' , 'CE1'
+            'ECS 1 -ECE 1- ECT1', 'ECS2 - ECE 2 - ECT2' , 'Maths sup' , 'Maths spe', 'Terminale S' , 'Terminale ES ' , 'Terminale L' , 'Première S' , 'Première ES' , 'Première L' , 'Seconde'
         ]
     }
 

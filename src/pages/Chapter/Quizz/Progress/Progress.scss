@@ -1,9 +1,16 @@
+@import '../../../../style//breakpoints';
+
 .quizz-progress-container{
 
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     padding: 0 5%;
+
+    @include media('<=phone'){
+        padding: 0;
+
+    }
 
     .profile-container{
 
@@ -20,6 +27,11 @@
             display: flex;
             justify-content: space-between;
             padding: 0 10px;
+
+            @include media('<=phone'){
+                flex-direction: column-reverse;
+        
+            }
 
             p{
                 font-size: 16px;

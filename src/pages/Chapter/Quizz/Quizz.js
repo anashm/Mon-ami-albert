@@ -158,6 +158,7 @@ const Quizz = ({ match }) => {
                             chapter = {chapitre}
                             reset = {reset}
                             resetClicked = { () => handleCurrentIndex(0) }
+                            quizz_questions = {quizzQuestions}
                             
                         />
                     }

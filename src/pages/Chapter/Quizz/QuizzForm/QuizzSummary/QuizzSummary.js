@@ -10,7 +10,12 @@ import lottieTrophee from './assets/lottie/tropheeLottie.json';
 import test from './test';
 import UserContext from '../../../../../Context/UserContext/UserContext';
 
-const QuizzSummary = () => {
+import QuizzQuestion from './QuizzQuestion/QuizzQuestion';
+
+import { Button , Icon } from 'semantic-ui-react'
+
+
+const QuizzSummary = ({ quizz_questions , found_answer , chapter }) => {
 
     const userContext = useContext(UserContext);
 
@@ -58,7 +63,17 @@ const QuizzSummary = () => {
             </div>
 
             <div className="quizz-result-summary-container sm-shadow">
-                <p className="quizz-end-text">Vous avez terminé le questionnaire Quiz : Chapitre … </p>
+                <p className="quizz-end-text">Vous avez terminé le questionnaire <span className = 'text-bold'> Quiz :  {chapter} </span> </p>
+                <p className="score-text"> Votre Score est de <span className = 'text-green'> {found_answer} sur {userContext.quizz_questions} </span> </p>
+                <div className="custom-divider"/>
+                <p className="answers-text"> Vos réponses sont en gras, les bonnes réponses sont en vert. </p>
+
+                <div className="answers-container">
+                    { quizz_questions.map(quizz_question => (
+                        <QuizzQuestion  title = { quizz_question[0].question } choices = { quizz_question[0].choices } correct = { quizz_question[0].correct } />
+                    )) }
+
+                </div>
             </div>
 
             

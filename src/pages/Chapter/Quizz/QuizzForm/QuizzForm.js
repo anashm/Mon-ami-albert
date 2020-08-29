@@ -14,42 +14,8 @@ import * as animationData from '../../../../animation/quizz/test.json';
 
 import QuizzSummary from './QuizzSummary/QuizzSummary';
 
+import albertHead from './QuizzSummary/assets/images/Logo.png';
 
-
-const EndModal = props => (
-        <Modal
-            {...props}
-            size="lg"
-            aria-labelledby="contained-modal-title-vcenter"
-            centered
-        >
-            {console.log('nzaou props' , props)}
-            <Modal.Header closeButton>
-            <Modal.Title id="contained-modal-title-vcenter">
-                score
-            </Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-                <p> Total Gained Points : {props.points} <i> ( you found { props.found_answer } questions out of { props.total_questions }  )  </i> </p>
-                <p> Quizz Chapter Progression : { props.progress * 100 } % </p>
-
-                <p> Total Gained Points : {props.points} <i> ( you found { props.found_answer } questions out of { props.total_questions }  )  </i> </p>
-                <p> Quizz Chapter Progression : { props.progress * 100 } % </p>
-
-
-                <p> Total Gained Points : {props.points} <i> ( you found { props.found_answer } questions out of { props.total_questions }  )  </i> </p>
-                <p> Quizz Chapter Progression : { props.progress * 100 } % </p>
-
-
-            <h4>Centered Modal</h4>
-            <p>
-                {props.modalText}
-            </p>
-
-
-            </Modal.Body>
-        </Modal>
-)
 
 
 const QuizzForm = ({  multiple ,
@@ -62,7 +28,8 @@ const QuizzForm = ({  multiple ,
     course , 
     question_length  , 
     chapter, 
-    resetClicked
+    resetClicked,
+    quizz_questions
      }) => {
 
     const userContext = useContext(UserContext);
@@ -77,8 +44,6 @@ const QuizzForm = ({  multiple ,
     const [ userPoints , setUserPoints ] = useState(0);
     const [ finished , setFinished ] = useState(false);
     const [ reset , setReset ] = useState(false);
-    const [modalShow, setModalShow] = React.useState(true);
-    const [ modalText,setModalText] = useState('');
     const [showNextBtn , setShowNextBtn] = useState(false);
 
 
@@ -152,6 +117,7 @@ const QuizzForm = ({  multiple ,
         reference.child(`${userContext.user_informations.level}/${course}/${chapter}/progression`).update({
             current_question_index:  0,
             found_questions : 0,
+            onReset: false
         }).then(() => {
              //update user context progress
             userContext.update_user_progression(0);
@@ -300,28 +266,24 @@ const QuizzForm = ({  multiple ,
                         userContext.update_user_points(0);
                         setUserPoints(0);
                         score = 0;
-                        setModalText('partie1')
                     }
     
                     if( !finished &&  (((foundAnswer+1)/question_length) > 0.25 && ((foundAnswer+1)/question_length) <= 0.5 )){
                         userContext.update_user_points(20);
                         setUserPoints(20);
                         score = 20;
-                        setModalText('partie2')
                     }
     
                     if( !finished && (((foundAnswer+1)/question_length) > 0.5 && ((foundAnswer+1)/question_length) <= 0.75) ){
                         userContext.update_user_points(40);
                         setUserPoints(40);
                         score = 40;
-                        setModalText('partie3')
                     }
     
                     if( !finished && (((foundAnswer+1)/question_length) > 0.75 && ((foundAnswer+1)/question_length) <= 1 )){
                         userContext.update_user_points(60);
                         setUserPoints(60);
                         score = 60;
-                        setModalText('partie4')
                     }
 
                     if(finished){
@@ -338,7 +300,9 @@ const QuizzForm = ({  multiple ,
                         onReset: true
                     }).then(() => {
                         setResponse('');
-                        setReset(false);
+                        setReset(true);
+                        userContext.update_user_check_true_answer(false);
+                        userContext.update_user_checked_false_answer(false);
                     })
                     .catch(e => console.log(e));
                     //console.log(userContext.user_informations.level)
@@ -358,7 +322,9 @@ const QuizzForm = ({  multiple ,
                         onReset: true
                     }).then(() => {
                         setResponse('');
-                        setReset(false);
+                        userContext.update_user_check_true_answer(false);
+                        userContext.update_user_checked_false_answer(false);
+                        setReset(true);
                     })
                     .catch(e => console.log(e));
                     //console.log(userContext.user_informations.level)
@@ -445,9 +411,13 @@ const QuizzForm = ({  multiple ,
 
             { !reset &&
                 <div className = 'quizz-form-container'>
-                { console.log( 'answer' , correct , answer) }
 
-                <h2 className="quizz-form-title"> <MathJax math={title} />  </h2>
+                <div className = 'quizz-title-container'>
+                    <div className="img-container">
+                        <img className = 'heartbeat' src={albertHead} alt=""/>
+                    </div>
+                    <h2 className="quizz-form-title"> <MathJax math={title} />  </h2>
+                </div>
 
                     <Form loading = { loading }  className = 'quizz-form' onSubmit = { handleSubmit }>
                     {
@@ -463,7 +433,6 @@ const QuizzForm = ({  multiple ,
                                             id = { `${ index + 1 }` } 
                                             defaultChecked = { false } 
                                             label= { <label>  <MathJax math={choice} />    </label> } 
-                                            onClick = { (e , data) => handleClick(e , data) } 
                                             checked = { checkAnswer ===  choice } 
                                             value = { choice } 
                                             />
@@ -515,11 +484,6 @@ const QuizzForm = ({  multiple ,
                             <Button  type='button' onClick = {  handleNextButtonClick }> next <Icon name = 'long arrow alternate right' /> </Button>
                         </div>
                     }
-                   
-
-
-
-                    
 
                     </Form>
 
@@ -529,32 +493,10 @@ const QuizzForm = ({  multiple ,
 
             { reset &&
                 <Fragment >
-
-                    <QuizzSummary />
-                    <EndModal
-                        points = {userContext.user_points}
-                        progress = { userContext.user_progression }
-                        total_questions = { userContext.user_current_question_index + 1 }
-                        found_answer = { foundAnswer }
-                        show={modalShow}
-                        onHide={() => setModalShow(false)} />
-
-
-
-                    <Fragment >
-                        <EndModal
-                         show={modalShow}
-                         modalText = {modalText}
-                         onHide={() => setModalShow(false)} />
-                        <div className="quizz-submit-btn">
-                            <Button  type='button' onClick = { handleResetButton }> <Icon name = 'redo' /> </Button>
-                        </div>
-                    </Fragment>
-
-                    
-                    
-                    <div className="quizz-submit-btn">
-                        <Button  type='button' onClick = { handleResetButton }> <Icon name = 'redo' /> </Button>
+                    <QuizzSummary quizz_questions = {quizz_questions}  found_answer = {foundAnswer} chapter = {chapter} />
+                    <div className="quizz-reset-btn">
+                        <Button  type='button' onClick = { handleResetButton }> <span style = {{ marginRight: '5px' }}> Play again </span> <Icon name = 'redo' /> </Button>
+                        <Button  type='button'> Découvrez d’autres cours  </Button>
                     </div>
                 </Fragment>
 
