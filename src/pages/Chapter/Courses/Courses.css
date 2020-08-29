@@ -14,9 +14,9 @@
 
 .type-container{
     word-wrap: break-word;
-    background-color: #a3ffbc;
+    background-color: #757575;
     padding: 3px;
-    border: 1px solid #a3ffbc;
+    border: 1px solid #757575;
     margin-bottom: 10px;
 }
 
@@ -35,11 +35,24 @@
     font-size: 16px;
 }
 
+button.ui.button{
+    background-color: #757575 !important;
+}
+
+.subTitle-style{
+    color: #757575 !important;
+}
+
+.icon-down-container{
+    background-color: #ededed;
+    margin-left: 20px;
+}
+
 .bigTitle-container{
     word-wrap: break-word;
-    background-color: #a3ffbc;
+    background-color: #757575;
     padding: 10px;
-    border: 1px solid #a3ffbc;
-    margin-bottom: 40px;
-    margin-top: 40px;
+    border: 1px solid #757575;
+    margin-bottom: 25px;
+    margin-top: 25px;
 }

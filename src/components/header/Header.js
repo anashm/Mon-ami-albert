@@ -8,8 +8,11 @@ import UserContext from '../../Context/UserContext/UserContext';
 import HamburgerMenu from './Menu/HamburgerMenu/HamburgerMenu';
 import { useHistory } from "react-router-dom";
 import Avatar from '../../images/avatar.png'
-import { Button, Popup,Dropdown, DropdownMenu } from 'semantic-ui-react'
+/* import { Button, Popup,Dropdown, DropdownMenu } from 'semantic-ui-react'; */
+import { Modal,Button } from 'react-bootstrap';
 //import { Dropdown } from 'react-bootstrap';
+
+
 
 const Header = () =>  {
 
@@ -26,6 +29,7 @@ const Header = () =>  {
     const HandleLogout = () => {
         firebase.signOutUser();
         userContext.get_connected_user(null);
+        setShowModal(false)
         history.push('/');
     }
 
@@ -38,7 +42,9 @@ const Header = () =>  {
     }, [connectedUser]);
 
 
+    const [ showModal , setShowModal ] = useState(false);
 
+   
 
     return (  
         <header className = 'container-fluid header'>   
@@ -101,7 +107,33 @@ const Header = () =>  {
                                         pinned
                                         trigger={<Button content='Button' />}
                                     /> */}
-                                    <span className="logout-link contact-style" onClick={HandleLogout}>Déconnexion</span>
+                                    {
+                                        showModal == true ? (
+                                            <Modal
+                                            show={showModal}
+                                            onHide={() => setShowModal(false)}
+                                                size="lg"
+                                                aria-labelledby="contained-modal-title-vcenter"
+                                                centered
+                                            >
+                                                <Modal.Header closeButton>
+                                                    <Modal.Title id="contained-modal-title-vcenter">
+                                                        Déconnexion
+                                                    </Modal.Title>
+                                                </Modal.Header>
+                                                <Modal.Body>
+                                                    <p>Etes vous sur de vouloir vous déconnecter ! </p>
+                                                </Modal.Body>
+                                                <Modal.Footer>
+                                                    <Button variant="secondary" onClick={HandleLogout}>Oui</Button>
+                                                    <Button onClick={() => setShowModal(false)} variant="light">Non</Button>
+                                                </Modal.Footer>
+                                            </Modal>
+                                            
+                                        ) : ''
+                                    }
+                                    
+                                    <span className="logout-link contact-style" onClick = { () => setShowModal(true) }>Déconnexion</span>
                                 </div>
                                 ) 
                                  : null

@@ -19,6 +19,8 @@ import firebase_db from "firebase/app";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+
+
 export default function ProfilPage() {
 
     
@@ -219,7 +221,7 @@ export default function ProfilPage() {
 
     return (
         <div className = 'login-content-container'>
-            
+           
             <Form onSubmit={handleSubmit}>
 
                 <Form.Field>

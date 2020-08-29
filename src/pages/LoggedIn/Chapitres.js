@@ -130,7 +130,7 @@ const  Chapitres = ({match}) => {
                         { chapters.length < 1 ? 
                             <div className="loader-container" style = {{ height: '30vh' }}>
                                 <Dimmer active inverted>
-                                    <Loader inverted content='Wait please...' />
+                                    <Loader inverted content='Chargement en cours...' />
                                 </Dimmer>
                             </div> : ''
                         }

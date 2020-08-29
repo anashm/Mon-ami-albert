@@ -49,7 +49,7 @@ const HomePage = props => {
       return (
         <Fragment>
               <Dimmer active inverted style = {{ background: 'white' }}>
-              <Loader inverted content='Wait please ... ' />
+              <Loader inverted content='Chargement en cours ... ' />
             </Dimmer>
         </Fragment>
       )
