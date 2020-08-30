@@ -1,27 +1,43 @@
-import React , { useContext , useEffect , useState , Fragment } from 'react';
-
-import svg from './assets/Groupe 212.svg';
-import avatar from './assets/Boy.png'
-
+import React , { useContext , useEffect , useState , Fragment , useRef } from 'react';
+import UserContext from '../../../../Context/UserContext/UserContext';
 import { Icon } from 'semantic-ui-react'
+import Lottie from "lottie-react";
 
 import './Progress.scss';
 
-import UserContext from '../../../../Context/UserContext/UserContext';
+
+import svg from './assets/Groupe 212.svg';
+import avatar from './assets/Boy.png'
+import lottieTrophy from './assets/lottie/trophy.json';
+
+
+
+
 
 const Progress = () => {
+
+    const lottieRef = useRef();
+
 
     const userContext = useContext(UserContext);
 
     const [ progression , setProgression ] = useState(0);
     const [ quizzQuestionsNumber , setQuizzQuestionsNumber ] = useState(0);
     const [currentIndex , setCurrentIndex] = useState(0);
+    const [playLottie , setPlayLottie] = useState(false);
 
     const handleProgression = progression => setProgression(progression);
     const handleSetQuizzQuestionsNumber = number => setQuizzQuestionsNumber(number);
     const handleSetCurrentIndex = index => setCurrentIndex(index);
     
     useEffect(() => {
+
+        if(!userContext.user_check_true_answer && !userContext.user_checked_false_answer){
+            setTimeout(() => {lottieRef.current.pause() }, 1800);
+        }
+
+        
+
         handleProgression(userContext.user_progression);
         handleSetQuizzQuestionsNumber(userContext.quizz_questions);
         handleSetCurrentIndex(userContext.user_current_question_index);
@@ -68,8 +84,12 @@ const Progress = () => {
             </div>
 
             <div className="score-container">
-                <img src={svg} alt="heart" width = "50px"/>
-                {/* <div className="score"> { userContext.user_points } </div>*/}            
+                {/* <img src={svg} alt="heart" width = "50px"/> */}
+                {/* <div className="score"> { userContext.user_points } </div>*/} 
+                {!userContext.user_check_true_answer && <Lottie lottieRef={lottieRef} animationData={lottieTrophy} />}
+                
+
+                {userContext.user_check_true_answer &&  <Lottie  animationData={lottieTrophy} />}
             </div>
         </div>
     )

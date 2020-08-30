@@ -20,7 +20,7 @@ const ApplictaionSection = () => {
 
     const options = {
         animationData: newphoneLottie,
-        loop: false,
+        loop: 3,
         autoplay: true
     };
     

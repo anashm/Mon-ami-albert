@@ -481,7 +481,7 @@ const QuizzForm = ({  multiple ,
                         </div>
                         :
                         <div className="quizz-submit-btn">
-                            <Button  type='button' onClick = {  handleNextButtonClick }> next <Icon name = 'long arrow alternate right' /> </Button>
+                            <Button  type='button' onClick = {  handleNextButtonClick }> Suivant <Icon name = 'long arrow alternate right' /> </Button>
                         </div>
                     }
 
@@ -495,8 +495,8 @@ const QuizzForm = ({  multiple ,
                 <Fragment >
                     <QuizzSummary quizz_questions = {quizz_questions}  found_answer = {foundAnswer} chapter = {chapter} />
                     <div className="quizz-reset-btn">
-                        <Button  type='button' onClick = { handleResetButton }> <span style = {{ marginRight: '5px' }}> Play again </span> <Icon name = 'redo' /> </Button>
-                        <Button  type='button'> Découvrez d’autres cours  </Button>
+                        <button  type='button' onClick = { handleResetButton }> <span style = {{ marginRight: '5px' }}> Play again </span> <Icon name = 'redo' /> </button>
+                        <button  type='button'> Découvrez d’autres cours  </button>
                     </div>
                 </Fragment>
 

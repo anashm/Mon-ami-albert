@@ -21,7 +21,8 @@
         align-self: stretch;
         display: flex;
         flex-direction: column;
-        justify-content: space-evenly;
+        justify-content: center;
+        padding-top: 3%;
 
         .answer-wrapper{
             display: flex;
@@ -75,6 +76,15 @@
             left: 50%;
             transform: translate(-50% , -60%);
             color: white;
+        }
+
+        div{
+
+            max-width: 100px;
+
+            svg{
+
+            }
         }
     }
 }
