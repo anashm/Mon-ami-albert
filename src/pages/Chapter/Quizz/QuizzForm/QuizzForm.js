@@ -14,7 +14,7 @@ import * as animationData from '../../../../animation/quizz/test.json';
 
 import QuizzSummary from './QuizzSummary/QuizzSummary';
 
-import albertHead from './QuizzSummary/assets/images/Logo.png';
+import albertHead from './QuizzSummary/assets/images/albert-quiz.png';
 
 
 
