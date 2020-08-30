@@ -54,7 +54,10 @@
         width: 15%;
         margin-top: 4%;
         img{
-          width: 85%;
+          width: 70%;
+          @include media('<=phone'){
+            display: none;
+          }
         }
       } 
     }
