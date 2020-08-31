@@ -9,6 +9,10 @@
   display: flex;
   justify-content: space-between;
 }
+.ui.pointing.dropdown>.menu{
+  position: absolute;
+  z-index: 100;
+}
 
 .dropdown-header-titles{
   font-size: 13px;

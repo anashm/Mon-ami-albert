@@ -2,7 +2,7 @@
 
 
 .hero-section{
-
+ 
     padding-top: 2%;
     padding-bottom: 2%;
 
@@ -10,7 +10,7 @@
     display: flex;
     align-items: center;
     position: relative;
-
+    z-index: -1;
     .arrow-bottom{
         position: absolute;
         bottom: 0;

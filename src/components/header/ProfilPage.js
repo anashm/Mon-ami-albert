@@ -284,7 +284,7 @@ export default function ProfilPage() {
                 
                 ) : '' }
                 
-                <Button type='submit'>Mettre à jour</Button>
+                <Button type='submit' style={{color :'white'}}>Mettre à jour</Button>
 
             </Form>
         </div>

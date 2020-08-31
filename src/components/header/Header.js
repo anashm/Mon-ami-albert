@@ -10,13 +10,17 @@ import { useHistory } from "react-router-dom";
 import Avatar from '../../images/avatar.png'
 /* import { Button, Popup,Dropdown, DropdownMenu } from 'semantic-ui-react'; */
 import { Modal,Button } from 'react-bootstrap';
-//import { Dropdown } from 'react-bootstrap';
+import { Dropdown } from 'semantic-ui-react';
 
 
 
 const Header = () =>  {
 
-   
+    const options = [
+        { key: 1, text: 'Choice 1', value: 1 },
+        { key: 2, text: 'Choice 2', value: 2 },
+        { key: 3, text: 'Choice 3', value: 3 },
+      ]
 
     const history = useHistory();
 
@@ -78,8 +82,8 @@ const Header = () =>  {
                                     </Dropdown.Menu>
                                     </Dropdown> */}
                                    
-
-                                   {/* <Dropdown text='Mon compte' pointing className='link item'>
+                                   
+                                   <Dropdown text='Mon compte'  pointing className='link item'>
                                         <Dropdown.Menu>
 
                                             <Dropdown.Header> <span className="dropdown-header-titles"> Profil </span></Dropdown.Header>                                                                                 
@@ -97,16 +101,11 @@ const Header = () =>  {
                                                 <Dropdown.Item><span  >Lycées</span></Dropdown.Item>
                                             <Dropdown.Divider />
                                             
-                                            <Dropdown.Item><span  onClick={HandleLogout}>Déconnexion</span></Dropdown.Item>
+                                            <Dropdown.Item><span  onClick = { () => setShowModal(true) }>Déconnexion</span></Dropdown.Item>
                                            
                                         </Dropdown.Menu>
-                                    </Dropdown> */}
-                                   {/* <Popup
-                                        content='I will not flip!'
-                                        on='click'
-                                        pinned
-                                        trigger={<Button content='Button' />}
-                                    /> */}
+                                    </Dropdown>
+                                   
                                     {
                                         showModal == true ? (
                                             <Modal
@@ -133,7 +132,7 @@ const Header = () =>  {
                                         ) : ''
                                     }
                                     
-                                    <span className="logout-link contact-style" onClick = { () => setShowModal(true) }>Déconnexion</span>
+                                    {/* <span className="logout-link contact-style" onClick = { () => setShowModal(true) }>Déconnexion</span> */}
                                 </div>
                                 ) 
                                  : null
