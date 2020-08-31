@@ -130,14 +130,12 @@ const Quizz = ({ match }) => {
                     { (quizzQuestions.length !== 0 && !loading) && (
                         <Fragment>
                             <Progress/>
-                            <Divider hidden />
                             {/*<DownloadButton/>*/}                            
                             <Divider hidden />
                         </Fragment>
                     )
                     }
 
-                    <Divider hidden />
 
                     <div className={`loader-container ${ loading ? '' : 'd-none' }`} style = {{ height: '30vh' , position: 'relative' }}>
                         <Dimmer active inverted>
