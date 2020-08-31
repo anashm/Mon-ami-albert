@@ -1,4 +1,6 @@
-import React from 'react';
+import React , { useEffect , useRef , useState } from 'react';
+import { useIntersection } from 'react-use';
+
 
 import Paragraphe from '../../../general/Paragraphe/Paragraphe';
 import Title from '../../../general/Title/Title';
@@ -18,16 +20,48 @@ import { Divider } from 'semantic-ui-react';
 
 const ApplictaionSection = () => {
 
-    const options = {
+    const intersectionRef = useRef(null);
+
+   
+    const [ options , setOptions ] = useState({
         animationData: newphoneLottie,
-        loop: 3,
-        autoplay: true
-    };
+        loop: 0,
+        autoplay: false
+    });
+
+    const [ count , setCount ] = useState(0);
+
     
     const { View } = useLottie(options);
 
+    const intersection = useIntersection(intersectionRef, {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.6
+    });
+    
+
+    useEffect(() => { 
+      
+
+        if(intersection && intersection.intersectionRatio < 1){
+            setCount(count+1);
+
+            if(count === 1){
+                setOptions( prev =>  ({
+                    ...prev,
+                    autoplay: true
+                }));
+            }
+           
+        }
+    
+     } , [intersection])
+
+
+
     return (
-        <section className = 'container-fluid application-section'>
+        <section className = 'container-fluid application-section' ref = {intersectionRef}>
             <div className="container">
                 <div className="row">
                     <div className=" application-section-container">
@@ -41,7 +75,7 @@ const ApplictaionSection = () => {
                         </div>
                     </div>
 
-                    <div className="application-section-image-container">
+                    <div className="application-section-image-container" >
                         {/* <img src={ phone_img_src } alt=""/> */}
 
                         {View}

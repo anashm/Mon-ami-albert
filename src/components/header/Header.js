@@ -64,26 +64,7 @@ const Header = () =>  {
                             { logout ?  <Link to = '/' className="contact-link dark-color">Contact</Link> : null}
                         </div> */}
 
-                        <div className="logout-container">
-                            {!logout ? 
-                                ( 
-                                
-                                <div className="div_logout_container">
-                                    {/* <Dropdown>
-                                    <Dropdown.Toggle variant="success" id="dropdown-basic">
-                                        <img src={Avatar} width='20%'  />
-                                    </Dropdown.Toggle>
-
-                                    <Dropdown.Menu>
-                                   
-                                        <Dropdown.Item href="/profil" >Profil</Dropdown.Item>
-                                   
-                                       
-                                    </Dropdown.Menu>
-                                    </Dropdown> */}
-                                   
-                                   
-                                   <Dropdown text='Mon compte'  pointing className='link item'>
+<Dropdown text='Mon compte'  pointing className='link item'>
                                         <Dropdown.Menu>
 
                                             <Dropdown.Header> <span className="dropdown-header-titles"> Profil </span></Dropdown.Header>                                                                                 
@@ -105,6 +86,27 @@ const Header = () =>  {
                                            
                                         </Dropdown.Menu>
                                     </Dropdown>
+
+                        <div className="logout-container">
+                            {!logout ? 
+                                ( 
+                                
+                                <div className="div_logout_container">
+                                    {/* <Dropdown>
+                                    <Dropdown.Toggle variant="success" id="dropdown-basic">
+                                        <img src={Avatar} width='20%'  />
+                                    </Dropdown.Toggle>
+
+                                    <Dropdown.Menu>
+                                   
+                                        <Dropdown.Item href="/profil" >Profil</Dropdown.Item>
+                                   
+                                       
+                                    </Dropdown.Menu>
+                                    </Dropdown> */}
+                                   
+                                   
+                                 
                                    
                                     {
                                         showModal == true ? (

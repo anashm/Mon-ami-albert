@@ -10,7 +10,9 @@ import {
     UPDATE_USER_CHECKED_FALSE_ANSWER,
     UPDATE_USER_CHECKED_TRUE_ANSWER,
     UPDATE_USER_CHECK_TRUE_ANSWER,
-    UPDATE_USER_PLAYING_QUIZZ
+    UPDATE_USER_PLAYING_QUIZZ,
+    UPDATE_USER_FOUND_ANSWER,
+    UPDATE_USER_ON_QUIZZ_SUMMARY_PAGE
 } from '../Types';
 
 import UserReducer from './UserReducer';
@@ -25,10 +27,12 @@ const UserState = ({ children }) => {
         user_current_question_index: 0,
         user_points : 0,
         quizz_questions: 0,
+        user_found_answer: 0,
         user_checked_true_answer: false,
         user_checked_false_answer: false,
         user_check_true_answer: false,
-        user_playing_quizz: false
+        user_playing_quizz: false,
+        user_on_quizz_summary_page: false
     }
 
     const [ state , dispatch ] = useReducer(UserReducer , initialState);
@@ -55,6 +59,10 @@ const UserState = ({ children }) => {
 
     const update_user_playing_quizz = check => dispatch({ type: UPDATE_USER_PLAYING_QUIZZ , payload: check  });
 
+    const update_user_found_answer = number => dispatch({ type: UPDATE_USER_FOUND_ANSWER , payload: number });
+
+    const update_user_on_quizz_summary_page = check => dispatch({ type: UPDATE_USER_ON_QUIZZ_SUMMARY_PAGE , payload: check });
+
 
 
     return (
@@ -69,6 +77,8 @@ const UserState = ({ children }) => {
             user_checked_false_answer: state.user_checked_false_answer,
             user_check_true_answer : state.user_check_true_answer,
             user_playing_quizz: state.user_playing_quizz,
+            user_found_answer: state.user_found_answer,
+            user_on_quizz_summary_page: state.user_on_quizz_summary_page,
             update_quizz_questions,
             get_connected_user, 
             get_user_informations ,
@@ -79,7 +89,9 @@ const UserState = ({ children }) => {
             update_user_checked_true_answer,
             update_user_checked_false_answer,
             update_user_check_true_answer,
-            update_user_playing_quizz
+            update_user_playing_quizz,
+            update_user_found_answer,
+            update_user_on_quizz_summary_page
         }} >
             {children}
         </UserContext.Provider>

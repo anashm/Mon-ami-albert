@@ -22,7 +22,7 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        padding-top: 3%;
+        padding-top: calc(3% - 15px);
 
         .answer-wrapper{
             display: flex;
@@ -37,6 +37,7 @@
             p{
                 font-size: 16px;
                 font-weight: 600;
+                margin: 10px;
 
                 i{
                     font-size: 18px;

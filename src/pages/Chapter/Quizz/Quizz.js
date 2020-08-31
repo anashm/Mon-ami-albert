@@ -1,9 +1,10 @@
-import React , { useContext , useEffect , useState , Fragment} from 'react';
+import React , { useContext , useEffect , useState , Fragment , useCallback} from 'react';
 
 import { Divider } from 'semantic-ui-react'
 import Progress from './Progress/Progress';
 import DownloadButton from './DownloadButton/DownloadButton';
 import QuizzForm from './QuizzForm/QuizzForm';
+import QuizzShowAnswer from './QuizzShowAnswer/QuizzShowAnswer';
 
 import { Dimmer, Loader, Segment } from 'semantic-ui-react'
 
@@ -82,42 +83,42 @@ const Quizz = ({ match }) => {
             handleCurrentIndex(0);
         }
 
-
-
-        firebase.auth.onAuthStateChanged( user => {
-            if(user){
-                //code if realod page pour garder context api values
-                userContext.update_user_playing_quizz(true)
-                userContext.get_connected_user(user);
-                const userId = user.uid;                      
-                const database = firebase.getData();
-                console.log(userId);
-                const reference =  database.ref(`users/${userId}`)
-                console.log(reference);
-
-                reference.once("value", user_informations => {
-                    userContext.get_user_informations(user_informations.val());
-                    //  setinfosLevel(user_informations.val().level)
-                    console.log(matiere , chapitre)
-                    const reference_exercices = database.ref(`schoolLevels/${user_informations.val().level}/subjects/${matiere}/${chapitre}/quiz`);
+            firebase.auth.onAuthStateChanged( user => {
+                if(user){
+                    //code if realod page pour garder context api values
+                    userContext.update_user_playing_quizz(true)
+                    userContext.get_connected_user(user);
+                    const userId = user.uid;                      
+                    const database = firebase.getData();
+                    console.log(userId);
+                    const reference =  database.ref(`users/${userId}`)
+                    console.log(reference);
     
-                    reference_exercices.once("value", quizz => {
-                        console.log(quizz.val())
-                        handleQuizzQuestions(quizz.val());
+                    reference.once("value", user_informations => {
+                        userContext.get_user_informations(user_informations.val());
+                        //  setinfosLevel(user_informations.val().level)
+                        console.log(matiere , chapitre)
+                        const reference_exercices = database.ref(`schoolLevels/${user_informations.val().level}/subjects/${matiere}/${chapitre}/quiz`);
+        
+                        reference_exercices.once("value", quizz => {
+                            console.log(quizz.val())
+                            handleQuizzQuestions(quizz.val());
+                        });
                     });
-                });
-            }
-            else{
-                console.log('not login');
-                history.push('/')
-            }
-        });
+                }
+                else{
+                    console.log('not login');
+                    history.push('/')
+                }
+            });
+        
+
 
         return () => {
             userContext.update_user_playing_quizz(false)
         }
 
-    } , [firebase , userContext.user_current_question_index , userContext.user_progression , userContext.user_points ]);
+    } , [ userContext.user_current_question_index , userContext.user_progression , userContext.user_points ]);
 
 
     if(userContext.user){
@@ -131,7 +132,6 @@ const Quizz = ({ match }) => {
                         <Fragment>
                             <Progress/>
                             {/*<DownloadButton/>*/}                            
-                            <Divider hidden />
                         </Fragment>
                     )
                     }
@@ -144,21 +144,25 @@ const Quizz = ({ match }) => {
                     </div>
 
                     { quizzQuestions.length > 0 &&
-                        <QuizzForm single 
-                            title = {` ${quizzQuestions.length ? quizzQuestions[currentIndex][0].question : 'quizzQuestions' } ` } 
-                            choices = {quizzQuestions.length ? quizzQuestions[currentIndex][0].choices : []} 
-                            correct = {quizzQuestions.length ? quizzQuestions[currentIndex][0].correct[0] : []}
-                            current_index = { currentIndex }
-                            next_step = { handle_next_step }
-                            question_limit = { quizzQuestions.length ? quizzQuestions.length - 1 : 0  }
-                            question_length = { quizzQuestions.length ? quizzQuestions.length : 0  }
-                            course = {matiere}
-                            chapter = {chapitre}
-                            reset = {reset}
-                            resetClicked = { () => handleCurrentIndex(0) }
-                            quizz_questions = {quizzQuestions}
-                            
-                        />
+                         <Fragment>
+                            <QuizzShowAnswer />
+
+                            <QuizzForm single 
+                                title = {` ${quizzQuestions.length ? quizzQuestions[currentIndex][0].question : 'quizzQuestions' } ` } 
+                                choices = {quizzQuestions.length ? quizzQuestions[currentIndex][0].choices : []} 
+                                correct = {quizzQuestions.length ? quizzQuestions[currentIndex][0].correct[0] : []}
+                                current_index = { currentIndex }
+                                next_step = { handle_next_step }
+                                question_limit = { quizzQuestions.length ? quizzQuestions.length - 1 : 0  }
+                                question_length = { quizzQuestions.length ? quizzQuestions.length : 0  }
+                                course = {matiere}
+                                chapter = {chapitre}
+                                reset = {reset}
+                                resetClicked = { () => handleCurrentIndex(0) }
+                                quizz_questions = {quizzQuestions}
+                            />
+                          </Fragment>
+                        
                     }
 
                     { (quizzQuestions.length === 0 && !loading) &&

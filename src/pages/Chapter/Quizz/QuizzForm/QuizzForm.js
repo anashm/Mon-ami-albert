@@ -47,6 +47,7 @@ const QuizzForm = ({  multiple ,
     const [showNextBtn , setShowNextBtn] = useState(false);
 
 
+
     const database = firebase.getData();
 
     useEffect(() => {
@@ -93,9 +94,12 @@ const QuizzForm = ({  multiple ,
                             //update user points
                             userContext.update_user_current_question_index(current_question_index);
                             userContext.update_user_points(points);
+                            userContext.update_user_found_answer(found_questions);
                             setFoundAnswer(found_questions);
                             setUserPoints(points);
                             setReset(onReset);
+                            userContext.update_user_on_quizz_summary_page(onReset);
+
 
                             if(finished){
                                 setFinished(finished);
@@ -107,7 +111,7 @@ const QuizzForm = ({  multiple ,
             }
         
         });
-    } , [firebase]);
+    } , []);
 
     const handleResetButton = () => {
         //alert('hello')
@@ -127,9 +131,12 @@ const QuizzForm = ({  multiple ,
             setFoundAnswer(0);
             resetClicked();
             setReset(false);
+            setLoading(false);
             setShowAnswer(false);
             userContext.update_user_check_true_answer(false);
             userContext.update_user_checked_false_answer(false);
+            userContext.update_user_found_answer(0);
+            userContext.update_user_on_quizz_summary_page(false);
         })
         .catch(e => console.log(e));
         //console.log(userContext.user_informations.level)
@@ -212,6 +219,8 @@ const QuizzForm = ({  multiple ,
                         userContext.update_user_current_question_index(current_index+1);
                         userContext.update_user_check_true_answer(false);
                         userContext.update_user_checked_false_answer(false);
+                        userContext.update_user_found_answer(foundAnswer + 1);
+                        userContext.update_user_on_quizz_summary_page(false);
                         setShowAnswer(false);
                         setShowNextBtn(false);
                     })
@@ -240,6 +249,7 @@ const QuizzForm = ({  multiple ,
                     userContext.update_user_current_question_index(current_index+1);
                     userContext.update_user_check_true_answer(false);
                     userContext.update_user_checked_false_answer(false);
+                    userContext.update_user_on_quizz_summary_page(false);
                     setShowAnswer(false);
                     setShowNextBtn(false);
                 })
@@ -303,6 +313,10 @@ const QuizzForm = ({  multiple ,
                         setReset(true);
                         userContext.update_user_check_true_answer(false);
                         userContext.update_user_checked_false_answer(false);
+                        userContext.update_user_found_answer(foundAnswer + 1);
+                        userContext.update_user_current_question_index(current_index);
+                        userContext.update_user_on_quizz_summary_page(true);
+
                     })
                     .catch(e => console.log(e));
                     //console.log(userContext.user_informations.level)
@@ -324,6 +338,8 @@ const QuizzForm = ({  multiple ,
                         setResponse('');
                         userContext.update_user_check_true_answer(false);
                         userContext.update_user_checked_false_answer(false);
+                        userContext.update_user_current_question_index(current_index);
+                        userContext.update_user_on_quizz_summary_page(true);
                         setReset(true);
                     })
                     .catch(e => console.log(e));
@@ -431,7 +447,6 @@ const QuizzForm = ({  multiple ,
                                             control = {Checkbox} 
                                             name = { choice } 
                                             id = { `${ index + 1 }` } 
-                                            defaultChecked = { false } 
                                             label= { <label>  <MathJax math={choice} />    </label> } 
                                             checked = { checkAnswer ===  choice } 
                                             value = { choice } 
@@ -447,7 +462,6 @@ const QuizzForm = ({  multiple ,
                                                 control = {Checkbox} 
                                                 name = { choice } 
                                                 id = { `${ index + 1 }` } 
-                                                defaultChecked = { false } 
                                                 label= {  <label>  <MathJax math={choice} />    </label>  } 
                                                 onClick = { (e , data) => handleClick(e , data) } 
                                                 checked = { Response ===  choice } 
@@ -462,7 +476,6 @@ const QuizzForm = ({  multiple ,
                                                 control = {Checkbox} 
                                                 name = { choice } 
                                                 id = { `${ index + 1 }` } 
-                                                defaultChecked = { false } 
                                                 label= { <label>  <MathJax math={choice} />    </label> } 
                                                 onClick = { (e , data) => handleClick(e , data) } 
                                                 checked = { Response ===  choice } 
@@ -493,14 +506,17 @@ const QuizzForm = ({  multiple ,
 
             { reset &&
                 <Fragment >
-                    <QuizzSummary quizz_questions = {quizz_questions}  found_answer = {foundAnswer} chapter = {chapter} />
+                    <QuizzSummary 
+                    img = { albertHead }
+                    quizz_questions = {quizz_questions}  
+                    found_answer = {foundAnswer} 
+                    chapter = {chapter} />
                     <div className="quizz-reset-btn">
-                        <button  type='button' onClick = { handleResetButton }> <span style = {{ marginRight: '5px' }}> Play again </span> <Icon name = 'redo' /> </button>
+                        <button  type='button' onClick = { handleResetButton }> <span style = {{ marginRight: '5px' }}> Recommencer </span> <Icon name = 'redo' /> </button>
                         <button  type='button'> Découvrez d’autres cours  </button>
                     </div>
                 </Fragment>
 
-               
             }
             </Fragment>
 

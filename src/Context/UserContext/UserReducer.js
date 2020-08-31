@@ -9,7 +9,9 @@ import  {
     UPDATE_USER_CHECKED_FALSE_ANSWER,
     UPDATE_USER_CHECKED_TRUE_ANSWER,    
     UPDATE_USER_CHECK_TRUE_ANSWER,
-    UPDATE_USER_PLAYING_QUIZZ
+    UPDATE_USER_PLAYING_QUIZZ,
+    UPDATE_USER_FOUND_ANSWER,
+    UPDATE_USER_ON_QUIZZ_SUMMARY_PAGE
 } from "../Types"
 
 export default ( state , action) => {
@@ -81,6 +83,18 @@ export default ( state , action) => {
         return({
             ...state,
             user_playing_quizz: action.payload
+        });
+
+        case(UPDATE_USER_FOUND_ANSWER):
+        return({
+            ...state,
+            user_found_answer: action.payload
+        });
+
+        case(UPDATE_USER_ON_QUIZZ_SUMMARY_PAGE):
+        return({
+            ...state,
+            user_on_quizz_summary_page: action.payload
         });
     
         default:
