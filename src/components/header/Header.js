@@ -83,7 +83,7 @@ const Header = () =>  {
                                     </Dropdown> */}
                                    
                                    
-                                   {/* <Dropdown text='Mon compte'  pointing className='link item'>
+                                   <Dropdown text='Mon compte'  pointing className='link item'>
                                         <Dropdown.Menu>
 
                                             <Dropdown.Header> <span className="dropdown-header-titles"> Profil </span></Dropdown.Header>                                                                                 
@@ -104,7 +104,7 @@ const Header = () =>  {
                                             <Dropdown.Item><span  onClick = { () => setShowModal(true) }>Déconnexion</span></Dropdown.Item>
                                            
                                         </Dropdown.Menu>
-                                    </Dropdown> */}
+                                    </Dropdown>
                                    
                                     {
                                         showModal == true ? (
@@ -132,7 +132,7 @@ const Header = () =>  {
                                         ) : ''
                                     }
                                     
-                                    <span className="logout-link contact-style" onClick = { () => setShowModal(true) }>Déconnexion</span>
+                                    {/* <span className="logout-link contact-style" onClick = { () => setShowModal(true) }>Déconnexion</span> */}
                                 </div>
                                 ) 
                                  : null

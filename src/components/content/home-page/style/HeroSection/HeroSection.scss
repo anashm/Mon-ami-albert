@@ -10,7 +10,7 @@
     display: flex;
     align-items: center;
     position: relative;
-  
+    z-index: -1;
     .arrow-bottom{
         position: absolute;
         bottom: 0;
@@ -208,7 +208,7 @@
                         background-color: #707070;
                         color: white;
                         border: 2px solid #707070;
-
+                        
                         &:hover{
                             background-color: transparent;
                             color: #707070;
