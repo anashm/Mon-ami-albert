@@ -185,7 +185,7 @@ export default function ProfilPage() {
                 
                 reauthenticates(currentPassword).then(() => {                  
                     user.updatePassword(newPassword).then(function() {
-                        console.log('dkhal')
+                      
                       }).catch(function(error) {
                         
                       });
@@ -221,7 +221,7 @@ export default function ProfilPage() {
 
     return (
         <div className = 'login-content-container'>
-           
+          
             <Form onSubmit={handleSubmit}>
 
                 <Form.Field>

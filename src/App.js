@@ -19,6 +19,7 @@ import Quizz from './pages/Chapter/Quizz/Quizz';
 import TestPDF from './pages/Chapter/Exercises/Exercise/TestPDF'
 import Profil from './components/header/ProfilPage';
 import 'aos/dist/aos.css';
+import ClassementGeneral from './components/header/Classement/ClassementGeneral'
 
 const  App = () => {
 
@@ -41,6 +42,7 @@ const  App = () => {
             <Route exact path="/chapitres/:matieres" component={Chapitres} />
             <Route exact path="/test-pdf" component={TestPDF} />
             <Route exact path="/profil" component={Profil} />
+            <Route exact path="/classement-general" component={ClassementGeneral} />
           </Switch>
           
           {/* </LoggedinProvider> */}

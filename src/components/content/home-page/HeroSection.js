@@ -120,7 +120,7 @@ const HeroSection = ( {userConnected} ) => {
                                             <Link className = 'hero-section-button register-button' to = '/eleve-creat-account' > s'inscrire gratuitement </Link>
                                             <Link className = 'hero-section-button login-button' to = '/login'> Se connecter </Link> 
                                         </Fragment>
-                                    ) : <Link className = 'hero-section-button dashboard-button' to = '/dashboard-user'> Mon Parcours </Link> }
+                                    ) : <Link className = 'hero-section-button dashboard-button' to = '/dashboard-user'>  Mon Parcours </Link> }
                             </div>
                         </div>
                     </div>
