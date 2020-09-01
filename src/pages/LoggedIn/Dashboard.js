@@ -83,11 +83,12 @@ const  Dashboard = (props) => {
                 const database = firebase.getData();
                 const reference =  database.ref('users/'+userId)
 
-                setUserConnectedId(userId)
+                setUserConnectedId(userId);
 
                 reference.once("value", user_informations => {
                     userContext.get_user_informations(user_informations.val());
-                })
+                });
+
             }
             else{
                 console.log('not login');
@@ -133,6 +134,7 @@ const  Dashboard = (props) => {
                         return (
                             <Link key={index} to={`/chapitres/${matiere.urlParam}`}data-aos="fade-down" data-aos-delay={50 + index*100}  data-aos-once="true">
                                 <MatiereComponent
+                                    course = { matiere.title }
                                     title={matiere.title}
                                     logo={matiere.logo} />
                             </Link>  

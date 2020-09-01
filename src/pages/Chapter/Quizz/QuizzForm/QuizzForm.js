@@ -301,8 +301,10 @@ const QuizzForm = ({  multiple ,
                     }
 
 
+                    
+
                     const reference =  database.ref(`users/${userContext.user.uid}/Progression/`);
-                    console.log(reference);
+                    //console.log(reference);
                     reference.child(`${userContext.user_informations.level}/${course}/${chapter}/progression`).update({
                         found_questions : foundAnswer + 1,
                         points: score,
@@ -364,7 +366,7 @@ const QuizzForm = ({  multiple ,
         /*userContext.update_user_current_question_index(current_index);
         setCount(count + 1);
         setShowAnswer(true);*/
-        //console.log(question_length , question_limit , current_index);
+        //console.log(question_length , question_limit , current_index)
 
 
         console.log('hello');
