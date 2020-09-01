@@ -172,7 +172,7 @@ const QuizzSummary = ({ quizz_questions , found_answer , chapter , img , course 
                         : 
                         <Fragment>
                             <div class="bubble bubble-bottom-left" contenteditable> { message } </div>
-                            <img style = {{ width: "200px" }} src={albert} alt="" className="albert-img"/>
+                            <img  src={albert} alt="" className="albert-img"/>
                         </Fragment>
 
                     }

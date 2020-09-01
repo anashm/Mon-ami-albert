@@ -21,6 +21,7 @@ body{
 
 .ui.label{
     font-weight: 500 !important;
+    font-size: 16px !important;
 }
 
 
@@ -342,7 +343,14 @@ body{
     text-align: center;
     color: white;
 
+
     left: 50%;
+
+    @media only screen and (max-width: 460px) {
+        width: 80%;
+        left: 20%;
+        z-index: -1;
+    }
   }
   
   .bubble-bottom-left:before {

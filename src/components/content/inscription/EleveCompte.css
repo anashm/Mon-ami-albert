@@ -117,9 +117,30 @@
     margin-top: 40px;
     justify-content: center;
     gap: 10px;
+    
 }
+
+.grid2 .field {
+    width: 70%;
+    max-width: 540px;
+
+    
+}
+
+@media only screen and (max-width: 600px) {
+   
+    .grid2 .field {
+        width: 100%;
+
+
+        
+    }
+  }
+
+
 .ui.dropdown.search{
-    min-width: 540px;
+    max-width: 540px;
+    min-width: 100%;
 }
 /* #root{
     height: 100%;

@@ -471,7 +471,7 @@ const QuizzForm = ({  multiple ,
 
                 <div className = 'quizz-title-container'>
                     <div className="img-container">
-                        <img className = 'heartbeat' src={albertHead} alt=""/>
+                        <img  src={albertHead} alt=""/>
                     </div>
                     <h2 className="quizz-form-title"> <MathJax math={title} />  </h2>
                 </div>

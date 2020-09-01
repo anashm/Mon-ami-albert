@@ -38,12 +38,26 @@
             align-items: center;
             padding: 20px 0;
 
+            @include media('<=phone'){
+                flex-direction: column;
+            }
+
             > *{
                 flex-basis: 33.33%;
+
+                @include media('<=phone'){
+                    flex-basis: 100%;
+                    flex-direction: column;
+                }
             }
 
             .albert-img{
-                width: 90%;
+                width: 200px;
+
+                @include media('<=phone'){
+                    width: 100px;
+            
+                }
             }
 
             .congratulation-trophee{

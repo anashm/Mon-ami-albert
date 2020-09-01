@@ -70,6 +70,11 @@
     .score-container{
         position: relative;
 
+        @include media('<=phone'){
+            z-index: -1;
+    
+        }
+
         .score{
             font-size: 18px;
             position: absolute;
