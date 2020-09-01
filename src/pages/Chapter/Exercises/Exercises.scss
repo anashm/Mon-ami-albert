@@ -24,9 +24,7 @@
         cursor: pointer;
         transition: all 0.3s;
 
-        &:hover{
-            opacity: 0.9;
-        }
+       
 
         .exercises-title{
             color: white;
@@ -67,11 +65,8 @@
         overflow: hidden;
         transition : all 0.3s;
         background-color: #FAFAFA;
-
-        @include media('<=phone'){
-            transform: unset !important;
-            
-        }
+        transform: unset !important;
+        
     }
 }
 

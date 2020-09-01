@@ -225,19 +225,19 @@ export default function ProfilPage() {
             <Form onSubmit={handleSubmit}>
 
                 <Form.Field>
-                    <label>First Name</label>
-                    <input placeholder='First Name' value={firstName}  onChange={HandleChangeFirstName} />
+                    <label>Prénom</label>
+                    <input placeholder='Prénom' value={firstName}  onChange={HandleChangeFirstName} />
                 </Form.Field>
 
 
                 <Form.Field>
-                    <label>Last Name</label>
-                    <input placeholder='Last Name' value={lastName} onChange={HandleChangeLastName}  />
+                    <label>Nom</label>
+                    <input placeholder='Nom' value={lastName} onChange={HandleChangeLastName}  />
                 </Form.Field>
 
                 <Form.Field>
-                    <label>Current Password</label>
-                    <input type="password" placeholder='Current Password' value={currentPassword} onChange={(e) => { setcurrentPassword(e.target.value)}}  />
+                    <label>Votre mot de passe</label>
+                    <input type="password" placeholder='Votre mot de passe' value={currentPassword} onChange={(e) => { setcurrentPassword(e.target.value)}}  />
                 </Form.Field>
 
                 <Form.Field>
@@ -253,8 +253,8 @@ export default function ProfilPage() {
                              
 
                             <Form.Field>
-                                <label>New Password</label>
-                                <input type="password" placeholder='New Password' value={newPassword} onChange={(e) => { setNewPassword(e.target.value)}} />
+                                <label>Nouveau mot de pass</label>
+                                <input type="password" placeholder='Nouveau mot de pass' value={newPassword} onChange={(e) => { setNewPassword(e.target.value)}} />
                             </Form.Field>
                         </div>
                     ) : ''
