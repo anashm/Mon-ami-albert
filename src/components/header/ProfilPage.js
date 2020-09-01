@@ -199,6 +199,7 @@ export default function ProfilPage() {
                         toast.success("Votre Profil a été mis à jour ! 🧐");
                     })
                 }).catch(function(error) {
+                        
                         setShowToast(true) 
                         toast.error("Ce mot de passe ne correspond pas à cet utilisateur!");
                   });
