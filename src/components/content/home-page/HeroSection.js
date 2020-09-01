@@ -88,7 +88,7 @@ const HeroSection = ( {userConnected} ) => {
     
     useEffect(() => {
 
-        setTimeout(() => { toast(<PopUp />)  },2000); 
+        /* setTimeout(() => { toast(<PopUp />)  },2000);  */
         
     }, []);
 
