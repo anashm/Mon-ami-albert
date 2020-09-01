@@ -132,7 +132,7 @@ const  Chapitres = ({match}) => {
                                 {dimmer ? (<Dimmer active inverted>
                                     <Loader inverted content='Chargement en cours...' />
                                 </Dimmer>) :  <Alert variant= 'secondary'>
-                                                No Chapters available!
+                                                Pas de chapitre disponible pour le moment!
                                             </Alert>}
                                 
                             </div> : ''
