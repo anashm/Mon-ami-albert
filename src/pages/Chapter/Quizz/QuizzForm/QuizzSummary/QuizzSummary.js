@@ -1,9 +1,9 @@
-import React , {useContext , useState , useEffect} from 'react';
+import React , {useContext , useState , useEffect , Fragment} from 'react';
 import './QuizzSummary.scss';
 
 import { useLottie } from "lottie-react";
 
-import albert from './assets/images/Logo.png';
+import albert from './assets/images/albert-quiz.png';
 import albertLottie from '../../../../../animation/homepage/alber-welcome.json';
 import lottieTrophee from './assets/lottie/tropheeLottie.json';
 
@@ -12,10 +12,18 @@ import UserContext from '../../../../../Context/UserContext/UserContext';
 
 import QuizzQuestion from './QuizzQuestion/QuizzQuestion';
 
-import { Button , Icon , Popup , Message } from 'semantic-ui-react'
+import { Button , Icon , Popup , Message } from 'semantic-ui-react';
+import {FirebaseContext} from '../../../../../firebase';
 
 
-const QuizzSummary = ({ quizz_questions , found_answer , chapter , img }) => {
+
+const QuizzSummary = ({ quizz_questions , found_answer , chapter , img , course , finished }) => {
+
+    const firebase = useContext(FirebaseContext);
+
+
+    const database = firebase.getData();
+
 
     const userContext = useContext(UserContext);
 
@@ -123,9 +131,22 @@ const QuizzSummary = ({ quizz_questions , found_answer , chapter , img }) => {
 
     }
 
+    const [ userBadResponses , setUserBadResponses ] = useState([]);
+
     useEffect(() => {
         handleMessage(userContext.user_informations.level , userContext.quizz_questions);
-    } , [ userContext.user_found_answer , userContext.quizz_questions]);
+
+        const bad_response_reference = database.ref(`users/${userContext.user.uid}/Progression/${userContext.user_informations.level}/${course}/${chapter}/progression/badResponses`);
+
+        bad_response_reference.once('value' , bad_responses => {
+            console.log( 'bad response final' ,  bad_responses.val());
+            setUserBadResponses(bad_responses.val());
+        })
+
+
+
+
+    } , [ userContext.user_found_answer , userContext.quizz_questions ]);
 
 
 
@@ -135,23 +156,36 @@ const QuizzSummary = ({ quizz_questions , found_answer , chapter , img }) => {
             {console.log(message)}
 
             <div className="quizz-congratulation-container sm-shadow">
-                { message.length > 1 && <Message visible warning className = 'text-center'>  { message } </Message>}
+                { /* message.length > 1 && <Message visible warning className = 'text-center'>  { message } </Message > */}
                 
+                    {userContext.user_points > 50 &&  <h2 className="congratulation-title"> Bravo </h2>}
 
-                <h2 className="congratulation-title"> Bravo </h2>
                 <div className="congratulation-images-container">
                     <div className="albert-img-container">
                        {/*  <img src={albert} alt="" className="albert-img"/> */}
+                    </div>
+
+                    <div className="congratulation-trophee">
+                    {
+                        userContext.user_points > 50 ? 
+                            {View}
+                        : 
+                        <Fragment>
+                            <div class="bubble bubble-bottom-left" contenteditable> { message } </div>
+                            <img style = {{ width: "200px" }} src={albert} alt="" className="albert-img"/>
+                        </Fragment>
+
+                    }
 
                     </div>
-                    <div className="congratulation-trophee">
-                        {View}
-                    </div>
+                    
                     <div className="empty">
                     </div>
                 </div>
                 <p className="quizz-text-completed"> Vous avez complété le Quiz </p>
-                <p className="gained-points-text"> Vous avez gagné <span className = 'text-green'> { userContext.user_points } points </span> </p>
+                {
+                    !finished &&  <p className="gained-points-text"> Vous avez gagné <span className = 'text-green'> { userContext.user_points } points </span> </p>
+                }
 
             </div>
 
@@ -166,8 +200,15 @@ const QuizzSummary = ({ quizz_questions , found_answer , chapter , img }) => {
                 <p className="answers-text"> Vos réponses sont en gras, les bonnes réponses sont en vert. </p>
 
                 <div className="answers-container">
-                    { quizz_questions.map(quizz_question => (
-                        <QuizzQuestion  title = { quizz_question[0].question } choices = { quizz_question[0].choices } correct = { quizz_question[0].correct } />
+                    { quizz_questions.map((quizz_question , index) => (
+                        <QuizzQuestion 
+                        quizz_questions = {quizz_questions}
+                            questionIndex = {index}
+                            title = { quizz_question[0].question } 
+                            choices = { quizz_question[0].choices } 
+                            correct = { quizz_question[0].correct }
+                            user_bad_responses = { userBadResponses }
+                        />
                     )) }
 
                 </div>
