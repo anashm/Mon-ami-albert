@@ -70,7 +70,7 @@ const Courses = ({ urlParams }) => {
                         {cours.subTitles.map((subs , index) => {
                             return (
                                <div key={index}>
-                                   <div className="span-subtitles"> <MathJax  math={subs.index} /> &nbsp;&nbsp; <MathJax  math={subs.subtitle} /> </div>
+                                   <div className="span-subtitles"> <MathJax  math={subs.index} /> &nbsp;&nbsp; <p className="subTitles-style"> <MathJax   math={subs.subtitle} /> </p> </div>
                                    {subs.contenu.map( (type,index) => {
                                        return(
                                            <div key={index}>

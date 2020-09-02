@@ -12,6 +12,10 @@
     margin-top: 20px;
 }
 
+.subTitles-style  *{
+    color : #757575 !important;
+}
+
 .type-container{
     word-wrap: break-word;
     background-color: #757575;
