@@ -9,7 +9,8 @@ const NiveauComponent = (props) => {
         
         props.passChildData(props.niveau);
         setbtnClicked(true)
-        
+        props.matiereClicked(props.niveau)
+        console.log('onClick')
     }
     
     return (
