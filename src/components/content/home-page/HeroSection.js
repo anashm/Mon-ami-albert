@@ -119,7 +119,7 @@ const HeroSection = ( {userConnected} ) => {
                             <h2 className="hero-section-title" data-aos="fade-up" data-aos-once="true"  data-aos-delay="100"> Le soutien scolaire de <br/> La nouvelle génération </h2>
                             <p className="hero-section-paragraphe" data-aos="fade-up" data-aos-once="true"  data-aos-delay="200"> { heroSectionInfos.text } </p>
                           
-                            <div className="hero-section-buttons-container fade-in-bottom" >
+                            <div className="hero-section-buttons-container fade-bottom" >
                                 { console.log(userConnected) }
                                 { !userConnected ? 
                                     ( 
