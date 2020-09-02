@@ -77,8 +77,9 @@ const Header = () =>  {
                                             <Dropdown.Header> <span className="dropdown-header-titles"> Profil </span></Dropdown.Header>                                                                                 
                                                 
                                                 <Dropdown.Item> 
-                                                    <Link to="/profil">                                                                                                           
-                                                    <span className="mon-profil-item-class">Mon Profil</span>
+                                                    <Link to="/profil">
+                                                   {/*  <Link to="/recapitulatif">  */}                                                                                                           
+                                                        <span className="mon-profil-item-class">Mon Profil</span>
                                                     </Link>                                                       
                                                 </Dropdown.Item>
 
