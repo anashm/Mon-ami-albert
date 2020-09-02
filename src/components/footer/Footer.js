@@ -16,14 +16,6 @@ const  Footer = () => {
             link : '#'
         },
         { 
-            title: 'pARENT',
-            link : '#'
-        },
-        { 
-            title: 'ENSEIGNANT',
-            link : '#'
-        },
-        { 
             title: 'méthodologie',
             link : '#'
         },

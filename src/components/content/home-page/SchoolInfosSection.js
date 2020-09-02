@@ -31,25 +31,28 @@ const SchoolInfosSection = ()  => {
     const propositions = [
         {
             img: icon_programme,
-            title: 'un programme motivant',
-            text: 'Lorem ipsum dolor sit amet, consetetur sadipscing.'
+            title: 'Un programme complet ',
+            text: 'Conforme au nouveau programme et aux nouvelles réformes'
         },
         {
             img: icon_evaluation,
-            title: 'évaluation continue',
-            text: 'Lorem ipsum dolor sit amet, consetetur sadipscing.'
+            title: 'Des exemples d’évaluations',
+            text: 'Des évaluations fréquentes, pour valider les acquis à la fin de chaque chapitre.'
         },
         {
             img: icon_progression,
-            title: 'suivi de progression',
-            text: 'Lorem ipsum dolor sit amet, consetetur sadipscing.'
+            title: 'Un système de points et de récompenses :',
+            text: 'Les étudiants gagnent des points à hauteur de leurs efforts'
         },
         {
             img: icon_challenge,
-            title: 'challenge quotidien',
-            text: 'Lorem ipsum dolor sit amet, consetetur sadipscing.'
+            title: 'Des résultats concrets et approuvés',
+            text: 'Nos étudiants gagnent jusqu’à 4.2 point sur leur moyenne générale.'
         }
-    ]
+    ];
+
+    const text = `Le contenu proposés par Mon ami Albert est conçu pour permettre à l’étudiant d’apprendre tout en étant stimulé. Pour cela, nous avons développés une approche positive au cœur de notre plateforme. 
+    Un suivi pour le lycée et les classes prépa, des exercices corrigés, des jeux/Quizz et un classement pour vous challenger ! Ça plait aux étudiants, ça les motives et ça les rend autonomes`;
     
     return (
         <section className="container-fluid school-infos-Section" data-aos="fade-up" data-aos-once="false" >
@@ -69,7 +72,10 @@ const SchoolInfosSection = ()  => {
                         delay = {200}
                         once = 'true'
                         img = {image_einsten} 
-                        text = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam' />
+                        text = {text}>
+                            <div>Le contenu proposés par Mon ami Albert est conçu pour permettre à l’étudiant d’apprendre tout en étant stimulé. Pour cela, nous avons développés une approche positive au cœur de notre plateforme. </div>
+                            <div>Un suivi pour le lycée et les classes prépa, des exercices corrigés, des jeux/Quizz et un classement pour vous challenger ! Ça plait aux étudiants, ça les motives et ça les rend autonomes</div>
+                        </HorizontalCard>
                         <Divider hidden/>
                         <PrimaryLinkButton 
                             animation = 'fade'

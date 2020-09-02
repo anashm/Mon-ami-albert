@@ -82,7 +82,7 @@ const HeroSection = ( {userConnected} ) => {
 
     const heroSectionInfos = {
         title: 'Le soutien scolaire de la nouvelle génération',
-        text: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam',
+        text: 'Mon Ami Albert est une application et un site web de soutien scolaire, qui accompagne les élèves du lycée et des classes préparatoires pour combler leurs lacunes et à prendre de l’avance de manière continue. Des cours, des quizz, des exercices corrigés, des annales ou des exemples de contrôles sont au rendez-vous pour un accompagnement pointu.',
     }
     
     

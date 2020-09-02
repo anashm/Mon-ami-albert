@@ -16,6 +16,8 @@ import QuizzSummary from './QuizzSummary/QuizzSummary';
 
 import albertHead from './QuizzSummary/assets/images/albert-quiz.png';
 
+import { MathComponent } from 'mathjax-react';
+
 
 
 const QuizzForm = ({  multiple ,
@@ -475,6 +477,7 @@ const QuizzForm = ({  multiple ,
                     </div>
                     <h2 className="quizz-form-title"> <MathJax math={title} />  </h2>
                 </div>
+
 
                     <Form loading = { loading }  className = 'quizz-form' onSubmit = { handleSubmit }>
                     {

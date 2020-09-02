@@ -2,6 +2,8 @@ import React from 'react';
 
 import QuizzAnswer from './QuizzAnswer/QuizzAnswer';
 import MathJax from 'react-mathjax-preview';
+import { MathComponent } from 'mathjax-react';
+
 
 
 const QuizzQuestion = ({ title , choices , correct , user_bad_responses , questionIndex , quizz_questions}) => {
@@ -10,7 +12,8 @@ const QuizzQuestion = ({ title , choices , correct , user_bad_responses , questi
 
     return (
         <div className = 'quizz-question'>
-            <h3 className="quizz-question-title"> <MathJax math={title} /> </h3>
+            {console.log(title)}
+            <h3 className="quizz-question-title"> <MathJax math={title} />   {/* <MathComponent tex={title} /> */} </h3>
             {
                 
                 choices.map(( choice , index ) => {

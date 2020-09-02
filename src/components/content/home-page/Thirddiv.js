@@ -30,34 +30,34 @@ const Thirddiv = () => {
     const reasonsLeft = [
         {
             index: 1,
-            text: 'Soutien scolaire pour toute les classes'
+            text: 'Des ressources pédagogiques de qualité'
         },
 
         {
             index: 2,
-            text:  'Cours et exercices dans toutes les matières',
+            text:  'Des cours et des exercices dans toutes les matières',
         },
 
         {
             index: 3,
-            text:   'Cours et exercices dans toutes les matières',
+            text:   'Des quizz, des exemples de contrôles et des anales',
         }
     ];
 
     const reasonsRight = [
         {
             index: 4,
-            text: 'Soutien scolaire pour toute les classes'
+            text: 'Des étudiants satisfaits'
         },
 
         {
             index: 5,
-            text:  'Cours et exercices dans toutes les matières',
+            text:  'Des résultats concrets et approuvés',
         },
 
         {
             index: 6,
-            text:   'Cours et exercices dans toutes les matières',
+            text:   'Des récompenses pour les plus appliqués',
         }
     ];
 

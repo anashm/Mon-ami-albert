@@ -20,6 +20,8 @@ import TestPDF from './pages/Chapter/Exercises/Exercise/TestPDF'
 import Profil from './components/header/ProfilPage';
 import 'aos/dist/aos.css';
 import ClassementGeneral from './components/header/Classement/ClassementGeneral'
+import Recaputilatif from './components/header/RecapProfil/Recaputilatif'
+
 
 const  App = () => {
 
@@ -43,6 +45,7 @@ const  App = () => {
             <Route exact path="/test-pdf" component={TestPDF} />
             <Route exact path="/profil" component={Profil} />
             <Route exact path="/classement-general" component={ClassementGeneral} />
+            <Route exact path="/recapitulatif" component={Recaputilatif} />
           </Switch>
           
           {/* </LoggedinProvider> */}

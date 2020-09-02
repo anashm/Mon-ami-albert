@@ -61,7 +61,7 @@ const HomePage = props => {
           <SchoolInfosSection />
           <ThirdDiv /> 
           <FourthDiv />
-          <FreeChapterSection />
+          {/* <FreeChapterSection /> */}
           <Sixthdiv />
           <ApplicationSection />
           <ClassesSection />

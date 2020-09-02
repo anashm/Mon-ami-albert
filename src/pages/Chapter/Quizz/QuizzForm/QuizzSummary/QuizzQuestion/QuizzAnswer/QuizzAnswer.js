@@ -4,6 +4,9 @@ import checkIcon from '../../assets/images/check-icon.svg';
 import { Icon } from 'semantic-ui-react';
 import MathJax from 'react-mathjax-preview';
 
+import { MathComponent } from 'mathjax-react';
+
+
 
 
 const QuizzAnswer = ({ found , not_the_anser , text }) => {
@@ -13,7 +16,7 @@ const QuizzAnswer = ({ found , not_the_anser , text }) => {
             <div className="check-icon"> { found ? <img src={checkIcon} alt=""/> : ( not_the_anser ? '' : <img src={closeIcon} alt=""/> ) }   </div> 
 
             
-            <p className = { found ? 'text-green' : (not_the_anser ? '' : 'text-bold')  } > <MathJax math={text} />  </p>
+            <p className = { found ? 'text-green' : (not_the_anser ? '' : 'text-bold')  } > <MathJax math={text} />   {/* <MathComponent tex={text} /> */} </p>
         </div>
     )
 }
