@@ -3,6 +3,15 @@ import React , { Fragment , useState , useEffect , useRef } from 'react';
 import { Icon } from 'semantic-ui-react';
 import gsap from 'gsap';
 
+import logo from '../../../../images/quizz/albert-quiz.png';
+
+import facebook_icon from '../../../../images/facebook-icon.svg';
+import instagram_icon from '../../../../images/instagram-icon.svg';
+import twitter_icon from '../../../../images/twitter-icon.svg';
+
+
+import { Link } from 'react-router-dom'
+
 const HamburgerMenu = () => {
 
     const [ close , setClose ] = useState(true);
@@ -10,6 +19,8 @@ const HamburgerMenu = () => {
 
     let hamburger_menu_container = useRef(null);
     let mobile_menu = useRef(null);
+
+    let albert_img = useRef(null)
 
 
     useEffect(() => {
@@ -22,18 +33,51 @@ const HamburgerMenu = () => {
                     display: 'block',
                     opacity: 1
                 },
-            }).to(mobile_menu , {
+            })  
+            .to(mobile_menu , {
                 duration: 0.5,
                 xPercent: 0
             } )
+             .to( albert_img , {
+                duration: 0.3,
+                y: 0,
+                opacity: 1
+            })
+            .to( '.nav-item-link' , {
+                y: 0,
+                opacity: 1,
+                stagger:{
+                    amount: 0.2
+                }
+            }).to('.social-media-container' , {
+                duration: 0.3,
+                y: 0,
+                opacity: 1,
+            })
         }
 
         if(close){
-            tl.to(mobile_menu , {
-                duration: 0.6,
+            tl
+            .to( albert_img , {
+                duration: 0.1,
+                y: 20,
+                opacity: 0
+            })
+            .to( '.nav-item-link' , {
+                duration: 0.2,
+                y: 50,
+                opacity: 0,
+                stagger:{
+                    amount: 0.2
+                }
+            }).to('.social-media-container' , {
+                y: 50,
+                opacity: 0,
+            }).to(mobile_menu , {
+                duration: 0.2,
                 xPercent: -100
             } ).to(hamburger_menu_container, {
-                duration: 0.4,
+                duration: 0.1,
                 css: {
                     display: 'none',
                     opacity: 0
@@ -51,6 +95,21 @@ const HamburgerMenu = () => {
             return
         }
     }
+
+    const footerIcons = [
+        {
+            name: 'facebook f',
+            link: '#'
+        },
+        {
+            name: 'instagram',
+            link: '#'
+        },
+        {
+            name: 'twitter',
+            link: '#'
+        }
+    ];
 
 
     return (
@@ -72,17 +131,31 @@ const HamburgerMenu = () => {
 
                 <div className= 'hamburger-menu-container' ref = { el => (hamburger_menu_container = el) } onClick = { (e) => handleDarkBackgroundClick(e.target)} >
                     <nav className= 'mobile-menu' id = 'not-dark-background' ref = { el => (mobile_menu = el) }>
-                        <ul className="nav-items-container">
-                            <li className="nav-item">
-                                <a href="#" className="nav-link">  </a>
-                            </li>
-                            <li className="nav-item">hello</li>
-                            <li className="nav-item">hello</li>
-                        </ul>
+                        
+                        <div className="img-container">
+                            <img src={logo} alt="" ref = { el => albert_img = el } />
 
-                        <button onClick = { () => { setClose(true) ; setOpen(false) } } className = 'hamburger-icon-btn hamburger-btn'>
+                            {/* <button onClick = { () => { setClose(true) ; setOpen(false) } } className = 'hamburger-icon-btn hamburger-btn'>
                             <Icon name = 'close' />
-                        </button>
+                        </button> */}
+                        </div>
+
+                        <div className="nav-items-container">
+                            <Link className = 'nav-item-link' to = '#'> Accueil </Link> 
+                            <Link className = 'nav-item-link' to = '#'> Qui suis-je ? </Link>
+                            <Link className = 'nav-item-link' to = '#'> Méthodologie </Link>
+                            <Link className = 'nav-item-link' to = '#'> Contact </Link>
+                            <Link className = 'nav-item-link' to = '#'> Aide </Link>
+                        </div>
+
+                        <div className="social-media-container">
+                            <div className="icons-container">
+                                { footerIcons.map( icon => <Link key = { icon.name } to = {icon.link} > <Icon name = { icon.name } /> </Link> ) }
+                            </div>
+                            <p> &copy; Tout droit réservé 2020 </p>
+                        </div>
+
+                       
 
                     </nav>
                 </div>

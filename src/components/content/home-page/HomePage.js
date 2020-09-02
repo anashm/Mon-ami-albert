@@ -60,8 +60,8 @@ const HomePage = props => {
           <HeroSection userConnected={userContext.user} />
           <SchoolInfosSection />
           <ThirdDiv /> 
-          <FourthDiv />
-          {/* <FreeChapterSection /> */}
+         {/*  <FourthDiv />
+          <FreeChapterSection /> */}
           <Sixthdiv />
           <ApplicationSection />
           <ClassesSection />
