@@ -57,7 +57,7 @@ const  Dashboard = (props) => {
         logo : LogoSVT,
         urlParam : "SVT"
     },
-    {
+    /* {
         title : "Ingénierie",
         logo : LogoIng,
         urlParam : "Ingenierie"
@@ -66,7 +66,7 @@ const  Dashboard = (props) => {
         title : "Jeux",
         logo : LogoJeux,
         urlParam : "Jeux"
-    }
+    } */
 ]
     
     useEffect(() => {

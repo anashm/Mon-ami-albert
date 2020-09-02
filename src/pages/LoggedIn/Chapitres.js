@@ -9,7 +9,7 @@ import UserContext from '../../Context/UserContext/UserContext';
 import { Dimmer, Loader } from 'semantic-ui-react';
 import AOS from 'aos';
 import { Alert } from 'react-bootstrap';
-
+import { Modal,Button } from 'react-bootstrap';
 
 const  Chapitres = ({match}) => {
 
@@ -17,6 +17,9 @@ const  Chapitres = ({match}) => {
 
     
     var matiere = match.params.matieres;
+    
+    
+
     const firebase = useContext(FirebaseContext);
     const userContext = useContext(UserContext);
     const [infosLevel , setinfosLevel ] = useState(null);
@@ -24,7 +27,11 @@ const  Chapitres = ({match}) => {
 
 
     const [ loading , setLoading ] = useState(true);
+    const [textMatiere ,setTextMatiere] = useState('')
+    const [showModal , setShowModal] = useState(false)
 
+    
+        
     const [dimmer , setDimmer ] = useState(true)
     const history = useHistory();
 
@@ -35,7 +42,27 @@ const  Chapitres = ({match}) => {
                 duration: 800
             });
 
-
+         
+        if(matiere == 'Physique'){
+            setShowModal(true)  
+            setTextMatiere("On est en train de préparer ton labo physique chimie à la vitesse de la lumière. T'inquiète il sera bientot disponible !")
+        }
+        else if (matiere == 'Anglais'){
+            setShowModal(true)  
+            setTextMatiere("Ladies & gentlemen,all in good time ... vos chapitres seront bientot disponibles ! ")
+        } 
+        else if (matiere == 'Histoire-Geo'){
+            setShowModal(true)  
+            setTextMatiere("Remonter le temps et faire le tour du monde ce n'est pas une mince affaire,mais t'inquiète c'est pour bientot ! ")
+        }  
+        else if (matiere == 'Philosophie'){
+            setShowModal(true)  
+            setTextMatiere("Içi la condition humaine est en cours de traitement et ses concepts clés seront bientot disponibles ! ")
+        }
+        else if (matiere == 'SVT'){
+            setShowModal(true)  
+            setTextMatiere("Votre écosystème SVT est en cours de préparation et le calendrier géologique nous indique que c'est pour bientot ! ")
+        }      
         firebase.auth.onAuthStateChanged( user => {
         if(user){
             //code if realod page pour garder context api values
@@ -95,6 +122,11 @@ const  Chapitres = ({match}) => {
       }, [firebase]);
 
     const [ openTab , setOpenTab ] = useState(true);
+    
+    const HandleCloseModal = () => {
+        setShowModal(false)
+        history.push('/dashboard-user')
+    }
 
         return (
             <div className="container chapter-section" >
@@ -104,9 +136,9 @@ const  Chapitres = ({match}) => {
 
                         <div className="exercises-infos">
                             <div className="exercises-number"> {chapters ? chapters.length : 0} </div>
-                            <div className="show-hide-icon">
+                            {/* <div className="show-hide-icon">
                                 <span> <Icon name= {` ${ openTab ? 'minus square outline' : 'plus square outline' } `} link size='small' className = 'minus-icon' /> </span>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                     <div className="exercises-content" style = { { transform: `${!openTab ? 'scaleY(0)' : 'scaleY(1)'}` , transformOrigin: '100% 0%' } } >
@@ -131,13 +163,40 @@ const  Chapitres = ({match}) => {
                             <div className="loader-container" style = {{ height: '30vh' }}>
                                 {dimmer ? (<Dimmer active inverted>
                                     <Loader inverted content='Chargement en cours...' />
-                                </Dimmer>) :  <Alert variant= 'secondary'>
-                                                Pas de chapitre disponible pour le moment!
-                                            </Alert>}
+                                </Dimmer>) :  
+                                    <Alert variant= 'secondary'>
+                                       
+                                    </Alert>
+                                }
                                 
                             </div> : ''
                         }
-                        
+                        {
+                                        showModal == true ? (
+                                            <Modal
+                                            show={showModal}
+                                            onHide={HandleCloseModal}
+                                                
+                                                aria-labelledby="contained-modal-title-vcenter"
+                                                centered
+                                            >
+                                                <Modal.Header closeButton>
+                                                    <Modal.Title id="contained-modal-title-vcenter">
+                                                        
+                                                    </Modal.Title>
+                                                </Modal.Header>
+                                                <Modal.Body>
+                                                    <p>{textMatiere} </p>
+                                                </Modal.Body>
+                                                <Modal.Footer>
+                                                    
+                                                    <Button onClick={HandleCloseModal} variant="light">OK</Button>
+                                                </Modal.Footer>
+                                            </Modal>
+                                            
+                                        ) : ''
+                                    }
+                       
                     </div>
                 </div>
             </div>   

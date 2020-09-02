@@ -44,8 +44,8 @@ export default function Recaputilatif() {
         <div className = 'login-content-container'>
             <p>Recaputilatif {avatar}</p>
             <span>Code de parainage  :</span><br></br>
-            <span>Niveau  : {level} </span><br></br>
-            <span>Institution  : {etablissement} </span><br></br>
+            <span>Niveau  : <span className="class-answers-etablissements"> {level} </span> </span><br></br>
+            <span>Institution  : <span className="class-answers-etablissements">  {etablissement} </span> </span><br></br>
             <div className="div-mettre-a-jour">
                 <FaUserEdit/> <span>Mettre à jour mon profil</span>
             </div>
@@ -53,7 +53,7 @@ export default function Recaputilatif() {
                 <FaSignOutAlt/> <span>Se déconnecter</span>
              </div>
               
-            {/* <img src={`../../images/avatars/${avatar}.png`} /> */}
+            {/* <img src={require(`../../../images/avatars/Boy-3.png`)} /> */}
         </div>
     )
 }
