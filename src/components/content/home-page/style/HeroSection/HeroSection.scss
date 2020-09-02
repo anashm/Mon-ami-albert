@@ -12,7 +12,6 @@
 
 
     @include media('<=phone'){
-       height: 70vh;
        min-height: unset;
     }
    
@@ -29,6 +28,7 @@
             
         @include media('<=phone'){
             bottom: 10px;
+            display: none;
         }
         
         svg{

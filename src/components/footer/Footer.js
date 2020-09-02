@@ -26,10 +26,6 @@ const  Footer = () => {
         { 
             title: 'aide',
             link : '#'
-        },
-        { 
-            title: 'mention légales',
-            link : '#'
         }
     ];
 

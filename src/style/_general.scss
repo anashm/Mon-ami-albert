@@ -214,6 +214,13 @@ body{
         line-height: 25px;
         color: #636363;
 
+        div{
+            @include media('<=phone'){
+                text-align: center;
+            }
+           
+        }
+
 
         div:not(:last-child){
             margin-bottom: 10px;

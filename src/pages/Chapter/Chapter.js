@@ -1,4 +1,4 @@
-import React , { useState } from 'react';
+import React , { useState , useEffect } from 'react';
 import { useHistory } from "react-router-dom";
 
 
@@ -13,10 +13,20 @@ import ChapterButton from './ChapterButton/ChapterButton';
 
 import {Divider} from 'semantic-ui-react';
 
+import AOS from 'aos';
+
+
+
 import './style/Chapter.scss';
 
 
 const Chapter = ({match}) => {
+
+    useEffect(() => {
+        AOS.init({
+            duration: 2000
+        });
+    } , []);
 
     
     /* Component data */
