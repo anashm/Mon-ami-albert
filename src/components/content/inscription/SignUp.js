@@ -210,11 +210,11 @@ const  SignUp = (props) => {
                         <div className="row">
 
                             <div className="col">
-                                <input type="text" onChange={handleChangeFirstName} value={SignUpData.first_name} className="form-control" placeholder="First name" id="first_name" />
+                                <input type="text" onChange={handleChangeFirstName} value={SignUpData.first_name} className="form-control" placeholder="Prénom" id="first_name" />
                             </div>
 
                             <div className="col">
-                                <input type="text" onChange={handleChangeLastName} value={SignUpData.last_name} className="form-control" placeholder="Last name" id="last_name" />
+                                <input type="text" onChange={handleChangeLastName} value={SignUpData.last_name} className="form-control" placeholder="Nom" id="last_name" />
                             </div>
 
                             
@@ -230,12 +230,12 @@ const  SignUp = (props) => {
 
                         <div className="row">
                             <div className="col">
-                                <input type="password" onChange={handleChangePass}  value={SignUpData.password} className="form-control" placeholder="Password" id="password" />
+                                <input type="password" onChange={handleChangePass}  value={SignUpData.password} className="form-control" placeholder="Mot de passe" id="password" />
                             </div>
                         </div>
                         <div className="row">
                             <div className="col">
-                                <input type="password" onChange={handleChangePass}  value={SignUpData.re_password} className="form-control" placeholder="Re enter Password" id="re_password" />
+                                <input type="password" onChange={handleChangePass}  value={SignUpData.re_password} className="form-control" placeholder="Retaper le mot de passe" id="re_password" />
                             </div>
                         </div>
 
