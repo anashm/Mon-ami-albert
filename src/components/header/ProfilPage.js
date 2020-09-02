@@ -243,10 +243,14 @@ export default function ProfilPage() {
 
     return (
         <div className = 'login-content-container'>
+            <center>
             { avatar ? <img src={require(`../../images/avatars/${avatar}.png`)} width='40%' /> : ''}<br></br>
-            <span>Code de parainage  :</span><br></br>
+            
+            {/* <span>Code de parainage  :</span><br></br> */}
             <span>Niveau  : <span className="class-answers-etablissements"> {level} </span> </span><br></br>
             <span>Institution  : <span className="class-answers-etablissements">  {etablissement} </span> </span><br></br>
+            </center>
+            <br></br>
             <Form onSubmit={handleSubmit}>
 
                 <Form.Field>

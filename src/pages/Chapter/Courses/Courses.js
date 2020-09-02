@@ -58,7 +58,7 @@ const Courses = ({ urlParams }) => {
     return (
         <div>
             { courses_user.length ===0 && <Alert variant= 'secondary'>
-                            No Courses available!
+                            Liste des cours en cours de préparation ...
                         </Alert>  }
             {courses_user.map( (cours,index) => {
                 return(

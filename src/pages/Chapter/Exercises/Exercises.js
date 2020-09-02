@@ -105,7 +105,7 @@ const Exercises = ({urlParams}) => {
 
                      )
                     
-                })  :  <p>No Exercices available</p>} 
+                })  :  <p>Listes des exercices en cours de préparation ...</p>} 
               
             
       
