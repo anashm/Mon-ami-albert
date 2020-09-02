@@ -148,9 +148,9 @@ const Quizz = ({ match }) => {
                             <QuizzShowAnswer />
 
                             <QuizzForm single 
-                                title = {` ${quizzQuestions.length ? quizzQuestions[currentIndex][0].question : 'quizzQuestions' } ` } 
-                                choices = {quizzQuestions.length ? quizzQuestions[currentIndex][0].choices : []} 
-                                correct = {quizzQuestions.length ? quizzQuestions[currentIndex][0].correct[0] : []}
+                                title = {` ${quizzQuestions[currentIndex] ? quizzQuestions[currentIndex][0].question : 'quizzQuestions' } ` } 
+                                choices = {quizzQuestions[currentIndex] ? quizzQuestions[currentIndex][0].choices : []} 
+                                correct = {quizzQuestions[currentIndex] ? quizzQuestions[currentIndex][0].correct[0] : []}
                                 current_index = { currentIndex }
                                 next_step = { handle_next_step }
                                 question_limit = { quizzQuestions.length ? quizzQuestions.length - 1 : 0  }

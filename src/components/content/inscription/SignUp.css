@@ -1,9 +1,17 @@
 
 .form-sign-up{
     margin : 0 auto;
-    width: 40%;
+    width: 100%;
+    max-width: 500px;
     margin-top: 4%;
 }
+
+
+.form-sign-up .row{
+    margin: 20px 0;
+}
+
+
 
 .text_policy{
     font-size: 12px;
