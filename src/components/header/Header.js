@@ -86,7 +86,7 @@ const Header = () =>  {
                             !logout && <Fragment>
                                 <div className = 'phone-right'>
                                 <div className="phone-number-container">  
-                            { !logout ?  <span className="phone_number"> <FaPhoneAlt  /> &nbsp;&nbsp; 05 22 33 44 55</span> : null } 
+                            { !logout ?  <span className="phone_number"> <FaPhoneAlt  /> &nbsp;&nbsp;  09 70 70 22 32</span> : null } 
                             { logout ?  <Link to = '/' className="contact-link dark-color">Contact</Link> : null}
                            
                         </div>
@@ -170,7 +170,7 @@ const Header = () =>  {
                             logout && <Fragment>
                                 <div className = 'phone-right'>
                                 <div className="phone-number-container">  
-                                <span className="phone_number"> <FaPhoneAlt  /> &nbsp;&nbsp; 05 22 33 44 55</span> 
+                                <span className="phone_number"> <FaPhoneAlt  /> &nbsp;&nbsp;  09 70 70 22 32</span> 
                                 <div className="vertical-line" style = {{ marginRight: '20px' }}>|</div>
                                 <Link to = '/' className="contact-link dark-color">Contact</Link> 
                                 </div>

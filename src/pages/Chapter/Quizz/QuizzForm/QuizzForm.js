@@ -16,6 +16,9 @@ import QuizzSummary from './QuizzSummary/QuizzSummary';
 
 import albertHead from './QuizzSummary/assets/images/albert-quiz.png';
 
+import { useHistory } from "react-router-dom";
+
+
 
 
 const QuizzForm = ({  multiple ,
@@ -31,6 +34,9 @@ const QuizzForm = ({  multiple ,
     resetClicked,
     quizz_questions
      }) => {
+
+    const history = useHistory();
+
 
     const userContext = useContext(UserContext);
     const firebase = useContext(FirebaseContext);
@@ -105,6 +111,8 @@ const QuizzForm = ({  multiple ,
                             setReset(onReset);
                             userContext.update_user_on_quizz_summary_page(onReset);
 
+                            userContext.update_quizz_next_index(current_question_index);
+
 
                             if(finished){
                                 setFinished(finished);
@@ -157,9 +165,7 @@ const QuizzForm = ({  multiple ,
         set_bad_checked_response_index(id-1);
     }
 
-    const handleMultipleSelectClick = (e , titleProps) => {
-        const { checked , value } = titleProps;
-    }
+   
 
     const handleSubmit = e => {
         console.log('hello');
@@ -501,7 +507,7 @@ const QuizzForm = ({  multiple ,
                     chapter = {chapter} />
                     <div className="quizz-reset-btn">
                         <button  type='button' onClick = { handleResetButton }> <span style = {{ marginRight: '5px' }}> Recommencer </span> <Icon name = 'redo' /> </button>
-                        <button  type='button'> Découvrez d’autres cours  </button>
+                        <button  type='button' onClick = { () => history.push('/dashboard-user') } > Découvrez d’autres cours  </button>
                     </div>
                 </Fragment>
 

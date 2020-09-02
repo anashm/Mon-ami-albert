@@ -9,6 +9,10 @@
     cursor: pointer;
 }
 
+.cree_ton_compte i{
+    font-size: 30px;
+}
+
 .dashboard-section .cree_ton_compte{
     margin: 0 !important;
     padding-top: 3% 0;
