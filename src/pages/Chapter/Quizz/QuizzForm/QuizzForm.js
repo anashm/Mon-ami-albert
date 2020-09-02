@@ -16,8 +16,6 @@ import QuizzSummary from './QuizzSummary/QuizzSummary';
 
 import albertHead from './QuizzSummary/assets/images/albert-quiz.png';
 
-import { MathComponent } from 'mathjax-react';
-
 
 
 const QuizzForm = ({  multiple ,
@@ -163,8 +161,9 @@ const QuizzForm = ({  multiple ,
         const { checked , value } = titleProps;
     }
 
-    const handleNextButtonClick = () => {
+    const handleSubmit = e => {
         console.log('hello');
+        e.preventDefault();
         setLoading(true);
 
 
@@ -224,13 +223,9 @@ const QuizzForm = ({  multiple ,
                         setShowNextBtn(true);
                         setLoading(false);
                         userContext.update_user_progression((current_index+2)/question_length);
-                        userContext.update_user_current_question_index(current_index+1);
-                        userContext.update_user_check_true_answer(false);
-                        userContext.update_user_checked_false_answer(false);
                         userContext.update_user_found_answer(foundAnswer + 1);
                         userContext.update_user_on_quizz_summary_page(false);
-                        setShowAnswer(false);
-                        setShowNextBtn(false);
+                        setShowNextBtn(true);
                     })
                     .catch(e => console.log(e));
                     //console.log(userContext.user_informations.level)
@@ -266,15 +261,10 @@ const QuizzForm = ({  multiple ,
                         badResponses: former_bad_responses
                     }).then(() => {
                         setShowNextBtn(true);
-                        setResponse('');
                         setLoading(false);
                         userContext.update_user_progression((current_index+2)/question_length);
-                        userContext.update_user_current_question_index(current_index+1);
-                        userContext.update_user_check_true_answer(false);
-                        userContext.update_user_checked_false_answer(false);
                         userContext.update_user_on_quizz_summary_page(false);
-                        setShowAnswer(false);
-                        setShowNextBtn(false);
+                        setShowNextBtn(true);
                     })
                     .catch(e => console.log(e));
                     //console.log(userContext.user_informations.level)
@@ -335,11 +325,10 @@ const QuizzForm = ({  multiple ,
                         onReset: true,
                       
                     }).then(() => {
-                        setResponse('');
                         setReset(true);
+                        userContext.update_user_found_answer(foundAnswer + 1);
                         userContext.update_user_check_true_answer(false);
                         userContext.update_user_checked_false_answer(false);
-                        userContext.update_user_found_answer(foundAnswer + 1);
                         userContext.update_user_current_question_index(current_index);
                         userContext.update_user_on_quizz_summary_page(true);
 
@@ -375,10 +364,9 @@ const QuizzForm = ({  multiple ,
                             onReset: true,
                             badResponses: former_bad_responses
                         }).then(() => {
-                            setResponse('');
+                            userContext.update_user_current_question_index(current_index);
                             userContext.update_user_check_true_answer(false);
                             userContext.update_user_checked_false_answer(false);
-                            userContext.update_user_current_question_index(current_index);
                             userContext.update_user_on_quizz_summary_page(true);
                             setReset(true);
                         })
@@ -400,63 +388,18 @@ const QuizzForm = ({  multiple ,
 
 
 
-    const handleSubmit = e => {
-        e.preventDefault();
+    const handleNextButtonClick = () => {
         /*userContext.update_user_current_question_index(current_index);
         setCount(count + 1);
         setShowAnswer(true);*/
         //console.log(question_length , question_limit , current_index)
 
-
-        console.log('hello');
-
-
-        if(current_index < question_limit){
-
-
-            if(answer === correct){
-                setShowAnswer(true);
-                userContext.update_user_check_true_answer(true);
-                userContext.update_user_checked_false_answer(false);
-                //alert('found');
-                //console.log(userContext.user_informations.level)
-            }
-
-            if(answer !== correct){
-                setShowAnswer(true);
-                //alert('Not found');
-                userContext.update_user_check_true_answer(false);
-                userContext.update_user_checked_false_answer(true);
-            }
-
-        }
-        
-        
-        if(current_index === question_limit){
-
-            if(answer === correct){
-                setShowAnswer(true);
-                //alert('found');
-                userContext.update_user_check_true_answer(true);
-                userContext.update_user_checked_false_answer(false);
-                setFoundAnswer(foundAnswer+1);
-            }
-
-            if(answer !== correct){
-                setShowAnswer(true);
-                userContext.update_user_check_true_answer(false);
-                userContext.update_user_checked_false_answer(true);
-                //alert('Not found');
-            }
-
-        }
-
-
-        if(current_index > question_limit){
-            alert('you cannot play again')
-        }
-
-        setShowNextBtn(true);
+        setResponse('');
+        setShowAnswer(false);
+        userContext.update_user_check_true_answer(false);
+        userContext.update_user_checked_false_answer(false);
+        userContext.update_user_current_question_index(current_index+1);
+        setShowNextBtn(false);
     }
 
     
@@ -477,7 +420,6 @@ const QuizzForm = ({  multiple ,
                     </div>
                     <h2 className="quizz-form-title"> <MathJax math={title} />  </h2>
                 </div>
-
 
                     <Form loading = { loading }  className = 'quizz-form' onSubmit = { handleSubmit }>
                     {

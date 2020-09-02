@@ -48,10 +48,13 @@
     box-shadow: 0px 2px 10px #00000029;
     color: #707070;
     border-radius: 5px;
+    padding-top: 0;
 
     .quizz-title-container{
       display: flex;
       align-items: center;
+      padding: 2% 0;
+
 
       .img-container{
         width: 15%;
@@ -99,6 +102,7 @@
 
     .quizz-form-title{
       font-size: 18px;
+      margin-top: 0;
         @media only screen and (max-width: 450px) {
             font-size: 16px;
         }
@@ -110,7 +114,6 @@
     }
 
     .quizz-form{
-        padding-top: 2%;
         font-family: Rubik , 'sabs-serif';
 
         

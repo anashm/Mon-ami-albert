@@ -60,9 +60,32 @@
         }
 
         .contact-container{
-            margin-left: auto;
             display: flex;
             align-items: center;
+            flex: 1;
+
+            .phone_number{
+              margin-right: 20px;
+              display: flex;
+              align-items: center;
+              text-transform: uppercase;
+
+              img{
+                width: 40px;
+              }
+
+          }
+
+            .phone-left{
+
+            }
+
+            .phone-right{
+              display: flex;
+              margin-left: auto;
+
+              
+            }
 
             @include media('<=phone'){
                 display: none;
@@ -74,17 +97,7 @@
                 display: flex;
 
 
-                .phone_number{
-                    margin-right: 20px;
-                    display: flex;
-                    align-items: center;
-                    text-transform: uppercase;
-
-                    img{
-                      width: 40px;
-                    }
-
-                }
+                
 
                 .contact-link{
                     
@@ -116,7 +129,21 @@
                 }
             }
 
+            .medal-container{
+              margin-left: 20px;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+
+              img{
+                width: 40px;
+              }
+            }
+
             .logout-container{
+
+                margin: 0 20px;
 
 
                 .logout-link{

@@ -21,6 +21,9 @@ import albert from '../../../animation/homepage/alber-welcome.json';
 
 import arrow from '../../../animation/homepage/arrow-bottom.json';
 
+import AOS from 'aos';
+
+
 
 
 
@@ -89,6 +92,10 @@ const HeroSection = ( {userConnected} ) => {
     useEffect(() => {
 
         /* setTimeout(() => { toast(<PopUp />)  },2000);  */
+
+        AOS.init({
+            duration: 1500
+        });
         
     }, []);
 
@@ -99,7 +106,7 @@ const HeroSection = ( {userConnected} ) => {
             <div className = 'container'>
                 <div className = 'row'>
                     <div className = 'hero-section-content-container'>
-                        <div className = 'hero-section-image-container'>
+                        <div className = 'hero-section-image-container' data-aos="fade" data-aos-once="true">
                             {/* <img src={photo_einstein} alt=""/> */}
                             {View}
 
@@ -109,10 +116,10 @@ const HeroSection = ( {userConnected} ) => {
                             </div>
                         </div>
                         <div className="hero-section-description-container">
-                            <h2 className="hero-section-title"> Le soutien scolaire de <br/> La nouvelle génération </h2>
-                            <p className="hero-section-paragraphe"> { heroSectionInfos.text } </p>
+                            <h2 className="hero-section-title" data-aos="fade-up" data-aos-once="true"  data-aos-delay="100"> Le soutien scolaire de <br/> La nouvelle génération </h2>
+                            <p className="hero-section-paragraphe" data-aos="fade-up" data-aos-once="true"  data-aos-delay="200"> { heroSectionInfos.text } </p>
                           
-                            <div className="hero-section-buttons-container">
+                            <div className="hero-section-buttons-container" data-aos="fade-up" data-aos-once="true"  data-aos-delay="300">
                                 { console.log(userConnected) }
                                 { !userConnected ? 
                                     ( 

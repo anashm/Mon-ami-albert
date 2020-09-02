@@ -23,7 +23,7 @@ const QuizzShowAnswer = () => {
             </div>
             <div className = 'bad-answer-container answer-container'>
                 <h4> Total Mauvaises Réponses : </h4>
-                { userContext.user_on_quizz_summary_page ? <p> {userContext.user_current_question_index + 1  - foundAnswer} / { userContext.quizz_questions } </p> :   <p> {userContext.user_current_question_index - foundAnswer} / { userContext.quizz_questions } </p>  }
+                { userContext.user_on_quizz_summary_page ? <p> { userContext.user_current_question_index  >= foundAnswer ? (userContext.user_current_question_index  - foundAnswer) : 0} / { userContext.quizz_questions } </p> :   <p> { userContext.user_current_question_index  >= foundAnswer ? (userContext.user_current_question_index  - foundAnswer) : 0} / { userContext.quizz_questions } </p>  }
             </div>
         </div>
     )

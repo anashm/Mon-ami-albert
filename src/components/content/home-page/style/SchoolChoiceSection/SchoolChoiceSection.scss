@@ -33,6 +33,7 @@
             margin: 0 auto;
             color: #707070;
             font-weight: 600;
+            min-width: 80%;
 
 
             @include media('<=phone'){
@@ -61,6 +62,9 @@
                 text-align: left;
                 width: calc(100% - 50px);
                 border-left: 2px solid;
+                min-height: 35px;
+                display: flex;
+                align-items: center;
 
                 @include media('<=phone'){
                     padding-left: 15px;
