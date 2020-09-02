@@ -10,6 +10,12 @@
     display: flex;
     margin-bottom: 20px;
     margin-top: 20px;
+
+    color: #8bb5b6 !important;
+}
+
+.span-subtitles .mtext{
+    color: #8bb5b6 !important;
 }
 
 .subTitles-style  *{
@@ -19,13 +25,16 @@
 .type-container{
     word-wrap: break-word;
     background-color: #757575;
-    padding: 3px;
+    padding: 1% 2%;
     border: 1px solid #757575;
     margin-bottom: 10px;
+    border-radius: 3px;
+    
 }
 
 .lines-container{
-    margin-bottom: 30px;
+    margin-bottom: 20px;
+    padding: 1% 2%;
 }
 
 .index_style{
@@ -44,7 +53,7 @@ button.ui.button{
 }
 
 .subTitle-style{
-    color: #757575 !important;
+    color: red !important;
 }
 
 .icon-down-container{
@@ -54,9 +63,11 @@ button.ui.button{
 
 .bigTitle-container{
     word-wrap: break-word;
-    background-color: #757575;
+    background-color: #8bb5b6;
     padding: 10px;
-    border: 1px solid #757575;
+    border: 1px solid #8bb5b6;
     margin-bottom: 25px;
     margin-top: 25px;
+
+    border-radius: 5px;
 }
