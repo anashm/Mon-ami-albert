@@ -46,6 +46,8 @@ const QuizzForm = ({  multiple ,
     const [ reset , setReset ] = useState(false);
     const [showNextBtn , setShowNextBtn] = useState(false);
 
+    const [ bad_checked_response_index , set_bad_checked_response_index ] = useState(null);
+
 
 
     const database = firebase.getData();
@@ -70,7 +72,10 @@ const QuizzForm = ({  multiple ,
                             found_questions : 0,
                             points: 0,
                             finished: false,
-                            onReset: false
+                            onReset: false,
+                            badResponses: {
+                                default: 'default'
+                            }
                         }).then(() => {
                             console.log('created');
                             setFoundAnswer(0);
@@ -149,6 +154,7 @@ const QuizzForm = ({  multiple ,
         setResponse(value);
         setAnswer(id);
         setCheckAnswer(value);
+        set_bad_checked_response_index(id-1);
     }
 
     const handleMultipleSelectClick = (e , titleProps) => {
@@ -236,25 +242,42 @@ const QuizzForm = ({  multiple ,
                 userContext.update_user_check_true_answer(false);
                 userContext.update_user_checked_false_answer(true);
 
-                const reference =  database.ref(`users/${userContext.user.uid}/Progression/`);
-                console.log(reference)
-                reference.child(`${userContext.user_informations.level}/${course}/${chapter}/progression`).update({
-                    current_question_index: current_index + 1,
-                    onReset: false
-                }).then(() => {
-                    setShowNextBtn(true);
-                    setResponse('');
-                    setLoading(false);
-                    userContext.update_user_progression((current_index+2)/question_length);
-                    userContext.update_user_current_question_index(current_index+1);
-                    userContext.update_user_check_true_answer(false);
-                    userContext.update_user_checked_false_answer(false);
-                    userContext.update_user_on_quizz_summary_page(false);
-                    setShowAnswer(false);
-                    setShowNextBtn(false);
+
+                let former_bad_responses = {};
+
+
+                console.log('in the false bvalue')
+
+                const bad_response_reference = database.ref(`users/${userContext.user.uid}/Progression/${userContext.user_informations.level}/${course}/${chapter}/progression/badResponses`);
+                bad_response_reference.once('value' , response => {
+                    console.log(  "bad response" , response.val());
+                    former_bad_responses = {
+                        ...response.val(),
+                    };
+                    former_bad_responses[`${bad_checked_response_index}`] = bad_checked_response_index;
+
+                    const reference =  database.ref(`users/${userContext.user.uid}/Progression/`);
+                    console.log(reference)
+                    reference.child(`${userContext.user_informations.level}/${course}/${chapter}/progression`).update({
+                        current_question_index: current_index + 1,
+                        onReset: false,
+                        badResponses: former_bad_responses
+                    }).then(() => {
+                        setShowNextBtn(true);
+                        setResponse('');
+                        setLoading(false);
+                        userContext.update_user_progression((current_index+2)/question_length);
+                        userContext.update_user_current_question_index(current_index+1);
+                        userContext.update_user_check_true_answer(false);
+                        userContext.update_user_checked_false_answer(false);
+                        userContext.update_user_on_quizz_summary_page(false);
+                        setShowAnswer(false);
+                        setShowNextBtn(false);
+                    })
+                    .catch(e => console.log(e));
+                    //console.log(userContext.user_informations.level)
                 })
-                .catch(e => console.log(e));
-                //console.log(userContext.user_informations.level)
+
             }
 
         }
@@ -301,15 +324,14 @@ const QuizzForm = ({  multiple ,
                     }
 
 
-                    
-
                     const reference =  database.ref(`users/${userContext.user.uid}/Progression/`);
                     //console.log(reference);
                     reference.child(`${userContext.user_informations.level}/${course}/${chapter}/progression`).update({
                         found_questions : foundAnswer + 1,
                         points: score,
                         finished: true,
-                        onReset: true
+                        onReset: true,
+                      
                     }).then(() => {
                         setResponse('');
                         setReset(true);
@@ -331,21 +353,36 @@ const QuizzForm = ({  multiple ,
                 userContext.update_user_checked_false_answer(true);
                 //alert('Not found');
                 if(userContext.user){
-                    const reference =  database.ref(`users/${userContext.user.uid}/Progression/`);
-                    console.log(reference)
-                    reference.child(`${userContext.user_informations.level}/${course}/${chapter}/progression`).update({
-                        finished: true,
-                        onReset: true
-                    }).then(() => {
-                        setResponse('');
-                        userContext.update_user_check_true_answer(false);
-                        userContext.update_user_checked_false_answer(false);
-                        userContext.update_user_current_question_index(current_index);
-                        userContext.update_user_on_quizz_summary_page(true);
-                        setReset(true);
+
+                    let former_bad_responses = null;
+
+                    const bad_response_reference = database.ref(`users/${userContext.user.uid}/Progression/${userContext.user_informations.level}/${course}/${chapter}/progression/badResponses`);
+                    
+                    bad_response_reference.once('value' , response => {
+
+                        former_bad_responses = {
+                            ...response.val(),
+                        };
+                        former_bad_responses[`${bad_checked_response_index}`] = bad_checked_response_index;
+
+
+                        const reference =  database.ref(`users/${userContext.user.uid}/Progression/`);
+                        //console.log( reference)
+                        reference.child(`${userContext.user_informations.level}/${course}/${chapter}/progression`).update({
+                            finished: true,
+                            onReset: true,
+                            badResponses: former_bad_responses
+                        }).then(() => {
+                            setResponse('');
+                            userContext.update_user_check_true_answer(false);
+                            userContext.update_user_checked_false_answer(false);
+                            userContext.update_user_current_question_index(current_index);
+                            userContext.update_user_on_quizz_summary_page(true);
+                            setReset(true);
+                        })
+                        .catch(e => console.log(e));
+                        //console.log(userContext.user_informations.level)
                     })
-                    .catch(e => console.log(e));
-                    //console.log(userContext.user_informations.level)
                 }
             }
 
@@ -430,6 +467,8 @@ const QuizzForm = ({  multiple ,
             { !reset &&
                 <div className = 'quizz-form-container'>
 
+                    { console.log('bad_checked_response_index' ,  bad_checked_response_index) }
+
                 <div className = 'quizz-title-container'>
                     <div className="img-container">
                         <img className = 'heartbeat' src={albertHead} alt=""/>
@@ -509,9 +548,11 @@ const QuizzForm = ({  multiple ,
             { reset &&
                 <Fragment >
                     <QuizzSummary 
+                    finished = {finished}
                     img = { albertHead }
                     quizz_questions = {quizz_questions}  
                     found_answer = {foundAnswer} 
+                    course = {course}
                     chapter = {chapter} />
                     <div className="quizz-reset-btn">
                         <button  type='button' onClick = { handleResetButton }> <span style = {{ marginRight: '5px' }}> Recommencer </span> <Icon name = 'redo' /> </button>
