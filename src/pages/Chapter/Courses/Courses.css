@@ -12,7 +12,11 @@
     margin-top: 20px;
 
     color: #8bb5b6 !important;
+
+    display: flex;
+    align-items: center;
 }
+
 
 .span-subtitles .mtext{
     color: #8bb5b6 !important;
