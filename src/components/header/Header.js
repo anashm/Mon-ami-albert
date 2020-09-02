@@ -54,7 +54,8 @@ const Header = () =>  {
             const reference =  database.ref(`users/${userId}`);
 
             reference.once('value' , points => {
-                setPöints(points.val().points);
+                if(points.val())
+                    setPöints(points.val().points);
             })
 
 
