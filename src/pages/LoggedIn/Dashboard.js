@@ -1,4 +1,4 @@
-import React, { useState,useContext,useEffect } from 'react'
+import React, { useState,useContext,useEffect , Fragment } from 'react'
 import MatiereComponent from './Matieres/MatiereComponent';
 import './style/Dashboard.css';
 import LogoMath from '../../images/Logo-math.png';
@@ -15,6 +15,7 @@ import {FirebaseContext} from '../../firebase';
 import UserContext from '../../Context/UserContext/UserContext';
 import NiveauxSchool from './Matieres/NiveauxSchoolComponent';
 import AOS from 'aos';
+import { Icon } from 'semantic-ui-react';
 
 
 
@@ -125,7 +126,7 @@ const  Dashboard = (props) => {
             <div className="container dashboard-section">
                 <p  className="cree_ton_compte" onClick = {handleShowModal}>
                     {
-                        (userContext.user_informations) ? <span>{userContext.user_informations.level}</span> : <span>Terminale</span>
+                        (userContext.user_informations) ? <Fragment> <span>{userContext.user_informations.level}</span> <Icon name = 'angle down' />  </Fragment>  : <span>Terminale</span> 
                     }
                 </p>
 

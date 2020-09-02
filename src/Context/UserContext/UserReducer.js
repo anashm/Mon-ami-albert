@@ -11,7 +11,8 @@ import  {
     UPDATE_USER_CHECK_TRUE_ANSWER,
     UPDATE_USER_PLAYING_QUIZZ,
     UPDATE_USER_FOUND_ANSWER,
-    UPDATE_USER_ON_QUIZZ_SUMMARY_PAGE
+    UPDATE_USER_ON_QUIZZ_SUMMARY_PAGE,
+    UPDATE_QUIZZ_NEXT_INDEX
 } from "../Types"
 
 export default ( state , action) => {
@@ -96,6 +97,13 @@ export default ( state , action) => {
             ...state,
             user_on_quizz_summary_page: action.payload
         });
+
+        case(UPDATE_QUIZZ_NEXT_INDEX):
+        return({
+            ...state,
+            quizz_next_index: action.payload
+        });
+
     
         default:
             return state;

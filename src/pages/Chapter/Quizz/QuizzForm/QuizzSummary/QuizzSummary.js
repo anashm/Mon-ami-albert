@@ -64,7 +64,7 @@ const QuizzSummary = ({ quizz_questions , found_answer , chapter , img , course 
             third: `Si tu continue ça, la mention très bien est à toi !`,
             fourth: `Bien joué ! la mention très bien est dans la poche.`
         },
-        maths_sup: {
+        mathssup: {
             first: `Bon, le passage en Spé n'est pas gagné, mais ne crains rien , je suis avec toi !`,
             second : `Est ce vraiment ton meilleur travail ? Je suis ceratin que tu peux mieux faire !`,
             third: `Le passage en étoile n'est pas encore d'actualité mais tu es sur la bonne voie !`,
@@ -76,7 +76,7 @@ const QuizzSummary = ({ quizz_questions , found_answer , chapter , img , course 
             third: `Intégrer HEC n'est pas encore d'actualité mais tu es sur le bon chemin !`,
             fourth: `Bien joué ! si tu continues comme ça, HEC est dans la poche.`
         },
-        maths_spe:{
+        mathsspe:{
             first: `La 5/2 n'est pas un si mauvais plan, mais ne crains rien, je suis avec toi !`,
             second : `Les E3A c'est déjà dans la poche mais tu peux faire mieux !`,
             third: `Si tu continues comme ça, Les mines ou centrale t'attendent les bras ouverts !`,
@@ -103,28 +103,53 @@ const QuizzSummary = ({ quizz_questions , found_answer , chapter , img , course 
         ]
 
         classes.forEach( classElement => {
-            if(level.trim().toLowerCase().includes(classElement.trim().toLowerCase())){
+           /*  if(level.trim().toLowerCase().includes(classElement.trim().toLowerCase())){
 
-                let newLevel = level.trim().toLowerCase().replace(/\s+/g, '').split('-').join('_');
+                let newLevel = '';
+
+                
+                if((level.trim().toLowerCase().replace(/\s+/g, '')).includes('-')){
+                    newLevel = level.trim().toLowerCase().replace(/\s+/g, '').split('-').join('_');
+                }
+
+                if()
+
     
+               console.log( newLevel)
+    
+            } */
+
+            
+
+                let newLevel = level.trim().toLowerCase().replace(/\s+/g, '')
+
+
                 if(  ( ((userContext.user_found_answer)/question_length) <= 0.25) ){
                     SetMessage(congratulations[newLevel].first)
                 }
-
+    
                 if( (((userContext.user_found_answer)/question_length) > 0.25 && ((userContext.user_found_answer)/question_length) <= 0.5 )){
                     SetMessage(congratulations[newLevel].second)
                 }
-
-
+    
+    
                 if( (((userContext.user_found_answer)/question_length) > 0.5 && ((userContext.user_found_answer)/question_length) <= 0.75) ){
                     SetMessage(congratulations[newLevel].third)
                 }
-
+    
                 if(  (((userContext.user_found_answer)/question_length) > 0.75 && ((userContext.user_found_answer)/question_length) <= 1 )){
                     SetMessage(congratulations[newLevel].fourth)
                 }
-    
-            }
+
+
+
+            
+
+
+           
+
+
+
 
         } )
 

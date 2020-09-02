@@ -37,6 +37,7 @@ const HomePage = props => {
             if(user){
               userContext.get_connected_user(user);
               setLoading(false);
+              
             }else{
               console.log('not logged in');
               setLoading(false);
