@@ -70,7 +70,7 @@ const QuizzSummary = ({ quizz_questions , found_answer , chapter , img , course 
             third: `Le passage en étoile n'est pas encore d'actualité mais tu es sur la bonne voie !`,
             fourth: `Bien joué ! si tu continues comme ça, la classe étoile est dans la poche.`
         },
-        ecs_1_ece_1_ect1: {
+        ecs1ece1ect1: {
             first: `Bon, le passage en carré n'est pas gagné, mais ne crains rien je suis avec toi`,
             second : `Est ce vraiment ton meilleur travail ? Je suis ceratin que tu peux mieux faire !`,
             third: `Intégrer HEC n'est pas encore d'actualité mais tu es sur le bon chemin !`,
@@ -82,7 +82,7 @@ const QuizzSummary = ({ quizz_questions , found_answer , chapter , img , course 
             third: `Si tu continues comme ça, Les mines ou centrale t'attendent les bras ouverts !`,
             fourth: `Bien joué ! honnêtement si tu rates l'X/ENS, tu ne seras plus mon ami !`
         },
-        ecs2_ece_2_ect2 : {
+        ecs2ece2ect2 : {
             first: `Bon, cuber n'est pas un si mauvais plan, mais ne crains rien, je suis avec toi !`,
             second : `Les écricome c 'est déjà dans la poche mais tu peux faire mieux !`,
             third: `Si tu continues comme ça, l'EDHEC et l'EM t'attendent les bras ouverts !`,
@@ -101,6 +101,8 @@ const QuizzSummary = ({ quizz_questions , found_answer , chapter , img , course 
             'Maths spe',
             'ECS2 - ECE 2 - ECT2'
         ]
+
+        let userLevel = level.replace(/\s/g,'').replace(/-/g, "").toLowerCase();
 
         classes.forEach( classElement => {
            /*  if(level.trim().toLowerCase().includes(classElement.trim().toLowerCase())){
@@ -121,26 +123,36 @@ const QuizzSummary = ({ quizz_questions , found_answer , chapter , img , course 
 
             
 
-                let newLevel = level.trim().toLowerCase().replace(/\s+/g, '')
+            
+            
+            
+
+            
+
+                let newLevel = classElement.replace(/\s/g,'').replace(/-/g, "").toLowerCase();
+
+                if(newLevel === userLevel){
+                    if(  ( ((userContext.user_found_answer)/question_length) <= 0.25) ){
+                        SetMessage(congratulations[newLevel].first)
+                    }
+        
+                    if( (((userContext.user_found_answer)/question_length) > 0.25 && ((userContext.user_found_answer)/question_length) <= 0.5 )){
+                        SetMessage(congratulations[newLevel].second)
+                    }
+        
+        
+                    if( (((userContext.user_found_answer)/question_length) > 0.5 && ((userContext.user_found_answer)/question_length) <= 0.75) ){
+                        SetMessage(congratulations[newLevel].third)
+                    }
+        
+                    if(  (((userContext.user_found_answer)/question_length) > 0.75 && ((userContext.user_found_answer)/question_length) <= 1 )){
+                        SetMessage(congratulations[newLevel].fourth)
+                    }
+    
+                }
 
 
-                if(  ( ((userContext.user_found_answer)/question_length) <= 0.25) ){
-                    SetMessage(congratulations[newLevel].first)
-                }
-    
-                if( (((userContext.user_found_answer)/question_length) > 0.25 && ((userContext.user_found_answer)/question_length) <= 0.5 )){
-                    SetMessage(congratulations[newLevel].second)
-                }
-    
-    
-                if( (((userContext.user_found_answer)/question_length) > 0.5 && ((userContext.user_found_answer)/question_length) <= 0.75) ){
-                    SetMessage(congratulations[newLevel].third)
-                }
-    
-                if(  (((userContext.user_found_answer)/question_length) > 0.75 && ((userContext.user_found_answer)/question_length) <= 1 )){
-                    SetMessage(congratulations[newLevel].fourth)
-                }
-
+                
 
 
             
