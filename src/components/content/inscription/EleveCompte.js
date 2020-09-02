@@ -37,6 +37,10 @@ import etablissements from '../../../json/new-etablissements.json';
         setSchool(result.value)
     }
 
+    const HandleMatiereClicked = () => {
+        console.log('clicked')
+    }
+
     return (        
         <div className="container">
             <p  className="cree_ton_compte"><center>   </center></p>
@@ -65,11 +69,12 @@ import etablissements from '../../../json/new-etablissements.json';
                     <div className="grid1"> 
                         {niveaux.map( (niveau,index) => {
                          return (
-                                <span>
+                                <span key={index}>
                                 <NiveauComponent 
                                     key={index} 
                                     niveau={niveau}
-                                    passChildData={setChildData} 
+                                    passChildData={setChildData}
+                                    matiereClicked = {HandleMatiereClicked} 
                                     />  
                                     <div className="spacers"></div>
                                     
@@ -83,15 +88,19 @@ import etablissements from '../../../json/new-etablissements.json';
                     </div>
                     
                     <div className="grid2">
-                             
-                        <Form.Field 
+
+                         {
+                             childData ? 
+                             <Form.Field 
                             control={Select}
                             options={etablissements}                                     
                             placeholder='Etablissement'
                             onChange = {handleSchoolChange}
                             search
                             searchInput={{ id: 'form-select-control-gender' }}
-                        />
+                            /> : ''
+                         }    
+                        
                                
                                   
                     </div>    
