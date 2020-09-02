@@ -38,8 +38,10 @@ export default function ProfilPage() {
     const [clickedAvatar,setClickedAvatar] = useState(null)
     const [currentPassword,setcurrentPassword] = useState('')
     const [newPassword,setNewPassword] = useState('')
-
+    const [avatar , setAvatar] = useState(null)
     const[showToast,setShowToast] = useState(false)
+    const [ level ,setLevel] = useState('')
+    const [ etablissement ,setEtablissement] = useState('')
     const avatars = [
         {
             image : Boy1,
@@ -102,6 +104,9 @@ export default function ProfilPage() {
                 setEmail(user.email)
                 setfirstName(user_informations.val().firstName)
                 setlastName(user_informations.val().lastName)
+                setAvatar(user_informations.val().avatar)
+                setEtablissement(user_informations.val().etablissement)
+                setLevel(user_informations.val().level)
             })
             /* setUserConnectedId(userId)
 
@@ -144,13 +149,15 @@ export default function ProfilPage() {
     const [ sourceImage , setSourceImage] = useState('');
 
     const handleAvatarClicked = src => {
+        
         setSourceImage(src);
     }
 
 
     
     const getAvatarClicked = (avatar) => {
-             
+      
+        setAvatar(avatar)     
         setClickedAvatar(avatar)
     }
     
@@ -163,7 +170,7 @@ export default function ProfilPage() {
     const handleSubmit = (e) => {
       
         e.preventDefault();
-   
+       
         
        /*  var utilisateur = firebase_db.auth().currentUser;
         utilisateur.updatePassword('1234567').then(function() {
@@ -189,15 +196,29 @@ export default function ProfilPage() {
                       }).catch(function(error) {
                         
                       });
-                      reference.child(userId).update({
-                        lastName:  firstName,
-                        firstName : lastName,
-                        avatar : clickedAvatar
-                    }).then(() => {
-                        //history.push('/dashboard-user') 
-                        setShowToast(true)    
-                        toast.success("Votre Profil a été mis à jour ! 🧐");
-                    })
+                      if(clickedAvatar){
+                        reference.child(userId).update({
+                            lastName:  firstName,
+                            firstName : lastName,
+                            avatar : clickedAvatar
+                        }).then(() => {
+                            //history.push('/dashboard-user') 
+                            setShowToast(true)    
+                            toast.success("Votre Profil a été mis à jour ! 🧐");
+                        })
+                      }
+                      else{
+                        reference.child(userId).update({
+                            lastName:  firstName,
+                            firstName : lastName
+                          
+                        }).then(() => {
+                            //history.push('/dashboard-user') 
+                            setShowToast(true)    
+                            toast.success("Votre Profil a été mis à jour ! 🧐");
+                        })
+                      }
+                      
                 }).catch(function(error) {
                         
                         setShowToast(true) 
@@ -222,7 +243,10 @@ export default function ProfilPage() {
 
     return (
         <div className = 'login-content-container'>
-          
+            { avatar ? <img src={require(`../../images/avatars/${avatar}.png`)} width='40%' /> : ''}<br></br>
+            <span>Code de parainage  :</span><br></br>
+            <span>Niveau  : <span className="class-answers-etablissements"> {level} </span> </span><br></br>
+            <span>Institution  : <span className="class-answers-etablissements">  {etablissement} </span> </span><br></br>
             <Form onSubmit={handleSubmit}>
 
                 <Form.Field>
