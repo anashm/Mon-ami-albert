@@ -3,3 +3,8 @@
     grid-template-columns: 1fr 1fr;
     gap: 30px;
 }
+
+.class-answers-etablissements{
+    font-weight: bold;
+    font-size: 14px;
+}

@@ -53,7 +53,8 @@ export default function Recaputilatif() {
                 <FaSignOutAlt/> <span>Se déconnecter</span>
              </div>
               
-            {/* <img src={require(`../../../images/avatars/Boy-3.png`)} /> */}
+              { avatar ? <img src={require(`../../../images/avatars/${avatar}.png`)} width='40%' /> : ''}
+            
         </div>
     )
 }
