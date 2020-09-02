@@ -36,9 +36,9 @@ const Chapter = ({match}) => {
     //console.log(match)
 
     /* Component state */
-    const [ coursesContent , setCoursesContent ]  = useState(false);
+    const [ coursesContent , setCoursesContent ]  = useState(true);
     const [ quizzContent , setQuizzContent ] = useState(false);
-    const [ exercisesContent , setExercisesContent ] = useState(true);
+    const [ exercisesContent , setExercisesContent ] = useState(false);
 
 
 
