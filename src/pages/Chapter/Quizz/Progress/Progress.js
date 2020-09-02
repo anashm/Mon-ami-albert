@@ -26,6 +26,7 @@ const Progress = () => {
     const [currentIndex , setCurrentIndex] = useState(0);
     const [playLottie , setPlayLottie] = useState(false);
 
+    const[avatarImage,setAvatarImage] = useState('')
     const handleProgression = progression => setProgression(progression);
     const handleSetQuizzQuestionsNumber = number => setQuizzQuestionsNumber(number);
     const handleSetCurrentIndex = index => setCurrentIndex(index);
@@ -42,7 +43,9 @@ const Progress = () => {
             setTimeout(() => {lottieRef.current.pause() }, 1800);
         } */
 
-        
+        console.log('ici '+userContext.user_informations.avatar)
+
+        setAvatarImage(userContext.user_informations.avatar)
 
         handleProgression(userContext.user_progression);
         handleSetQuizzQuestionsNumber(userContext.quizz_questions);
@@ -56,7 +59,8 @@ const Progress = () => {
         <div className = 'quizz-progress-container'>
 
             <div className="profile-container">
-                <img src={avatar} alt="" style = {{ maxWidth: '80px' }}/>
+                { avatarImage ? <img src={require(`../../../../images/avatars/${avatarImage}.png`)} style = {{ maxWidth: '80px' }} /> : <img src={avatar} alt="" style = {{ maxWidth: '80px' }}/>}
+                
             </div>
 
             <div className="progress-wrapper">
