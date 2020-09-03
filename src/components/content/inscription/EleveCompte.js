@@ -37,9 +37,9 @@ import etablissements from '../../../json/new-etablissements.json';
         setSchool(result.value)
     }
 
-    const HandleMatiereClicked = () => {
+    /* const HandleMatiereClicked = () => {
         console.log('clicked')
-    }
+    } */
 
     return (        
         <div className="container">
@@ -74,7 +74,7 @@ import etablissements from '../../../json/new-etablissements.json';
                                     key={index} 
                                     niveau={niveau}
                                     passChildData={setChildData}
-                                    matiereClicked = {HandleMatiereClicked} 
+                                    /* matiereClicked = {HandleMatiereClicked}  */
                                     />  
                                     <div className="spacers"></div>
                                     

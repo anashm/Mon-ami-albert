@@ -1,0 +1,10 @@
+.identifiants-classement-user{
+    font-weight: bold;
+}
+.ui.table:last-child {
+    width: 150%;
+}
+
+.high_fives_span{
+    display: block;
+}

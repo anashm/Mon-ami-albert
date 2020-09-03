@@ -10,12 +10,12 @@ const NiveauComponent = (props) => {
         props.passChildData(props.niveau);
         setbtnClicked(true)
         props.matiereClicked(props.niveau)
-        console.log('onClick')
+       
     }
     
     return (
       
-        <span onClick={functionHandler} className = {btnClicked ? 'niveaux_clicked' : 'niveaux'}>{props.niveau}</span>
+        <span onClick={functionHandler}  className = {btnClicked ? 'niveaux_clicked' : 'niveaux'}>{props.niveau}</span>
           
     )
 }
