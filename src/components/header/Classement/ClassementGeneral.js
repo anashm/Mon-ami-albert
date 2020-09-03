@@ -2,9 +2,10 @@ import React,{useEffect,useContext,useState} from 'react';
 import {FirebaseContext} from '../../../firebase';
 import UserContext from '../../../Context/UserContext/UserContext';
 import { useHistory } from "react-router-dom";
-import { Alert } from 'react-bootstrap';
-import { Icon, Table } from 'semantic-ui-react'
+import {  Table } from 'semantic-ui-react'
 import './ClassementGeneral.css';
+import { Dimmer, Loader } from 'semantic-ui-react';
+
 
 const ClassementGeneral = () => {
 
@@ -15,7 +16,9 @@ const ClassementGeneral = () => {
 
     const [ progression , setProgression ] = useState([])
     const [ classement , setClassement ] = useState([])
-   
+    const [dimmer , setDimmer ] = useState(true)
+
+
     useEffect(() => {
        
         firebase.auth.onAuthStateChanged( user => {
@@ -26,42 +29,34 @@ const ClassementGeneral = () => {
                userContext.get_connected_user(user);
                const userId = user.uid;                      
                const database = firebase.getData();
-               const reference =  database.ref('users')
               
+           
             
-              //const mostViewedPosts = database.ref('users/'+userId).orderByChild('/points');
+              const reference_user = database.ref('users/'+userId);
               
 
-              /* mostViewedPosts.once("value", user_informations => {
-
-                console.log(user_informations.val())
-              }) */
-            
+              reference_user.once("value", user_informations => {
+                userContext.get_user_informations(user_informations.val());
+                
+              
+              const reference =  database.ref('users')
                 reference.once("value", snapshot => {
 
                     let object_final = []
                     let object ={}
+                    //console.log(userContext)
                     snapshot.forEach(function(childSnapshot) {
                         // key will be "ada" the first time and "alan" the second time
                         const key = childSnapshot.key;
                         // childData will be the actual contents of the child
                         const childData = childSnapshot.val();
-                        if(childData.firstName == 'Mouadina'){
-                            console.log(childData)
-                        }
-                        //console.log(childData)
                         
-                        /* object = {
-                            ...object,
-                        }
-                        if(typeof(object [`${childData.etablissement}`]) === NaN){
-                            object [`${childData.etablissement}`] =0
-                            object [`${childData.etablissement}`] = object [`${childData.etablissement}`] + childData.points
-                            console.log(object)
-                        } */
-                        
+                        /* if (childData.firstName == 'Mouadina')
+                            console.log(childData) */
+                            console.log(user_informations.val().level)
                         
                         if(childData.points)
+                        if(childData.level == user_informations.val().level)
                         object_final = [
                             ...object_final,
                             {
@@ -85,7 +80,10 @@ const ClassementGeneral = () => {
                      
                 //userContext.get_user_informations(user_informations.val());
                
-                    
+            })   
+                }).then( () => {
+                    console.log('done');
+                    setDimmer(false)
                 }) 
                 
           }
@@ -100,17 +98,14 @@ const ClassementGeneral = () => {
 
     return (
         <div className = 'login-content-container'>
-            <p>this is classement générals</p>
+           
+            <center> <h3>Classement Général</h3> </center>
+
+            
+
             <Table>
                 <Table.Body>
-               {/*  <Table.Row>
-                    <Table.Cell collapsing>
-                   
-                    node_modules
-                    </Table.Cell>
-                    <Table.Cell>Initial commit</Table.Cell>
-                    <Table.Cell>10 hours ago</Table.Cell>
-                </Table.Row> */}
+              
                 
                 
                 
@@ -127,9 +122,9 @@ const ClassementGeneral = () => {
                             <span> {user.etablissement} </span>
                             </Table.Cell>
                             <Table.Cell  key={index}>
-                            <div>
-                                <span className="high_fives_span"> {user.points}</span> 
-                                <span > High Fives </span>
+                            <div className="high_fives_container">
+                                <span className="numbers_high_five"> {user.points}</span> 
+                                <span className="high_fives_span"> High Fives </span>
                             </div>
                             
                             </Table.Cell>
@@ -143,7 +138,14 @@ const ClassementGeneral = () => {
                
                </Table.Body>
             </Table>
-            
+            <div className="loader-container" style = {{ height: '30vh' }}>
+                {dimmer ? (<Dimmer active inverted>
+                    <Loader inverted content='Chargement en cours...' />
+                </Dimmer>) :  
+                    ''
+                }
+                                
+            </div>
         </div>
     )
 }

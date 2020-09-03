@@ -2,13 +2,18 @@ import React,{useEffect,useContext,useState} from 'react';
 import {FirebaseContext} from '../../../firebase';
 import UserContext from '../../../Context/UserContext/UserContext';
 import { useHistory } from "react-router-dom";
-import { Alert } from 'react-bootstrap';
+import {  Table } from 'semantic-ui-react';
+import { Dimmer, Loader } from 'semantic-ui-react';
+
 const ClassementLycee = () => {
     const firebase = useContext(FirebaseContext)
     const userContext = useContext(UserContext)
     const history = useHistory();
     const [ progression , setProgression ] = useState([])
     const [ classement , setClassement ] = useState([])
+    const [dimmer , setDimmer ] = useState(true)
+
+
     useEffect(() => {
         firebase.auth.onAuthStateChanged( user => {
           if(user){
@@ -33,10 +38,10 @@ const ClassementLycee = () => {
                         // childData will be the actual contents of the child
                         let childData = childSnapshot.val();
                        // console.log(childData.etablissement)
-                        if(childData.etablissement === `Centre d'Études forestières et agricoles`){
+                        /* if(childData.etablissement === `Lycée Jaber Ben Hayan`){
                           test.push(childData.points);
-                          console.log()
-                        }
+                          console.log(childData)
+                        } */
                         //console.log(childData)
                         if(childData.etablissement){
                           if(isNaN(object[`${childData.etablissement}`])){
@@ -54,9 +59,20 @@ const ClassementLycee = () => {
                             object [`${childData.etablissement}`] =0
                         } */
                     });
-                    //console.log(test.reduce(reducer))
+
+                    /* object.sort(function(a, b) {
+                        return b.points - a.points;
+                      }); */
+                      let entries = Object.entries(object);
+                      let sorted = entries.sort((a, b) => b[1] - a[1]);
+                      setClassement(sorted)
+                      console.log(sorted)
+                  
                 //userContext.get_user_informations(user_informations.val());                   
-                })
+                }).then( () => {
+                 
+                    setDimmer(false)
+                }) 
           }
           else{
             console.log('not login');
@@ -65,8 +81,46 @@ const ClassementLycee = () => {
         });
       }, []);
     return (
-        <div>
-            <p>this is classement lycée</p>
+        <div className = 'login-content-container'>
+            <center> <h3>Classement lycée</h3> </center>
+            
+            <Table>
+                <Table.Body>
+            {
+                classement ? 
+                classement.map( ( lycee,index) => {
+                    return (
+                        <Table.Row>
+                        <Table.Cell>{index+1}</Table.Cell>
+                        
+                        
+                        <Table.Cell>
+                            <span className="identifiants-classement-user">
+                            {lycee[0]} 
+                            </span>
+                        </Table.Cell>
+                        <Table.Cell>
+                        <div className="high_fives_container">
+                            <span className="numbers_high_five">
+                                {lycee[1]} 
+                            </span>
+                            <span className="high_fives_span"> High Fives </span>
+                        </div>
+                        </Table.Cell>
+                    </Table.Row>
+                    )   
+                }) : ''
+            }
+            </Table.Body>
+            </Table>
+            <div className="loader-container" style = {{ height: '30vh' }}>
+                {dimmer ? (<Dimmer active inverted>
+                    <Loader inverted content='Chargement en cours...' />
+                </Dimmer>) :  
+                    ''
+                }
+                                
+            </div>
         </div>
     )
 }
