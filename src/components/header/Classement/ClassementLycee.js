@@ -4,6 +4,7 @@ import UserContext from '../../../Context/UserContext/UserContext';
 import { useHistory } from "react-router-dom";
 import {  Table } from 'semantic-ui-react';
 import { Dimmer, Loader } from 'semantic-ui-react';
+import highfive from '../../../images/highFive/HIGHFIVE.svg';
 
 const ClassementLycee = () => {
     const firebase = useContext(FirebaseContext)
@@ -95,16 +96,19 @@ const ClassementLycee = () => {
                         
                         
                         <Table.Cell>
-                            <span className="identifiants-classement-user">
+                        <span className="index_style_classement">
                             {lycee[0]} 
                             </span>
                         </Table.Cell>
                         <Table.Cell>
                         <div className="high_fives_container">
+                                 <span className="high_fives_span"> 
+                                    <img src={highfive} className="high_fives_images" />
+                                </span>
                             <span className="numbers_high_five">
                                 {lycee[1]} 
                             </span>
-                            <span className="high_fives_span"> High Fives </span>
+                            
                         </div>
                         </Table.Cell>
                     </Table.Row>

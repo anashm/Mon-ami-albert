@@ -1,8 +1,9 @@
 .identifiants-classement-user{
     font-weight: bold;
+    text-transform: uppercase;
 }
 .ui.table {
-    width: 150%;
+    width: 170%;
 }
 
 .high_fives_span{
@@ -10,12 +11,29 @@
 }
 
 .high_fives_container{
-    background-color: #707070;
-    color:white;
+   
     width: 90px;
     padding-left: 5px;
 }
 
+.high_fives_images{
+    width: 100%;
+    max-width: 100px;
+}
+
+.high_fives_span{
+
+    width: 40%;
+}
+
+.index_style_classement{
+    font-size: 20px;
+    font-weight: 600;
+    vertical-align: middle;
+}
+
 .numbers_high_five{
-    display: block;
+    color: #8bc7cc;
+    font-size: 20px;
+    font-weight: 600;
 }

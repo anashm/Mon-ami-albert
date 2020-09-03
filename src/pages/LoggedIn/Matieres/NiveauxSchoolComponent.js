@@ -13,8 +13,9 @@ const  NiveauxSchoolComponent = (props) => {
         const level = props.title;
         const userId=props.userConnected;
         const database = firebase.getData();
-        const usersRef =  database.ref('users/'+userId)
+        const usersRef =  database.ref('users/'+userContext.user.uid)
 
+       
         usersRef.update({ "level": level})
                 .then(() => { userContext.update_user_informations(level);})
                 .catch(err => console.log(err));

@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import {  Table } from 'semantic-ui-react'
 import './ClassementGeneral.css';
 import { Dimmer, Loader } from 'semantic-ui-react';
-
+import highfive from '../../../images/highFive/HIGHFIVE.svg';
 
 const ClassementGeneral = () => {
 
@@ -18,7 +18,7 @@ const ClassementGeneral = () => {
     const [ classement , setClassement ] = useState([])
     const [dimmer , setDimmer ] = useState(true)
 
-
+    const [level , setLevel] = useState('')
     useEffect(() => {
        
         firebase.auth.onAuthStateChanged( user => {
@@ -55,8 +55,8 @@ const ClassementGeneral = () => {
                         /* if (childData.firstName == 'Mouadina')
                             console.log(childData) */
                             
-                            console.log(userContext.user_informations.level)
-                        
+                            //console.log(userContext.user_informations.level)
+                            setLevel(userContext.user_informations.level)
                         if(childData.points)
                         if(childData.level == userContext.user_informations.level)
                         object_final = [
@@ -103,7 +103,7 @@ const ClassementGeneral = () => {
     return (
         <div className = 'login-content-container'>
            
-            <center> <h3>Classement Général</h3> </center>
+            <center> <h3>Classement Général { level ? level : ''} </h3> </center>
 
             
 
@@ -119,7 +119,11 @@ const ClassementGeneral = () => {
                    classement.map( (user , index) => {
                     return (
                         <Table.Row>
-                            <Table.Cell>{index+1}</Table.Cell>
+                            <Table.Cell>
+                                <span className="index_style_classement">
+                                {index+1}
+                                </span>
+                            </Table.Cell>
                             
                             
                             <Table.Cell><span className="identifiants-classement-user"> {user.lastName} {user.firstName} </span><br></br>
@@ -127,8 +131,11 @@ const ClassementGeneral = () => {
                             </Table.Cell>
                             <Table.Cell  key={index}>
                             <div className="high_fives_container">
+                                <span className="high_fives_span"> 
+                                    <img src={highfive} className="high_fives_images" />
+                                 </span>
                                 <span className="numbers_high_five"> {user.points}</span> 
-                                <span className="high_fives_span"> High Fives </span>
+                                
                             </div>
                             
                             </Table.Cell>
