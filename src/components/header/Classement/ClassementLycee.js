@@ -72,7 +72,7 @@ const ClassementLycee = () => {
                         } */
                     });
 
-                    console.log(test.reduce(reducer))
+                    console.log(object)
 
                       
                 //userContext.get_user_informations(user_informations.val());                    
