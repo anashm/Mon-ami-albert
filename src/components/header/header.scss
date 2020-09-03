@@ -205,7 +205,6 @@
 
 
                 .mobile-menu{
-
                     width: 80%;
                     height: 100%;
                     background-color: white;
@@ -214,6 +213,10 @@
                     display: flex;
                     flex-direction: column;
                     justify-content: space-around;
+
+                    h2{
+                      text-align: center;
+                    }
 
 
                     .img-container{
@@ -228,11 +231,14 @@
                         padding: 10px 20px;
                         text-transform: uppercase;
                         font-size: 10px ;
+                        border-radius: 2px;
                       }
 
                       img{
                         width: 40%;
                         max-width: 70px;
+                        border: 1px solid #707070;
+                        border-radius: 50%;
                       }
                     }
 

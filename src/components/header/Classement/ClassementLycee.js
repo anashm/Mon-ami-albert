@@ -82,7 +82,7 @@ const ClassementLycee = () => {
         });
       }, []);
     return (
-        <div className = 'login-content-container'>
+        <div className = 'general-order-container'>
             <center> <h3>Classement lycée</h3> </center>
             
             <Table>

@@ -3,16 +3,14 @@ import React , { Fragment , useState , useEffect , useRef , useContext } from 'r
 import { Icon } from 'semantic-ui-react';
 import gsap from 'gsap';
 
-import logo from '../../../../images/quizz/albert-quiz.png';
 
 import facebook_icon from '../../../../images/facebook-icon.svg';
 import instagram_icon from '../../../../images/instagram-icon.svg';
 import twitter_icon from '../../../../images/twitter-icon.svg';
 
-import UserContext from '../../../../Context/UserContext/UserContext';
-import { useHistory } from "react-router-dom";
+import Profile from './Profile/Profile';
 
-import { FirebaseContext } from '../../../../firebase';
+
 
 
 
@@ -23,17 +21,13 @@ const HamburgerMenu = () => {
     const [ close , setClose ] = useState(true);
     const [ open , setOpen ] = useState(false);
 
-    const [ showProfile , setShowProfile ] = useState(false);
 
     let hamburger_menu_container = useRef(null);
     let mobile_menu = useRef(null);
 
     let albert_img = useRef(null);
 
-    const history = useHistory();
-
-    const firebase = useContext(FirebaseContext);
-    const userContext = useContext(UserContext);
+   
 
 
 
@@ -127,13 +121,7 @@ const HamburgerMenu = () => {
         }
     ];
 
-    const handleSignOut = () => {
-        firebase.signOutUser().then(() => {
-            userContext.get_connected_user(null);
-            history.push('/');
-        }).catch(e => console.log(e));
-        
-    }
+   
 
 
     return (
@@ -157,9 +145,8 @@ const HamburgerMenu = () => {
                     <nav className= 'mobile-menu' id = 'not-dark-background' ref = { el => (mobile_menu = el) }>
                         
                         <div className="img-container" ref = { el => albert_img = el }>
-                            <img src={logo} alt=""  />
 
-                            <button onClick = { handleSignOut }> deconnecter </button>
+                            <Profile />
 
 
                             {/* <button onClick = { () => { setClose(true) ; setOpen(false) } } className = 'hamburger-icon-btn hamburger-btn'>

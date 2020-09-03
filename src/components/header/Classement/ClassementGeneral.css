@@ -1,4 +1,4 @@
-.identifiants-classement-user{
+/* .identifiants-classement-user{
     font-weight: bold;
     text-transform: uppercase;
 }
@@ -36,4 +36,41 @@
     color: #8bc7cc;
     font-size: 20px;
     font-weight: 600;
+} */
+
+.general-order-container{
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.general-order-container h3 , .index_style_classement{
+    text-transform: uppercase;
+}
+
+.general-order-container .table td, .general-order-container .table th{
+    vertical-align: unset;
+}
+
+.high_fives_container{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    color: #8bc7cc;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.high_fives_span {
+    width: 40%;
+}
+
+.high_fives_span img{
+    width: 100%;
+    max-width: 100px;
+}
+
+.general-order-container table{
+    padding: 2%;
 }

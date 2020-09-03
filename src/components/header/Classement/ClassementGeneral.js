@@ -101,9 +101,10 @@ const ClassementGeneral = () => {
       }, [userContext.user_informations]);
 
     return (
-        <div className = 'login-content-container'>
-           
-            <center> <h3>Classement Général { level ? level : ''} </h3> </center>
+        <div className = 'general-order-container'>
+
+
+            <h3>Classement Général { level ? level : ''} </h3> 
 
             
 
