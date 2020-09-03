@@ -68,7 +68,7 @@ const Progress = () => {
                     <div className = 'empty'></div>
                     <p className= { `${userContext.user_checked_false_answer ? 'text-red shake-horizontal' : ''} ${userContext.user_check_true_answer ? 'text-green bounce-top' : ''}` } >  
                         {userContext.user_checked_false_answer &&  <Fragment> <Icon name = 'thumbs down' />   Mauvaise réponse </Fragment>    } 
-                        {userContext.user_check_true_answer &&  <Fragment> <Icon name = 'thumbs down' />  Bonne réponse  </Fragment>    } 
+                        {userContext.user_check_true_answer &&  <Fragment> <Icon name = 'thumbs up' />  Bonne réponse  </Fragment>    } 
                     </p>
                     <p className="questions-repo text-center"> {currentIndex+1} / { quizzQuestionsNumber } </p> 
                     { /* ( !userContext.user_check_true_answer && !userContext.user_checked_false_answer) &&  <p className="questions-repo text-center w-100">{currentIndex+1}/{quizzQuestionsNumber} </p> */ }

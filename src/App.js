@@ -1,4 +1,4 @@
-import React from 'react';
+import React , { useContext } from 'react';
 import Header from './components/header/Header'
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -22,8 +22,15 @@ import 'aos/dist/aos.css';
 import ClassementGeneral from './components/header/Classement/ClassementGeneral'
 import Recaputilatif from './components/header/RecapProfil/Recaputilatif'
 
+import FooterMenu from './components/footer/FooterMenu/FooterMenu';
+
+import UserContext from './Context/UserContext/UserContext';
+import UserState from './Context/UserContext/UserState';
+
 
 const  App = () => {
+
+  const userContext = useContext(UserContext);
 
 
   return (
@@ -54,8 +61,9 @@ const  App = () => {
           {/*  </FadeIn> */}
           {/*  <FadeIn  delay="1000"> */}
           {/* <LoginProvider> */}
-        
       </main>
+ 
+      { userContext.user && <FooterMenu /> } 
 
     </Router>
 

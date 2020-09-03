@@ -6,6 +6,8 @@ import MathJax from 'react-mathjax-preview';
 
 import { MathComponent } from 'mathjax-react';
 
+import { InlineMath, BlockMath } from 'react-katex';
+
 
 
 
@@ -16,7 +18,7 @@ const QuizzAnswer = ({ found , not_the_anser , text }) => {
             <div className="check-icon"> { found ? <img src={checkIcon} alt=""/> : ( not_the_anser ? '' : <img src={closeIcon} alt=""/> ) }   </div> 
 
             
-            <p className = { found ? 'text-green' : (not_the_anser ? '' : 'text-bold')  } > <MathJax math={text} />   {/* <MathComponent tex={text} /> */} </p>
+            <p className = { found ? 'text-green' : (not_the_anser ? '' : 'text-bold')  } >  <MathJax math={text} />     {/* <MathComponent tex={text} /> */} {/* <InlineMath math="\\int_0^\\infty x^2 dx"/>  */} </p>
         </div>
     )
 }

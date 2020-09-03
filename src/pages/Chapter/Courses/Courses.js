@@ -5,7 +5,17 @@ import UserContext from '../../../Context/UserContext/UserContext';
 import './Courses.css';
 import MathJax from 'react-mathjax-preview'
 import { Alert } from 'react-bootstrap';
+
+import 'katex/dist/katex.min.css';
+import TeX from '@matejmazur/react-katex';
+
+import Latex from 'react-latex';
+
+
+
 const Courses = ({ urlParams }) => {
+
+
 
    
     //console.log(urlParams.params.matieres)
@@ -70,7 +80,8 @@ const Courses = ({ urlParams }) => {
                         {cours.subTitles.map((subs , index) => {
                             return (
                                <div key={index}>
-                                   <div className="span-subtitles"> <MathJax  math={subs.index} /> &nbsp;&nbsp; <p className="subTitles-style"> <MathJax   math={subs.subtitle} /> </p> </div>
+                                   <div className="span-subtitles">
+                                        <Latex>{String.raw`${subs.index}`}</Latex>  {/* <MathJax  math={subs.index} /> */} &nbsp;&nbsp; <p className="subTitles-style"> <Latex>{String.raw`${subs.subtitle}`}</Latex> {/* <MathJax   math={subs.subtitle} />  */}</p> </div>
                                    {subs.contenu.map( (type,index) => {
                                        return(
                                            <div key={index}>
@@ -104,7 +115,10 @@ const Courses = ({ urlParams }) => {
                                                                 return (
                                                                     <div key={index} className="lines-container">
                                                                         <p >
-                                                                            <MathJax   math={line} />
+                                                                            {/* <MathJax   math={line} /> */}
+                                                                            {/* <TeX block>{line.split('$').join(' ').split(`'`).join('')}</TeX> */}
+
+                                                                            <Latex>{String.raw`${line}`}</Latex>
                                                                         </p>
                                                                     
                                                                    {/*  <Accordion defaultActiveKey="0">
