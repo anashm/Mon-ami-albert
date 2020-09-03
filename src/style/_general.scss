@@ -414,3 +414,25 @@ body{
   .ham1.active .bottom {
     stroke-dashoffset: -138px;
   }
+
+
+  .modal-backdrop.show{
+      opacity: 0.7 !important;
+  }
+
+  .modal-header , .modal-footer{
+      border: none;
+  }
+
+  .modal-body p{
+      text-align: center;
+  }
+
+  .modal-footer {
+      display: flex;
+      justify-content: center;
+
+      button{
+          padding : 5px 50px 
+      }
+  }

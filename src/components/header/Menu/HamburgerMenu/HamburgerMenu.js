@@ -33,7 +33,7 @@ const HamburgerMenu = () => {
                     display: 'block',
                     opacity: 1
                 },
-            })  
+            })
             .to(mobile_menu , {
                 duration: 0.5,
                 xPercent: 0
@@ -152,6 +152,12 @@ const HamburgerMenu = () => {
                             <div className="icons-container">
                                 { footerIcons.map( icon => <Link key = { icon.name } to = {icon.link} > <Icon name = { icon.name } /> </Link> ) }
                             </div>
+
+                            <div className="connection-contaier">
+
+                            </div>
+
+
                             <p> &copy; Tout droit réservé 2020 </p>
                         </div>
 

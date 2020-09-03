@@ -18,6 +18,8 @@ import albertHead from './QuizzSummary/assets/images/albert-quiz.png';
 
 import { useHistory } from "react-router-dom";
 
+import Latex from 'react-latex';
+
 
 
 
@@ -111,7 +113,7 @@ const QuizzForm = ({  multiple ,
                             setReset(onReset);
                             userContext.update_user_on_quizz_summary_page(onReset);
 
-                            userContext.update_quizz_next_index(current_question_index);
+                            userContext.update_quizz_next_index(current_question_index+1);
 
 
                             if(finished){
@@ -150,6 +152,8 @@ const QuizzForm = ({  multiple ,
             userContext.update_user_checked_false_answer(false);
             userContext.update_user_found_answer(0);
             userContext.update_user_on_quizz_summary_page(false);
+            userContext.update_quizz_next_index(0);
+
         })
         .catch(e => console.log(e));
         //console.log(userContext.user_informations.level)
@@ -180,6 +184,8 @@ const QuizzForm = ({  multiple ,
                 setShowAnswer(true);
                 userContext.update_user_check_true_answer(true);
                 userContext.update_user_checked_false_answer(false);
+                userContext.update_quizz_next_index(current_index+1);
+
                 //alert('found');
                 setFoundAnswer(foundAnswer+1);
 
@@ -245,6 +251,9 @@ const QuizzForm = ({  multiple ,
                 userContext.update_user_check_true_answer(false);
                 userContext.update_user_checked_false_answer(true);
 
+                userContext.update_quizz_next_index(current_index+1);
+
+
 
                 let former_bad_responses = {};
 
@@ -288,6 +297,8 @@ const QuizzForm = ({  multiple ,
                 //alert('found');
                 userContext.update_user_check_true_answer(true);
                 userContext.update_user_checked_false_answer(false);
+                userContext.update_quizz_next_index(current_index+1);
+
                 setFoundAnswer(foundAnswer+1);
 
                 if(userContext.user){
@@ -348,6 +359,8 @@ const QuizzForm = ({  multiple ,
                 setShowAnswer(true);
                 userContext.update_user_check_true_answer(false);
                 userContext.update_user_checked_false_answer(true);
+                userContext.update_quizz_next_index(current_index+1);
+
                 //alert('Not found');
                 if(userContext.user){
 
@@ -424,7 +437,7 @@ const QuizzForm = ({  multiple ,
                     <div className="img-container">
                         <img  src={albertHead} alt=""/>
                     </div>
-                    <h2 className="quizz-form-title"> <MathJax math={title} />  </h2>
+                    <h2 className="quizz-form-title"> {/* <MathJax math={title} /> */} <Latex>{String.raw`${title}`}</Latex>    </h2>
                 </div>
 
                     <Form loading = { loading }  className = 'quizz-form' onSubmit = { handleSubmit }>
@@ -439,7 +452,7 @@ const QuizzForm = ({  multiple ,
                                             control = {Checkbox} 
                                             name = { choice } 
                                             id = { `${ index + 1 }` } 
-                                            label= { <label>  <MathJax math={choice} />    </label> } 
+                                            label= { <label>  <Latex>{String.raw`${choice}`}</Latex>  {/* <MathJax math={choice} />  */}   </label> } 
                                             checked = { checkAnswer ===  choice } 
                                             value = { choice } 
                                             />
@@ -454,7 +467,7 @@ const QuizzForm = ({  multiple ,
                                                 control = {Checkbox} 
                                                 name = { choice } 
                                                 id = { `${ index + 1 }` } 
-                                                label= {  <label>  <MathJax math={choice} />    </label>  } 
+                                                label= {  <label>  {/* <MathJax math={choice} /> */} <Latex>{String.raw`${choice}`}</Latex>    </label>  } 
                                                 onClick = { (e , data) => handleClick(e , data) } 
                                                 checked = { Response ===  choice } 
                                                 value = { choice }
@@ -468,7 +481,7 @@ const QuizzForm = ({  multiple ,
                                                 control = {Checkbox} 
                                                 name = { choice } 
                                                 id = { `${ index + 1 }` } 
-                                                label= { <label>  <MathJax math={choice} />    </label> } 
+                                                label= { <label>  {/* <MathJax math={choice} /> */}  <Latex>{String.raw`${choice}`}</Latex>   </label> } 
                                                 onClick = { (e , data) => handleClick(e , data) } 
                                                 checked = { Response ===  choice } 
                                                 value = { choice } 

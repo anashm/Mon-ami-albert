@@ -125,9 +125,7 @@ const QuizzSummary = ({ quizz_questions , found_answer , chapter , img , course 
 
             
             
-            
 
-            
 
                 let newLevel = classElement.replace(/\s/g,'').replace(/-/g, "").toLowerCase();
 
