@@ -3,11 +3,9 @@ import { useHistory } from "react-router-dom";
 import {FirebaseContext} from '../../../firebase';
 import UserContext from '../../../Context/UserContext/UserContext';
 import './Courses.css';
-import MathJax from 'react-mathjax-preview'
 import { Alert } from 'react-bootstrap';
 
-import 'katex/dist/katex.min.css';
-import TeX from '@matejmazur/react-katex';
+
 
 import Latex from 'react-latex';
 
