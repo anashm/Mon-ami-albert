@@ -80,15 +80,7 @@ const  Dashboard = (props) => {
             if(user){
                 //code if realod page pour garder context api values
                 userContext.get_connected_user(user);
-                const userId = user.uid;                      
-                const database = firebase.getData();
-                const reference =  database.ref('users/'+userId)
-
-                setUserConnectedId(userId);
-
-                reference.once("value", user_informations => {
-                    userContext.get_user_informations(user_informations.val());
-                });
+               
 
             }
             else{

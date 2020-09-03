@@ -1,4 +1,4 @@
-import React , { useContext } from 'react';
+import React , { useContext , useState , useEffect } from 'react';
 import Header from './components/header/Header'
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -26,12 +26,47 @@ import Recaputilatif from './components/header/RecapProfil/Recaputilatif'
 import FooterMenu from './components/footer/FooterMenu/FooterMenu';
 
 import UserContext from './Context/UserContext/UserContext';
-import UserState from './Context/UserContext/UserState';
+
+import firebase from 'firebase';
+
+import {FirebaseContext} from './firebase';
+
 
 
 const  App = () => {
 
   const userContext = useContext(UserContext);
+  const firebaseContext = useContext(FirebaseContext)
+
+  const [ loading , setLoading ] = useState(true);
+
+  useEffect(() => {
+
+    
+
+    firebase.auth().onAuthStateChanged( user => {
+        if(user){
+          userContext.get_connected_user(user);
+          setLoading(false);
+
+          const userId = user.uid;                      
+          const database = firebaseContext.getData();
+
+          const reference =  database.ref('users/'+userId)
+
+          reference.once("value", user_informations => {
+              
+              userContext.get_user_informations(user_informations.val());
+          });
+
+          setLoading(false);
+          
+        }else{
+          console.log('not logged in');
+          setLoading(false);
+        }
+      });
+},[firebase]);
 
 
   return (
@@ -39,7 +74,7 @@ const  App = () => {
       <Header  />
       <main className="main_content">
           <Switch>
-            <Route exact path="/" component={HomePage} />
+            <Route exact path="/" render = { (props) => <HomePage { ...props } loading = { loading } />  } />
             <Route exact path="/login" component={Login} />
             <Route exact path="/creat-account" component={CreatAccount} />
             <Route exact path="/eleve-creat-account" component={EleveAccount} />

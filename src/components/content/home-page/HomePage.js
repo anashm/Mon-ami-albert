@@ -20,30 +20,14 @@ import { Dimmer, Loader } from 'semantic-ui-react';
 
 
 
-const HomePage = props => {
+const HomePage = ({ loading }) => {
 
 
 
-    const [ loading , setLoading ] = useState(true);
+    console.log(' from homepage' ,loading)
 
     const userContext = useContext(UserContext);
     //console.log(userContext);
-
-    useEffect(() => {
-
-    
-
-        firebase.auth().onAuthStateChanged( user => {
-            if(user){
-              userContext.get_connected_user(user);
-              setLoading(false);
-              
-            }else{
-              console.log('not logged in');
-              setLoading(false);
-            }
-          });
-    },[firebase]);
 
 
     if(loading ){
