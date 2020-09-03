@@ -6,6 +6,8 @@ import {  Table } from 'semantic-ui-react';
 import { Dimmer, Loader } from 'semantic-ui-react';
 import highfive from '../../../images/highFive/HIGHFIVE.svg';
 
+import './ClassementGeneral.css'
+
 const ClassementLycee = () => {
     const firebase = useContext(FirebaseContext)
     const userContext = useContext(UserContext)
@@ -38,7 +40,7 @@ const ClassementLycee = () => {
                         let key = childSnapshot.key;
                         // childData will be the actual contents of the child
                         let childData = childSnapshot.val();
-                       // console.log(childData.etablissement)
+                       console.log(childData.etablissement)
                         /* if(childData.etablissement === `Lycée Jaber Ben Hayan`){
                           test.push(childData.points);
                           console.log(childData)
@@ -92,13 +94,17 @@ const ClassementLycee = () => {
                 classement.map( ( lycee,index) => {
                     return (
                         <Table.Row>
-                        <Table.Cell>{index+1}</Table.Cell>
-                        
+                        <Table.Cell>
+                          <span className="index_style_classement"> {index+1}</span>
+
+                        </Table.Cell>
                         
                         <Table.Cell>
-                        <span className="index_style_classement">
-                            {lycee[0]} 
-                            </span>
+                        <span className="identifiants-classement-user">
+                        {lycee[0]} 
+                        </span>
+                        
+                          
                         </Table.Cell>
                         <Table.Cell>
                         <div className="high_fives_container">
@@ -117,14 +123,16 @@ const ClassementLycee = () => {
             }
             </Table.Body>
             </Table>
-            <div className="loader-container" style = {{ height: '30vh' }}>
-                {dimmer ? (<Dimmer active inverted>
-                    <Loader inverted content='Chargement en cours...' />
-                </Dimmer>) :  
-                    ''
-                }
-                                
-            </div>
+
+            {
+              dimmer ? <div className="loader-container" style = {{ height: '30vh' }}>
+              (<Dimmer active inverted>
+                  <Loader inverted content='Chargement en cours...' />
+              </Dimmer>) 
+                              
+          </div> : ''
+            }
+            
         </div>
     )
 }

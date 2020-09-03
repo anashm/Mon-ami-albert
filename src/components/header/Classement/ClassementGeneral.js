@@ -110,11 +110,7 @@ const ClassementGeneral = () => {
 
             <Table>
                 <Table.Body>
-              
-                
-                
-                
-               
+
                {
                    classement ? 
                    classement.map( (user , index) => {
