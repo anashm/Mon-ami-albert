@@ -10,6 +10,11 @@ import instagram_icon from '../../../../images/instagram-icon.svg';
 import twitter_icon from '../../../../images/twitter-icon.svg';
 
 import UserContext from '../../../../Context/UserContext/UserContext';
+import { useHistory } from "react-router-dom";
+
+import { FirebaseContext } from '../../../../firebase';
+
+
 
 import { Link } from 'react-router-dom'
 
@@ -18,10 +23,20 @@ const HamburgerMenu = () => {
     const [ close , setClose ] = useState(true);
     const [ open , setOpen ] = useState(false);
 
+    const [ showProfile , setShowProfile ] = useState(false);
+
     let hamburger_menu_container = useRef(null);
     let mobile_menu = useRef(null);
 
     let albert_img = useRef(null);
+
+    const history = useHistory();
+
+    const firebase = useContext(FirebaseContext);
+    const userContext = useContext(UserContext);
+
+
+
 
 
     useEffect(() => {
@@ -112,6 +127,14 @@ const HamburgerMenu = () => {
         }
     ];
 
+    const handleSignOut = () => {
+        firebase.signOutUser().then(() => {
+            userContext.get_connected_user(null);
+            history.push('/');
+        }).catch(e => console.log(e));
+        
+    }
+
 
     return (
         <Fragment>
@@ -136,7 +159,7 @@ const HamburgerMenu = () => {
                         <div className="img-container" ref = { el => albert_img = el }>
                             <img src={logo} alt=""  />
 
-                            <button> deconnecter </button>
+                            <button onClick = { handleSignOut }> deconnecter </button>
 
 
                             {/* <button onClick = { () => { setClose(true) ; setOpen(false) } } className = 'hamburger-icon-btn hamburger-btn'>

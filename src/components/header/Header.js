@@ -37,7 +37,7 @@ const Header = () =>  {
     const HandleLogout = () => {
         firebase.signOutUser();
         userContext.get_connected_user(null);
-        setShowModal(false)
+        setShowModal(false);
         history.push('/');
     }
 
@@ -114,8 +114,8 @@ const Header = () =>  {
                                                 <Dropdown.Divider />
 
                                                 <Dropdown.Header> <span className="dropdown-header-titles"> Classement </span> </Dropdown.Header>
-                                                    <Dropdown.Item><span  >Général</span></Dropdown.Item>
-                                                    <Dropdown.Item><span  >Lycées</span></Dropdown.Item>
+                                                <Dropdown.Item><Link to="/classement-general"><span  className="mon-profil-item-class">Général</span></Link></Dropdown.Item>
+                                                    <Dropdown.Item><Link to="/classement-lycee"><span  className="mon-profil-item-class">Lycées</span></Link></Dropdown.Item>
                                                 <Dropdown.Divider />
                                                 
                                                 <Dropdown.Item><span  onClick = { () => setShowModal(true) }>Déconnexion</span></Dropdown.Item>
