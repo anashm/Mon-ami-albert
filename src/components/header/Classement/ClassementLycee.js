@@ -46,6 +46,7 @@ const ClassementLycee = () => {
                         var childData = childSnapshot.val();
                         
                         //console.log(childData)
+
                         
                         var array = []
                         /* if(typeof(object [`${childData.etablissement}`]) === NaN){
@@ -70,14 +71,32 @@ const ClassementLycee = () => {
                      
                 //userContext.get_user_informations(user_informations.val());
                
-                    
-                }) 
-                
+
+
+                        if(childData.etablissement){
+                          if(isNaN(object[`${childData.etablissement}`])){
+                            object = {
+                              ...object,
+                            }
+                            //console.log(childData.points)
+                            object[`${childData.etablissement}`] = childData.points;
+                          }else{
+                            //console.log(childData.points)
+                            object[`${childData.etablissement}`] = object[`${childData.etablissement}`] + childData.points                            
+                          }
+                        }
+                        /* if(typeof(object [`${childData.etablissement}`]) === NaN){
+                            object [`${childData.etablissement}`] =0
+                        } */
+                    });
+
+                      console.log(object)
+                //userContext.get_user_informations(user_informations.val());                    
+               
           }
           else{
-
-           console.log('not login');
-           history.push('/')
+            console.log('not login');
+            history.push('/')
           }
         });
   
