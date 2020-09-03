@@ -8,6 +8,8 @@ import logo from '../../../../../images/quizz/albert-quiz.png';
 
 import { Loader } from 'semantic-ui-react';
 
+import { Link } from 'react-router-dom'
+
 
 const Profile = () => {
 
@@ -53,7 +55,7 @@ const Profile = () => {
             <Fragment>
                 { (showProfile) &&
                     <Fragment>
-                    <img src={ require(`../../../../../images/avatars/${avatarPath}.png`) } alt=""/>
+                    <Link to = '/profilPage'> <img src={ require(`../../../../../images/avatars/${avatarPath}.png`) } alt=""/> </Link>
                     <button onClick = { handleSignOut }> Se deconnecter </button>
                     </Fragment>                    
                 }

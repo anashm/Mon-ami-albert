@@ -42,9 +42,10 @@ const  App = () => {
 
   useEffect(() => {
 
-    
+    console.log('from app js')
 
-    firebase.auth().onAuthStateChanged( user => {
+   
+      firebase.auth().onAuthStateChanged( user => {
         if(user){
           userContext.get_connected_user(user);
           setLoading(false);
@@ -62,6 +63,10 @@ const  App = () => {
           setLoading(false);
         }
       });
+   
+    
+
+   
 },[]);
 
 

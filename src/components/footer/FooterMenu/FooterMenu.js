@@ -28,7 +28,7 @@ const FooterMenu = () => {
             text: 'Compte',
             icon: 'user',
             hasLink: true,
-            link: '/profilPage'
+            link: '/profil'
         },
 
     ]
