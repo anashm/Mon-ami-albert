@@ -21,14 +21,14 @@ const FooterMenu = () => {
             text: 'Classement',
             icon: 'boxes',
             hasLink: true,
-            link: '/'
+            link: '/classement-general'
         },
 
         {
             text: 'Compte',
             icon: 'user',
             hasLink: true,
-            link: '/'
+            link: '/profilPage'
         },
 
     ]

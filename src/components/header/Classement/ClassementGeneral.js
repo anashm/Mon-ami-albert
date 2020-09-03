@@ -108,7 +108,7 @@ const ClassementGeneral = () => {
 
             
 
-            <Table>
+            <Table unstackable>
                 <Table.Body>
 
                {

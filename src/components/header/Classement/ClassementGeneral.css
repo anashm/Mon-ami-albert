@@ -39,7 +39,7 @@
 } */
 
 .general-order-container{
-    width: 100%;
+    width: 95%;
     max-width: 600px;
     margin: 0 auto;
 
@@ -111,3 +111,4 @@ td{
  td > span:nth-child(3){
      color: gray;
  }
+

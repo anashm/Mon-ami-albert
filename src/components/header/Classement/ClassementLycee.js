@@ -87,7 +87,7 @@ const ClassementLycee = () => {
         <div className = 'general-order-container'>
             <center> <h3>Classement lycée</h3> </center>
             
-            <Table>
+            <Table unstackable>
                 <Table.Body>
             {
                 classement ? 
