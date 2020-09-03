@@ -35,11 +35,12 @@ const ClassementGeneral = () => {
               const reference_user = database.ref('users/'+userId);
               
 
-              reference_user.once("value", user_informations => {
-                userContext.get_user_informations(user_informations.val());
+             /*  reference_user.once("value", user_informations => {
+                userContext.get_user_informations(user_informations.val()); */
                 
               
               const reference =  database.ref('users')
+              if(userContext.user_informations){
                 reference.once("value", snapshot => {
 
                     let object_final = []
@@ -53,10 +54,11 @@ const ClassementGeneral = () => {
                         
                         /* if (childData.firstName == 'Mouadina')
                             console.log(childData) */
-                            console.log(user_informations.val().level)
+                            
+                            console.log(userContext.user_informations.level)
                         
                         if(childData.points)
-                        if(childData.level == user_informations.val().level)
+                        if(childData.level == userContext.user_informations.level)
                         object_final = [
                             ...object_final,
                             {
@@ -80,11 +82,13 @@ const ClassementGeneral = () => {
                      
                 //userContext.get_user_informations(user_informations.val());
                
-            })   
+            //})   
                 }).then( () => {
                     console.log('done');
                     setDimmer(false)
                 }) 
+              }
+                
                 
           }
           else{
@@ -94,7 +98,7 @@ const ClassementGeneral = () => {
           }
         });
   
-      }, []);
+      }, [userContext.user_informations]);
 
     return (
         <div className = 'login-content-container'>
