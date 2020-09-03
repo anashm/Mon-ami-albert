@@ -37,16 +37,24 @@ const ClassementLycee = () => {
             
                 reference.once("value", snapshot => {
 
+                  let test = [];
+                  let final_test = 0;
+
+                  const reducer = (accumulator, currentValue) => accumulator + currentValue;
+
                     let object_final = []
                     let object ={}
                     snapshot.forEach(function(childSnapshot) {
                         // key will be "ada" the first time and "alan" the second time
-                        var key = childSnapshot.key;
+                        let key = childSnapshot.key;
                         // childData will be the actual contents of the child
-                        var childData = childSnapshot.val();
-                        
-                        //console.log(childData)
+                        let childData = childSnapshot.val();
 
+                        console.log(childData.etablissement)
+                        if(childData.etablissement === `Centre d'Études forestières et agricoles`){
+                          test.push(childData.points);
+                        }
+                        //console.log(childData)
                         if(childData.etablissement){
                           if(isNaN(object[`${childData.etablissement}`])){
                             object = {
@@ -64,7 +72,9 @@ const ClassementLycee = () => {
                         } */
                     });
 
-                      console.log(object)
+                    console.log(test.reduce(reducer))
+
+                      
                 //userContext.get_user_informations(user_informations.val());                    
                 }) 
           }
