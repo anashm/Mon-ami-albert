@@ -47,13 +47,21 @@ const ClassementLycee = () => {
                         
                         //console.log(childData)
                         
-                        
+                        var array = []
                         /* if(typeof(object [`${childData.etablissement}`]) === NaN){
                             object [`${childData.etablissement}`] =0
                         } */
+                     
+                        /* array = [
+                            ...array , 
+                            {
+                                etab : childData.etablissement
+                            }
+                        ] */
+                        
                             object[`${childData.etablissement}`] = object[`${childData.etablissement}`] + childData.points
                                 if(childData.etablissement)
-                                console.log(childData.etablissement)
+                                console.log(object)
                         
                         
                         

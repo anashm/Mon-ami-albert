@@ -43,10 +43,12 @@ const ClassementGeneral = () => {
                     let object ={}
                     snapshot.forEach(function(childSnapshot) {
                         // key will be "ada" the first time and "alan" the second time
-                        var key = childSnapshot.key;
+                        const key = childSnapshot.key;
                         // childData will be the actual contents of the child
-                        var childData = childSnapshot.val();
-                        
+                        const childData = childSnapshot.val();
+                        if(childData.firstName == 'Mouadina'){
+                            console.log(childData)
+                        }
                         //console.log(childData)
                         
                         /* object = {
@@ -78,7 +80,7 @@ const ClassementGeneral = () => {
                             return b.points - a.points;
                           });
                           setClassement(object_final)
-                          console.log(object_final);
+                          //console.log(object_final);
                       });
                      
                 //userContext.get_user_informations(user_informations.val());
