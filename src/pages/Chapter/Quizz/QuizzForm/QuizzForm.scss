@@ -50,6 +50,11 @@
     border-radius: 5px;
     padding-top: 0;
 
+    @include media('<=phone'){
+      padding: 4% 3%;
+
+   }
+
     .quizz-title-container{
       display: flex;
       align-items: center;

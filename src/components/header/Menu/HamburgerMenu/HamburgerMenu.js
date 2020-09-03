@@ -1,4 +1,4 @@
-import React , { Fragment , useState , useEffect , useRef } from 'react';
+import React , { Fragment , useState , useEffect , useRef , useContext } from 'react';
 
 import { Icon } from 'semantic-ui-react';
 import gsap from 'gsap';
@@ -9,6 +9,7 @@ import facebook_icon from '../../../../images/facebook-icon.svg';
 import instagram_icon from '../../../../images/instagram-icon.svg';
 import twitter_icon from '../../../../images/twitter-icon.svg';
 
+import UserContext from '../../../../Context/UserContext/UserContext';
 
 import { Link } from 'react-router-dom'
 
@@ -20,7 +21,7 @@ const HamburgerMenu = () => {
     let hamburger_menu_container = useRef(null);
     let mobile_menu = useRef(null);
 
-    let albert_img = useRef(null)
+    let albert_img = useRef(null);
 
 
     useEffect(() => {
@@ -132,8 +133,11 @@ const HamburgerMenu = () => {
                 <div className= 'hamburger-menu-container' ref = { el => (hamburger_menu_container = el) } onClick = { (e) => handleDarkBackgroundClick(e.target)} >
                     <nav className= 'mobile-menu' id = 'not-dark-background' ref = { el => (mobile_menu = el) }>
                         
-                        <div className="img-container">
-                            <img src={logo} alt="" ref = { el => albert_img = el } />
+                        <div className="img-container" ref = { el => albert_img = el }>
+                            <img src={logo} alt=""  />
+
+                            <button> deconnecter </button>
+
 
                             {/* <button onClick = { () => { setClose(true) ; setOpen(false) } } className = 'hamburger-icon-btn hamburger-btn'>
                             <Icon name = 'close' />

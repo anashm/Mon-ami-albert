@@ -34,15 +34,12 @@ const Progress = () => {
    
     
     useEffect(() => {
-
-       /*  if(!userContext.user_check_true_answer && !userContext.user_checked_false_answer){
+        /*  if(!userContext.user_check_true_answer && !userContext.user_checked_false_answer){
             setTimeout(() => {lottieRef.current.pause() }, 1800);
         }
-
         if(userContext.user_check_true_answer){
             setTimeout(() => {lottieRef.current.pause() }, 1800);
         } */
-
         console.log('ici '+userContext.user_informations.avatar)
 
         setAvatarImage(userContext.user_informations.avatar)

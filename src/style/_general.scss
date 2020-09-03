@@ -32,6 +32,13 @@ body{
     
 }
 
+main.main_content{
+    @include media('<=phone'){
+        padding-bottom: 10vh;
+
+    }
+}
+
 //buttons
 
 .download-btn-link{

@@ -39,10 +39,15 @@
 .lines-container{
     margin-bottom: 20px;
     padding: 1% 2%;
+
+    display: flex;
 }
 
 .lines-container img{
     width: 100%;
+    max-width: 500px;
+    display: block;
+    margin: 0 auto;
 }
 
 .index_style{

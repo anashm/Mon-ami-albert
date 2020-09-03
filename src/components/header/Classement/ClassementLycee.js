@@ -9,6 +9,8 @@ const ClassementLycee = () => {
     const history = useHistory();
     const [ progression , setProgression ] = useState([])
     const [ classement , setClassement ] = useState([])
+
+    
     useEffect(() => {
         firebase.auth.onAuthStateChanged( user => {
           if(user){
@@ -22,18 +24,12 @@ const ClassementLycee = () => {
                 console.log(user_informations.val())
               }) */
                 reference.once("value", snapshot => {
-<<<<<<< HEAD
 
                   let test = [];
-                  let final_test = 0;
 
                   const reducer = (accumulator, currentValue) => accumulator + currentValue;
 
-=======
-                  let test = [];
                   let final_test = 0;
-                  const reducer = (accumulator, currentValue) => accumulator + currentValue;
->>>>>>> 0cd7042b3db30d082ca0b21a2443e2d847a4c984
                     let object_final = []
                     let object ={}
                     snapshot.forEach(function(childSnapshot) {
@@ -41,17 +37,14 @@ const ClassementLycee = () => {
                         let key = childSnapshot.key;
                         // childData will be the actual contents of the child
                         let childData = childSnapshot.val();
-<<<<<<< HEAD
 
                         console.log(childData.etablissement)
                         if(childData.etablissement === `Centre d'Études forestières et agricoles`){
                           test.push(childData.points);
-=======
                        // console.log(childData.etablissement)
                         if(childData.etablissement === `Centre d'Études forestières et agricoles`){
                           test.push(childData.points);
                           console.log()
->>>>>>> 0cd7042b3db30d082ca0b21a2443e2d847a4c984
                         }
                         //console.log(childData)
                         if(childData.etablissement){
@@ -69,19 +62,12 @@ const ClassementLycee = () => {
                         /* if(typeof(object [`${childData.etablissement}`]) === NaN){
                             object [`${childData.etablissement}`] =0
                         } */
-                    });
-<<<<<<< HEAD
-
-                    console.log(object)
-
-                      
+                    };    
                 //userContext.get_user_informations(user_informations.val());                    
-                }) 
-=======
+                  }) 
                     //console.log(test.reduce(reducer))
                 //userContext.get_user_informations(user_informations.val());                   
                 })
->>>>>>> 0cd7042b3db30d082ca0b21a2443e2d847a4c984
           }
           else{
             console.log('not login');

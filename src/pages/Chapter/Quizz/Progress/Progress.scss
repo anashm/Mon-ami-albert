@@ -13,6 +13,7 @@
     }
 
     .profile-container{
+        align-self: flex-end;
 
     }
 
@@ -38,6 +39,10 @@
                 font-size: 16px;
                 font-weight: 600;
                 margin: 10px;
+
+                @include media('<=phone'){
+                    margin: 2px;
+                }
 
                 i{
                     font-size: 18px;
@@ -68,12 +73,9 @@
     }
 
     .score-container{
-        position: relative;
+        align-self: flex-end;
 
-        @include media('<=phone'){
-            z-index: -1;
-    
-        }
+       
 
         .score{
             font-size: 18px;

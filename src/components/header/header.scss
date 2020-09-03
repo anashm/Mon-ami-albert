@@ -218,12 +218,19 @@
 
                     .img-container{
                       display: flex;
-                      justify-content: center;
+                      justify-content: space-evenly;
                       align-items: center;
+
+                      button{
+                        border: none;
+                        background: #707070;
+                        color: white;
+                        padding: 3% 5%;
+                      }
 
                       img{
                         width: 40%;
-                        max-width: 150px;
+                        max-width: 70px;
                       }
                     }
 
