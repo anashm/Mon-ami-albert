@@ -42,20 +42,17 @@ const  App = () => {
 
   useEffect(() => {
 
-    
+    console.log('from app js')
 
-    firebase.auth().onAuthStateChanged( user => {
+   
+      firebase.auth().onAuthStateChanged( user => {
         if(user){
           userContext.get_connected_user(user);
           setLoading(false);
-
           const userId = user.uid;                      
           const database = firebaseContext.getData();
-
           const reference =  database.ref('users/'+userId)
-
           reference.once("value", user_informations => {
-              
               userContext.get_user_informations(user_informations.val());
           });
 
@@ -66,7 +63,11 @@ const  App = () => {
           setLoading(false);
         }
       });
-},[firebase]);
+   
+    
+
+   
+},[]);
 
 
   return (
@@ -99,13 +100,9 @@ const  App = () => {
           {/*  <FadeIn  delay="1000"> */}
           {/* <LoginProvider> */}
       </main>
- 
       { userContext.user && <FooterMenu /> } 
-
     </Router>
 
-
-  
   );
 }
 
