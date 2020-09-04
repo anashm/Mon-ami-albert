@@ -6,7 +6,7 @@ const NiveauComponent = (props) => {
     const [btnClicked,setbtnClicked] = useState(undefined)
 
     const functionHandler = () => {
-        
+        console.log('clicked')
         props.passChildData(props.niveau);
         setbtnClicked(true)
        /*  props.matiereClicked(props.niveau) */
