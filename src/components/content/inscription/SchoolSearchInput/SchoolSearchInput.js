@@ -70,6 +70,8 @@ const SchoolSearchInput = ({ changed }) => {
         <div>
             <Search
                 className = 'w-100'
+                placeholder = "Nom de l'école ..."
+                noResultsMessage = 'Aucune école trouvée :('
                 loading={loading}
                 onResultSelect={(e, data) =>
                     dispatch({ type: 'UPDATE_SELECTION', selection: data.result.title })

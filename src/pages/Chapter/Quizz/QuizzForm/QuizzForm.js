@@ -328,9 +328,24 @@ const QuizzForm = ({  multiple ,
                         score = 60;
                     }
 
+                    if(!finished){
+                        let last_points = 0;
+                        const progress_reference =  database.ref(`users/${userContext.user.uid}`);
+
+                        progress_reference.once('value' , points => {
+                            last_points += points.val();
+                            console.log( 'last_points' , last_points)
+                            return new Promise((resolve , reject) => {
+                                resolve(last_points);
+                            })
+                        })
+                    }
+
                     if(finished){
                         score = userPoints;
                     }
+
+                    
 
 
                     const reference =  database.ref(`users/${userContext.user.uid}/Progression/`);
