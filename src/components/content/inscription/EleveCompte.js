@@ -10,7 +10,8 @@ import NiveauComponent from './NiveauComponent';
 import {FirebaseContext} from '../../../firebase';
 import { Form,Select} from 'semantic-ui-react';
 import Title from '../../general/Title/Title';
-import etablissements from '../../../json/new-etablissements.json';    
+
+import SchoolSearchInput from './SchoolSearchInput/SchoolSearchInput'
 
  const  EleveCompte = ( props ) =>  {
     
@@ -40,6 +41,8 @@ import etablissements from '../../../json/new-etablissements.json';
     /* const HandleMatiereClicked = () => {
         console.log('clicked')
     } */
+
+    const handleChange = value => setSchool(value);
 
     return (        
         <div className="container">
@@ -81,30 +84,18 @@ import etablissements from '../../../json/new-etablissements.json';
                                 </span>
                                 )                   
                             
-                           
                         }) }          
-                      
-                     
+
                     </div>
                     
                     <div className="grid2">
+                        { console.log(school) }
 
-                         {
-                             childData ? 
-                             <Form.Field 
-                            control={Select}
-                            options={etablissements}                                     
-                            placeholder='Etablissement'
-                            onChange = {handleSchoolChange}
-                            search
-                            searchInput={{ id: 'form-select-control-gender' }}
-                            /> : ''
-                         }    
-                        
-                               
-                                  
+                        {childData &&<SchoolSearchInput changed = { handleChange } />  }
+
+
                     </div>    
-                   
+
                 </div>
 
 

@@ -23,6 +23,7 @@ import ClassementGeneral from './components/header/Classement/ClassementGeneral'
 import ClassementLycee from './components/header/Classement/ClassementLycee'
 import Recaputilatif from './components/header/RecapProfil/Recaputilatif'
 
+
 import FooterMenu from './components/footer/FooterMenu/FooterMenu';
 
 import UserContext from './Context/UserContext/UserContext';
@@ -56,17 +57,13 @@ const  App = () => {
               userContext.get_user_informations(user_informations.val());
           });
 
-          setLoading(false);
           
         }else{
           console.log('not logged in');
           setLoading(false);
         }
       });
-   
-    
-
-   
+  
 },[]);
 
 

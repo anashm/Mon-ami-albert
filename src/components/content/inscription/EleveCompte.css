@@ -150,3 +150,16 @@
     margin-top: 15px;
 }
 
+.w-100 div{
+    width: 100% !important;
+  }
+  
+  .results.transition{
+    width: 100% !important;
+  }
+
+  .grid2 div{
+        width: 100%;
+        max-width: 500px;
+  }
+

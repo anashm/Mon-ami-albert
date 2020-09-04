@@ -55,7 +55,7 @@ const Profile = () => {
             <Fragment>
                 { (showProfile) &&
                     <Fragment>
-                    <Link to = '/profilPage'> <img src={ require(`../../../../../images/avatars/${avatarPath}.png`) } alt=""/> </Link>
+                    <Link to = '/profil'> <img src={ require(`../../../../../images/avatars/${avatarPath}.png`) } alt=""/> </Link>
                     <button onClick = { handleSignOut }> Se deconnecter </button>
                     </Fragment>                    
                 }

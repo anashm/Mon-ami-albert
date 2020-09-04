@@ -23,8 +23,6 @@ const SchoolInfosSection = ()  => {
     useEffect(() => {
         AOS.init({
             duration: 2000,
-            offset: 200
-
         });
     } , [])
 
@@ -62,14 +60,13 @@ const SchoolInfosSection = ()  => {
                         <div>
                             <Title 
                             animation = 'fade'
-                            delay = {100}
                             once = 'true'
                             text = "Qu'est-ce que je propose ?" leftOverlined data-aos="fade-up" data-aos-once="true"  />
                         </div>
                         <Divider hidden/>
                         <HorizontalCard
                         animation = 'fade'
-                        delay = {200}
+                        delay = {100}
                         once = 'true'
                         img = {image_einsten} 
                         text = {text}>
@@ -79,7 +76,7 @@ const SchoolInfosSection = ()  => {
                         <Divider hidden/>
                         <PrimaryLinkButton 
                             animation = 'fade'
-                            delay = {300}
+                            delay = {200}
                             once = 'true'
                             text = 'découvrez mon ami albert'
                             link = '/'

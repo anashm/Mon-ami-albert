@@ -16,10 +16,8 @@ const  Chapitres = ({match}) => {
     const SCORE_MAX = 60;
 
     
-    var matiere = match.params.matieres;
+    let matiere = match.params.matieres;
     
-    
-
     const firebase = useContext(FirebaseContext);
     const userContext = useContext(UserContext);
     const [infosLevel , setinfosLevel ] = useState(null);
@@ -39,7 +37,7 @@ const  Chapitres = ({match}) => {
     useEffect(() => {
 
             AOS.init({
-                duration: 800
+                duration: 800,
             });
 
          
