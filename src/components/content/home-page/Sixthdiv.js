@@ -65,8 +65,8 @@ export default function Sixthdiv() {
 
     useEffect(() => {
         Aos.init({
-            duration: 1500
-        })
+            duration: 1500,
+        });
 
         window.addEventListener('resize' , e => handleResize(e.currentTarget.innerWidth) );
         handleResize(window.innerWidth);

@@ -24,7 +24,7 @@ const Chapter = ({match}) => {
 
     useEffect(() => {
         AOS.init({
-            duration: 2000
+            duration: 2000,
         });
     } , []);
 

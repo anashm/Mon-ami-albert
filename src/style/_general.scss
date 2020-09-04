@@ -34,7 +34,7 @@ body{
 
 main.main_content{
     @include media('<=phone'){
-        padding-bottom: 10vh;
+        padding-bottom: 6vh;
 
     }
 }
