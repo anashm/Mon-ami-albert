@@ -217,7 +217,7 @@ const QuizzForm = ({  multiple ,
                         setUserPoints(60);
                         score = 60;
                     }
-
+                    
                     if(finished){
                         score = userPoints;
                     }
@@ -328,25 +328,31 @@ const QuizzForm = ({  multiple ,
                         score = 60;
                     }
 
-                    if(!finished){
-                        let last_points = 0;
+                    
+                    if(!finished) {
+                        console.log('hello_anas')
+                        let last_points = score;
                         const progress_reference =  database.ref(`users/${userContext.user.uid}`);
-
+    
                         progress_reference.once('value' , points => {
-                            last_points += points.val();
-                            console.log( 'last_points' , last_points)
-                            return new Promise((resolve , reject) => {
+                            last_points += points.val().points;
+                            console.log( 'last_points' , last_points,points.val().points)
+                            const promise =  new Promise((resolve , reject) => {
                                 resolve(last_points);
                             })
+                            promise.then(progress_reference.update({
+                                points : last_points
+                            }))
                         })
                     }
+                        
+                   
 
                     if(finished){
                         score = userPoints;
                     }
 
-                    
-
+                   
 
                     const reference =  database.ref(`users/${userContext.user.uid}/Progression/`);
                     //console.log(reference);
@@ -378,6 +384,28 @@ const QuizzForm = ({  multiple ,
 
                 //alert('Not found');
                 if(userContext.user){
+                    
+                    if(!finished) {
+                        console.log('hello_anas')
+                        let last_points = userPoints;
+                        const progress_reference =  database.ref(`users/${userContext.user.uid}`);
+    
+                        progress_reference.once('value' , points => {
+                            last_points += points.val().points;
+                            console.log( 'last_points' , last_points,points.val().points)
+                            const promise =  new Promise((resolve , reject) => {
+                                resolve(last_points);
+                            })
+                            promise.then(progress_reference.update({
+                                points : last_points
+                            }))
+                        })
+                    }
+
+                    let last_points = 0;
+                    const progress_reference =  database.ref(`users/${userContext.user.uid}`);
+
+                    
 
                     let former_bad_responses = null;
 

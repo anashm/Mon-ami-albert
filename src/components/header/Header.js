@@ -31,7 +31,7 @@ const Header = () =>  {
     const firebase = useContext(FirebaseContext)
 
     const [logout , setLogout] = useState(false);
-    const [ points , setPöints ] = useState(0);
+    const [ points , setPoints ] = useState(0);
     const connectedUser = userContext.user;
 
     const HandleLogout = () => {
@@ -49,20 +49,26 @@ const Header = () =>  {
             setLogout(false);
             
             //console.log('connectedUser' , connectedUser);
-
-            const userId = connectedUser.uid;                      
+           
+            if(userContext.user_informations){
+                
+                console.log(userContext.user_informations.points)
+                setPoints(userContext.user_informations.points)
+            }
+            
+            /* const userId = connectedUser.uid;                      
             const reference =  database.ref(`users/${userId}`);
 
             reference.once('value' , points => {
                 if(points.val())
-                    setPöints(points.val().points);
-            })
+                    setPoints(points.val().points);
+            }) */
 
 
         }else{
             setLogout(true);
         }
-    }, [connectedUser]);
+    }, [connectedUser,userContext.user_informations]);
 
 
     const [ showModal , setShowModal ] = useState(false);
