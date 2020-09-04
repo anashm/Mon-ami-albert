@@ -74,7 +74,7 @@
     .grid1{
         display: flex !important;
         flex-wrap: wrap;
-        justify-content: center;
+        justify-content: start;
         gap: 10px;
     }
 
