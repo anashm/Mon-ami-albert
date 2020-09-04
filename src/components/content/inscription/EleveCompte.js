@@ -16,7 +16,7 @@ import SchoolSearchInput from './SchoolSearchInput/SchoolSearchInput'
  const  EleveCompte = ( props ) =>  {
     
     const Firebase = useContext(FirebaseContext)
-
+    const [ sourceImage , setSourceImage] = useState('');
 
     const [childData, setChildData] = useState("");
     const [niveaux ,setNiveaux] = useState([]);
@@ -38,6 +38,9 @@ import SchoolSearchInput from './SchoolSearchInput/SchoolSearchInput'
         setSchool(result.value)
     }
 
+    const handleNiveauClicked = (src) => {
+        setSourceImage(src)
+    }
     /* const HandleMatiereClicked = () => {
         console.log('clicked')
     } */
@@ -77,6 +80,8 @@ import SchoolSearchInput from './SchoolSearchInput/SchoolSearchInput'
                                     key={index} 
                                     niveau={niveau}
                                     passChildData={setChildData}
+                                    niveauClicked = { handleNiveauClicked }
+                                    active = { sourceImage === niveau ? 'niveaux_clicked' : 'niveaux' }
                                     /* matiereClicked = {HandleMatiereClicked}  */
                                     />  
                                     <div className="spacers"></div>
