@@ -6,6 +6,7 @@ import {
     UPDATE_USER_PROGRESS,
     UPDATE_USER_CURRENT_INDEX,
     UPDATE_USER_POINTS,
+    UPDATE_USER_POINTS_ANAS,
     UPDATE_QIZZ_QUESTIONS,
     UPDATE_USER_CHECKED_FALSE_ANSWER,
     UPDATE_USER_CHECKED_TRUE_ANSWER,
@@ -35,7 +36,7 @@ const UserState = ({ children }) => {
         user_check_true_answer: false,
         user_playing_quizz: false,
         user_on_quizz_summary_page: false,
-
+        user_points_anas : 0
     }
 
     const [ state , dispatch ] = useReducer(UserReducer , initialState);
@@ -51,6 +52,8 @@ const UserState = ({ children }) => {
     const update_user_current_question_index = index => dispatch({ type: UPDATE_USER_CURRENT_INDEX , payload: index });
 
     const update_user_points = points => dispatch({ type: UPDATE_USER_POINTS , payload: points });
+
+    const update_user_points_anas = points => dispatch({ type: UPDATE_USER_POINTS_ANAS , payload: points });
 
     const update_quizz_questions = number => dispatch({ type: UPDATE_QIZZ_QUESTIONS , payload: number });
 
@@ -95,6 +98,7 @@ const UserState = ({ children }) => {
             update_user_progression,
             update_user_current_question_index,
             update_user_points,
+            update_user_points_anas,
             update_user_checked_true_answer,
             update_user_checked_false_answer,
             update_user_check_true_answer,

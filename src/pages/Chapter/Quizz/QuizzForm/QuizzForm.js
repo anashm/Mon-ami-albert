@@ -340,9 +340,12 @@ const QuizzForm = ({  multiple ,
                             const promise =  new Promise((resolve , reject) => {
                                 resolve(last_points);
                             })
-                            promise.then(progress_reference.update({
+                            promise.then(() => {
+                                userContext.update_user_points_anas(last_points);
+                                progress_reference.update({
                                 points : last_points
-                            }))
+                                })
+                            })
                         })
                     }
                         
@@ -396,9 +399,12 @@ const QuizzForm = ({  multiple ,
                             const promise =  new Promise((resolve , reject) => {
                                 resolve(last_points);
                             })
-                            promise.then(progress_reference.update({
+                            promise.then(() => {
+                                userContext.update_user_points_anas(last_points);
+                                progress_reference.update({
                                 points : last_points
-                            }))
+                                })
+                            })
                         })
                     }
 

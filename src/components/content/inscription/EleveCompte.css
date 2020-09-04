@@ -46,9 +46,9 @@
 
 .niveaux_clicked{
 
-    border: 1px solid #79B600;
+    border: 1px solid #8bb5b6;
     padding: 10px 10px 10px 10px;
-    color: #79B600;
+    color: #8bb5b6;
     font-family: Rubik-Bold;
     display: inline-block;
     width: 100px;
@@ -76,6 +76,10 @@
         flex-wrap: wrap;
         justify-content: center;
         gap: 10px;
+    }
+
+    .grid1 span{
+        min-width: 40%;
     }
 
     .grid2{

@@ -5,6 +5,7 @@ import  {
     UPDATE_USER_PROGRESS,
     UPDATE_USER_CURRENT_INDEX,
     UPDATE_USER_POINTS,
+    UPDATE_USER_POINTS_ANAS,
     UPDATE_QIZZ_QUESTIONS,
     UPDATE_USER_CHECKED_FALSE_ANSWER,
     UPDATE_USER_CHECKED_TRUE_ANSWER,    
@@ -55,6 +56,16 @@ export default ( state , action) => {
         return({
             ...state,
             user_points: action.payload
+        });
+
+        case(UPDATE_USER_POINTS_ANAS):
+        return({
+            ...state,
+            user_informations : {
+                ...state.user_informations,
+                points : action.payload
+                
+            }
         });
 
         case(UPDATE_QIZZ_QUESTIONS):
