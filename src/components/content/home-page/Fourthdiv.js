@@ -100,7 +100,8 @@ const instructors = [
 
     useEffect(() => {
         Aos.init({
-            duration: 2000
+            duration: 2000,
+            offset: -50
         });
         window.addEventListener('resize' , e => handleResize(e.currentTarget.innerWidth) );
         handleResize(window.innerWidth);

@@ -16,20 +16,20 @@ export default function Sixthdiv() {
 
     const text_slider = [
         {
-            title : 'FATINE S.',
-            text : 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.'
+            title : 'Sarah S',
+            text : 'les nombreux exercices et annales mis à disposition sur le site, m’ont permis de travailler d’avantage et de progresser assez vite. C’est un véritable complément de travail.'
         },
         {
-            title : 'SALMA M.',
-            text : 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.'
+            title : 'Marie K.',
+            text : 'Mon Ami Albert est une super appli quand il s’agit de s’entrainer et de compléter les cours donnés par nos professeurs en classe.'
         },
         {
             title : 'SIHAME H.',
             text : 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.'
         },
         {
-            title : 'RIM T.',
-            text : 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.'
+            title : 'Julien M.',
+            text : 'Ce que j’aime en particulier chez Mon Ami Albert c’est la qualité du contenu proposé, on y trouve des millier d’exercices qui s’adapte à tous les niveaux avec leurs corrigés.'
         },
     
     ];
@@ -87,7 +87,7 @@ export default function Sixthdiv() {
                 </div>
                 <div className = 'testimonies-container'data-aos= 'fade' data-aos-delay = '800' data-aos-once= 'true' > 
                     <Slider {...settings}>
-                        { text_slider.map( (slide) => <Testimony />) }
+                        { text_slider.map( (slide) => <Testimony name = { slide.title }  text = { slide.text } />) }
                     </Slider>
                 </div>
             </div>

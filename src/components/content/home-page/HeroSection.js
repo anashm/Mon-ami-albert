@@ -94,7 +94,8 @@ const HeroSection = ( {userConnected} ) => {
         /* setTimeout(() => { toast(<PopUp />)  },2000);  */
 
         AOS.init({
-            duration: 1500
+            duration: 1500,
+            offset: -50
         });
         
     }, []);

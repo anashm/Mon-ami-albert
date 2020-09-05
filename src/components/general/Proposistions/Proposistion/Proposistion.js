@@ -8,6 +8,7 @@ const Proposistion = ({ image , title , text, animate_at }) => {
     useEffect(() => {
         AOS.init({
             duration: 2000,
+            offset: -50
         });
     }, []);
 

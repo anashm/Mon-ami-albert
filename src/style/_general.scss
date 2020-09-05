@@ -223,7 +223,7 @@ main.main_content{
 
         div{
             @include media('<=phone'){
-                text-align: center;
+                text-align: justify;
             }
            
         }

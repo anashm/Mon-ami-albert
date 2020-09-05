@@ -15,7 +15,9 @@ import {FirebaseContext} from '../../firebase';
 import UserContext from '../../Context/UserContext/UserContext';
 import NiveauxSchool from './Matieres/NiveauxSchoolComponent';
 import AOS from 'aos';
-import { Icon } from 'semantic-ui-react';
+import { Icon , Divider } from 'semantic-ui-react';
+
+import CustomBreadcrumb from '../../components/general/CustomBreadcrumb/CustomBreadcrumb';
 
 
 
@@ -116,6 +118,10 @@ const  Dashboard = (props) => {
 
         return (
             <div className="container dashboard-section">
+                <div className="dashboard-breadcrumb-con">
+                    <CustomBreadcrumb />
+                </div>
+
                 <p  className="cree_ton_compte" onClick = {handleShowModal}>
                     {
                         (userContext.user_informations) ? <Fragment> <span>{userContext.user_informations.level}</span> <Icon name = 'angle down' />  </Fragment>  : <span>Terminale</span> 

@@ -67,7 +67,7 @@ const ApplictaionSection = () => {
                     <div className=" application-section-container">
                         <Title text = 'Télécharger notre application' leftOverlined />
                         <Divider hidden/>
-                        <Paragraphe text = 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam' />
+                        <Paragraphe text = 'Télécharger notre application mobile sur Android ou sur App Store pour pouvoir réviser partout où que vous soyez.' />
                         <Divider hidden/>
                         <div className="application-download-link-button">
                             <DownloadButton title = 'Télécharger' subTitle = 'sur App Store' img = {appleStore} />

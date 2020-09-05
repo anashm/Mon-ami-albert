@@ -36,13 +36,7 @@ const QuizzSummary = ({ quizz_questions , found_answer , chapter , img , course 
     };
     
 
-    const alberLottieOption = {
-        animationData: albertLottie,
-        loop: true,
-        autoplay: true
-    }
 
-    const { albetLootionAnimation } = useLottie(alberLottieOption);
     const { View } = useLottie(options);
 
     const congratulations = {
@@ -105,7 +99,7 @@ const QuizzSummary = ({ quizz_questions , found_answer , chapter , img , course 
         let userLevel = level.replace(/\s/g,'').replace(/-/g, "").toLowerCase();
 
         classes.forEach( classElement => {
-           /*  if(level.trim().toLowerCase().includes(classElement.trim().toLowerCase())){
+            /*  if(level.trim().toLowerCase().includes(classElement.trim().toLowerCase())){
 
                 let newLevel = '';
 
@@ -117,49 +111,32 @@ const QuizzSummary = ({ quizz_questions , found_answer , chapter , img , course 
                 if()
 
     
-               console.log( newLevel)
+                console.log( newLevel)
     
             } */
 
-            
 
-            
-            
+            let newLevel = classElement.replace(/\s/g,'').replace(/-/g, "").toLowerCase();
 
-
-                let newLevel = classElement.replace(/\s/g,'').replace(/-/g, "").toLowerCase();
-
-                if(newLevel === userLevel){
-                    if(  ( ((userContext.user_found_answer)/question_length) <= 0.25) ){
-                        SetMessage(congratulations[newLevel].first)
-                    }
-        
-                    if( (((userContext.user_found_answer)/question_length) > 0.25 && ((userContext.user_found_answer)/question_length) <= 0.5 )){
-                        SetMessage(congratulations[newLevel].second)
-                    }
-        
-        
-                    if( (((userContext.user_found_answer)/question_length) > 0.5 && ((userContext.user_found_answer)/question_length) <= 0.75) ){
-                        SetMessage(congratulations[newLevel].third)
-                    }
-        
-                    if(  (((userContext.user_found_answer)/question_length) > 0.75 && ((userContext.user_found_answer)/question_length) <= 1 )){
-                        SetMessage(congratulations[newLevel].fourth)
-                    }
+            if(newLevel === userLevel){
+                if(  ( ((userContext.user_found_answer)/question_length) <= 0.25) ){
+                    SetMessage(congratulations[newLevel].first)
+                }
     
+                if( (((userContext.user_found_answer)/question_length) > 0.25 && ((userContext.user_found_answer)/question_length) <= 0.5 )){
+                    SetMessage(congratulations[newLevel].second)
+                }
+    
+    
+                if( (((userContext.user_found_answer)/question_length) > 0.5 && ((userContext.user_found_answer)/question_length) <= 0.75) ){
+                    SetMessage(congratulations[newLevel].third)
+                }
+    
+                if(  (((userContext.user_found_answer)/question_length) > 0.75 && ((userContext.user_found_answer)/question_length) <= 1 )){
+                    SetMessage(congratulations[newLevel].fourth)
                 }
 
-
-                
-
-
-            
-
-
-           
-
-
-
+            }
 
         } )
 
@@ -193,7 +170,31 @@ const QuizzSummary = ({ quizz_questions , found_answer , chapter , img , course 
             <div className="quizz-congratulation-container sm-shadow">
                 { /* message.length > 1 && <Message visible warning className = 'text-center'>  { message } </Message > */}
                 
-                 
+                    {userContext.user_points > 50 &&  <h2 className="congratulation-title"> Bravo </h2>}
+
+                <div className="congratulation-images-container">
+                    <div className="albert-img-container">
+                       {/*  <img src={albert} alt="" className="albert-img"/> */}
+                    </div>
+
+                    <div className="congratulation-trophee">
+                    {
+                        userContext.user_points > 50 ? 
+                        
+                            <div> {View} </div>
+                        : 
+                        <Fragment>
+                            <div class="bubble bubble-bottom-left" contenteditable> { message } </div>
+                            <img  src={albert} alt="" className="albert-img"/>
+                        </Fragment>
+
+                    }
+
+                    </div>
+                    
+                    <div className="empty">
+                    </div>
+                </div>
                 <p className="quizz-text-completed"> Vous avez complété le Quiz </p>
                 {
                     !finished &&  <p className="gained-points-text"> Vous avez gagné <span className = 'text-green'> { userContext.user_points } points </span> </p>
