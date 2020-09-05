@@ -193,30 +193,7 @@ const QuizzSummary = ({ quizz_questions , found_answer , chapter , img , course 
             <div className="quizz-congratulation-container sm-shadow">
                 { /* message.length > 1 && <Message visible warning className = 'text-center'>  { message } </Message > */}
                 
-                    {userContext.user_points > 50 &&  <h2 className="congratulation-title"> Bravo </h2>}
-
-                <div className="congratulation-images-container">
-                    <div className="albert-img-container">
-                       {/*  <img src={albert} alt="" className="albert-img"/> */}
-                    </div>
-
-                    <div className="congratulation-trophee">
-                    {
-                        userContext.user_points > 50 ? 
-                            {View}
-                        : 
-                        <Fragment>
-                            <div class="bubble bubble-bottom-left" contenteditable> { message } </div>
-                            <img  src={albert} alt="" className="albert-img"/>
-                        </Fragment>
-
-                    }
-
-                    </div>
-                    
-                    <div className="empty">
-                    </div>
-                </div>
+                 
                 <p className="quizz-text-completed"> Vous avez complété le Quiz </p>
                 {
                     !finished &&  <p className="gained-points-text"> Vous avez gagné <span className = 'text-green'> { userContext.user_points } points </span> </p>

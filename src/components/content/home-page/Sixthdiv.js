@@ -69,7 +69,13 @@ export default function Sixthdiv() {
         });
 
         window.addEventListener('resize' , e => handleResize(e.currentTarget.innerWidth) );
+
         handleResize(window.innerWidth);
+
+        return () => {
+            window.removeEventListener('resize' , e => handleResize(e.currentTarget.innerWidth) );
+        }
+
     } , []);
 
 
