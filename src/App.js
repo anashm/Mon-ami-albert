@@ -44,7 +44,7 @@ const  App = () => {
 
   useEffect(() => {
     
-    alert(window.locationbar.visible);
+    alert(navigator.userAgent);
 
     //console.log('from app js')
       firebase.auth().onAuthStateChanged( user => {
