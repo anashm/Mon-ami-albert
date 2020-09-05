@@ -10,6 +10,7 @@ function FooterModal(props) {
         size="lg"
         aria-labelledby="contained-modal-title-vcenter"
         centered
+        className = 'footer-modal'
       >
         <Modal.Header closeButton>
           <Modal.Title id="contained-modal-title-vcenter">
@@ -27,8 +28,6 @@ function FooterModal(props) {
 const FooterLink = ({ link , text , jsx }) => {
 
     const [ showModal , setShowModal ] = useState(false);
-
-    const handleShowModal = () => setShowModal(true);
 
     return(
         <Fragment>

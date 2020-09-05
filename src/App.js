@@ -41,16 +41,12 @@ const  App = () => {
 
   const [ loading , setLoading ] = useState(true);
 
+
   useEffect(() => {
-    if(window.location === window.parent.location){
-      alert('not in iframe')
-    }else{
-      alert('in iframe')
-    }
+    
+    alert(window.locationbar.visible);
 
     //console.log('from app js')
-
-   
       firebase.auth().onAuthStateChanged( user => {
         if(user){
           userContext.get_connected_user(user);
