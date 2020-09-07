@@ -10,6 +10,10 @@ import twitter_icon from '../../../../images/twitter-icon.svg';
 
 import Profile from './Profile/Profile';
 
+import FooterLink from '../../../footer/FooterLink/FooterLink';
+
+import { footerLinks } from '../../../footer/FooterText';
+
 
 
 
@@ -27,7 +31,17 @@ const HamburgerMenu = () => {
 
     let albert_img = useRef(null);
 
-   
+
+    const convertToSlug = str  => {
+	
+        //replace all special characters | symbols with a space
+        str = str.replace(/[`~!@#$%^&*()_\-+=\[\]{};:'"\\|\/,.<>?\s]/g, ' ').toLowerCase();
+        // trim spaces at start and end of string
+        str = str.replace(/^\s+|\s+$/gm,'');
+        // replace space with dash/hyphen
+        str = str.replace(/\s+/g, '-');	
+        return str;
+    }
 
 
 
@@ -155,11 +169,7 @@ const HamburgerMenu = () => {
                         </div>
 
                         <div className="nav-items-container">
-                            <Link className = 'nav-item-link' to = '#'> Accueil </Link> 
-                            <Link className = 'nav-item-link' to = '#'> Qui suis-je ? </Link>
-                            <Link className = 'nav-item-link' to = '#'> Méthodologie </Link>
-                            <Link className = 'nav-item-link' to = '#'> Contact </Link>
-                            <Link className = 'nav-item-link' to = '#'> Aide </Link>
+                        { footerLinks.map(footerLink => <FooterLink link = { footerLink.link } id = { convertToSlug(footerLink.title) } text = { footerLink.title }  jsx = {footerLink.jsx} />) }
                         </div>
 
                         <div className="social-media-container">

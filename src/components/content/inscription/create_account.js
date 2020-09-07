@@ -16,17 +16,17 @@ export default function create_account() {
         <div className="container">
              <p  className="cree_ton_compte"><center> </center></p>
 
-             <Title text = 'CREE TON COMPTE' textcentered centerOverlined />
+            <Title text = 'CREE TON COMPTE' textcentered centerOverlined />
           
-             <p className="span_description">Si vous abonnez votre enfant, choisissez le profil parent.</p>
+            <p className="span_description">Si vous abonnez votre enfant, choisissez le profil parent.</p>
 
             
-             <div className="row" style={{marginTop:'50px'}}>
+            <div className="row" style={{marginTop:'50px'}}>
                 <div className="col-md-2"></div>
-                    
+        
                 <div className="col-md-2">
                     <Link to="/eleve-create-account">
-                        <img className="images" src={photo_eleve} width="100%" />
+                        <img className="images" src={photo_eleve} width="100%" alt = "" />
                     </Link>
                     <span className="title_image">Elève</span>
                 </div>
@@ -39,7 +39,7 @@ export default function create_account() {
                                 fonction: "Parent"
                             }
                         }}> */}
-                        <img className="images"  src={photo_parent}  width="100%"  />
+                        <img className="images"  src={photo_parent}  width="100%" alt = ""  />
                     {/* </Link> */}
                     <span className="title_image">Parent</span>
                 </div>
@@ -47,7 +47,7 @@ export default function create_account() {
                 <div className="col-md-1"></div>
                 <div className="col-md-2">
                     {/* <Link to="/wich-enseignant"> */}
-                        <img className="images"  src={photo_enseignant} width="100%" />
+                        <img className="images"  src={photo_enseignant} width="100%" alt = '' />
                     {/* </Link> */}
                     <span className="title_image">Enseignant</span>
                 </div>

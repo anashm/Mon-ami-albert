@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'semantic-ui-css/semantic.min.css';
 import './style/_style.scss';
 import HomePage from './components/content/home-page/HomePage';
-import {BrowserRouter as Router,Switch,Route} from 'react-router-dom';
+import {BrowserRouter as Router,Switch,Route , Redirect} from 'react-router-dom';
 import CreatAccount  from './components/content/inscription/create_account';
 import EleveAccount from './components/content/inscription/EleveCompte';
 import Login from './pages/Login/Login';
@@ -18,6 +18,7 @@ import Chapitres from './pages/LoggedIn/Chapitres';
 import Quizz from './pages/Chapter/Quizz/Quizz';
 import TestPDF from './pages/Chapter/Exercises/Exercise/TestPDF'
 import Profil from './components/header/ProfilPage';
+import NotFound from './pages/404/NotFound';
 import 'aos/dist/aos.css';
 import ClassementGeneral from './components/header/Classement/ClassementGeneral'
 import ClassementLycee from './components/header/Classement/ClassementLycee'
@@ -60,7 +61,7 @@ const  App = () => {
           setLoading(false);
           const userId = user.uid;                      
           const database = firebaseContext.getData();
-          const reference =  database.ref('users/'+userId)
+          const reference =  database.ref(`users/${userId}`)
           reference.once("value", user_informations => {
               userContext.get_user_informations(user_informations.val());
           });
@@ -97,6 +98,8 @@ const  App = () => {
             <Route exact path="/classement-general" component={ClassementGeneral} />
             <Route exact path="/classement-lycee" component={ClassementLycee} />
             <Route exact path="/recapitulatif" component={Recaputilatif} />
+            <Route exact path="/404" component={NotFound} />
+            <Redirect to="/404" />
           </Switch>
           
           {/* </LoggedinProvider> */}

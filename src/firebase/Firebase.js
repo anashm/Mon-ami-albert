@@ -32,34 +32,25 @@ const firebaseConfig = {
         this.auth = app.auth();
       }
 
-      signupUser = (email,password) => 
-        this.auth.createUserWithEmailAndPassword(email,password);
+      signupUser = (email,password) => this.auth.createUserWithEmailAndPassword(email,password);
       
-
-      loginUser = (email,password) => 
-        this.auth.signInWithEmailAndPassword(email,password)
+      loginUser = (email,password) => this.auth.signInWithEmailAndPassword(email,password)
       
+      signOutUser = () => this.auth.signOut()
 
-      signOutUser = () => 
-        this.auth.signOut()
+      loginFacebook = () => this.auth.loginFacebook()
 
-        loginFacebook = () => 
-          this.auth.loginFacebook()
-
-         getData = () => 
-            app.database();
+      getData = () => app.database();
             
         
-         /*  retrieveData = () => {
-             return firebase.initializeApp(firebaseConfig);
-          } */
-        
-      
+      /*  retrieveData = () => {
+          return firebase.initializeApp(firebaseConfig);
+      } */
   }
 
   export default Firebase;
 
- /*  const firebaseApp = firebase.initializeApp(firebaseConfig);
+/*  const firebaseApp = firebase.initializeApp(firebaseConfig);
 
 
   const database = firebaseApp.database();

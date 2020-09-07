@@ -99,6 +99,15 @@
             color: #707070;
 
         }
+
+        h2{
+            color: #707070;
+            text-align: center;
+        }
+
+        h4{
+            margin: 0;
+        }
     
 
         ul{
@@ -106,7 +115,25 @@
             li{
                 list-style-type: none;
                 color: #636363;
+                padding: 10px;
             }
         }
+    }
+
+    #qui-suis-je-modal{
+    
+
+        .img-container{
+
+            display: flex;
+            justify-content: center;
+
+            img{
+                width: 30%;
+                max-width: 200px;
+            }
+        }
+       
+        
     }
 }
