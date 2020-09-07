@@ -23,8 +23,8 @@ const NotFound = () => {
                 <p className="svg_container_not_found"> {View} </p>
                 
             </div>
-            <div className="title_not_found">
-                <h2 >Nous n'avons pas trouvé ce que vous recherchiez.</h2>
+            <div >
+                <h2 className="title_not_found">Nous n'avons pas trouvé ce que vous recherchiez</h2>
             </div>
         </section>
     )
