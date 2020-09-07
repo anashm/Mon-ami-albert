@@ -1,4 +1,4 @@
-import React , { Fragment } from 'react';
+import React from 'react';
 import './Footer.css';
 import facebook_icon from '../../images/facebook-icon.svg';
 import instagram_icon from '../../images/instagram-icon.svg';
@@ -7,7 +7,6 @@ import twitter_icon from '../../images/twitter-icon.svg';
 import FooterIcon from './Icons/FooterIcon';
 import FooterLink from './FooterLink/FooterLink';
 
-import albert from '../../images/quizz/albert-quiz.png';
 
 import {
     footerLinks
@@ -48,7 +47,7 @@ const  Footer = () => {
             <div className="container">
                 <div className="row">
                     <div className="footer-link-container">
-                        { footerLinks.map(footerLink => <FooterLink link = { footerLink.link } id = { convertToSlug(footerLink.title) } text = { footerLink.title }  jsx = {footerLink.jsx} />) }
+                        { footerLinks.map(footerLink => <FooterLink link = { footerLink.link } id = { `hamburger-${convertToSlug(footerLink.title)}` } text = { footerLink.title }  jsx = {footerLink.jsx} />) }
                     </div>
                 </div>
                 <div className="row">

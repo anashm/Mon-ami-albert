@@ -49,3 +49,19 @@
     font-family: Rubik-Medium;
     src: url('../../../fonts/Rubik-Medium.ttf');
 }
+
+.chapitre-modal img{
+    width: 30%;
+    max-width: 300px;
+    display: block;
+    margin: auto;
+    margin-right: 50%;
+    -webkit-animation: fade-in-bottom 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) 0.2s both;
+	        animation: fade-in-bottom 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) 0.2s  both;
+}
+
+.chapitre-modal  .bubble.bubble-bottom-left{
+    top: 30px;
+    -webkit-animation: fade-in-left 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) 0.6s both;
+	        animation: fade-in-left 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) 0.6s both;
+}

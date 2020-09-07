@@ -23,10 +23,15 @@
 }
 
 @media only screen and (max-width: 600px) {
-  .matiere_component{
-      grid-template-columns: 1fr;
+    .matiere_component{
+        grid-template-columns: 1fr;
 
-  }
+    }
+
+    .matiere_component a{
+        margin: 0 3%;
+
+    }
 }
 
 /*.matiere_component{

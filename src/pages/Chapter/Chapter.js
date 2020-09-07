@@ -69,10 +69,10 @@ const Chapter = ({match}) => {
         <section className = 'container chapter-page-container'>
             <div className="breadcrumb-container">
                 <Breadcrumb>
-                    <Breadcrumb.Section > <Link to = '/'> Accueil </Link> </Breadcrumb.Section>
-                    <Breadcrumb.Divider icon='right chevron' />
-                    <Breadcrumb.Section > <Link to = {`/dashboard-user`}> Mon parcours </Link> </Breadcrumb.Section>
-                        <Breadcrumb.Divider icon='right chevron' />
+                    <Breadcrumb.Section className = 'breadcrumb-home' > <Link to = '/'> Accueil </Link> </Breadcrumb.Section>
+                    <Breadcrumb.Divider className = 'breadcrumb-home-chevron' icon='right chevron' />
+                    <Breadcrumb.Section className = 'breadcrumb-evolution'> <Link to = {`/dashboard-user`}> Mon parcours </Link> </Breadcrumb.Section>
+                        <Breadcrumb.Divider className = 'breadcrumb-evolution-chevron' icon='right chevron' />
                     <Breadcrumb.Section > <Link to = {`/chapitres/${match.params.matieres}`}> {match.params.matieres} </Link> </Breadcrumb.Section>
                     <Breadcrumb.Divider icon='right chevron' />
                     <Breadcrumb.Section active>Chapitre : {match.params.chapitre} </Breadcrumb.Section>
