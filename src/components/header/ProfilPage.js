@@ -18,8 +18,14 @@ import './ProfilPage.css';
 import firebase_db from "firebase/app";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
-
+import Modal from 'react-bootstrap/Modal';
+import {
+    FacebookShareButton ,
+    FacebookIcon,
+    WhatsappShareButton,
+    WhatsappIcon
+   
+  } from "react-share";
 
 export default function ProfilPage() {
 
@@ -42,6 +48,11 @@ export default function ProfilPage() {
     const[showToast,setShowToast] = useState(false)
     const [ level ,setLevel] = useState('')
     const [ etablissement ,setEtablissement] = useState('')
+
+    const [showModal , setShowModal] = useState(false)
+    const [textModal , setTextModal] = useState('')
+    const [showSocialIcons , setShowSocialIcons] = useState(false)
+
     const avatars = [
         {
             image : Boy1,
@@ -166,18 +177,13 @@ export default function ProfilPage() {
         var cred = firebase_db.auth.EmailAuthProvider.credential(utilisateur.email,currentPassword)
         return utilisateur.reauthenticateWithCredential(cred);
     }
+
+    
     
     const handleSubmit = (e) => {
       
         e.preventDefault();
-       
-        
-       /*  var utilisateur = firebase_db.auth().currentUser;
-        utilisateur.updatePassword('1234567').then(function() {
-            console.log('dkhal')
-          }).catch(function(error) {
-            console.log(error)
-          }); */
+
 
         firebase.auth.onAuthStateChanged( user => {
             if(user){
@@ -239,6 +245,17 @@ export default function ProfilPage() {
       
 
         
+    }
+
+    const HandleShowModalBesoinProf = () => {
+       
+        setShowModal(true)
+        setTextModal("T'inquiète,je vais te mettre bien ! Un de mes conseillers va t'appeler dans les 24 heures .")
+    }
+
+    const HandleShowModalBesoinBilan = () => {
+        setShowModal(true)
+        setTextModal(" T'inquiète,je gère! Un de mes conseillers  va t'appeler dans les 24 heures.")
     }
 
     return (
@@ -313,9 +330,76 @@ export default function ProfilPage() {
                 
                 ) : '' }
                 
-                <Button type='submit' style={{color :'white'}}>Mettre à jour</Button>
 
+              
+                    <Button type="submit"  style={{color :'white'}}>Mettre à jour</Button>
+                
+
+                   
             </Form>
+
+            <br></br><br></br>
+            <div>
+                
+                <Button onClick={HandleShowModalBesoinProf}  id="button_besoin_prof">BESOIN D'UN PROF A TES COTES ?</Button>
+                
+              
+                <Button   id="button_inviter_ami" onClick={() => setShowSocialIcons(true)} >INVITER UN AMI</Button>
+                    {
+                        showSocialIcons ? 
+                        <div className="div_social_media_container">
+                            <WhatsappShareButton
+                                url="https://preprod.monamialbert.com/"
+                                title="Rejoins les amis d’Albert, veuillez utiliser mon code de parrainage"
+                                separator=":"
+                                className="Demo__some-network__share-button"
+                            >
+                                <div className="share_on_whatsapp">
+                                    <WhatsappIcon size={32} round />
+                                    <span className="st-label">Partager</span>
+                                </div>
+                                
+                            </WhatsappShareButton>
+
+                            <FacebookShareButton
+                                url="https://preprod.monamialbert.com/"
+                                title="Rejoins les amis d’Albert, veuillez utiliser mon code de parrainage"
+                                separator=":"
+                                className="Demo__some-network__share-button"
+                            >
+                                <div className="share_on_facebook">
+                                    <FacebookIcon size={32} round />
+                                    <span className="st-label">Partager</span>
+                                </div>
+                               {/* <Button>Share on facebook</Button>  */}
+                                {/* <FacebookIcon size={32} round /> */}
+                            </FacebookShareButton>
+                         </div> : ''
+
+                    }
+                    
+                 
+                   
+                <Button onClick={HandleShowModalBesoinBilan} id="button_besoin_bilan"  >BESOIN D'UN BILAN PEDAGOGIQUE ?</Button>
+                
+            </div> 
+
+
+            <Modal
+                aria-labelledby="contained-modal-title-vcenter"
+                centered
+                show={showModal}
+                onHide={() => setShowModal(false)}
+                >
+                    <Modal.Header closeButton>
+                        <Modal.Title id="contained-modal-title-vcenter">
+                            <h4 style={{color:'#707070'}}></h4> 
+                        </Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body >
+                        {textModal}
+                    </Modal.Body>
+            </Modal>     
         </div>
     )
 }

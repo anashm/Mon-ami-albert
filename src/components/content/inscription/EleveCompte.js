@@ -13,6 +13,14 @@ import Title from '../../general/Title/Title';
 
 import SchoolSearchInput from './SchoolSearchInput/SchoolSearchInput'
 
+
+import {
+    FacebookShareCount ,
+    WhatsappShareButton,
+    WhatsappIcon
+   
+  } from "react-share";
+
  const  EleveCompte = ( props ) =>  {
     
     const Firebase = useContext(FirebaseContext)
@@ -49,6 +57,15 @@ import SchoolSearchInput from './SchoolSearchInput/SchoolSearchInput'
 
     return (        
         <div className="container">
+            {/* <WhatsappShareButton
+            url="https://preprod.monamialbert.com/"
+            title="from app"
+            separator=":: "
+            className="Demo__some-network__share-button"
+          >
+            <WhatsappIcon size={32} round />
+          </WhatsappShareButton> */}
+          
             <p  className="cree_ton_compte"><center>   </center></p>
 
             <Title text = 'CREE TON COMPTE' textcentered centerOverlined />
