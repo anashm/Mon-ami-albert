@@ -11,56 +11,44 @@ import Latex from 'react-latex';
 
 
 
-const Courses = ({ urlParams }) => {
+const Courses = ({ urlParams , memoized , courses_memoized }) => {
 
 
-
-   
     //console.log(urlParams.params.matieres)
     let matiere =  urlParams.matieres;
     let chapitre = urlParams.chapitre;
 
     const firebase = useContext(FirebaseContext)
     const userContext = useContext(UserContext)
-    const history = useHistory()
 
-    const [ courses_user , setCoursesUser ] = useState([])
-    const [infoLevel ,setinfosLevel] = useState(null)
+    const [ courses_user , setCoursesUser ] = useState([]);
+
 
     useEffect(() => {
-       
-        firebase.auth.onAuthStateChanged( user => {
-          if(user){
-              //code if realod page pour garder context api values
-               userContext.get_connected_user(user);
-               const userId = user.uid;                      
-               const database = firebase.getData();
-               const reference =  database.ref('users/'+userId)
-      
+        if(userContext.user){
+            //code if realod page pour garder context api values
+            if(courses_memoized){
+                setCoursesUser(courses_memoized);
+            }else{
+                const userId = userContext.user.uid;                      
+                const database = firebase.getData();
+                const reference =  database.ref('users/'+userId)
+    
                 reference.once("value", user_informations => {
-                userContext.get_user_informations(user_informations.val());
-                setinfosLevel(user_informations.val().level)
-               
-          
                     const reference_exercices = database.ref('schoolLevels/'+user_informations.val().level+'/subjects/'+matiere+'/'+chapitre+'/cours')
-
-                   
                     reference_exercices.once("value", cours_collection => {
-                        const courses = cours_collection.val();
-                        if(courses)
-                            setCoursesUser(courses);              
+                        let courses = cours_collection.val();
+                        if(courses) {
+                            setCoursesUser(courses);
+                            memoized(courses)
+                        }
                     })
-                }) 
-                     
-          }
-          else{
+                })
+            }
+        }
 
-           console.log('not login');
-           history.push('/')
-          }
-        });
-  
-      }, []);
+
+    }, [userContext.user]);
 
 
     return (
@@ -84,7 +72,7 @@ const Courses = ({ urlParams }) => {
                                        return(
                                            <div key={index}>
                                                 
-                                                    {(type.type) == 'Picture' ? 
+                                                    {(type.type) === 'Picture' ? 
                                                         <div>
                                                             <div className="type-container">
                                                                 <p className="class-type">{type.type}</p> 
@@ -94,7 +82,7 @@ const Courses = ({ urlParams }) => {
                                                                 return (
                                                                     <div key={index} className="lines-container">
                                                                         
-                                                                            <img src={line} />
+                                                                            <img src={line} alt = '' />
                                                                         
                                                                     </div>
                                                                     
@@ -115,6 +103,8 @@ const Courses = ({ urlParams }) => {
                                                                         <p >
                                                                             {/* <MathJax   math={line} /> */}
                                                                             {/* <TeX block>{line.split('$').join(' ').split(`'`).join('')}</TeX> */}
+
+                                                                            {line.includes(`substack`) ? console.log(line) : '' }
 
                                                                             <Latex>{String.raw`${line}`}</Latex>
                                                                         </p>

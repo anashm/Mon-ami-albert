@@ -57,6 +57,7 @@ import {
 
     return (        
         <div className="container">
+<<<<<<< HEAD
             {/* <WhatsappShareButton
             url="https://preprod.monamialbert.com/"
             title="from app"
@@ -67,20 +68,14 @@ import {
           </WhatsappShareButton> */}
           
             <p  className="cree_ton_compte"><center>   </center></p>
+=======
+>>>>>>> 4e5d8a982707c8ab3c0f870a9bd3c519adc032c1
 
             <Title text = 'CREE TON COMPTE' textcentered centerOverlined />
 
-            <div className="row" style={{marginTop:'-2%'}}>
-                    <div className="col-md-4"></div>
-
-                    <div className="col-md-4" style={{marginLeft:'4%'}}>
-                        <div style={{float:"left",width:'20%'}}>
-                             <img src={avatar} style={{width : '70%'}} /> 
-                        </div>
-                        
-                        <p className="text-avatar">  <b> {childData} </b>&nbsp;&nbsp;
-                        </p>
-                    </div>
+            <div className="row justify-content-center align-items-center">
+                <img src={avatar} alt = '' /> 
+                <p className="text-avatar"> {childData} </p>
             </div>
 
             <p className="quel_classe">En quelle classe es-tu (2019-2020) ?</p>

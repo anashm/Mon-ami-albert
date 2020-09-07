@@ -28,11 +28,11 @@
 
 .deja_un_compte{
 
-    margin: 60px 0px 0 0;
     text-align: center;
     font-family: Rubik-Regular;
     font-size: 12px;
     color: #636363;
+    margin: 0;
 }
 
 .spacer{

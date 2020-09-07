@@ -18,7 +18,7 @@
 
     .arrow-bottom{
         position: absolute;
-        bottom: 30px;
+        bottom: 4%;
         left: 45%;
         transform: translateX(-50%);
         cursor: pointer;
@@ -32,7 +32,7 @@
         }
         
         svg{
-            width: 60% !important;
+            width: 100% !important;
             transition: all 0.25s;
             max-width: 40px;
             
@@ -154,7 +154,7 @@
                 padding: 30px 0;
 
                 @include media('<=phone'){
-                    text-align: center;
+                    text-align: justify;
                     padding: 0 5%;
                     padding-top: 4%;
                     padding-bottom: 2%;

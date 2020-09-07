@@ -170,7 +170,6 @@ const  SignUp = (props) => {
 
     return (
         <div className="container">               
-                <p  className="cree_ton_compte"><center>   </center></p>
                 <Title text = 'CREEZ VOTRE COMPTE' textcentered centerOverlined />
 
                 <div className="row" style={{marginTop:'-2%'}}>
@@ -182,7 +181,7 @@ const  SignUp = (props) => {
                         </div>
                         
                         <p className="text-avatar"> <b> {props.location.state.fonction}</b>.&nbsp;&nbsp;
-                        <Link to="/eleve-creat-account"> Modifier </Link></p>
+                        <Link to="/eleve-create-account"> Modifier </Link></p>
                     </div>
                 </div>
 

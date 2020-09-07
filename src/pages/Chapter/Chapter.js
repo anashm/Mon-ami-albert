@@ -11,7 +11,8 @@ import Exrecises from './Exercises/Exercises';
 import Quizz from './Quizz/Quizz';
 import ChapterButton from './ChapterButton/ChapterButton';
 
-import {Divider} from 'semantic-ui-react';
+import {Breadcrumb} from 'semantic-ui-react';
+import { Link } from 'react-router-dom'
 
 import AOS from 'aos';
 
@@ -39,6 +40,7 @@ const Chapter = ({match}) => {
     const [ coursesContent , setCoursesContent ]  = useState(true);
     const [ quizzContent , setQuizzContent ] = useState(false);
     const [ exercisesContent , setExercisesContent ] = useState(false);
+    const [ courses_memoized , set_courses_memoized ] = useState(null);
 
 
 
@@ -65,8 +67,17 @@ const Chapter = ({match}) => {
 
     return (
         <section className = 'container chapter-page-container'>
-            <Divider hidden />
-
+            <div className="breadcrumb-container">
+                <Breadcrumb>
+                    <Breadcrumb.Section > <Link to = '/'> Accueil </Link> </Breadcrumb.Section>
+                    <Breadcrumb.Divider icon='right chevron' />
+                    <Breadcrumb.Section > <Link to = {`/dashboard-user`}> Tableau de bord </Link> </Breadcrumb.Section>
+                        <Breadcrumb.Divider icon='right chevron' />
+                    <Breadcrumb.Section > <Link to = {`/chapitres/${match.params.matieres}`}> {match.params.matieres} </Link> </Breadcrumb.Section>
+                    <Breadcrumb.Divider icon='right chevron' />
+                    <Breadcrumb.Section active>Chapitre : {match.params.chapitre} </Breadcrumb.Section>
+                </Breadcrumb>
+            </div>
             <div className="chapter-title-container">
                 <h2 className="chapter-title"> Les différentes écritures d'un nombre  </h2>
             </div>
@@ -78,7 +89,7 @@ const Chapter = ({match}) => {
             </div>
 
             <div className="chapter-content">
-                { coursesContent && <div className="chapter-exercises-container"> <Courses urlParams = {match.params} /> </div>}
+                { coursesContent && <div className="chapter-exercises-container"> <Courses urlParams = {match.params} courses_memoized = { courses_memoized } memoized = { (courses) => set_courses_memoized(courses) } /> </div>}
                 { quizzContent && <div className="chapter-courses-container"> <Quizz quizz = 'quizz' /> </div> }
                 { exercisesContent &&  <div className="chapter-quizz-container">  <Exrecises urlParams = {match.params} exercises = 'exercices' /> </div>}  
             </div>

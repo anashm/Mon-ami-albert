@@ -1,5 +1,5 @@
 
-import React,{useEffect , Fragment , useState} from 'react'
+import React,{useEffect , Fragment , useState , memo} from 'react'
 import photo_einstein from '../../../images/einsten.png';
 import './Firstdiv.css';
 import phones_photo from '../../../images/phones.jpg';
@@ -70,7 +70,7 @@ const PopUp = ({ closeToast }) => (
     </div>
 );
 
-const HeroSection = ( {userConnected} ) => {
+const HeroSection = memo( ( {userConnected} ) => {
 
 
     const options = {
@@ -90,11 +90,10 @@ const HeroSection = ( {userConnected} ) => {
     
     
     useEffect(() => {
-
         /* setTimeout(() => { toast(<PopUp />)  },2000);  */
-
         AOS.init({
-            duration: 1500
+            duration: 1500,
+            offset: -50
         });
         
     }, []);
@@ -124,7 +123,7 @@ const HeroSection = ( {userConnected} ) => {
                                 { !userConnected ? 
                                     ( 
                                         <Fragment>
-                                            <Link className = 'hero-section-button register-button' to = '/eleve-creat-account' > s'inscrire gratuitement </Link>
+                                            <Link className = 'hero-section-button register-button' to = '/eleve-create-account' > s'inscrire gratuitement </Link>
                                             <Link className = 'hero-section-button login-button' to = '/login'> Se connecter </Link> 
                                         </Fragment>
                                     ) : <Link className = 'hero-section-button dashboard-button' to = '/dashboard-user'>  Mon Parcours </Link> }
@@ -144,6 +143,6 @@ const HeroSection = ( {userConnected} ) => {
             />
         </section>
     );
-}
+});
 
 export default HeroSection;
