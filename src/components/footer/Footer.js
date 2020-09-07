@@ -105,7 +105,7 @@ const  Footer = () => {
             <div className="container">
                 <div className="row">
                     <div className="footer-link-container">
-                        { footerLinks.map(footerLink => <FooterLink link = { footerLink.link } text = { footerLink.title }  jsx = {footerLink.jsx} />) }
+                        { footerLinks.map(footerLink => <FooterLink link = { footerLink.link } id = { footerLink.title.replace(/[^\w\s]/gi, '') } text = { footerLink.title }  jsx = {footerLink.jsx} />) }
                     </div>
                 </div>
                 <div className="row">
@@ -114,7 +114,7 @@ const  Footer = () => {
                     </div>
                 </div>
                 <div className="row">
-                    <p className="rights-text">mon ami albert 2020</p>
+                    <p className="rights-text"> &copy; mon ami albert 2020</p>
                 </div>
             </div>
         </footer>

@@ -9,8 +9,13 @@
         font-weight: 500;
     }
 
+    .chapter-title-container{
+        padding-top: 3%;
+    }
+
     .chapter-title{
         font-size: 20px;
+        padding: 0 40px;
         
 
         @media only screen and (max-width: 460px) {
@@ -42,11 +47,8 @@
         }
     }
 
-   
-
-    
-
 }
+
 
 
 

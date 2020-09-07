@@ -111,7 +111,7 @@ const LoginForm = (props) => {
                 <Divider hidden />
                 {btn}
 
-                <p className = 'subscribe-text text-center'> <span> Pas encore de compte ? </span>  <small className = 'login-link subscribe-link'> <Link to = '/eleve-creat-account'> Inscris-toi </Link> </small> </p>
+                <p className = 'subscribe-text text-center'> <span> Pas encore de compte ? </span>  <small className = 'login-link subscribe-link'> <Link to = '/eleve-create-account'> Inscris-toi </Link> </small> </p>
                 
             </Form>
         </div>

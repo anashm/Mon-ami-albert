@@ -3,17 +3,14 @@
 }
 
 .main_content {
-  min-height:700px;
   height: auto;
   /* display: flex;
   flex-direction: column; */
 }
 
 .footer_container{
-     
   position:relative;
   bottom:0;
-  
  /*  width: 100%; */
 }
 

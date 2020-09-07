@@ -31,7 +31,7 @@ const Login = (props) => {
                 </div>
             </div>
 
-            <Divider className = 'w-100 my-4' horizontal>Or</Divider>
+            <Divider className = 'w-100 my-4' horizontal>Ou</Divider>
 
 
             <div className="login-form-container">

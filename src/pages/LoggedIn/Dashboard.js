@@ -15,9 +15,7 @@ import {FirebaseContext} from '../../firebase';
 import UserContext from '../../Context/UserContext/UserContext';
 import NiveauxSchool from './Matieres/NiveauxSchoolComponent';
 import AOS from 'aos';
-import { Icon , Divider } from 'semantic-ui-react';
-
-import CustomBreadcrumb from '../../components/general/CustomBreadcrumb/CustomBreadcrumb';
+import { Icon , Divider , Breadcrumb , Loader} from 'semantic-ui-react';
 
 
 
@@ -73,43 +71,29 @@ const  Dashboard = (props) => {
 ]
     
     useEffect(() => {
-
         AOS.init({
             duration: 800
         });
 
-        firebase.auth.onAuthStateChanged( user => {
-            if(user){
-                //code if realod page pour garder context api values
-                userContext.get_connected_user(user);
-               
+        if(niveauxSchool.length < 1){
+            const database = firebase.getData();
+            const ref_niveaux = database.ref('schoolLevels/all');
+            ref_niveaux.on("value", snapshot => {
+            // const messageObject = snapshot.val();
+                setNiveauxSchool(snapshot.val());
+            })
+        }
 
-            }
-            else{
-                console.log('not login');
-                props.history.push('/')
-            }
-        });
     }, []);
 
-   
-    
-  
 
     const [ modalOpen , setModalOpen  ] = useState(false);
 
 
-    const handleShowModal = () => {
-        const database = firebase.getData();
-        const ref_niveaux = database.ref('schoolLevels/all');
-            ref_niveaux.on("value", snapshot => {
-            // const messageObject = snapshot.val();
-                setNiveauxSchool(snapshot.val())
-                
-               
-            })
-        setModalOpen(true);
 
+
+    const handleShowModal = () => {
+        setModalOpen(true);
     }
 
     const handleCloseModal = () =>{ 
@@ -118,13 +102,17 @@ const  Dashboard = (props) => {
 
         return (
             <div className="container dashboard-section">
-                <div className="dashboard-breadcrumb-con">
-                    <CustomBreadcrumb />
+                <div className="breadcrumb-container">
+                    <Breadcrumb>
+                        <Breadcrumb.Section > <Link to = '/'> Accueil </Link> </Breadcrumb.Section>
+                        <Breadcrumb.Divider icon='right chevron' />
+                        <Breadcrumb.Section active>Tableau de bord</Breadcrumb.Section>
+                    </Breadcrumb>
                 </div>
 
                 <p  className="cree_ton_compte" onClick = {handleShowModal}>
                     {
-                        (userContext.user_informations) ? <Fragment> <span>{userContext.user_informations.level}</span> <Icon name = 'angle down' />  </Fragment>  : <span>Terminale</span> 
+                        (userContext.user_informations) ? <Fragment> <span>{userContext.user_informations.level}</span> <Icon name = 'angle down' />  </Fragment>  : <span><Loader active inline='centered' /> </span> 
                     }
                 </p>
 

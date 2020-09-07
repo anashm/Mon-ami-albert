@@ -25,17 +25,18 @@ function FooterModal(props) {
   }
 
 
-const FooterLink = ({ link , text , jsx }) => {
+const FooterLink = ({ link , text , jsx , id }) => {
 
     const [ showModal , setShowModal ] = useState(false);
 
     return(
         <Fragment>
-            <p className = 'footer-link'  onClick = { () => setShowModal(true)  } > 
+            <p className = 'footer-link'  id = { id } onClick = { () => setShowModal(true)  } > 
                 { text }
             </p>
 
             <FooterModal 
+            id = {`${id}-modal`}
             title = { text }
             show={showModal}
             jsx = {jsx}

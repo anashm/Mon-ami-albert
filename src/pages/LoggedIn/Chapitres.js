@@ -2,7 +2,7 @@ import React, { useState,useContext,useEffect } from 'react'
 import ChapitreComponent from './ChapitresComp/ChapitreComponent';
 import './style/Chapitres.css';
 import { Link } from 'react-router-dom';
-import { Icon } from 'semantic-ui-react';
+import { Icon , Breadcrumb } from 'semantic-ui-react';
 import { useHistory  } from "react-router-dom";
 import {FirebaseContext} from '../../firebase';
 import UserContext from '../../Context/UserContext/UserContext';
@@ -80,12 +80,10 @@ const  Chapitres = ({match}) => {
 
 
                 if(chapitres.val()){
-                    
                     chapitres.val().map(chapter => {
                         const reference =  database.ref(`users/${userId}/Progression/${user_informations.val().level}/${matiere}/${chapter}/progression`);                  
                         reference.once('value' , data => {
                             if(data.val()){
-    
                                 setChapters(prevState => [...prevState , {
                                     title: chapter,
                                     points: data.val().points
@@ -128,6 +126,15 @@ const  Chapitres = ({match}) => {
 
         return (
             <div className="container chapter-section" >
+                <div className="breadcrumb-container">
+                    <Breadcrumb>
+                        <Breadcrumb.Section > <Link to = '/'> Accueil </Link> </Breadcrumb.Section>
+                        <Breadcrumb.Divider icon='right chevron' />
+                        <Breadcrumb.Section > <Link to = {`/dashboard-user`}> Tableau de bord </Link> </Breadcrumb.Section>
+                        <Breadcrumb.Divider icon='right chevron' />
+                        <Breadcrumb.Section active>Cours : {matiere} </Breadcrumb.Section>
+                    </Breadcrumb>
+                </div>
                 <div className="exercices-container">
                     <div className = 'exercises-title-container ' onClick = { () => setOpenTab(!openTab) } >
                         <h2 className="exercises-title">Chapitres</h2>

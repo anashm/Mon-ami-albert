@@ -24,10 +24,6 @@ export default function Sixthdiv() {
             text : 'Mon Ami Albert est une super appli quand il s’agit de s’entrainer et de compléter les cours donnés par nos professeurs en classe.'
         },
         {
-            title : 'SIHAME H.',
-            text : 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat.'
-        },
-        {
             title : 'Julien M.',
             text : 'Ce que j’aime en particulier chez Mon Ami Albert c’est la qualité du contenu proposé, on y trouve des millier d’exercices qui s’adapte à tous les niveaux avec leurs corrigés.'
         },

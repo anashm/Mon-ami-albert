@@ -443,3 +443,14 @@ main.main_content{
           padding : 5px 50px 
       }
   }
+
+.breadcrumb-container{
+    > div{
+        width: 100%;
+        border-top: 1px solid #ddd;
+        background-color: transparent;
+        border-bottom: 1px solid #ddd;
+        padding: 15px 10px;
+
+    }
+}

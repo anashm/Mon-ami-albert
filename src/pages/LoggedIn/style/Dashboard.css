@@ -7,16 +7,19 @@
 
 .cree_ton_compte{
     cursor: pointer;
+    padding: 3% 0;
 }
 
 .cree_ton_compte i{
     font-size: 30px;
 }
 
+.dashboard-section{
+    padding: 2% 0;
+}
+
 .dashboard-section .cree_ton_compte{
     margin: 0 !important;
-    padding-top: 3% 0;
-    padding-bottom: 3%;
 }
 
 @media only screen and (max-width: 600px) {

@@ -21,6 +21,8 @@
             color: white;
             text-transform: uppercase;
             transition: all 0.3s;
+            font-weight: 500;
+            cursor: pointer;
 
             @include media('<=phone'){
                 padding: 10px;
@@ -62,5 +64,49 @@
         letter-spacing: 1px;
         font-size: 13px;
         font-weight: 300;
+    }
+
+   
+}
+
+.footer-modal{
+    font-family: Rubik , 'sans-serif';
+
+    .modal-title{
+        font-size: 30px;
+        text-transform: uppercase;
+        text-align: center;
+        width: 100%;
+        font-weight: 500;
+        color: #707070;
+
+    }
+
+    .modal-body{
+
+        padding: 5%;
+        padding-top: 3%;
+
+        p{
+            text-align: start;
+            font-size: 16px;
+            color: #636363;
+        }
+
+        h3{
+            text-align: start;
+            font-size: 20px;
+            color: #707070;
+
+        }
+    
+
+        ul{
+
+            li{
+                list-style-type: none;
+                color: #636363;
+            }
+        }
     }
 }

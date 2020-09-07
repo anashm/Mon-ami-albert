@@ -25,7 +25,7 @@ export default function create_account() {
                 <div className="col-md-2"></div>
                     
                 <div className="col-md-2">
-                    <Link to="/eleve-creat-account">
+                    <Link to="/eleve-create-account">
                         <img className="images" src={photo_eleve} width="100%" />
                     </Link>
                     <span className="title_image">Elève</span>
