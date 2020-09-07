@@ -71,7 +71,7 @@ const Chapter = ({match}) => {
                 <Breadcrumb>
                     <Breadcrumb.Section > <Link to = '/'> Accueil </Link> </Breadcrumb.Section>
                     <Breadcrumb.Divider icon='right chevron' />
-                    <Breadcrumb.Section > <Link to = {`/dashboard-user`}> Tableau de bord </Link> </Breadcrumb.Section>
+                    <Breadcrumb.Section > <Link to = {`/dashboard-user`}> Mon parcours </Link> </Breadcrumb.Section>
                         <Breadcrumb.Divider icon='right chevron' />
                     <Breadcrumb.Section > <Link to = {`/chapitres/${match.params.matieres}`}> {match.params.matieres} </Link> </Breadcrumb.Section>
                     <Breadcrumb.Divider icon='right chevron' />

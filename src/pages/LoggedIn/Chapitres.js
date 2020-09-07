@@ -130,7 +130,7 @@ const  Chapitres = ({match}) => {
                     <Breadcrumb>
                         <Breadcrumb.Section > <Link to = '/'> Accueil </Link> </Breadcrumb.Section>
                         <Breadcrumb.Divider icon='right chevron' />
-                        <Breadcrumb.Section > <Link to = {`/dashboard-user`}> Tableau de bord </Link> </Breadcrumb.Section>
+                        <Breadcrumb.Section > <Link to = {`/dashboard-user`}> Mon parcours </Link> </Breadcrumb.Section>
                         <Breadcrumb.Divider icon='right chevron' />
                         <Breadcrumb.Section active>Cours : {matiere} </Breadcrumb.Section>
                     </Breadcrumb>
