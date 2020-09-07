@@ -1,0 +1,13 @@
+.not_found_container{
+    display: block;
+    
+}
+
+.svg_container_not_found{
+    width: 50%;
+    margin: 0 auto;
+}
+
+.title_not_found{
+    text-align: center;
+}
