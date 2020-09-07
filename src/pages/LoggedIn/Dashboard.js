@@ -106,7 +106,7 @@ const  Dashboard = (props) => {
                     <Breadcrumb>
                         <Breadcrumb.Section > <Link to = '/'> Accueil </Link> </Breadcrumb.Section>
                         <Breadcrumb.Divider icon='right chevron' />
-                        <Breadcrumb.Section active>Tableau de bord</Breadcrumb.Section>
+                        <Breadcrumb.Section active>Mon parcours</Breadcrumb.Section>
                     </Breadcrumb>
                 </div>
 
