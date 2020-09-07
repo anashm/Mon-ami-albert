@@ -118,6 +118,7 @@ const QuizzForm = ({  multiple ,
 
                             if(finished){
                                 setFinished(finished);
+                                
                             }
                         });
                     }
