@@ -57,7 +57,7 @@ import {
 
     return (        
         <div className="container">
-<<<<<<< HEAD
+
             {/* <WhatsappShareButton
             url="https://preprod.monamialbert.com/"
             title="from app"
@@ -68,8 +68,8 @@ import {
           </WhatsappShareButton> */}
           
             <p  className="cree_ton_compte"><center>   </center></p>
-=======
->>>>>>> 4e5d8a982707c8ab3c0f870a9bd3c519adc032c1
+
+
 
             <Title text = 'CREE TON COMPTE' textcentered centerOverlined />
 
