@@ -98,7 +98,7 @@ export const footerLinks = [
         jsx: methodologie
     },
     { 
-        title: 'Nos Missions',
+        title: 'Nos Visions',
         link : '#',
         jsx: ourMissions
     },

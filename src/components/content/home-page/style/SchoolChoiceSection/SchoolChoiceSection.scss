@@ -37,7 +37,7 @@
 
 
             @include media('<=phone'){
-                margin: 10px auto;
+                margin: 15px auto;
                 min-width: 80%;
             }
 
@@ -54,6 +54,10 @@
                 padding-right: 15px;
                 color: #333333;
                 width: 50px;
+
+                @include media('<=phone'){
+                    font-size: 40px;
+                }
 
             }
 

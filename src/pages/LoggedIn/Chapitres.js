@@ -133,7 +133,7 @@ const  Chapitres = ({match}) => {
                         <Breadcrumb.Divider className = 'hide-on-mobile' icon='right chevron' />
                         <Breadcrumb.Section > <Link to = {`/dashboard-user`}> Mon parcours </Link> </Breadcrumb.Section>
                         <Breadcrumb.Divider icon='right chevron' />
-                        <Breadcrumb.Section active>Cours : {matiere} </Breadcrumb.Section>
+                        <Breadcrumb.Section active>{matiere} </Breadcrumb.Section>
                     </Breadcrumb>
                 </div>
                 <div className="exercices-container">

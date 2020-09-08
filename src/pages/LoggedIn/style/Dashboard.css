@@ -24,6 +24,8 @@
 
 #contained-modal-title-vcenter{
     width: 100%;
+    font-family: Lato , 'sans-serif';
+    font-weight: bold;
 }
 
 .dashboard-modal .modal-content {

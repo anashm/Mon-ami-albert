@@ -49,17 +49,7 @@
         .class-names-container{
 
             max-height: 350px;
-            overflow-y: scroll;
-            overflow-x: hidden;
 
-            &::-webkit-scrollbar {
-                width: 5px;
-                border-radius: 10px;
-            }
-
-            &::-webkit-scrollbar-thumb{
-                border-radius: 10px;
-            }
         }
 
         .subinfos-container{

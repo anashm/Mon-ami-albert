@@ -75,7 +75,7 @@ const Chapter = ({match}) => {
                         <Breadcrumb.Divider className = 'breadcrumb-evolution-chevron' icon='right chevron' />
                     <Breadcrumb.Section > <Link to = {`/chapitres/${match.params.matieres}`}> {match.params.matieres} </Link> </Breadcrumb.Section>
                     <Breadcrumb.Divider icon='right chevron' />
-                    <Breadcrumb.Section active>Chapitre : {match.params.chapitre} </Breadcrumb.Section>
+                    <Breadcrumb.Section active> {match.params.chapitre} </Breadcrumb.Section>
                 </Breadcrumb>
             </div>
             <div className="chapter-title-container">

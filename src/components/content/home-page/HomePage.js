@@ -41,7 +41,7 @@ const HomePage = ({ loading }) => {
     }else{
       
       return(
-        <Fragment>
+        <section id = 'homepage'>
           <HeroSection userConnected={userContext.user} />
           <SchoolInfosSection />
           <ThirdDiv /> 
@@ -51,7 +51,7 @@ const HomePage = ({ loading }) => {
           <ApplicationSection />
           <ClassesSection />
           <Footer />
-        </Fragment>
+        </section>
       )
     }
 }
