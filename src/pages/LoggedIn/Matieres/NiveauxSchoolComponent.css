@@ -17,23 +17,22 @@
 
 .niveaux_elements{
     width: 90% !important;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
     border-radius: 5px;
-    margin: 30px 0;
+    margin: 20px 0;
     cursor: pointer;
-
-        border-radius: 50px;
-    background: #EEEEEE;
-    box-shadow:  20px 20px 60px #cacaca, 
-                -20px -20px 60px #ffffff;
-    transition: all 0.3s;
+    box-shadow: 0px 2px 10px #00000029;
+    transition: all 0.25s;
 }
 
+
 .niveaux_elements h5{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
     margin: 0;
+    width: 100%;
+    text-align: center;
     font-size: 18px;
     color: #808080;
 }
@@ -43,9 +42,18 @@
 }
 
 .niveaux_elements:hover{
-    border-radius: 50px;
-    background: linear-gradient(145deg, #d6d6d6, #ffffff);
-    box-shadow:  20px 20px 60px #cacaca, 
-                 -20px -20px 60px #ffffff;
-    
+    transform: translateY(-2px);
+}
+
+
+
+@media only screen and (max-width: 490px) {
+    .niveaux_elements h5{
+        padding: 15px;
+        font-size: 15px;
+    }
+
+    .niveaux_elements{
+        margin: 10px 0;
+    }
 }

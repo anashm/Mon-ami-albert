@@ -1,5 +1,7 @@
 /* reusable style */
 
+@import './breakpoints';
+
 
 .submit-btn{
     background-color: $secondary-dark-gray-color !important;
@@ -47,5 +49,12 @@
 
 .text-center{
     text-align: center;
-    width: 100%;
 }
+
+
+@include media('<=phone'){
+    .hide-on-mobile{
+        display: none !important;
+    }
+}
+

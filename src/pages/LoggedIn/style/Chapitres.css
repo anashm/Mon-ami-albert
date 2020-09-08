@@ -44,6 +44,13 @@
     }
 }
 
+@media only screen and (max-width: 490px){
+
+    .exercises-title-container{
+        border-radius: 0 !important;
+    }
+}
+
 
 @font-face{
     font-family: Rubik-Medium;

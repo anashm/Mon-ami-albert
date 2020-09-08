@@ -129,8 +129,8 @@ const  Chapitres = ({match}) => {
             <div className="container chapter-section" >
                 <div className="breadcrumb-container">
                     <Breadcrumb>
-                        <Breadcrumb.Section > <Link to = '/'> Accueil </Link> </Breadcrumb.Section>
-                        <Breadcrumb.Divider icon='right chevron' />
+                        <Breadcrumb.Section className = 'hide-on-mobile' > <Link to = '/'> Accueil </Link> </Breadcrumb.Section>
+                        <Breadcrumb.Divider className = 'hide-on-mobile' icon='right chevron' />
                         <Breadcrumb.Section > <Link to = {`/dashboard-user`}> Mon parcours </Link> </Breadcrumb.Section>
                         <Breadcrumb.Divider icon='right chevron' />
                         <Breadcrumb.Section active>Cours : {matiere} </Breadcrumb.Section>

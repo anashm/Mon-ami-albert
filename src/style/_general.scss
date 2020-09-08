@@ -448,13 +448,21 @@ main.main_content{
 .breadcrumb-container{
     > div{
         width: 100%;
-        border-top: 1px solid #ddd;
         background-color: transparent;
-        border-bottom: 1px solid #ddd;
         padding: 15px 10px;
+        font-weight: bold;
+
 
         a{
             color: #707070 !important;
+            font-size: 16px;
+
+        }
+
+        .active.section{
+            color: #6BA4A5;
+            font-size: 16px;
+
         }
 
     }
