@@ -1,16 +1,13 @@
 import React , { useState , useContext , useEffect , Fragment } from 'react';
 
 import { Checkbox, Form , Button, Icon } from 'semantic-ui-react';
-import { Modal } from 'react-bootstrap';
 
 import './QuizzForm.scss';
 import UserContext from '../../../../Context/UserContext/UserContext';
-import MathJax from 'react-mathjax-preview';
 
 import {FirebaseContext} from '../../../../firebase';
 
-import Lottie from 'react-lottie';
-import * as animationData from '../../../../animation/quizz/test.json';
+
 
 import QuizzSummary from './QuizzSummary/QuizzSummary';
 
@@ -23,7 +20,8 @@ import Latex from 'react-latex';
 
 
 
-const QuizzForm = ({  multiple ,
+const QuizzForm = ({  
+    multiple ,
     title , 
     choices , 
     correct , 
@@ -62,78 +60,63 @@ const QuizzForm = ({  multiple ,
 
     useEffect(() => {
 
-        firebase.auth.onAuthStateChanged( user => {
-            if(user){
-                //code if realod page pour garder context api values
-                userContext.get_connected_user(user);
+        if(userContext.user){
+             //code if realod page pour garder context api values
+            const userId = userContext.user.uid;                      
+            const reference =  database.ref(`users/${userId}/Progression/${userContext.user_informations.level}/${course}/${chapter}`);
+            const hasProgression = userContext['user_informations']['Progression'][`${userContext.user_informations.level}`][`${course}`][`${chapter}`];
 
-                const userId = user.uid;                      
-                const reference =  database.ref(`users/${userId}/Progression/${userContext.user_informations.level}/${course}/${chapter}`);
-
-                reference.once("value", user_informations => {
+                //console.log(user_informations.val())
+                
+                if(!hasProgression){
+                    //console.log('create a collection');
+                    reference.child(`/progression`).set({
+                        current_question_index:  0,
+                        found_questions : 0,
+                        points: 0,
+                        finished: false,
+                        onReset: false,
+                        badResponses: {
+                            default: 'default'
+                        }
+                    }).then(() => {
+                        //console.log('created');
+                        setFoundAnswer(0);
+                        setUserPoints(0);
+                        userContext.update_user_progression(0);
+                        userContext.update_user_current_question_index(0);
+                        userContext.update_user_points(0);
+                    })
+                    .catch(e => console.log(e));
+                }else{
                     //console.log(user_informations.val())
-                    console.log(!user_informations.val());
-                    if(!user_informations.val()){
-                        console.log('we must create a collection');
-                        reference.child(`/progression`).set({
-                            current_question_index:  0,
-                            found_questions : 0,
-                            points: 0,
-                            finished: false,
-                            onReset: false,
-                            badResponses: {
-                                default: 'default'
-                            }
-                        }).then(() => {
-                            console.log('created');
-                            setFoundAnswer(0);
-                            setUserPoints(0);
-                            userContext.update_user_progression(0);
-                            //update current index
-                            userContext.update_user_current_question_index(0);
-                            //update user points
-                            userContext.update_user_points(0);
-                        })
-                        .catch(e => console.log(e));
-                        //console.log(userContext.user_informations.level)
-                    }else{
-                        const reference =  database.ref(`users/${userId}/Progression/${userContext.user_informations.level}/${course}/${chapter}/progression`);
-                        reference.once('value' , user_informations => {
-                             //console.log(user_informations.val())
-                            const { current_question_index , found_questions , points , finished , onReset } = user_informations.val();
-                            console.log( 'from quizz form' , question_limit , current_question_index , found_questions , points , finished);
-                            userContext.update_user_progression((current_question_index+1)/question_length);
-                            //update current index
-                            //update user points
-                            userContext.update_user_current_question_index(current_question_index);
-                            userContext.update_user_points(points);
-                            userContext.update_user_found_answer(found_questions);
-                            setFoundAnswer(found_questions);
-                            setUserPoints(points);
-                            setReset(onReset);
-                            userContext.update_user_on_quizz_summary_page(onReset);
+                    const { current_question_index , found_questions , points , finished , onReset } = userContext['user_informations']['Progression'][`${userContext.user_informations.level}`][`${course}`][`${chapter}`]['progression'];
+                    //console.log( 'from quizz form' , question_limit , current_question_index , found_questions , points , finished);
+                    userContext.update_user_progression((current_question_index+1)/question_length);
+                    userContext.update_user_current_question_index(current_question_index);
+                    userContext.update_user_points(points);
+                    userContext.update_user_found_answer(found_questions);
+                    setFoundAnswer(found_questions);
+                    setUserPoints(points);
+                    setReset(onReset);
+                    userContext.update_user_on_quizz_summary_page(onReset);
+                    userContext.update_quizz_next_index(current_question_index+1);
 
-                            userContext.update_quizz_next_index(current_question_index+1);
-
-
-                            if(finished){
-                                setFinished(finished);
-                                
-                            }
-                        });
+                    if(finished){
+                        setFinished(finished);
+                        
                     }
+                }
 
-                });
-            }
+        }
         
-        });
-    } , []);
+    } , [userContext.user]);
 
     const handleResetButton = () => {
         //alert('hello')
 
         const reference =  database.ref(`users/${userContext.user.uid}/Progression/`);
-        console.log(reference)
+        //console.log(reference)
         reference.child(`${userContext.user_informations.level}/${course}/${chapter}/progression`).update({
             current_question_index:  0,
             found_questions : 0,
@@ -163,7 +146,7 @@ const QuizzForm = ({  multiple ,
 
     const handleClick = (e , titleProps) => {
         const { checked , value , id } = titleProps;
-        console.log(checked , value , e.target.value);
+        //console.log(checked , value , e.target.value);
         setResponse(value);
         setAnswer(id);
         setCheckAnswer(value);
@@ -173,7 +156,7 @@ const QuizzForm = ({  multiple ,
    
 
     const handleSubmit = e => {
-        console.log('hello');
+        //console.log('hello');
         e.preventDefault();
         setLoading(true);
 
@@ -225,7 +208,7 @@ const QuizzForm = ({  multiple ,
 
 
                     const reference =  database.ref(`users/${userContext.user.uid}/Progression/`);
-                    console.log(reference)
+                    //console.log(reference)
                     reference.child(`${userContext.user_informations.level}/${course}/${chapter}/progression`).update({
                         current_question_index: current_index + 1,
                         found_questions : foundAnswer + 1,
@@ -259,18 +242,18 @@ const QuizzForm = ({  multiple ,
                 let former_bad_responses = {};
 
 
-                console.log('in the false bvalue')
+                //console.log('in the false bvalue')
 
                 const bad_response_reference = database.ref(`users/${userContext.user.uid}/Progression/${userContext.user_informations.level}/${course}/${chapter}/progression/badResponses`);
                 bad_response_reference.once('value' , response => {
-                    console.log(  "bad response" , response.val());
+                    //console.log(  "bad response" , response.val());
                     former_bad_responses = {
                         ...response.val(),
                     };
                     former_bad_responses[`${bad_checked_response_index}`] = bad_checked_response_index;
 
                     const reference =  database.ref(`users/${userContext.user.uid}/Progression/`);
-                    console.log(reference)
+                    //console.log(reference)
                     reference.child(`${userContext.user_informations.level}/${course}/${chapter}/progression`).update({
                         current_question_index: current_index + 1,
                         onReset: false,
@@ -331,13 +314,13 @@ const QuizzForm = ({  multiple ,
 
                     
                     if(!finished) {
-                        console.log('hello_anas')
+                        //console.log('hello_anas')
                         let last_points = score;
                         const progress_reference =  database.ref(`users/${userContext.user.uid}`);
     
                         progress_reference.once('value' , points => {
                             last_points += points.val().points;
-                            console.log( 'last_points' , last_points,points.val().points)
+                            //console.log( 'last_points' , last_points,points.val().points)
                             const promise =  new Promise((resolve , reject) => {
                                 resolve(last_points);
                             })
@@ -350,13 +333,10 @@ const QuizzForm = ({  multiple ,
                         })
                     }
                         
-                   
-
                     if(finished){
                         score = userPoints;
                     }
 
-                   
 
                     const reference =  database.ref(`users/${userContext.user.uid}/Progression/`);
                     //console.log(reference);
@@ -365,7 +345,6 @@ const QuizzForm = ({  multiple ,
                         points: score,
                         finished: true,
                         onReset: true,
-                      
                     }).then(() => {
                         setReset(true);
                         userContext.update_user_found_answer(foundAnswer + 1);
@@ -390,13 +369,13 @@ const QuizzForm = ({  multiple ,
                 if(userContext.user){
                     
                     if(!finished) {
-                        console.log('hello_anas')
+                        //console.log('hello_anas')
                         let last_points = userPoints;
                         const progress_reference =  database.ref(`users/${userContext.user.uid}`);
     
                         progress_reference.once('value' , points => {
                             last_points += points.val().points;
-                            console.log( 'last_points' , last_points,points.val().points)
+                            //console.log( 'last_points' , last_points,points.val().points)
                             const promise =  new Promise((resolve , reject) => {
                                 resolve(last_points);
                             })
@@ -409,10 +388,8 @@ const QuizzForm = ({  multiple ,
                         })
                     }
 
-                    let last_points = 0;
-                    const progress_reference =  database.ref(`users/${userContext.user.uid}`);
-
-                    
+                    /* let last_points = 0;
+                    const progress_reference =  database.ref(`users/${userContext.user.uid}`); */
 
                     let former_bad_responses = null;
 
@@ -481,7 +458,6 @@ const QuizzForm = ({  multiple ,
             { !reset &&
                 <div className = 'quizz-form-container'>
 
-                    { console.log('bad_checked_response_index' ,  bad_checked_response_index) }
 
                 <div className = 'quizz-title-container'>
                     <div className="img-container">
@@ -497,7 +473,6 @@ const QuizzForm = ({  multiple ,
                             if(showAnswer){
                                 return(
                                     <div className={`response-container ${ (correct == (index+1)) ? 'border-green' : 'border-red' } `} key = {choice}>
-                                        {console.log((correct === index+1))}
                                         <Form.Field
                                             control = {Checkbox} 
                                             name = { choice } 

@@ -25,51 +25,26 @@ const Exercises = ({urlParams}) => {
 
     const [ exercices , setExercices ] = useState([])
 
-    const history = useHistory()
+    const history = useHistory();
+
+
     useEffect(() => {
-       
-        
-        
 
-        firebase.auth.onAuthStateChanged( user => {
-          if(user){
-              //code if realod page pour garder context api values
-               userContext.get_connected_user(user);
-               const userId = user.uid;                      
-               const database = firebase.getData();
-               const reference =  database.ref('users/'+userId)
-      
-           
-  
-                reference.once("value", user_informations => {
-                userContext.get_user_informations(user_informations.val());
-              //  setinfosLevel(user_informations.val().level)
-                   
-                
-                    const reference_exercices = database.ref('schoolLevels/'+user_informations.val().level+'/subjects/'+matiere+'/'+chapitre+'/exercice')
-
-                    reference_exercices.once("value", exercice_chapitre => {
-                        const exercices_user = exercice_chapitre.val();
-                        
-                        (exercices_user) ? setExercices(exercices_user) : setExercices([])
-                        
-                
-                    })
+        if(userContext.user && userContext.user_informations){
+            const database = firebase.getData();
+            if(exercices.length < 1){
+                const reference_exercices = database.ref('schoolLevels/'+userContext.user_informations.level+'/subjects/'+matiere+'/'+chapitre+'/exercice')
+                reference_exercices.once("value", exercice_chapitre => {
+                    const exercices_user = exercice_chapitre.val();
+                    exercices_user ? setExercices(exercices_user) : setExercices([]);
+                    
                 })
-
-               
-                
-          }
-          else{
-
-           console.log('not login');
-           history.push('/')
-          }
-        });
-      }, []);
+            }
+        }
+        
+    }, [userContext.user , userContext.user_informations]);
 
 
-    const allExercises = exercises;
 
     const [ openTab , setOpenTab ] = useState(true);
 

@@ -47,12 +47,12 @@ const  Footer = () => {
             <div className="container">
                 <div className="row">
                     <div className="footer-link-container">
-                        { footerLinks.map(footerLink => <FooterLink link = { footerLink.link } id = { `hamburger-${convertToSlug(footerLink.title)}` } text = { footerLink.title }  jsx = {footerLink.jsx} />) }
+                        { footerLinks.map(footerLink => <FooterLink key = {footerLink.title } link = { footerLink.link } id = { `hamburger-${convertToSlug(footerLink.title)}` } text = { footerLink.title }  jsx = {footerLink.jsx} />) }
                     </div>
                 </div>
                 <div className="row">
                     <div className="social-icons-container">
-                        { footerIcons.map(footerIcon =>  <FooterIcon link = {footerIcon.link} img = {footerIcon.img}  /> ) }
+                        { footerIcons.map(footerIcon =>  <FooterIcon key = {footerIcon.img} link = {footerIcon.link} img = {footerIcon.img}  /> ) }
                     </div>
                 </div>
                 <div className="row">

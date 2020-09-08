@@ -14,16 +14,15 @@ const Classes = ({ infos , subInfos }) => {
 
             { subInfos &&
                 <div className="subinfos-container">
-                    { subInfos.map(subInfo => {
-                        return(
-                            <Fragment>
+                    { subInfos.map(subInfo => (
+                            <Fragment key= {subInfo.title} >
                                 <SmallTitle text = { subInfo.title } />
                                 <div className="sub-info-text-container">
                                     { subInfo.texts.map( info =>  <Class key ={info} name = { info } />) }
                                 </div>
                             </Fragment>
                         )
-                    }) }
+                    )}
                 </div>
             }
         </div>

@@ -66,10 +66,6 @@ import {
           >
             <WhatsappIcon size={32} round />
           </WhatsappShareButton> */}
-          
-            <p  className="cree_ton_compte"><center>   </center></p>
-
-
 
             <Title text = 'CREE TON COMPTE' textcentered centerOverlined />
 

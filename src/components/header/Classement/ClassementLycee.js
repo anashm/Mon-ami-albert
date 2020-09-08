@@ -93,7 +93,7 @@ const ClassementLycee = () => {
                 classement ? 
                 classement.map( ( lycee,index) => {
                     return (
-                        <Table.Row>
+                        <Table.Row key = {index}>
                         <Table.Cell>
                           <span className="index_style_classement"> {index+1}</span>
 
