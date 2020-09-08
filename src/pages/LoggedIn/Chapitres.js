@@ -1,4 +1,4 @@
-import React, { useState,useContext,useEffect } from 'react'
+import React, { useState,useContext,useEffect , Fragment } from 'react'
 import ChapitreComponent from './ChapitresComp/ChapitreComponent';
 import './style/Chapitres.css';
 import { Link } from 'react-router-dom';
@@ -10,6 +10,7 @@ import { Dimmer, Loader } from 'semantic-ui-react';
 import AOS from 'aos';
 import { Alert } from 'react-bootstrap';
 import { Modal,Button } from 'react-bootstrap';
+import albert from '../../images/quizz/albert-quiz.png';
 
 const  Chapitres = ({match}) => {
 
@@ -128,11 +129,11 @@ const  Chapitres = ({match}) => {
             <div className="container chapter-section" >
                 <div className="breadcrumb-container">
                     <Breadcrumb>
-                        <Breadcrumb.Section > <Link to = '/'> Accueil </Link> </Breadcrumb.Section>
-                        <Breadcrumb.Divider icon='right chevron' />
+                        <Breadcrumb.Section className = 'hide-on-mobile' > <Link to = '/'> Accueil </Link> </Breadcrumb.Section>
+                        <Breadcrumb.Divider className = 'hide-on-mobile' icon='right chevron' />
                         <Breadcrumb.Section > <Link to = {`/dashboard-user`}> Mon parcours </Link> </Breadcrumb.Section>
                         <Breadcrumb.Divider icon='right chevron' />
-                        <Breadcrumb.Section active>Cours : {matiere} </Breadcrumb.Section>
+                        <Breadcrumb.Section active>{matiere} </Breadcrumb.Section>
                     </Breadcrumb>
                 </div>
                 <div className="exercices-container">
@@ -177,10 +178,11 @@ const  Chapitres = ({match}) => {
                             </div> : ''
                         }
                         {
-                                        showModal == true ? (
+                                        (
                                             <Modal
                                             show={showModal}
                                             onHide={HandleCloseModal}
+                                            size = 'lg'
                                                 
                                                 aria-labelledby="contained-modal-title-vcenter"
                                                 centered
@@ -191,7 +193,11 @@ const  Chapitres = ({match}) => {
                                                     </Modal.Title>
                                                 </Modal.Header>
                                                 <Modal.Body>
-                                                    <p>{textMatiere} </p>
+
+                                                    <div className = 'chapitre-modal'>
+                                                        <div class="bubble bubble-bottom-left" contenteditable> { textMatiere } </div>
+                                                        <img  src={albert} alt="" className="albert-img"/>
+                                                    </div>
                                                 </Modal.Body>
                                                 <Modal.Footer>
                                                     
@@ -199,7 +205,7 @@ const  Chapitres = ({match}) => {
                                                 </Modal.Footer>
                                             </Modal>
                                             
-                                        ) : ''
+                                        ) 
                                     }
                        
                     </div>

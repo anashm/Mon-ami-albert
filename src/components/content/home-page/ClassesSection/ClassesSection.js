@@ -20,7 +20,7 @@ const ClassesSection = () => {
 
     const helpers = {
         title: 'aides',
-        names: ['Devoirs', 'Soutien' , 'scolaire' , 'Cours' ,  'particuliers' , 'Comment bien réussir sa rentrée des classes'],
+        names: [ 'Soutien scolaire'  , 'Cours particuliers', 'Comment bien réussir sa rentrée des classes'],
     }
 
     const ressources = {
@@ -42,7 +42,7 @@ const ClassesSection = () => {
     const ressorces_subInfos = [
         {
             title: 'cycle',
-            texts: [ 'Collège', 'Lycée' ]
+            texts: [ 'Lycée' , 'Supérieur' ]
         }
     ];
 

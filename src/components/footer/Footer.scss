@@ -23,6 +23,7 @@
             transition: all 0.3s;
             font-weight: 500;
             cursor: pointer;
+            margin: 0;
 
             @include media('<=phone'){
                 padding: 10px;
@@ -62,7 +63,7 @@
         font-family: Rubik , 'sans-serif';
         text-transform: uppercase;
         letter-spacing: 1px;
-        font-size: 13px;
+        font-size: 13px !important;
         font-weight: 300;
     }
 
@@ -73,12 +74,16 @@
     font-family: Rubik , 'sans-serif';
 
     .modal-title{
-        font-size: 30px;
+        font-size: 28px;
         text-transform: uppercase;
         text-align: center;
         width: 100%;
         font-weight: 500;
         color: #707070;
+
+        @include media('<=phone'){
+            font-size: 26px;
+        }
 
     }
 
@@ -86,11 +91,18 @@
 
         padding: 5%;
         padding-top: 3%;
+        font-size: 16px;
+
+        font-family: Lato , 'sans-serif' !important;
 
         p{
             text-align: start;
             font-size: 16px;
             color: #636363;
+
+            a{
+                color: #6BA4A5;
+            }
         }
 
         h3{
@@ -98,15 +110,29 @@
             font-size: 20px;
             color: #707070;
 
+            @include media('<=phone'){
+                font-size: 18px;
+            }
+
         }
 
         h2{
             color: #707070;
             text-align: center;
+            font-size: 22px;
+
+            @include media('<=phone'){
+                font-size: 20px;
+            }
         }
 
         h4{
             margin: 0;
+            font-size: 18px;
+
+            @include media('<=phone'){
+                font-size: 16px;
+            }
         }
     
 
@@ -115,7 +141,8 @@
             li{
                 list-style-type: none;
                 color: #636363;
-                padding: 10px;
+                padding: 8px 10px;
+                font-size: 16px;
             }
         }
     }

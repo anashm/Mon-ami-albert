@@ -88,19 +88,19 @@ export const footerLinks = [
         jsx: whoami
     },
     { 
+        title: 'Nos valeurs',
+        link : '#',
+        jsx: ourValues
+    },
+    { 
         title: 'méthodologie',
         link : '#',
         jsx: methodologie
     },
     { 
-        title: 'Nos Missions',
+        title: 'Nos Visions',
         link : '#',
         jsx: ourMissions
-    },
-    { 
-        title: 'Nos valeurs',
-        link : '#',
-        jsx: ourValues
     },
     { 
         title: 'contact',

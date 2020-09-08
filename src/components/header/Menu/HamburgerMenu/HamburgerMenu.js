@@ -75,6 +75,7 @@ const HamburgerMenu = () => {
                 }
             }).to('.social-media-container' , {
                 duration: 0.3,
+                delay: -0.2,
                 y: 0,
                 opacity: 1,
             })
@@ -112,7 +113,11 @@ const HamburgerMenu = () => {
     } , [close , open]);
 
     const handleDarkBackgroundClick = node => {
-        if(node.id === ''){
+
+        if(node.classList.contains('footer-link') || node.tagName === 'SPAN' || node.classList.contains('footer-modal')){
+            return;
+        }
+        if(node.id === 'hamburger-menu-container'){
             setClose(true);
             setOpen(false);
         }else{
@@ -155,7 +160,7 @@ const HamburgerMenu = () => {
                         </svg>
                 </button>
 
-                <div className= 'hamburger-menu-container' ref = { el => (hamburger_menu_container = el) } onClick = { (e) => handleDarkBackgroundClick(e.target)} >
+                <div className= 'hamburger-menu-container'  id = 'hamburger-menu-container' ref = { el => (hamburger_menu_container = el) } onClick = { (e) => handleDarkBackgroundClick(e.target)} >
                     <nav className= 'mobile-menu' id = 'not-dark-background' ref = { el => (mobile_menu = el) }>
                         
                         <div className="img-container" ref = { el => albert_img = el }>
@@ -169,7 +174,7 @@ const HamburgerMenu = () => {
                         </div>
 
                         <div className="nav-items-container">
-                        { footerLinks.map(footerLink => <FooterLink link = { footerLink.link } id = { convertToSlug(footerLink.title) } text = { footerLink.title }  jsx = {footerLink.jsx} />) }
+                        { footerLinks.map(footerLink => <FooterLink className = 'nav-item-link' link = { footerLink.link } id = { convertToSlug(footerLink.title) } text = { footerLink.title }  jsx = {footerLink.jsx} />) }
                         </div>
 
                         <div className="social-media-container">

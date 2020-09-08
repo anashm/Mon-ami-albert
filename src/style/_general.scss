@@ -25,7 +25,7 @@ body{
 }
 
 
-@media only screen and (max-width: 450px) {
+@media only screen and (max-width: 490px) {
     .mt-20-percent{
         margin-top: 20%;
     }
@@ -52,6 +52,7 @@ main.main_content{
     transition: all 0.3s;
     display: flex;
     align-items: center;
+    font-family: Lato , 'sans-serif';
 
     @include media('<=phone'){
         padding: 10px 15px;
@@ -60,6 +61,7 @@ main.main_content{
         margin-right: 0;
         margin: auto;
         margin-bottom: 20px;
+        max-width: 220px;
 
     }
 
@@ -79,7 +81,7 @@ main.main_content{
     .text{
         color: white;
         letter-spacing: 1px;
-        font-family: Rubik , 'sans-serif';
+        font-family: Lato , 'sans-serif';
 
        
 
@@ -148,9 +150,10 @@ main.main_content{
     font-size: 15px;
     letter-spacing: 1px;
     text-transform: uppercase;
-    font-family: Rubik , 'sans-serif';
+    font-family: Lato , 'sans-serif';
     font-weight: 500;
     color: #707070;
+    font-weight: bold;
 }
 
 
@@ -301,16 +304,21 @@ main.main_content{
     .proposition-image{
         height: 50px;
         width: auto;
+        display: block;
+        margin: auto;
     }
 
     .proposition-title{
         text-transform: uppercase;
         font-size: 16px;
+        text-align: center;
     }
 
     .proposition-text{
         font-size: 15px;
         color: #636363;
+        text-align: center;
+
     }
 }
 
@@ -367,10 +375,10 @@ main.main_content{
 
     left: 50%;
 
-    @media only screen and (max-width: 460px) {
+    @media only screen and (max-width: 490px) {
         width: 80%;
         left: 20%;
-        z-index: -1;
+        z-index: 1;
     }
   }
   
@@ -447,10 +455,48 @@ main.main_content{
 .breadcrumb-container{
     > div{
         width: 100%;
-        border-top: 1px solid #ddd;
         background-color: transparent;
-        border-bottom: 1px solid #ddd;
         padding: 15px 10px;
+        font-weight: bold;
+
+
+        a{
+            color: #707070 !important;
+            font-size: 16px;
+
+        }
+
+        .active.section{
+            color: #6BA4A5;
+            font-size: 16px;
+
+        }
 
     }
+
+    @include media('<=phone'){
+        .breadcrumb-home , .breadcrumb-home-chevron , .breadcrumb-evolution , .breadcrumb-evolution-chevron{
+            display: none !important;
+        }
+    }
 }
+
+
+
+#homepage p:not(.reason-text)  {
+    font-size: 16px;
+    font-family: Lato , 'sans-serif';
+
+    @include media('<=phone'){
+        font-size: 15px;
+    }
+}
+
+p.reason-text{
+    font-size: 14px;
+
+    @include media('<=phone'){
+        font-size: 12px;
+    }
+}
+

@@ -1,5 +1,7 @@
 /* reusable style */
 
+@import './breakpoints';
+
 
 .submit-btn{
     background-color: $secondary-dark-gray-color !important;
@@ -44,3 +46,15 @@
     height: 1.6px;
     background-color: #00000029;
 }
+
+.text-center{
+    text-align: center;
+}
+
+
+@include media('<=phone'){
+    .hide-on-mobile{
+        display: none !important;
+    }
+}
+

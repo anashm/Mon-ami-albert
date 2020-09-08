@@ -260,15 +260,18 @@ export default function ProfilPage() {
 
     return (
         <div className = 'login-content-container'>
-            <center>
-            { avatar ? <img src={require(`../../images/avatars/${avatar}.png`)} width='40%' /> : ''}<br></br>
-            
-            {/* <span>Code de parainage  :</span><br></br> */}
-            <span>Niveau  : <span className="class-answers-etablissements"> {level} </span> </span><br></br>
-            <span>Institution  : <span className="class-answers-etablissements">  {etablissement} </span> </span><br></br>
-            </center>
-            <br></br>
-            <Form onSubmit={handleSubmit}>
+
+            <div className="profile-image-container">
+                <div className="image-container">
+                    { avatar ? <img src={require(`../../images/avatars/${avatar}.png`)} alt = '' /> : ''}
+                </div>
+                <div className="user-infos">
+                    <span>Niveau  : <span className="class-answers-etablissements"> {level} </span>  </span>
+                    <span>Institution  : <span className="class-answers-etablissements">  {etablissement} </span> </span>
+                </div>
+            </div>
+
+            <Form onSubmit={handleSubmit} className = 'profile-form'>
 
                 <Form.Field>
                     <label>Prénom</label>
@@ -332,13 +335,12 @@ export default function ProfilPage() {
                 
 
               
-                    <Button type="submit"  style={{color :'white'}}>Mettre à jour</Button>
+                    <Button type="submit"  className = 'profile-submit-btn' style={{color :'white'}}>Mettre à jour</Button>
                 
 
                    
             </Form>
 
-            <br></br><br></br>
             <div>
                 
                 <Button onClick={HandleShowModalBesoinProf}  id="button_besoin_prof">BESOIN D'UN PROF A TES COTES ?</Button>

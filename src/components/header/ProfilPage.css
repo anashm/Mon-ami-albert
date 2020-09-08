@@ -2,11 +2,47 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 30px;
+    padding: 5% 0;
 }
+
+.profile-submit-btn{
+    width: 100%;
+    border-radius: 20px !important;
+}
+
+.images_profil_container div{
+    display: flex;
+    justify-content: center;
+}
+
 
 .class-answers-etablissements{
     font-weight: bold;
     font-size: 14px;
+}
+
+
+
+.profile-form{
+    padding: 8% 0;
+}
+
+.profile-image-container .image-container{
+    display: flex;
+    justify-content: center;
+}
+
+.profile-image-container .image-container img{
+    width: 50%;
+    max-width: 100px;
+    border: 1px solid #707070;
+    border-radius: 50%;
+}
+
+.profile-image-container .user-infos{
+    display: flex;
+    flex-direction: column;
+    padding-top: 5%;
 }
 
 #button_besoin_prof{
