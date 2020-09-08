@@ -1,4 +1,4 @@
-import React , { useContext , useState , useEffect , useCallback  } from 'react';
+import React , { useContext , useState , useEffect  } from 'react';
 import Header from './components/header/Header'
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -23,66 +23,52 @@ import 'aos/dist/aos.css';
 import ClassementGeneral from './components/header/Classement/ClassementGeneral'
 import ClassementLycee from './components/header/Classement/ClassementLycee'
 import Recaputilatif from './components/header/RecapProfil/Recaputilatif'
-
-
 import FooterMenu from './components/footer/FooterMenu/FooterMenu';
-
 import UserContext from './Context/UserContext/UserContext';
-
-import firebase from 'firebase';
-
+/* import ErrorContext from './Context/ErrorContext/ErrorContext';
+ */import firebase from 'firebase';
 import {FirebaseContext} from './firebase';
 
 
 
 const  App = () => {
 
+  /*   const errorContext = useContext(ErrorContext);
+ */ 
   const userContext = useContext(UserContext);
   const firebaseContext = useContext(FirebaseContext);
-
-
   const [ loading , setLoading ] = useState(true);
-  const [ test , setTest ] = useState(null);
-
-
 
   useEffect(() => {
-    
-    //alert(navigator.userAgent);
-    //console.log('from app js')
+      //console.log(errorContext.hasError);
+      if(!userContext.user){
+        console.log('inside app')
+        firebase.auth().onAuthStateChanged( user => {
+          if(user){
+            userContext.get_connected_user(user);
+            setLoading(false);
+            const userId = user.uid;                      
+            const database = firebaseContext.getData();
+            const reference =  database.ref(`users/${userId}`)
+            reference.once("value", user_informations => {
+                userContext.get_user_informations(user_informations.val());
+            });
 
-    console.log(test)
-
-    if(!userContext.user){
-      console.log('inside app')
-      firebase.auth().onAuthStateChanged( user => {
-        if(user){
-          userContext.get_connected_user(user);
-          setLoading(false);
-          const userId = user.uid;                      
-          const database = firebaseContext.getData();
-          const reference =  database.ref(`users/${userId}`)
-          reference.once("value", user_informations => {
-              userContext.get_user_informations(user_informations.val());
-          });
-
-        }else{
-          console.log('not logged in');
-          setLoading(false);
-        }
-      });
-    }
-      
-  
-},[]);
+          }else{
+            console.log('not logged in');
+            setLoading(false);
+          }
+        });
+      }
+  },[]);
 
 
   return (
     <Router>
-      <Header  />
-      <main className="main_content">
+      <Header />
+        <main className= { `main_content ${userContext.user ? 'pad-bottm-mobile' : ''}`}>
           <Switch>
-            <Route exact path="/" render = { (props) => <HomePage { ...props } loading = { loading } />  } />
+            <Route exact path="/" render = { props => <HomePage { ...props } loading = { loading } /> } />
             <Route exact path="/login" component={Login} />
             <Route exact path="/creat-account" component={CreatAccount} />
             <Route exact path="/eleve-create-account" component={EleveAccount} />
@@ -91,7 +77,7 @@ const  App = () => {
             <Route exact path="/chapter/:matieres/:chapitre" component={Chapter} />
             <Route exact path="/quizz/:matieres/:chapitre" component={Quizz} />
             <Route exact path="/sign-up" component={SignUp} />
-            <Route exact path="/dashboard-user"  render = { (props) => <Dashboard { ...props } testFn = { (test) => setTest(test) } />  }  />
+            <Route exact path="/dashboard-user"  render = { (props) => <Dashboard { ...props }  />  }  />
             <Route exact path="/chapitres/:matieres" component={Chapitres} />
             <Route exact path="/test-pdf" component={TestPDF} />
             <Route exact path="/profil" component={Profil} />
@@ -101,17 +87,9 @@ const  App = () => {
             <Route exact path="/404" component={NotFound} />
             <Redirect to="/404" />
           </Switch>
-          
-          {/* </LoggedinProvider> */}
-          {/*  <LoggedinProvider> */}
-          {/* </LoginProvider> */}
-          {/*  </FadeIn> */}
-          {/*  <FadeIn  delay="1000"> */}
-          {/* <LoginProvider> */}
-      </main>
-      { userContext.user && <FooterMenu /> } 
-    </Router>
-
+        </main>
+        { userContext.user && <FooterMenu /> } 
+      </Router>
   );
 }
 

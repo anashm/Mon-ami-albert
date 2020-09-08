@@ -4,14 +4,17 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import Firebase , {FirebaseContext}  from './firebase';
 import UserState from './Context/UserContext/UserState';
+import ErrorState from './Context/ErrorContext/ErrorState';
 
 
 
 ReactDOM.render(
   <FirebaseContext.Provider value={new Firebase()}>
-    <UserState>
-    <App />
-    </UserState>
+    <ErrorState>
+      <UserState>
+      <App />
+      </UserState>
+    </ErrorState>
   </FirebaseContext.Provider>,
   document.getElementById('root')
 );

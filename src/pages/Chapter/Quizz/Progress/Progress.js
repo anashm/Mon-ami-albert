@@ -56,7 +56,7 @@ const Progress = () => {
         <div className = 'quizz-progress-container'>
 
             <div className="profile-container">
-                { avatarImage ? <img src={require(`../../../../images/avatars/${avatarImage}.png`)} style = {{ maxWidth: '80px' }} /> : <img src={avatar} alt="" style = {{ maxWidth: '80px' }}/>}
+                { avatarImage ? <img src={require(`../../../../images/avatars/${avatarImage}.png`)} style = {{ maxWidth: '80px' }} alt = '' /> : <img src={avatar} alt="" style = {{ maxWidth: '80px' }}/>}
                 
             </div>
 

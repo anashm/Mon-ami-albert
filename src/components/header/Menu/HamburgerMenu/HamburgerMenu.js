@@ -165,7 +165,7 @@ const HamburgerMenu = () => {
                         
                         <div className="img-container" ref = { el => albert_img = el }>
 
-                            <Profile />
+                            <Profile close = { () =>{ setClose(true) ; setOpen(false) }  } />
 
 
                             {/* <button onClick = { () => { setClose(true) ; setOpen(false) } } className = 'hamburger-icon-btn hamburger-btn'>
@@ -185,8 +185,6 @@ const HamburgerMenu = () => {
                             <div className="connection-contaier">
 
                             </div>
-
-
                             <p> &copy; Tout droit réservé 2020 </p>
                         </div>
 

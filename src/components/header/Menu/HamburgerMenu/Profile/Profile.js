@@ -11,7 +11,7 @@ import { Loader } from 'semantic-ui-react';
 import { Link } from 'react-router-dom'
 
 
-const Profile = () => {
+const Profile = ({ close }) => {
 
     const [ showProfile , seShowProfile ] = useState(false);
 
@@ -26,6 +26,7 @@ const Profile = () => {
     const userContext = useContext(UserContext);
 
     const handleSignOut = () => {
+        close();
         firebase.signOutUser().then(() => {
             userContext.get_connected_user(null);
             userContext.update_user_informations(null);
@@ -36,6 +37,7 @@ const Profile = () => {
     }
 
     const handleSignIn = () => {
+        close();
         history.push('/login');
     }
 

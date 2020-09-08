@@ -32,7 +32,7 @@ body{
     
 }
 
-main.main_content{
+main.main_content.pad-bottm-mobile{
     @include media('<=phone'){
         padding-bottom: 6vh;
 

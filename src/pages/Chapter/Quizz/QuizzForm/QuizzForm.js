@@ -42,6 +42,8 @@ const QuizzForm = ({
     const firebase = useContext(FirebaseContext);
 
     const [ foundAnswer , setFoundAnswer ] = useState(0);
+    const [ notFoundAnswer , setNotFoundAnswer ] = useState(0);
+
     const [ Response , setResponse ] = useState('');
     const [answer , setAnswer] = useState('');
     const [ loading , setLoading ] = useState(false);
@@ -82,6 +84,7 @@ const QuizzForm = ({
                     }).then(() => {
                         //console.log('created');
                         setFoundAnswer(0);
+                        setNotFoundAnswer(0);
                         setUserPoints(0);
                         userContext.update_user_progression(0);
                         userContext.update_user_current_question_index(0);
@@ -96,6 +99,7 @@ const QuizzForm = ({
                     userContext.update_user_current_question_index(current_question_index);
                     userContext.update_user_points(points);
                     userContext.update_user_found_answer(found_questions);
+                    onReset ? userContext.update_user_not_found_answer(current_question_index + 1 - found_questions) : userContext.update_user_not_found_answer(current_question_index - found_questions);
                     setFoundAnswer(found_questions);
                     setUserPoints(points);
                     setReset(onReset);
@@ -137,6 +141,8 @@ const QuizzForm = ({
             userContext.update_user_found_answer(0);
             userContext.update_user_on_quizz_summary_page(false);
             userContext.update_quizz_next_index(0);
+            userContext.update_user_not_found_answer(0);
+
 
         })
         .catch(e => console.log(e));
@@ -169,6 +175,8 @@ const QuizzForm = ({
                 userContext.update_user_check_true_answer(true);
                 userContext.update_user_checked_false_answer(false);
                 userContext.update_quizz_next_index(current_index+1);
+                userContext.update_user_found_answer(foundAnswer + 1);
+
 
                 //alert('found');
                 setFoundAnswer(foundAnswer+1);
@@ -219,7 +227,6 @@ const QuizzForm = ({
                         setShowNextBtn(true);
                         setLoading(false);
                         userContext.update_user_progression((current_index+2)/question_length);
-                        userContext.update_user_found_answer(foundAnswer + 1);
                         userContext.update_user_on_quizz_summary_page(false);
                         setShowNextBtn(true);
                     })
@@ -236,6 +243,9 @@ const QuizzForm = ({
                 userContext.update_user_checked_false_answer(true);
 
                 userContext.update_quizz_next_index(current_index+1);
+
+                userContext.update_user_not_found_answer(current_index + 1 - foundAnswer);
+
 
 
 
@@ -282,7 +292,7 @@ const QuizzForm = ({
                 userContext.update_user_check_true_answer(true);
                 userContext.update_user_checked_false_answer(false);
                 userContext.update_quizz_next_index(current_index+1);
-
+                userContext.update_user_found_answer(foundAnswer + 1);
                 setFoundAnswer(foundAnswer+1);
 
                 if(userContext.user){
@@ -347,7 +357,6 @@ const QuizzForm = ({
                         onReset: true,
                     }).then(() => {
                         setReset(true);
-                        userContext.update_user_found_answer(foundAnswer + 1);
                         userContext.update_user_check_true_answer(false);
                         userContext.update_user_checked_false_answer(false);
                         userContext.update_user_current_question_index(current_index);
@@ -364,6 +373,8 @@ const QuizzForm = ({
                 userContext.update_user_check_true_answer(false);
                 userContext.update_user_checked_false_answer(true);
                 userContext.update_quizz_next_index(current_index+1);
+                userContext.update_user_not_found_answer(current_index + 1 - foundAnswer);
+
 
                 //alert('Not found');
                 if(userContext.user){
