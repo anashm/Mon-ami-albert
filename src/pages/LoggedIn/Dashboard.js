@@ -131,15 +131,16 @@ const  Dashboard = (props) => {
                 </div>
                     
                     <Modal
-                    size="md"
+                    size="lg"
                     aria-labelledby="contained-modal-title-vcenter"
                     centered
                     show={modalOpen}
                     onHide={handleCloseModal}
+                    className = 'dashboard-modal'
                     >
                         <Modal.Header closeButton>
                             <Modal.Title id="contained-modal-title-vcenter">
-                                <h4 style={{color:'#707070'}}>ALLER EN ...</h4> 
+                                <h4 className = 'text-center'>ALLER EN ...</h4> 
                             </Modal.Title>
                         </Modal.Header>
                         <Modal.Body >

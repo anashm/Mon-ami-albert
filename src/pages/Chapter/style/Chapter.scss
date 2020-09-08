@@ -18,7 +18,7 @@
         padding: 0 40px;
         
 
-        @media only screen and (max-width: 460px) {
+        @media only screen and (max-width: 490px) {
             padding: 0 5%;
         }
     }
@@ -27,7 +27,7 @@
 
         padding: 40px 50px;
 
-        @media only screen and (max-width: 460px) {
+        @media only screen and (max-width: 490px) {
             padding: 10% 5%;
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
@@ -42,7 +42,7 @@
     .chapter-content{
         padding: 0 50px;
 
-        @media only screen and (max-width: 460px) {
+        @media only screen and (max-width: 490px) {
             padding: 3% 5%;
         }
     }

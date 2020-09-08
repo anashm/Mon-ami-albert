@@ -57,7 +57,7 @@
     margin: auto;
     margin-right: 50%;
     -webkit-animation: fade-in-bottom 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) 0.2s both;
-	        animation: fade-in-bottom 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) 0.2s  both;
+            animation: fade-in-bottom 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) 0.2s  both;
 }
 
 .chapitre-modal  .bubble.bubble-bottom-left{
@@ -68,4 +68,16 @@
 
 .chapitre-modal .bubble{
     left: 45% !important;
+}
+
+@media only screen and (max-width: 490px) {
+    .chapitre-modal img{
+        margin: unset;
+    }
+
+    .chapitre-modal  .bubble.bubble-bottom-left{
+        width: 80%;
+        left: 20% !important;
+        top: 0;
+    }
 }

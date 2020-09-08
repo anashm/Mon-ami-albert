@@ -22,6 +22,32 @@
     margin: 0 !important;
 }
 
+#contained-modal-title-vcenter{
+    width: 100%;
+}
+
+.dashboard-modal .modal-content {
+    padding: 3%;
+}
+
+.dashboard-modal .modal-content h4{
+    font-size: 20px;
+    color: #707070;
+}
+
+.niveaux_school{
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+
+}
+
+.niveaux_school div{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
+
 @media only screen and (max-width: 600px) {
     .matiere_component{
         grid-template-columns: 1fr;

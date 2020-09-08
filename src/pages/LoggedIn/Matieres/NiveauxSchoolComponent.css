@@ -1,5 +1,5 @@
 
-.niveaux_elements{
+/* .niveaux_elements{
     display: flex;
     padding-bottom: 10px;
 }
@@ -13,4 +13,39 @@
 
 .title_niveaux{
     width: 80%;
+} */
+
+.niveaux_elements{
+    width: 90% !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border-radius: 5px;
+    margin: 30px 0;
+    cursor: pointer;
+
+        border-radius: 50px;
+    background: #EEEEEE;
+    box-shadow:  20px 20px 60px #cacaca, 
+                -20px -20px 60px #ffffff;
+    transition: all 0.3s;
+}
+
+.niveaux_elements h5{
+    margin: 0;
+    font-size: 18px;
+    color: #808080;
+}
+
+.niveaux_elements i{
+    margin-top: 4px;
+}
+
+.niveaux_elements:hover{
+    border-radius: 50px;
+    background: linear-gradient(145deg, #d6d6d6, #ffffff);
+    box-shadow:  20px 20px 60px #cacaca, 
+                 -20px -20px 60px #ffffff;
+    
 }
