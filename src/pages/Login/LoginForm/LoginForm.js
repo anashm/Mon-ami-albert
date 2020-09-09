@@ -42,30 +42,20 @@ const LoginForm = (props) => {
         }).then( user => {
             console.log('hnaya2')
             const userId = user.user.uid;
-                      
             const database = firebase.getData();
             const reference = database.ref('users/'+userId);
-         
-            
-           
-            
             reference.once("value", user_information => {
                 userContext.get_user_informations(user_information.val());
-              
-            }).then(  props.navigation.history.push('/dashboard-user'))
-           
-           
-        
+            }).then(props.navigation.history.push('/dashboard-user'))
         } ) 
         .catch(errors => {
-           
-                if(errors.message == 'There is no user record corresponding to this identifier. The user may have been deleted.')
-                    setError('There is no user record corresponding to this identifier.')
-                else 
-                    setError(errors.message)
-                    
-                setEmail('')
-                setPassword('')
+            if(errors.message === 'There is no user record corresponding to this identifier. The user may have been deleted.')
+                setError('There is no user record corresponding to this identifier.')
+            else 
+                setError(errors.message)
+                
+            setEmail('')
+            setPassword('')
         })
 
     }

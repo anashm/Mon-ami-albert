@@ -6,83 +6,62 @@ import {  Table } from 'semantic-ui-react';
 import { Dimmer, Loader } from 'semantic-ui-react';
 import highfive from '../../../images/highFive/HIGHFIVE.svg';
 
-import './ClassementGeneral.css'
+import './ClassementGeneral.css';
 
 const ClassementLycee = () => {
-    const firebase = useContext(FirebaseContext)
-    const userContext = useContext(UserContext)
+    const firebase = useContext(FirebaseContext);
+    const userContext = useContext(UserContext);
     const history = useHistory();
-    const [ progression , setProgression ] = useState([])
-    const [ classement , setClassement ] = useState([])
-    const [dimmer , setDimmer ] = useState(true)
+    const [ classement , setClassement ] = useState([]);
+    const [dimmer , setDimmer ] = useState(true);
 
 
     useEffect(() => {
-        firebase.auth.onAuthStateChanged( user => {
-          if(user){
-              //code if realod page pour garder context api values
-               userContext.get_connected_user(user);
-               const userId = user.uid;
-               const database = firebase.getData();
-               const reference =  database.ref('users')
-              //const mostViewedPosts = database.ref('users/'+userId).orderByChild('/points');
-              /* mostViewedPosts.once("value", user_informations => {
-                console.log(user_informations.val())
-              }) */
-                reference.once("value", snapshot => {
-                  let test = [];
-                  let final_test = 0;
-                  const reducer = (accumulator, currentValue) => accumulator + currentValue;
-                    let object_final = []
-                    let object ={}
-                    snapshot.forEach(function(childSnapshot) {
-                        // key will be "ada" the first time and "alan" the second time
-                        let key = childSnapshot.key;
-                        // childData will be the actual contents of the child
-                        let childData = childSnapshot.val();
-                       console.log(childData.etablissement)
-                        /* if(childData.etablissement === `Lycée Jaber Ben Hayan`){
-                          test.push(childData.points);
-                          console.log(childData)
-                        } */
-                        //console.log(childData)
-                        if(childData.etablissement){
-                          if(isNaN(object[`${childData.etablissement}`])){
-                            object = {
-                              ...object,
-                            }
-                            //console.log(childData.points)
-                            object[`${childData.etablissement}`] = childData.points;
-                          }else{
-                            //console.log(childData.points)
-                            object[`${childData.etablissement}`] = object[`${childData.etablissement}`] + childData.points
-                          }
-                        }
-                        /* if(typeof(object [`${childData.etablissement}`]) === NaN){
-                            object [`${childData.etablissement}`] =0
-                        } */
-                    });
 
-                    /* object.sort(function(a, b) {
-                        return b.points - a.points;
-                      }); */
-                      let entries = Object.entries(object);
-                      let sorted = entries.sort((a, b) => b[1] - a[1]);
-                      setClassement(sorted)
-                      console.log(sorted)
-                  
-                //userContext.get_user_informations(user_informations.val());                   
-                }).then( () => {
-                 
-                    setDimmer(false)
-                }) 
+        if(userContext.user){
+          const database = firebase.getData();
+          const reference =  database.ref('users');
+          //const mostViewedPosts = database.ref('users/'+userId).orderByChild('/points');
+          /* mostViewedPosts.once("value", user_informations => {
+            console.log(user_informations.val())
+          }) */
+            reference.once("value", snapshot => {
+              //const reducer = (accumulator, currentValue) => accumulator + currentValue;
+              let object ={}
+              snapshot.forEach(function(childSnapshot) {
+                // key will be "ada" the first time and "alan" the second time
+                // childData will be the actual contents of the child
+                let childData = childSnapshot.val();
+                //console.log(childData.etablissement)
+              
+                if(childData.etablissement){
+                  if(isNaN(object[`${childData.etablissement}`])){
+                    object = {
+                      ...object,
+                    }
+                    //console.log(childData.points)
+                    object[`${childData.etablissement}`] = childData.points;
+                  }else{
+                    //console.log(childData.points)
+                    object[`${childData.etablissement}`] = object[`${childData.etablissement}`] + childData.points
+                  }
+                }
+              });
+
+              let sorted = Object.entries(object).sort((a, b) => b[1] - a[1]);
+              setClassement(sorted);
+              //console.log(sorted)
+              //userContext.get_user_informations(user_informations.val());                   
+            }).then( () => {
+                setDimmer(false);
+            }).catch(e => {
+              console.log(e);
+              history.push('/404');
+            });
           }
-          else{
-            console.log('not login');
-            history.push('/')
-          }
-        });
-      }, []);
+          
+      }, [userContext.user]);
+
     return (
         <div className = 'general-order-container'>
             <center> <h3>Classement lycée</h3> </center>

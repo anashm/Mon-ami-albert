@@ -75,6 +75,8 @@ const  Dashboard = (props) => {
             duration: 800
         });
 
+        
+
         if(niveauxSchool.length < 1){
             const database = firebase.getData();
             const ref_niveaux = database.ref('schoolLevels/all');

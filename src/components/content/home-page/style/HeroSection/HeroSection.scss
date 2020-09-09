@@ -13,6 +13,13 @@
 
     @include media('<=phone'){
        min-height: unset;
+       padding: 0 5%;
+    }
+
+    @include media('<=tablet'){
+        min-height: 50vh;
+
+
     }
    
 
@@ -26,7 +33,7 @@
         -webkit-animation: fade-in-top 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) 1.2s both;
             animation: fade-in-top 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) 1.2s both;
             
-        @include media('<=phone'){
+        @include media('<=tablet'){
             bottom: 10px;
             display: none;
         }
@@ -139,8 +146,14 @@
                 line-height: 60px;
                 text-transform: uppercase;
 
+                @include media('<=tablet'){
+                    font-size: 45px;
+                    line-height: 50px;
+
+                }
+
                 @include media('<=phone'){
-                    font-size: 30px;
+                    font-size: 40px;
                     text-align: center;
                     line-height: 35px;
                 }
@@ -153,9 +166,14 @@
                 font-family: Rubik , 'sans-serif';
                 padding: 30px 0;
 
+                @include media('<=tablet'){
+                    padding: 15px 0;
+
+                 }
+
                 @include media('<=phone'){
                     text-align: justify;
-                    padding: 0 5%;
+                    padding: 0;
                     padding-top: 4%;
                     padding-bottom: 2%;
                     font-size: 15px;

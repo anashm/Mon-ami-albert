@@ -15,10 +15,7 @@ import albert from '../../images/quizz/albert-quiz.png';
 const  Chapitres = ({match}) => {
 
     const SCORE_MAX = 60;
-
-    
     let matiere = match.params.matieres;
-    
     const firebase = useContext(FirebaseContext);
     const userContext = useContext(UserContext);
     const [infosLevel , setinfosLevel ] = useState(null);
@@ -28,61 +25,50 @@ const  Chapitres = ({match}) => {
     const [ loading , setLoading ] = useState(true);
     const [textMatiere ,setTextMatiere] = useState('')
     const [showModal , setShowModal] = useState(false)
-
-    
-        
-    const [dimmer , setDimmer ] = useState(true)
+    const [dimmer , setDimmer ] = useState(true);
+    const [ openTab , setOpenTab ] = useState(true);
     const history = useHistory();
 
 
     useEffect(() => {
 
-            AOS.init({
-                duration: 800,
-            });
+        AOS.init({
+            duration: 800,
+        });
 
-         
-        if(matiere == 'Physique'){
+        if(matiere === 'Physique'){
             setShowModal(true)  
             setTextMatiere("On est en train de préparer ton labo physique chimie à la vitesse de la lumière. T'inquiète il sera bientot disponible !")
         }
-        else if (matiere == 'Anglais'){
+        else if (matiere === 'Anglais'){
             setShowModal(true)  
             setTextMatiere("Ladies & gentlemen,all in good time ... vos chapitres seront bientot disponibles ! ")
         } 
-        else if (matiere == 'Histoire-Geo'){
+        else if (matiere === 'Histoire-Geo'){
             setShowModal(true)  
             setTextMatiere("Remonter le temps et faire le tour du monde ce n'est pas une mince affaire,mais t'inquiète c'est pour bientot ! ")
         }  
-        else if (matiere == 'Philosophie'){
+        else if (matiere === 'Philosophie'){
             setShowModal(true)  
             setTextMatiere("Içi la condition humaine est en cours de traitement et ses concepts clés seront bientot disponibles ! ")
         }
-        else if (matiere == 'SVT'){
+        else if (matiere === 'SVT'){
             setShowModal(true)  
             setTextMatiere("Votre écosystème SVT est en cours de préparation et le calendrier géologique nous indique que c'est pour bientot ! ")
         }      
-        firebase.auth.onAuthStateChanged( user => {
-        if(user){
+        if(userContext.user && userContext.user_informations){
             //code if realod page pour garder context api values
-            userContext.get_connected_user(user);
-            const userId = user.uid;                      
+            const userId = userContext.user.uid;                      
             const database = firebase.getData();
-            const reference =  database.ref('users/'+userId)
-            reference.once("value", user_informations => {
-            userContext.get_user_informations(user_informations.val());
-            setinfosLevel(user_informations.val().level);
+            //const reference =  database.ref('users/'+userId)
 
+            setinfosLevel(userContext.user_informations.level);
 
-            
-            const reference_chapitres = database.ref('schoolLevels/'+user_informations.val().level+'/subjects/'+matiere+'/all')
-
+            const reference_chapitres = database.ref('schoolLevels/'+userContext.user_informations.level+'/subjects/'+matiere+'/all');
             reference_chapitres.on("value", chapitres => {
-
-
                 if(chapitres.val()){
                     chapitres.val().map(chapter => {
-                        const reference =  database.ref(`users/${userId}/Progression/${user_informations.val().level}/${matiere}/${chapter}/progression`);                  
+                        const reference =  database.ref(`users/${userId}/Progression/${userContext.user_informations.level}/${matiere}/${chapter}/progression`);                  
                         reference.once('value' , data => {
                             if(data.val()){
                                 setChapters(prevState => [...prevState , {
@@ -106,19 +92,12 @@ const  Chapitres = ({match}) => {
                     setDimmer(false)
                 }
 
-               
-                });
-            })
+            });
+            
 
-        }else{
+        }
+      }, [userContext.user_informations , userContext.user ]);
 
-            console.log('not login');
-            history.push('/')
-          }
-        });
-      }, [firebase]);
-
-    const [ openTab , setOpenTab ] = useState(true);
     
     const HandleCloseModal = () => {
         setShowModal(false)

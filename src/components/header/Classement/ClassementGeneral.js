@@ -9,96 +9,66 @@ import highfive from '../../../images/highFive/HIGHFIVE.svg';
 
 const ClassementGeneral = () => {
 
-    const firebase = useContext(FirebaseContext)
-    const userContext = useContext(UserContext)
-
+    const firebase = useContext(FirebaseContext);
+    const userContext = useContext(UserContext);
     const history = useHistory();
 
-    const [ progression , setProgression ] = useState([])
-    const [ classement , setClassement ] = useState([])
-    const [dimmer , setDimmer ] = useState(true)
+    const [ classement , setClassement ] = useState([]);
+    const [dimmer , setDimmer ] = useState(true);
+    const [level , setLevel] = useState('');
 
-    const [level , setLevel] = useState('')
     useEffect(() => {
-       
-        firebase.auth.onAuthStateChanged( user => {
-          if(user){
-
-          
-              //code if realod page pour garder context api values
-               userContext.get_connected_user(user);
-               const userId = user.uid;                      
-               const database = firebase.getData();
-              
-           
-            
-              const reference_user = database.ref('users/'+userId);
-              
-
-             /*  reference_user.once("value", user_informations => {
+        if(userContext.user && userContext.user_informations){
+            //code if realod page pour garder context api values
+            //const userId = userContext.user.uid;                      
+            const database = firebase.getData();
+            //const reference_user = database.ref('users/'+userId);
+            /*  reference_user.once("value", user_informations => {
                 userContext.get_user_informations(user_informations.val()); */
                 
-              
-              const reference =  database.ref('users')
-              if(userContext.user_informations){
-                reference.once("value", snapshot => {
+            const reference =  database.ref('users');
+            reference.once("value", snapshot => {
+                let object_final = []
+                //let object ={}
+                //console.log(userContext)
+                snapshot.forEach(function(childSnapshot) {
+                    // key will be "ada" the first time and "alan" the second time
+                    //const key = childSnapshot.key;
+                    // childData will be the actual contents of the child
+                    const childData = childSnapshot.val();
+                    /* if (childData.firstName == 'Mouadina')
+                        console.log(childData) */
+                        //console.log(userContext.user_informations.level)
+                    setLevel(userContext.user_informations.level)
 
-                    let object_final = []
-                    let object ={}
-                    //console.log(userContext)
-                    snapshot.forEach(function(childSnapshot) {
-                        // key will be "ada" the first time and "alan" the second time
-                        const key = childSnapshot.key;
-                        // childData will be the actual contents of the child
-                        const childData = childSnapshot.val();
-                        
-                        /* if (childData.firstName == 'Mouadina')
-                            console.log(childData) */
+                    if(childData.points)
+                    if(childData.level === userContext.user_informations.level)
+                    object_final = [
+                        ...object_final,
+                        {
+                            points : childData.points,
+                            firstName : childData.firstName,
+                            lastName : childData.lastName,
+                            etablissement : childData.etablissement
                             
-                            //console.log(userContext.user_informations.level)
-                            setLevel(userContext.user_informations.level)
-                        if(childData.points)
-                        if(childData.level === userContext.user_informations.level)
-                        object_final = [
-                            ...object_final,
-                            {
-                                points : childData.points,
-                                firstName : childData.firstName,
-                                lastName : childData.lastName,
-                                etablissement : childData.etablissement
-                                
-                            }
-                            
-                        ]
-
-                        
-                        //console.log(childData)
-                        object_final.sort(function(a, b) {
-                            return b.points - a.points;
-                          });
-                          setClassement(object_final)
-                          //console.log(object_final);
-                      });
-                     
-                //userContext.get_user_informations(user_informations.val());
-               
-            //})   
-                }).then( () => {
-                    console.log('done');
-                    setDimmer(false)
-                }) 
-              }
+                        }
+                    ]
+                    //console.log(childData)
+                    object_final.sort((a, b) => b.points - a.points );
+                    setClassement(object_final)
+                    //console.log(object_final);
+                });
+            }).then( () => {
+                console.log('done');
+                setDimmer(false);
+            }).catch(e => {
+                console.log(e);
+                history.push('/404');
+            });
                 
                 
-          }
-          else{
-
-           console.log('not login');
-           history.push('/')
-          }
-        });
-  
-      }, [userContext.user_informations]);
+        }
+    }, [userContext.user_informations , userContext.user]);
 
     return (
         <div className = 'general-order-container'>

@@ -5,20 +5,15 @@ import {FirebaseContext} from '../../firebase'
 export const LoggedinContext = React.createContext();
 
 export const LoggedinProvider = props  => {
-
     const firebase = useContext(FirebaseContext)
-
     const[loggenIn,setloggenIn] = useState(null);
 
-   useEffect(() => {
-      
+    useEffect(() => {
         firebase.auth.onAuthStateChanged( user => {
             user ?  setloggenIn(user) :  setloggenIn(null);
-         });
-    
-         
+        });
 
-   }, []);
+    }, []);
 
     return (
        <LoggedinContext.Provider value={loggenIn}>

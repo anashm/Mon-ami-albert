@@ -7,12 +7,12 @@ import { Link } from 'react-router-dom'
 
 const Profile = ({ close }) => {
 
-    const [ showProfile , seShowProfile ] = useState(false);
-    const [avatarPath , setAvatarPath] = useState('');
-
     const history = useHistory();
     const firebase = useContext(FirebaseContext);
     const userContext = useContext(UserContext);
+
+    const [ showProfile , seShowProfile ] = useState(false);
+    const [avatarPath , setAvatarPath] = useState('');
 
     const handleSignOut = () => {
         close();
@@ -51,16 +51,12 @@ const Profile = ({ close }) => {
         <Fragment>
             { showProfile &&
                 <Fragment>
-                <Link to = '/profil'> <img src={ require(`../../../../../images/avatars/${avatarPath}.png`) } alt=""/> </Link>
-                <button onClick = { handleSignOut }> Se deconnecter </button>
+                    <Link to = '/profil'> <img src={ require(`../../../../../images/avatars/${avatarPath}.png`) } alt=""/> </Link>
+                    <button onClick = { handleSignOut }> Se deconnecter </button>
                 </Fragment>                    
             }
 
-            { !showProfile &&
-                <Fragment>
-                    <button onClick = { handleSignIn }> Se connecter </button>
-                </Fragment>                    
-            }
+            { !showProfile && <button onClick = { handleSignIn }> Se connecter </button> }
         </Fragment>
     )
 }

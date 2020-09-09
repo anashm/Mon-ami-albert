@@ -40,8 +40,6 @@ const QuizzForm = ({
     const [showNextBtn , setShowNextBtn] = useState(false);
     const [ bad_checked_response_index , set_bad_checked_response_index ] = useState(null);
 
-
-
     const database = firebase.getData();
 
     useEffect(() => {

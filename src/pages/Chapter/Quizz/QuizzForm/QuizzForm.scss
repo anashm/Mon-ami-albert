@@ -26,6 +26,12 @@
         text-transform: uppercase !important;
         border: none;
 
+        @include media('<=tablet'){
+          padding: 13px 40px !important;
+
+   
+       }
+
         @include media('<=phone'){
           margin-top: 20px !important;
           font-size: 14px !important;
