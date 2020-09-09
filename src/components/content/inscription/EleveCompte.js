@@ -10,7 +10,7 @@ import NiveauComponent from './NiveauComponent';
 import {FirebaseContext} from '../../../firebase';
 import { Form,Select} from 'semantic-ui-react';
 import Title from '../../general/Title/Title';
-
+import { useHistory } from "react-router-dom";
 import SchoolSearchInput from './SchoolSearchInput/SchoolSearchInput'
 
 
@@ -29,15 +29,20 @@ import {
     const [childData, setChildData] = useState("");
     const [niveaux ,setNiveaux] = useState([]);
     const [school , setSchool] = useState('')
-
+    const history = useHistory();
     useEffect(() => {
       
-            const database = Firebase.getData();
-            const ref_niveaux = database.ref('schoolLevels/all');
-            ref_niveaux.on("value", snapshot => {
-                setNiveaux(snapshot.val())
-                console.log(snapshot.val())
-            })
+            try {
+                const database = Firebase.getData();
+                const ref_niveaux = database.ref('schoolLevels/all');
+                ref_niveaux.on("value", snapshot => {
+                    setNiveaux(snapshot.val())
+                    console.log(snapshot.val())
+                })
+            } catch (error) {
+                history.push('/404')
+            }
+            
     }, []);
 
 
