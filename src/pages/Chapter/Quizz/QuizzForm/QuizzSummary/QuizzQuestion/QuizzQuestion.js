@@ -19,6 +19,7 @@ const QuizzQuestion = ({ title , choices , correct , user_bad_responses , questi
                     console.log( 'index' , index);
                     return (
                         <QuizzAnswer 
+                            key = {index}
                             found = {(parseInt(correct[0]) -1) === index} 
                             not_found = {false} 
                             text = { choice } 

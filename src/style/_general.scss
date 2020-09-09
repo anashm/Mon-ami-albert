@@ -32,7 +32,7 @@ body{
     
 }
 
-main.main_content{
+main.main_content.pad-bottm-mobile{
     @include media('<=phone'){
         padding-bottom: 6vh;
 
@@ -453,6 +453,8 @@ main.main_content{
   }
 
 .breadcrumb-container{
+    -webkit-animation: fade-in-top 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) 0.2s both;
+    animation: fade-in-top 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) 0.2s both;
     > div{
         width: 100%;
         background-color: transparent;

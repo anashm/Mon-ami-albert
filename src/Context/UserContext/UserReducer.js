@@ -13,7 +13,8 @@ import  {
     UPDATE_USER_PLAYING_QUIZZ,
     UPDATE_USER_FOUND_ANSWER,
     UPDATE_USER_ON_QUIZZ_SUMMARY_PAGE,
-    UPDATE_QUIZZ_NEXT_INDEX
+    UPDATE_QUIZZ_NEXT_INDEX,
+    UPDATE_USER_NOT_FOUND_ANSWER
 } from "../Types"
 
 export default ( state , action) => {
@@ -113,6 +114,12 @@ export default ( state , action) => {
         return({
             ...state,
             quizz_next_index: action.payload
+        });
+
+        case(UPDATE_USER_NOT_FOUND_ANSWER):
+        return({
+            ...state,
+            user_not_found_answer: action.payload
         });
 
     

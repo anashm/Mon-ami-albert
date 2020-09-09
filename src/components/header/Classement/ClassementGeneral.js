@@ -58,7 +58,7 @@ const ClassementGeneral = () => {
                             //console.log(userContext.user_informations.level)
                             setLevel(userContext.user_informations.level)
                         if(childData.points)
-                        if(childData.level == userContext.user_informations.level)
+                        if(childData.level === userContext.user_informations.level)
                         object_final = [
                             ...object_final,
                             {
@@ -115,7 +115,7 @@ const ClassementGeneral = () => {
                    classement ? 
                    classement.map( (user , index) => {
                     return (
-                        <Table.Row>
+                        <Table.Row key = {index}>
                             <Table.Cell>
                                 <span className="index_style_classement">
                                 {index+1}
@@ -129,7 +129,7 @@ const ClassementGeneral = () => {
                             <Table.Cell  key={index}>
                             <div className="high_fives_container">
                                 <span className="high_fives_span"> 
-                                    <img src={highfive} className="high_fives_images" />
+                                    <img src={highfive} className="high_fives_images" alt = '' />
                                  </span>
                                 <span className="numbers_high_five"> {user.points}</span> 
                                 

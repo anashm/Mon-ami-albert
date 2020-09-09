@@ -1,48 +1,44 @@
 import React , { Fragment , useContext , useEffect , useState } from 'react';
 import UserContext from '../../../../../Context/UserContext/UserContext';
 import { useHistory } from "react-router-dom";
-
 import { FirebaseContext } from '../../../../../firebase';
-
-import logo from '../../../../../images/quizz/albert-quiz.png';
-
-import { Loader } from 'semantic-ui-react';
-
 import { Link } from 'react-router-dom'
 
 
-const Profile = () => {
+const Profile = ({ close }) => {
 
     const [ showProfile , seShowProfile ] = useState(false);
-
     const [avatarPath , setAvatarPath] = useState('');
 
-
-
-
     const history = useHistory();
-
     const firebase = useContext(FirebaseContext);
     const userContext = useContext(UserContext);
 
     const handleSignOut = () => {
-        firebase.signOutUser().then(() => {
+        close();
+        firebase
+        .signOutUser()
+        .then(() => {
             userContext.get_connected_user(null);
             userContext.update_user_informations(null);
             history.push('/');
             seShowProfile(false);
-        }).catch(e => console.log(e));
+        }).catch(e => {
+            console.log(e);
+            history.push('/404');
+        });
         
     }
 
     const handleSignIn = () => {
+        close();
         history.push('/login');
     }
 
     useEffect (() => {
 
         if(userContext.user_informations){
-            console.log(userContext.user_informations.avatar);
+            //console.log(userContext.user_informations.avatar);
             setAvatarPath(userContext.user_informations.avatar);
             seShowProfile(true);
         }else{
@@ -51,26 +47,22 @@ const Profile = () => {
         }
     } , [userContext.user_informations]);
 
-            return (
-            <Fragment>
-                { (showProfile) &&
-                    <Fragment>
-                    <Link to = '/profil'> <img src={ require(`../../../../../images/avatars/${avatarPath}.png`) } alt=""/> </Link>
-                    <button onClick = { handleSignOut }> Se deconnecter </button>
-                    </Fragment>                    
-                }
+    return (
+        <Fragment>
+            { showProfile &&
+                <Fragment>
+                <Link to = '/profil'> <img src={ require(`../../../../../images/avatars/${avatarPath}.png`) } alt=""/> </Link>
+                <button onClick = { handleSignOut }> Se deconnecter </button>
+                </Fragment>                    
+            }
 
-                { (!showProfile) &&
-                    <Fragment>
-                        <button onClick = { handleSignIn }> Se connecter </button>
-                    </Fragment>                    
-                }
-            </Fragment>
-            
-        )
-
-
-    
+            { !showProfile &&
+                <Fragment>
+                    <button onClick = { handleSignIn }> Se connecter </button>
+                </Fragment>                    
+            }
+        </Fragment>
+    )
 }
 
-export default Profile
+export default Profile;

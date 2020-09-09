@@ -42,7 +42,7 @@ const FooterMenu = () => {
                 mobileFooter.map(footer => {
                     if(footer.hasLink){
                         return(
-                            <div className="footer-block">
+                            <div key = {footer.icon} className="footer-block">
                                 <Link to = { footer.link } >
                                     <Icon name = { footer.icon } /> { footer.text }  
                                 </Link>
@@ -50,7 +50,7 @@ const FooterMenu = () => {
                         )  
                     }else{
                         return(
-                            <div className="footer-block">
+                            <div  key = {footer.icon}  className="footer-block">
                                 <button type = 'button' onClick = { () => history.goBack() }> 
                                     <Icon name = { footer.icon } /> { footer.text }  
                                 </button>

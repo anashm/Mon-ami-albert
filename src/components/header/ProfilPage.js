@@ -1,5 +1,5 @@
-import React,{useEffect,useContext,useState} from 'react'
-import { Input,Form,Button,Checkbox } from 'semantic-ui-react';
+import React,{useEffect,useContext,useState , Fragment} from 'react'
+import { Input,Form,Button,Checkbox , Loader , Dimmer } from 'semantic-ui-react';
 import {FirebaseContext} from '../../firebase';
 import UserContext from '../../Context/UserContext/UserContext';
 import { useHistory } from "react-router-dom";
@@ -27,6 +27,9 @@ import {
    
   } from "react-share";
 
+  import { Spinner } from 'react-bootstrap'
+
+
 export default function ProfilPage() {
 
     
@@ -47,7 +50,9 @@ export default function ProfilPage() {
     const [avatar , setAvatar] = useState(null)
     const[showToast,setShowToast] = useState(false)
     const [ level ,setLevel] = useState('')
-    const [ etablissement ,setEtablissement] = useState('')
+    const [ etablissement ,setEtablissement] = useState('');
+
+    const [ loading , setLoading ] = useState(true);
 
     const [showModal , setShowModal] = useState(false)
     const [textModal , setTextModal] = useState('')
@@ -98,9 +103,17 @@ export default function ProfilPage() {
     ]
     useEffect(() => {
 
-  
+        if( userContext.user && userContext.user_informations){
+            setEmail(userContext.user.email);
+            setfirstName(userContext.user_informations.firstName);
+            setlastName(userContext.user_informations.lastName);
+            setAvatar(userContext.user_informations.avatar);
+            setEtablissement(userContext.user_informations.etablissement);
+            setLevel(userContext.user_informations.level);
+            setLoading(false)
+        }
 
-    firebase.auth.onAuthStateChanged( user => {
+    /* firebase.auth.onAuthStateChanged( user => {
         if(user){
             //code if realod page pour garder context api values
             userContext.get_connected_user(user);
@@ -119,18 +132,16 @@ export default function ProfilPage() {
                 setEtablissement(user_informations.val().etablissement)
                 setLevel(user_informations.val().level)
             })
-            /* setUserConnectedId(userId)
-
-            reference.once("value", user_informations => {
-                userContext.get_user_informations(user_informations.val());
-            }) */
+           
         }
             else{
             console.log('not login');
             history.push('/')
             }
-        });
-    }, []);
+        }); */
+
+
+    }, [userContext.user , userContext.user_informations]);
 
 
     const HandleChangeFirstName = (e) => {
@@ -224,18 +235,13 @@ export default function ProfilPage() {
                             toast.success("Votre Profil a été mis à jour ! 🧐");
                         })
                       }
-                      
-                }).catch(function(error) {
+
+                    }).catch(function(error) {
                         
                         setShowToast(true) 
                         toast.error("Ce mot de passe ne correspond pas à cet utilisateur!");
-                  });
+                });
                 
-                
-                    
-                  
-                 
-               
             }
             else{
             console.log('not login');
@@ -257,6 +263,15 @@ export default function ProfilPage() {
         setShowModal(true)
         setTextModal(" T'inquiète,je gère! Un de mes conseillers  va t'appeler dans les 24 heures.")
     }
+
+    if(loading){
+        return ( <div className="container">
+            <div className="row justify-content-center align-items-center" style = {{ minHeight: '50vh' }} >
+                <Spinner animation="grow" />
+            </div>
+        </div> )
+    }
+    
 
     return (
         <div className = 'login-content-container'>
@@ -299,8 +314,6 @@ export default function ProfilPage() {
                 {
                     passwordChecked ? (
                         <div>
-                             
-
                             <Form.Field>
                                 <label>Nouveau mot de pass</label>
                                 <input type="password" placeholder='Nouveau mot de pass' value={newPassword} onChange={(e) => { setNewPassword(e.target.value)}} />
@@ -326,19 +339,13 @@ export default function ProfilPage() {
                         return(
                             <Avatar avatarClicked = { handleAvatarClicked }  key={index} active = { sourceImage === avatar.image ? 'avatar_clicked' : 'image-avatar' }  getAvatar={getAvatarClicked} logo={avatar.image} name={avatar.name} />
                         )
-                       
                     })}
                     
                 </div>
                 
                 ) : '' }
                 
-
-              
-                    <Button type="submit"  className = 'profile-submit-btn' style={{color :'white'}}>Mettre à jour</Button>
-                
-
-                   
+                <Button type="submit"  className = 'profile-submit-btn' style={{color :'white'}}>Mettre à jour</Button>
             </Form>
 
             <div>

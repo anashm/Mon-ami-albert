@@ -25,7 +25,7 @@ const QuizzShowAnswer = () => {
                 <h4> Total Mauvaises Réponses : </h4>
 {/*                 { userContext.user_on_quizz_summary_page ? <p> { userContext.user_current_question_index  >= foundAnswer ? (userContext.user_current_question_index  - foundAnswer) : 0} / { userContext.quizz_questions } </p> :   <p> { userContext.user_current_question_index  >= foundAnswer ? (userContext.user_current_question_index  - foundAnswer) : 0} / { userContext.quizz_questions } </p>  }
  */}            
-                <p> { userContext.quizz_next_index - foundAnswer } / {userContext.quizz_questions} </p>
+                <p> {userContext.user_not_found_answer} / {userContext.quizz_questions} </p>
             </div>
         </div>
     )

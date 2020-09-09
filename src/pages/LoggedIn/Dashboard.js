@@ -145,19 +145,16 @@ const  Dashboard = (props) => {
                         </Modal.Header>
                         <Modal.Body >
                             <div className="niveaux_school">
-                                { niveauxSchool.map( (niveau,index) => {
-                                    return (
-                                        <div >
+                                { niveauxSchool.map( (niveau,index) => (
+                                        <div key={index} >
                                             <NiveauxSchool
-                                            key={index}
                                             userConnected={useConnectedId}
                                             title={niveau} 
                                             clicked = { handleCloseModal }
                                             />
                                             
                                         </div>
-                                    )
-                                })
+                                    ))
                                 }
                             </div>
                         </Modal.Body>

@@ -14,7 +14,8 @@ import {
     UPDATE_USER_PLAYING_QUIZZ,
     UPDATE_USER_FOUND_ANSWER,
     UPDATE_USER_ON_QUIZZ_SUMMARY_PAGE,
-    UPDATE_QUIZZ_NEXT_INDEX
+    UPDATE_QUIZZ_NEXT_INDEX,
+    UPDATE_USER_NOT_FOUND_ANSWER
 } from '../Types';
 
 import UserReducer from './UserReducer';
@@ -31,6 +32,7 @@ const UserState = ({ children }) => {
         quizz_questions: 0,
         quizz_next_index: 0,
         user_found_answer: 0,
+        user_not_found_answer: 0,
         user_checked_true_answer: false,
         user_checked_false_answer: false,
         user_check_true_answer: false,
@@ -67,6 +69,8 @@ const UserState = ({ children }) => {
 
     const update_user_found_answer = number => dispatch({ type: UPDATE_USER_FOUND_ANSWER , payload: number });
 
+    const update_user_not_found_answer = number => dispatch({ type: UPDATE_USER_NOT_FOUND_ANSWER , payload: number });
+
     const update_user_on_quizz_summary_page = check => dispatch({ type: UPDATE_USER_ON_QUIZZ_SUMMARY_PAGE , payload: check });
 
     const update_quizz_next_index = number => dispatch({ type: UPDATE_QUIZZ_NEXT_INDEX , payload: number });
@@ -90,6 +94,7 @@ const UserState = ({ children }) => {
             user_check_true_answer : state.user_check_true_answer,
             user_playing_quizz: state.user_playing_quizz,
             user_found_answer: state.user_found_answer,
+            user_not_found_answer: state.user_not_found_answer,
             user_on_quizz_summary_page: state.user_on_quizz_summary_page,
             update_quizz_questions,
             get_connected_user, 
@@ -104,6 +109,7 @@ const UserState = ({ children }) => {
             update_user_check_true_answer,
             update_user_playing_quizz,
             update_user_found_answer,
+            update_user_not_found_answer,
             update_user_on_quizz_summary_page,
             update_quizz_next_index
         }} >

@@ -99,22 +99,6 @@ const QuizzSummary = ({ quizz_questions , found_answer , chapter , img , course 
         let userLevel = level.replace(/\s/g,'').replace(/-/g, "").toLowerCase();
 
         classes.forEach( classElement => {
-            /*  if(level.trim().toLowerCase().includes(classElement.trim().toLowerCase())){
-
-                let newLevel = '';
-
-                
-                if((level.trim().toLowerCase().replace(/\s+/g, '')).includes('-')){
-                    newLevel = level.trim().toLowerCase().replace(/\s+/g, '').split('-').join('_');
-                }
-
-                if()
-
-    
-                console.log( newLevel)
-    
-            } */
-
 
             let newLevel = classElement.replace(/\s/g,'').replace(/-/g, "").toLowerCase();
 
@@ -215,7 +199,8 @@ const QuizzSummary = ({ quizz_questions , found_answer , chapter , img , course 
                 <div className="answers-container">
                     { quizz_questions.map((quizz_question , index) => (
                         <QuizzQuestion 
-                        quizz_questions = {quizz_questions}
+                            key = {index}
+                            quizz_questions = {quizz_questions}
                             questionIndex = {index}
                             title = { quizz_question[0].question } 
                             choices = { quizz_question[0].choices } 

@@ -1,4 +1,4 @@
-import React , { useEffect , useState } from 'react'
+import React , { useEffect , useState , memo } from 'react'
 import './Sixthdiv.css';
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
@@ -12,7 +12,7 @@ import Aos from 'aos';
 
 
 
-export default function Sixthdiv() {
+const Sixthdiv = memo( ()  => {
 
     const text_slider = [
         {
@@ -83,10 +83,13 @@ export default function Sixthdiv() {
                 </div>
                 <div className = 'testimonies-container'data-aos= 'fade' data-aos-delay = '800' data-aos-once= 'true' > 
                     <Slider {...settings}>
-                        { text_slider.map( (slide) => <Testimony name = { slide.title }  text = { slide.text } />) }
+                        { text_slider.map( (slide) => <Testimony key = { slide.title } name = { slide.title }  text = { slide.text } />) }
                     </Slider>
                 </div>
             </div>
         </section>
     )
-}
+});
+
+
+export default Sixthdiv;

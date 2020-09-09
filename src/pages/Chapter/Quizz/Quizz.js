@@ -25,29 +25,21 @@ const Quizz = ({ match }) => {
     let matiere =  match.params.matieres;
     let chapitre = match.params.chapitre;
 
-    console.log(match)
+    //console.log(match)
     const firebase = useContext(FirebaseContext);
     const userContext = useContext(UserContext);
     const history = useHistory()
 
-    console.log(firebase);
-    console.log(userContext);
+    //console.log(firebase);
+    //console.log(userContext);
 
     const [quizzQuestions , setQuizzQuestions] = useState([]);
     const [ currentIndex , setCurrentIndex ] = useState(0);
     const [loading , setLoading] = useState(true);
-    const [ reset , setReset ] = useState(false);
 
 
 
-    const handle_next_step = index => {
-        if(index < quizzQuestions.length){
-            console.log(index)
-            setCurrentIndex(index);
-        }else{
-            setReset(true);
-        }
-    }
+
 
     const handleCurrentIndex = index => setCurrentIndex(index);
 
@@ -73,60 +65,43 @@ const Quizz = ({ match }) => {
 
     useEffect(() => {
 
-        console.log( 'final test' , userContext.user_current_question_index);
+        //console.log( 'final test' , userContext.user_current_question_index);
 
-        if(userContext.user_current_question_index !== null){
+        if(userContext.user_current_question_index >= 0){
             handleCurrentIndex(userContext.user_current_question_index);
         }
 
-        if(userContext.user_current_question_index == null){
-            handleCurrentIndex(0);
-        }
+        if(userContext.user_informations && userContext.user){
+                //code if realod page pour garder context api values
+                userContext.update_user_playing_quizz(true);
+                //console.log(reference);
 
-            firebase.auth.onAuthStateChanged( user => {
-                if(user){
-                    //code if realod page pour garder context api values
-                    userContext.update_user_playing_quizz(true)
-                    userContext.get_connected_user(user);
-                    const userId = user.uid;                      
+                if(quizzQuestions.length < 1){
+                    const userId = userContext.user.uid;                      
                     const database = firebase.getData();
-                    console.log(userId);
-                    const reference =  database.ref(`users/${userId}`)
-                    console.log(reference);
-    
+                    //console.log(userId);
+                    const reference =  database.ref(`users/${userId}`);
                     reference.once("value", user_informations => {
                         userContext.get_user_informations(user_informations.val());
-                        //  setinfosLevel(user_informations.val().level)
-                        console.log(matiere , chapitre)
                         const reference_exercices = database.ref(`schoolLevels/${user_informations.val().level}/subjects/${matiere}/${chapitre}/quiz`);
-        
                         reference_exercices.once("value", quizz => {
-                            console.log(quizz.val())
                             handleQuizzQuestions(quizz.val());
                         });
                     });
                 }
-                else{
-                    console.log('not login');
-                    history.push('/')
-                }
-            });
-        
-
+        }
 
         return () => {
             userContext.update_user_playing_quizz(false)
         }
 
-    } , [ userContext.user_current_question_index , userContext.user_progression , userContext.user_points ]);
+    } , [ userContext.user_current_question_index , userContext.user_informations]);
 
 
     if(userContext.user){
         return (
             <div className = 'quizz-container'>
-                { console.log('nzaou current index' , currentIndex) }
                 <div className="container">
-                    { console.log(quizzQuestions.length ? quizzQuestions : [])}
 
                     { (quizzQuestions.length !== 0 && !loading) && (
                         <Fragment>
@@ -152,13 +127,10 @@ const Quizz = ({ match }) => {
                                 choices = {quizzQuestions[currentIndex] ? quizzQuestions[currentIndex][0].choices : []} 
                                 correct = {quizzQuestions[currentIndex] ? quizzQuestions[currentIndex][0].correct[0] : []}
                                 current_index = { currentIndex }
-                                next_step = { handle_next_step }
                                 question_limit = { quizzQuestions.length ? quizzQuestions.length - 1 : 0  }
                                 question_length = { quizzQuestions.length ? quizzQuestions.length : 0  }
                                 course = {matiere}
                                 chapter = {chapitre}
-                                reset = {reset}
-                                resetClicked = { () => handleCurrentIndex(0) }
                                 quizz_questions = {quizzQuestions}
                             />
                           </Fragment>
