@@ -36,18 +36,10 @@ const Quizz = ({ match }) => {
     const [quizzQuestions , setQuizzQuestions] = useState([]);
     const [ currentIndex , setCurrentIndex ] = useState(0);
     const [loading , setLoading] = useState(true);
-    const [ reset , setReset ] = useState(false);
 
 
 
-    const handle_next_step = index => {
-        if(index < quizzQuestions.length){
-            //console.log(index)
-            setCurrentIndex(index);
-        }else{
-            setReset(true);
-        }
-    }
+
 
     const handleCurrentIndex = index => setCurrentIndex(index);
 
@@ -75,7 +67,7 @@ const Quizz = ({ match }) => {
 
         //console.log( 'final test' , userContext.user_current_question_index);
 
-        if(userContext.user_current_question_index){
+        if(userContext.user_current_question_index >= 0){
             handleCurrentIndex(userContext.user_current_question_index);
         }
 
@@ -135,13 +127,10 @@ const Quizz = ({ match }) => {
                                 choices = {quizzQuestions[currentIndex] ? quizzQuestions[currentIndex][0].choices : []} 
                                 correct = {quizzQuestions[currentIndex] ? quizzQuestions[currentIndex][0].correct[0] : []}
                                 current_index = { currentIndex }
-                                next_step = { handle_next_step }
                                 question_limit = { quizzQuestions.length ? quizzQuestions.length - 1 : 0  }
                                 question_length = { quizzQuestions.length ? quizzQuestions.length : 0  }
                                 course = {matiere}
                                 chapter = {chapitre}
-                                reset = {reset}
-                                resetClicked = { () => handleCurrentIndex(0) }
                                 quizz_questions = {quizzQuestions}
                             />
                           </Fragment>

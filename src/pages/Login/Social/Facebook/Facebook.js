@@ -96,7 +96,6 @@ const Facebook = ( props ) => {
             if(errors.code='auth/email-already-in-use'){
                 firebase.loginUser(response.email,'facebook')
                 .then(user => {
-
                     props.navigation.history.push('/dashboard-user')
                 })
             }
