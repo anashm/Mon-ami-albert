@@ -84,7 +84,7 @@ const  App = () => {
             <Route exact path="/classement-general" component={ClassementGeneral} />
             <Route exact path="/classement-lycee" component={ClassementLycee} />
             <Route exact path="/recapitulatif" component={Recaputilatif} />
-            <Route exact path="/test_qr_code" component={QRCode} />
+            <Route exact path="/test_qr_code" component={QRCode} />  
             <Route exact path="/404" component={NotFound} />
             <Redirect to="/404" />
           </Switch>
