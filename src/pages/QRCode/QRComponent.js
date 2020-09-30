@@ -7,10 +7,12 @@ const QRComponent = () => {
     const handleScan = data => {
         if (data) {
           setResult(data)
+        
         }
       }
     const handleError = err => {
         console.error(err)
+     
       }
     return (
         <div>
@@ -20,6 +22,7 @@ const QRComponent = () => {
                 onScan={handleScan}
                 style={{ width: '100%' }}
                 />
+            <p>{result}</p>
         </div>
     )
 }
