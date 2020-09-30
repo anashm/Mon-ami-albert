@@ -28,7 +28,7 @@ import UserContext from './Context/UserContext/UserContext';
 /* import ErrorContext from './Context/ErrorContext/ErrorContext';
  */import firebase from 'firebase';
 import {FirebaseContext} from './firebase';
-
+import QRCode from './pages/QRCode/QRComponent';
 
 
 const  App = () => {
@@ -84,6 +84,7 @@ const  App = () => {
             <Route exact path="/classement-general" component={ClassementGeneral} />
             <Route exact path="/classement-lycee" component={ClassementLycee} />
             <Route exact path="/recapitulatif" component={Recaputilatif} />
+            <Route exact path="/test_qr_code" component={QRCode} />
             <Route exact path="/404" component={NotFound} />
             <Redirect to="/404" />
           </Switch>
