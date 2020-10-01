@@ -74,13 +74,8 @@ const QRComponent = () => {
                 ''
           }
             
-            <p>{idCode}</p>
-            {
-              nbrPoints > 0 ?
-                <p>{nbrPoints}</p>
-
-              : ''
-            }
+            <p>{idCode}</p>            
+            <p>{nbrPoints}</p>
             
         </div>
     )
