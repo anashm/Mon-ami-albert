@@ -45,32 +45,35 @@ const QRComponent = () => {
             setIdCode(resultat[0]);
             setNbrPoint(resultat[1]);
 
-            if(userContext.user_informations.code_scanned){
-              alert('dkhal hna')
-                if(userContext.user_informations.code_scanned === resultat[0]){
+            const reference_user =  database.ref(`users/${userId}`)
+            reference_user.once("value", user_informations => {
+              if(user_informations.val().code_scanned){
+                  if(user_informations.val().code_scanned === resultat[0]){
                     alert('tas déja reçu les points')
-                }
-                else{
-                    reference.child(userId).update({
-                      code_scanned : resultat[0],
-                      points : Number(user_points) + Number(resultat[1])
-                    }).then(() => {
-                      userContext.update_user_points_anas(Number(user_points) + Number(resultat[1]));
-                        alert('succes');
-                    })
-                }
-                
-            }
-            else{
-              alert('l else dial rah 3Ndo lcode')
-                reference.child(userId).update({
-                  code_scanned : resultat[0],
-                  points : Number(user_points) + Number(resultat[1])
-                }).then(() => {
-                  userContext.update_user_points_anas(Number(user_points) + Number(resultat[1]));
-                    alert('succes');
-                })
-            }
+                  }
+                  else{
+                      reference.child(userId).update({
+                        code_scanned : resultat[0],
+                        points : Number(user_points) + Number(resultat[1])
+                      }).then(() => {
+                        userContext.update_user_points_anas(Number(user_points) + Number(resultat[1]));
+                          alert('succes');
+                      })
+                  } 
+              }
+              else{
+                  reference.child(userId).update({
+                    code_scanned : resultat[0],
+                    points : Number(user_points) + Number(resultat[1])
+                  }).then(() => {
+                    userContext.update_user_points_anas(Number(user_points) + Number(resultat[1]));
+                      alert('succes');
+                  })
+              }
+               
+            });
+            
+           
             
             
               
