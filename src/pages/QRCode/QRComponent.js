@@ -62,6 +62,7 @@ const QRComponent = () => {
                 
             }
             else{
+              alert('l else dial rah 3Ndo lcode')
                 reference.child(userId).update({
                   code_scanned : resultat[0],
                   points : Number(user_points) + Number(resultat[1])
