@@ -14,7 +14,21 @@ const QRComponent = () => {
     const[showScanner , setShowScanner] = useState(false);
 
    
-    
+   /*  const HandleTest = () => {
+
+      if(userContext.user){
+        const user =  userContext.user; 
+        const userId = user.uid;  
+        
+        const database = firebase.getData();
+        const reference =  database.ref('users/')
+        const user_points = userContext.user_informations.points
+        console.log(Number(user_points) + Number('30'))
+        
+            
+
+      }
+    } */
 
     const handleScan = data => {
       
@@ -26,18 +40,38 @@ const QRComponent = () => {
             const database = firebase.getData();
             const reference =  database.ref('users/')
             const user_points = userContext.user_informations.points
+
             let resultat = data.split('###');
             setIdCode(resultat[0]);
             setNbrPoint(resultat[1]);
 
-            
-              reference.child(userId).update({
+            if(userContext.user_informations.code_scanned){
+                if(userContext.user_informations.code_scanned === resultat[0]){
+                    alert('tas déja reçu les points')
+                }
+                else{
+                    reference.child(userId).update({
+                      code_scanned : resultat[0],
+                      points : Number(user_points) + Number(resultat[1])
+                    }).then(() => {
+                      userContext.update_user_points_anas(Number(user_points) + Number(resultat[1]));
+                        alert('succes');
+                    })
+                }
+                
+            }
+            else{
+                reference.child(userId).update({
                   code_scanned : resultat[0],
                   points : Number(user_points) + Number(resultat[1])
                 }).then(() => {
                   userContext.update_user_points_anas(Number(user_points) + Number(resultat[1]));
                     alert('succes');
                 })
+            }
+            
+            
+              
     
           }
           else{
@@ -61,7 +95,7 @@ const QRComponent = () => {
     return (
         <div>
           <Button onClick={HandleShowScanner}  >Scanner</Button>
-         
+          {/* <Button onClick={HandleTest}  >Test</Button> */}
           {
             showScanner ? 
               <QrReader
