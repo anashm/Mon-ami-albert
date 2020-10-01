@@ -30,13 +30,14 @@ const QRComponent = () => {
             setIdCode(resultat[0]);
             setNbrPoint(resultat[1]);
 
-              reference.child(userId).update({
+            console.log(typeof(user_points),typeof(parseInt(resultat[1])))
+              /* reference.child(userId).update({
                   code_scanned : resultat[0],
                   points : user_points + parseInt(resultat[1])
                 }).then(() => {
                   userContext.update_user_points_anas(user_points + parseInt(resultat[1]));
                     alert('succes');
-                })
+                }) */
     
           }
           else{
