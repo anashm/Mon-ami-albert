@@ -19,7 +19,7 @@ const QRComponent = () => {
     const handleScan = data => {
       
         if (data) {
-          if(userContext){
+          if(userContext.user){
             const user =  userContext.user; 
             const userId = user.uid;  
             
