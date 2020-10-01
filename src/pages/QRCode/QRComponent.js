@@ -46,6 +46,7 @@ const QRComponent = () => {
             setNbrPoint(resultat[1]);
 
             if(userContext.user_informations.code_scanned){
+              alert('dkhal hna')
                 if(userContext.user_informations.code_scanned === resultat[0]){
                     alert('tas déja reçu les points')
                 }
