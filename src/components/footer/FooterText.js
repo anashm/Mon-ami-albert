@@ -1,4 +1,5 @@
 import React , { Fragment } from 'react';
+import QRComponent from '../../pages/QRCode/QRComponent'
 
 
 export const whoami = (
@@ -112,4 +113,5 @@ export const footerLinks = [
         link : '#',
         jsx: help
     }
+    
 ];

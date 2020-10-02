@@ -9,9 +9,9 @@ const QRComponent = () => {
     const firebase = useContext(FirebaseContext)
 
 
-    const[idCode,setIdCode] = useState('');
-    const[nbrPoints,setNbrPoint] = useState(0);
-    const[showScanner , setShowScanner] = useState(false);
+    /* const[idCode,setIdCode] = useState('');
+    const[nbrPoints,setNbrPoint] = useState(0); */
+   
 
    
    /*  const HandleTest = () => {
@@ -42,8 +42,8 @@ const QRComponent = () => {
             const user_points = userContext.user_informations.points
 
             let resultat = data.split('###');
-            setIdCode(resultat[0]);
-            setNbrPoint(resultat[1]);
+            /* setIdCode(resultat[0]);
+            setNbrPoint(resultat[1]); */
 
             const reference_user =  database.ref(`users/${userId}`)
             reference_user.once("value", user_informations => {
@@ -94,27 +94,20 @@ const QRComponent = () => {
         console.error(err)
      
       }
-    const HandleShowScanner = () => {
-      setShowScanner(true);
-    }
+   
     return (
         <div>
-          <Button onClick={HandleShowScanner}  >Scanner</Button>
-          {/* <Button onClick={HandleTest}  >Test</Button> */}
-          {
-            showScanner ? 
+         
+        
               <QrReader
                 delay={300}
                 onError={handleError}
                 onScan={handleScan}
                 style={{ width: '100%' }}
                 />
-                :
-                ''
-          }
+              
             
-            <p>{idCode}</p>            
-            <p>{nbrPoints}</p>
+            
             
         </div>
     )
