@@ -6,12 +6,7 @@
         padding: 10% 0;
     }
 
-    #hamburger-scan-qr{
-        display: none;
-        @include media('<=phone'){
-            display: block !important;
-        }
-    }
+  
 
     .footer-link-container{
         width: 100%;

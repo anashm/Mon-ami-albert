@@ -126,7 +126,12 @@ const HeroSection = memo( ( {userConnected} ) => {
                                             <Link className = 'hero-section-button register-button' to = '/eleve-create-account' > s'inscrire gratuitement </Link>
                                             <Link className = 'hero-section-button login-button' to = '/login'> Se connecter </Link> 
                                         </Fragment>
-                                    ) : <Link className = 'hero-section-button dashboard-button' to = '/dashboard-user'>  Mon Parcours </Link> }
+                                    ) : 
+                                    <Fragment>
+                                        <Link className = 'hero-section-button dashboard-button' to = '/dashboard-user'>  Mon Parcours </Link>
+                                        <Link className = 'hero-section-button qr-button'  to = '/test_qr_code'>  Scan QR </Link>
+                                    </Fragment>
+                                }
                             </div>
                         </div>
                     </div>

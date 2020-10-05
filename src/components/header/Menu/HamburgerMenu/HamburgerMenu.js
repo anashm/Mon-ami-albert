@@ -175,7 +175,7 @@ const HamburgerMenu = () => {
 
                         <div className="nav-items-container">
                         { footerLinks.map(footerLink => <FooterLink key = {footerLink.title} className = 'nav-item-link' link = { footerLink.link } id = { convertToSlug(footerLink.title) } text = { footerLink.title }  jsx = {footerLink.jsx} />) }
-                            <Link className = 'nav-item-link' id="hamburger-scan-qr" to="/test_qr_code" onClick = { () =>{ setClose(true) ; setOpen(false) }  }>Scan QR</Link>
+                            
                         </div>
 
                         <div className="social-media-container">
