@@ -49,7 +49,7 @@ const QRComponent = () => {
             reference_user.once("value", user_informations => {
               if(user_informations.val().code_scanned){
                   if(user_informations.val().code_scanned === resultat[0]){
-                    alert('tas déja reçu les points')
+                    alert('vous avez déja reçu les points')
                   }
                   else{
                       reference.child(userId).update({
@@ -57,7 +57,7 @@ const QRComponent = () => {
                         points : Number(user_points) + Number(resultat[1])
                       }).then(() => {
                         userContext.update_user_points_anas(Number(user_points) + Number(resultat[1]));
-                          alert('succes');
+                          alert('Bravo! vous avez gagné des points');
                       })
                   } 
               }
@@ -67,7 +67,7 @@ const QRComponent = () => {
                     points : Number(user_points) + Number(resultat[1])
                   }).then(() => {
                     userContext.update_user_points_anas(Number(user_points) + Number(resultat[1]));
-                      alert('succes');
+                      alert('Bravo! vous avez gagné des points');
                   })
               }
                
