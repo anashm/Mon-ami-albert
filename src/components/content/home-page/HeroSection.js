@@ -129,7 +129,7 @@ const HeroSection = memo( ( {userConnected} ) => {
                                     ) : 
                                     <Fragment>
                                         <Link className = 'hero-section-button dashboard-button' to = '/dashboard-user'>  Mon Parcours </Link>
-                                        <Link className = 'hero-section-button qr-button'  to = '/test_qr_code'>  Scan QR </Link>
+                                        {/* <Link className = 'hero-section-button qr-button'  to = '/test_qr_code'>  Scan QR </Link> */}
                                     </Fragment>
                                 }
                             </div>

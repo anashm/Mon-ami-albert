@@ -31,6 +31,13 @@ const FooterMenu = () => {
             link: '/profil'
         },
 
+        {
+            text: 'QR Code',
+            icon: 'chess board',
+            hasLink: true,
+            link: '/test_qr_code'
+        },
+
     ]
 
 
