@@ -89,6 +89,8 @@ const Quizz = ({ match }) => {
                         });
                     });
                 }
+        }else{
+            history.push('/404')
         }
 
         return () => {

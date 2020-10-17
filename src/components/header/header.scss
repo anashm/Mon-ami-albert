@@ -41,6 +41,7 @@
     @include media('<=phone'){
         padding-top: 5%;
         padding-bottom: 5%;
+        display: none;
     }
    
     .header-row{

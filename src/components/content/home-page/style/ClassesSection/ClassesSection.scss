@@ -6,6 +6,7 @@
 
     @include media('<=phone'){
         padding-top: 15%;
+        display: none;
     }
 
 

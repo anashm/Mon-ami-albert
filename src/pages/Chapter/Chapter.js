@@ -1,5 +1,6 @@
-import React , { useState , useEffect } from 'react';
+import React , { useState , useEffect , useContext } from 'react';
 import { useHistory } from "react-router-dom";
+import UserContext from '../../Context/UserContext/UserContext';
 
 
 import courseImg from './assets/images/Cours.png';
@@ -23,16 +24,25 @@ import './style/Chapter.scss';
 
 const Chapter = ({match}) => {
 
+    const userContext = useContext(UserContext);
+    const history = useHistory();
+
+
     useEffect(() => {
         AOS.init({
             duration: 2000,
         });
-    } , []);
+
+        if(!userContext.user){
+            history.push('/404');
+        }
+
+
+    } , [userContext.user]);
 
     
     /* Component data */
 
-    const history = useHistory();
 
     //console.log(match)
 

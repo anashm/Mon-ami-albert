@@ -17,12 +17,16 @@ import NiveauxSchool from './Matieres/NiveauxSchoolComponent';
 import AOS from 'aos';
 import { Icon , Divider , Breadcrumb , Loader} from 'semantic-ui-react';
 
+import { useHistory } from 'react-router-dom'
+
 
 
 const  Dashboard = (props) => {
 
-  const firebase = useContext(FirebaseContext)
-  const userContext = useContext(UserContext)
+  const firebase = useContext(FirebaseContext);
+  const userContext = useContext(UserContext);
+
+  const history = useHistory();
 
   const [ niveauxSchool , setNiveauxSchool ] = useState([])
   const [ useConnectedId , setUserConnectedId ] = useState(null);  
@@ -75,18 +79,24 @@ const  Dashboard = (props) => {
             duration: 800
         });
 
-        
-
-        if(niveauxSchool.length < 1){
-            const database = firebase.getData();
-            const ref_niveaux = database.ref('schoolLevels/all');
-            ref_niveaux.on("value", snapshot => {
-            // const messageObject = snapshot.val();
-                setNiveauxSchool(snapshot.val());
-            })
+        if(userContext.user){
+            if(niveauxSchool.length < 1){
+                const database = firebase.getData();
+                const ref_niveaux = database.ref('schoolLevels/all');
+                ref_niveaux.on("value", snapshot => {
+                // const messageObject = snapshot.val();
+                    setNiveauxSchool(snapshot.val());
+                })
+            }
+        }else{
+            history.push('/404')
         }
 
-    }, []);
+
+
+       
+
+    }, [userContext.user]);
 
 
     const [ modalOpen , setModalOpen  ] = useState(false);

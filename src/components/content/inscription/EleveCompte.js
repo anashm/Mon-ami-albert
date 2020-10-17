@@ -61,7 +61,7 @@ import {
     const handleChange = value => setSchool(value);
 
     return (        
-        <div className="container">
+        <div className="container eleve-compte-section">
 
             {/* <WhatsappShareButton
             url="https://preprod.monamialbert.com/"

@@ -24,6 +24,10 @@
     animation: fade-in-top 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
 }
 
+.eleve-compte-section{
+    padding: 3% 0;
+}
+
 .quel_classe {
     text-transform: uppercase;
     color: #707070;

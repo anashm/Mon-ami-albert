@@ -13,8 +13,10 @@
     font-family: 'Rubik', sans-serif;
     font-weight: 300 !important;
 
-    @include media('<=phone'){
-        padding: 5%;
+    padding: 3% 0;
+
+    @include media('<=tablet'){
+        padding: 5% 0;
     }
 
     .login-title-container{

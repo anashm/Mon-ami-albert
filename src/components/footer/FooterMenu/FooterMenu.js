@@ -13,13 +13,13 @@ const FooterMenu = () => {
     const mobileFooter = [
         {
             text: 'Retour',
-            icon: 'arrow left',
+            icon: 'angle left',
             hasLink: false
         },
 
         {
-            text: 'Classement',
-            icon: 'boxes',
+            text: 'Parcours',
+            icon: 'graduation',
             hasLink: true,
             link: '/classement-general'
         },
@@ -27,6 +27,13 @@ const FooterMenu = () => {
         {
             text: 'Compte',
             icon: 'user',
+            hasLink: true,
+            link: '/profil'
+        },
+
+        {
+            text: 'Qrcode',
+            icon: 'qrcode',
             hasLink: true,
             link: '/profil'
         },

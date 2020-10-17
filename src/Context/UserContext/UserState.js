@@ -15,7 +15,8 @@ import {
     UPDATE_USER_FOUND_ANSWER,
     UPDATE_USER_ON_QUIZZ_SUMMARY_PAGE,
     UPDATE_QUIZZ_NEXT_INDEX,
-    UPDATE_USER_NOT_FOUND_ANSWER
+    UPDATE_USER_NOT_FOUND_ANSWER,
+    UPDATE_USER_COURSES
 } from '../Types';
 
 import UserReducer from './UserReducer';
@@ -38,7 +39,8 @@ const UserState = ({ children }) => {
         user_check_true_answer: false,
         user_playing_quizz: false,
         user_on_quizz_summary_page: false,
-        user_points_anas : 0
+        user_points_anas : 0,
+        user_courses: null
     }
 
     const [ state , dispatch ] = useReducer(UserReducer , initialState);
@@ -75,6 +77,11 @@ const UserState = ({ children }) => {
 
     const update_quizz_next_index = number => dispatch({ type: UPDATE_QUIZZ_NEXT_INDEX , payload: number });
 
+    const update_user_courses = course => dispatch({ type: UPDATE_USER_COURSES , payload: course });
+
+
+
+
 
 
 
@@ -96,6 +103,7 @@ const UserState = ({ children }) => {
             user_found_answer: state.user_found_answer,
             user_not_found_answer: state.user_not_found_answer,
             user_on_quizz_summary_page: state.user_on_quizz_summary_page,
+            user_courses: state.user_courses,
             update_quizz_questions,
             get_connected_user, 
             get_user_informations ,
@@ -111,7 +119,8 @@ const UserState = ({ children }) => {
             update_user_found_answer,
             update_user_not_found_answer,
             update_user_on_quizz_summary_page,
-            update_quizz_next_index
+            update_quizz_next_index,
+            update_user_courses
         }} >
             {children}
         </UserContext.Provider>

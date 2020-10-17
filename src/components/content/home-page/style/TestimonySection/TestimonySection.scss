@@ -3,6 +3,9 @@
     background-color: #FAFAFA;
     padding: 7% 0;
 
+    @include media('<=phone'){
+        display: none;
+    }
 
 
     .testimonies-container{

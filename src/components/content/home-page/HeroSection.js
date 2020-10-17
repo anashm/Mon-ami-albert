@@ -1,14 +1,19 @@
 
 import React,{useEffect , Fragment , useState , memo} from 'react'
-import photo_einstein from '../../../images/einsten.png';
+import albert_image from '../../../images/quizz/albert-quiz.png';
 import './Firstdiv.css';
 import phones_photo from '../../../images/phones.jpg';
 import btn_playstore from '../../../images/btn_playstore.jpg';
 import btn_appstore from '../../../images/btn_appstore.jpg';
-import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import {Link} from 'react-router-dom';
 import Lottie from "lottie-react";
+
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
+
+import Testimony from '../home-page/TestimonySection/Testimony/Testimony';
 
 
 import playBtn from '../../../images/Homepage/video.svg';
@@ -73,6 +78,26 @@ const PopUp = ({ closeToast }) => (
 const HeroSection = memo( ( {userConnected} ) => {
 
 
+    const text_slider = [
+        {
+            title : 'UN PROGRAMME COMPLET ',
+            text : 'Conforme au nouveau programme et aux nouvelles réformes'
+        },
+        {
+            title : 'DES EXEMPLES D’ÉVALUATIONS',
+            text : 'Des évaluations fréquentes, pour valider les acquis à la fin de chaque chapitre.'
+        },
+        {
+            title : 'UN SYSTÈME DE POINTS ET DE RÉCOMPENSES :',
+            text : 'Les étudiants gagnent des points à hauteur de leurs efforts'
+        },
+        {
+            title : 'DES RÉSULTATS CONCRETS ET APPROUVÉS',
+            text : 'Nos étudiants gagnent jusqu’à 4.2 point sur leur moyenne générale.'
+        },
+    
+    ];
+
     const options = {
         animationData: albert,
         loop: true,
@@ -81,7 +106,14 @@ const HeroSection = memo( ( {userConnected} ) => {
     
     const { View } = useLottie(options);
 
-   
+    const [ settings ,  ] = useState({
+        dots: true,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+    });
+
 
     const heroSectionInfos = {
         title: 'Le soutien scolaire de la nouvelle génération',
@@ -109,15 +141,23 @@ const HeroSection = memo( ( {userConnected} ) => {
                             {/* <img src={photo_einstein} alt=""/> */}
                             {View}
 
+                            <img src={albert_image} alt="albert"  />
+
                             <div className="play-btn-container d-none" role = 'button' onClick = { () => setShowModal(true) }>
                                 <img src={playBtn} alt=""/>
-                              
                             </div>
                         </div>
+
+                        <div className = 'testimonies-container' data-aos="fade-up" data-aos-once="true"  data-aos-delay="100"> 
+                            <Slider {...settings}>
+                                { text_slider.map( (slide) => <Testimony key = { slide.title } name = { slide.title }  text = { slide.text } />) }
+                            </Slider>
+                        </div>
+
+
                         <div className="hero-section-description-container">
                             <h2 className="hero-section-title" data-aos="fade-up" data-aos-once="true"  data-aos-delay="100"> Le soutien scolaire de <br/> La nouvelle génération </h2>
                             <p className="hero-section-paragraphe" data-aos="fade-up" data-aos-once="true"  data-aos-delay="200"> { heroSectionInfos.text } </p>
-                          
                             <div className="hero-section-buttons-container fade-bottom" >
                                 { console.log(userConnected) }
                                 { !userConnected ? 

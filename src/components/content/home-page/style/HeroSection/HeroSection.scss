@@ -60,12 +60,70 @@
         width: 90%;
         margin: 0 auto;
         display: flex;
+        padding: 10% 0;
 
 
         @include media('<=phone'){
-            display: block;
             width: 100%;
+
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            overflow: hidden;
+
         }
+
+        > *{
+            @include media('<=phone'){
+                flex: 1;
+    
+            }
+        }
+
+        .testimonies-container{
+            display: none;
+
+            @include media('<=phone'){
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                padding: 15% 0;
+            }
+
+            .testimony-card-container{
+                background: #FAFAFA;
+                padding: 10% 3%;
+
+                h3, p{
+                    text-align: center;
+                }
+            }
+
+            .slick-dots{
+
+                li{
+
+                    &.slick-active{
+                        button{
+                            border-color: black;
+                        }
+                    }
+
+                    button{
+                        border: 2px solid;
+                        border-color: #C0C0C0;
+                        border-radius: 50%;
+
+                        &::before{
+                            font-size: 9px;
+                            top: 2px;
+                        }
+                    }
+                }
+            }
+        }
+
 
         .hero-section-image-container{
 
@@ -85,11 +143,24 @@
                 svg{
                     width: 60% !important;
                     justify-content: center;
+                    display: none;
 
 
                     @include media('<=phone'){
                         width: 50% !important;
                     }
+                }
+
+
+            }
+
+            img{
+                display: none;
+                max-width: 60%!important;
+
+                @include media('<=phone'){
+                    display: block;
+
                 }
             }
 
@@ -134,8 +205,10 @@
 
             @include media('<=phone'){
                margin-top: 5%;
+               flex: unset;
             }
 
+         
 
        
 
@@ -156,6 +229,7 @@
                     font-size: 40px;
                     text-align: center;
                     line-height: 35px;
+                    display: none;
                 }
 
             }
@@ -177,6 +251,7 @@
                     padding-top: 4%;
                     padding-bottom: 2%;
                     font-size: 15px;
+                    display: none;
                 }
 
             }
@@ -203,14 +278,17 @@
                     text-align: center;
                     transition: all 0.3s;
 
+                    @include media('<=tablet'){
+                      
+                        padding: 8px 25px;
+                    }
+
 
                     @include media('<=phone'){
                         margin-right: 0;
                         margin-bottom: 20px;
                         text-align: center;
                         padding: 10px 25px;
-
-
                     }
     
     

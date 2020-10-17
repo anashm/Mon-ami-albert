@@ -4,6 +4,7 @@
 
     @include media('<=phone'){
         padding: 10% 0;
+        display: none;
     }
 
     .footer-link-container{
