@@ -27,10 +27,16 @@ import {
     const [ sourceImage , setSourceImage] = useState('');
 
     const [childData, setChildData] = useState("");
-    const [niveaux ,setNiveaux] = useState([]);
+    const [niveaux ,setNiveaux] = useState([
+         "Maths Sup",
+         "Maths Spe",
+         "Terminale",
+         "Première",
+         "Seconde"
+    ]);
     const [school , setSchool] = useState('')
     const history = useHistory();
-    useEffect(() => {
+   /*  useEffect(() => {
       
             try {
                 const database = Firebase.getData();
@@ -43,7 +49,7 @@ import {
                 history.push('/404')
             }
             
-    }, []);
+    }, []); */
 
 
     const handleSchoolChange = (e,result) => {

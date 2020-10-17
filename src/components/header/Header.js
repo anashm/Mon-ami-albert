@@ -11,8 +11,6 @@ import Avatar from '../../images/avatar.png'
 /* import { Button, Popup,Dropdown, DropdownMenu } from 'semantic-ui-react'; */
 import { Modal,Button } from 'react-bootstrap';
 import { Dropdown } from 'semantic-ui-react';
-
-
 import highfive from '../../images/highFive/HIGHFIVE.svg';
 
 
