@@ -3,21 +3,13 @@ import './EleveCompte.css';
 
 const NiveauComponent = (props) => {
 
-    const [btnClicked,setbtnClicked] = useState(undefined)
-
     const functionHandler = () => {
-       
-        props.passChildData(props.niveau);
-        setbtnClicked(true)
-        props.niveauClicked(props.niveau)
+        props.setLevel(props.niveau);
        /*  props.matiereClicked(props.niveau) */
-       
     }
     
     return (
-      
-        <span onClick={functionHandler}  className = {props.active}>{props.niveau}</span>
-          
+        <span onClick={functionHandler}  className = { `niveaux ${ props.level === props.niveau  ? 'active' : null }` }>{props.niveau}</span>
     )
 }
 

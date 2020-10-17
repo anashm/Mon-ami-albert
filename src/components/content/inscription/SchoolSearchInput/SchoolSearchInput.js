@@ -1,4 +1,4 @@
-import React , { useCallback , useReducer , useEffect } from 'react';
+import React , { useCallback , useReducer , useEffect , memo } from 'react';
 import _ from 'lodash'
 import { Search } from 'semantic-ui-react';
 import json from './new-etablissements.json';
@@ -29,16 +29,17 @@ function schoolReducer(state, action) {
 
 const SchoolSearchInput = ({ changed }) => {
 
-
-    const [state, dispatch] = useReducer(schoolReducer, initialState)
-    const { loading, results, value } = state
+    const [state, dispatch] = useReducer(schoolReducer, initialState);
+    const { loading, results, value } = state;
+    changed(value);
 
     //send value to parent
-    changed(value)
+    
 
+    const timeoutRef = React.useRef();
 
-    const timeoutRef = React.useRef()
     const handleSearchChange = useCallback((e, data) => {
+
         clearTimeout(timeoutRef.current)
         dispatch({ type: 'START_SEARCH', query: data.value })
 
@@ -58,13 +59,17 @@ const SchoolSearchInput = ({ changed }) => {
             })
         }, 300);
 
-    }, [])
+    }, [value ]);
 
-        useEffect(() => {
-            return () => {
-                clearTimeout(timeoutRef.current)
-            }
-        }, []);
+    useEffect(() => {
+
+
+        return () => {
+            clearTimeout(timeoutRef.current)
+        }
+    }, []);
+
+   
 
     return (
         <div>
@@ -85,4 +90,4 @@ const SchoolSearchInput = ({ changed }) => {
     )
 }
 
-export default SchoolSearchInput;
+export default SchoolSearchInput ;

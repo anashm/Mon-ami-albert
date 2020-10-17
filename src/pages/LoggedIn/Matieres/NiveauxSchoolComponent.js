@@ -25,7 +25,11 @@ const  NiveauxSchoolComponent = (props) => {
 
     return (
         <div className="niveaux_elements">
-            <h5 className="title_niveaux" onClick={handleChangeLevel}>{props.title} <span className="arrow_niveaux"> <Icon name = 'angle right' /> </span>  </h5>
+            <h5 className="title_niveaux" onClick={handleChangeLevel}>
+                {props.title} 
+                <span className="arrow_niveaux"> <Icon name = 'angle right' /> 
+                </span>  
+            </h5>
         </div> 
         
     )

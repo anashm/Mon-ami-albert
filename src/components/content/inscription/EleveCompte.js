@@ -24,11 +24,14 @@ import {
 
  const  EleveCompte = ( props ) =>  {
     
-    const Firebase = useContext(FirebaseContext)
+    //const Firebase = useContext(FirebaseContext)
     const [ sourceImage , setSourceImage] = useState('');
 
     const [childData, setChildData] = useState("");
-    const [niveaux ,setNiveaux] = useState([
+
+    const [level , setLevel] = useState('');
+
+    const [niveaux , ] = useState([
          "Maths Sup",
          "Maths Spe",
          "Terminale",
@@ -36,41 +39,20 @@ import {
          "Seconde"
     ]);
     const [school , setSchool] = useState('')
-    const [avatar , setAvatar] = useState(null)
-    //const [clickedAvatar,setClickedAvatar] = useState(null)
-    const history = useHistory();
-   /*  useEffect(() => {
-      
-            try {
-                const database = Firebase.getData();
-                const ref_niveaux = database.ref('schoolLevels/all');
-                ref_niveaux.on("value", snapshot => {
-                    setNiveaux(snapshot.val())
-                    console.log(snapshot.val())
-                })
-            } catch (error) {
-                history.push('/404')
-            }
-            
-    }, []); */
+    const [avatar , setAvatar] = useState('')
+
 
     const handleAvatarClicked = src => setSourceImage(src);
+
     const getAvatarClicked = (avatar) => {
         setAvatar(avatar);    
-       // setClickedAvatar(avatar);
-        
     }
-    const handleSchoolChange = (e,result) => {
-        
+   /*  const handleSchoolChange = (e,result) => {
         setSchool(result.value)
     }
 
     const handleNiveauClicked = (src) => {
         setSourceImage(src)
-       
-    }
-    /* const HandleMatiereClicked = () => {
-        console.log('clicked')
     } */
 
     const handleChange = value => setSchool(value);
@@ -95,7 +77,7 @@ import {
                             <Avatar avatarClicked = { handleAvatarClicked }  key={index} active = { sourceImage === avatar.image ? 'avatar_clicked' : 'image-avatar' }  getAvatar={getAvatarClicked} logo={avatar.image} name={avatar.name} />
                         )
                 })}
-               
+
             </div>
             {/* <div className="row justify-content-center align-items-center">
                 <img src={avatar} alt = '' /> 
@@ -110,36 +92,24 @@ import {
                 <div className="col">
                     <div className="grid1"> 
                         {niveaux.map( (niveau,index) => {
-                         return (
+                            return (
                                 <span key={index}>
                                 <NiveauComponent 
                                     key={index} 
                                     niveau={niveau}
-                                    passChildData={setChildData}
-                                    niveauClicked = { handleNiveauClicked }
-                                    active = { sourceImage === niveau ? 'niveaux_clicked' : 'niveaux' }
-                                    
-                                    />  
-                                    <div className="spacers"></div>
-                                    
+                                    setLevel = {setLevel}
+                                    level = {level}
+                                />  
                                 </span>
-                                )                   
-                            
+                            )                   
                         }) }          
-
                     </div>
                     
                     <div className="grid2">
                         { console.log(school) }
-
-                        {childData &&<SchoolSearchInput changed = { handleChange } />  }
-
-
+                        {(level.length > 0) && <SchoolSearchInput changed = { handleChange } />  }
                     </div>    
-
                 </div>
-
-
             </div>
             <p className="deja_un_compte">Vous avez déjà un compte ? <Link to="/login"> Connecte-toi </Link></p>
             <div className="social-login-container">
