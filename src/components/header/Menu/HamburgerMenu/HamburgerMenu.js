@@ -175,6 +175,7 @@ const HamburgerMenu = () => {
 
                         <div className="nav-items-container">
                         { footerLinks.map(footerLink => <FooterLink key = {footerLink.title} className = 'nav-item-link' link = { footerLink.link } id = { convertToSlug(footerLink.title) } text = { footerLink.title }  jsx = {footerLink.jsx} />) }
+                            
                         </div>
 
                         <div className="social-media-container">

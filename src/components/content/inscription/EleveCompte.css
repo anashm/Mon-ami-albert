@@ -15,6 +15,13 @@
 }
 
 
+
+.container-profil-images-scroll{
+    display: flex;
+    overflow-x: scroll;
+    margin: auto;
+    width: 65%;
+}
 .cree_ton_compte{
     text-align: center;
     font-family: KGFallForYouBold;

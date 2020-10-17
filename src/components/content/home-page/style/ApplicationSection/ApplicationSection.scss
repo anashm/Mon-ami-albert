@@ -19,6 +19,7 @@
 
             @include media('<=phone'){
                 flex: 0 0 100%;
+               //display: none;
             }
 
             p{

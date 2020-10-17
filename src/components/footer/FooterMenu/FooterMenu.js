@@ -35,7 +35,8 @@ const FooterMenu = () => {
             text: 'Qrcode',
             icon: 'qrcode',
             hasLink: true,
-            link: '/profil'
+            link: '/test_qr_code'
+
         },
 
     ]

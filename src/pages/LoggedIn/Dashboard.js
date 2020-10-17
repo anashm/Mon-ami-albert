@@ -121,7 +121,10 @@ const  Dashboard = (props) => {
                         <Breadcrumb.Section active>Mon parcours</Breadcrumb.Section>
                     </Breadcrumb>
                 </div>
-
+                <div className="mon-parcours-container">
+                    <span className="text-mon-parcours-span">Mon parcours</span>
+                </div>
+                
                 <p  className="cree_ton_compte" onClick = {handleShowModal}>
                     {
                         (userContext.user_informations) ? <Fragment> <span>{userContext.user_informations.level}</span> <Icon name = 'angle down' />  </Fragment>  : <span><Loader active inline='centered' /> </span> 
