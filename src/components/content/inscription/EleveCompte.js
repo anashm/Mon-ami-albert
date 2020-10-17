@@ -3,7 +3,6 @@ import './EleveCompte.css';
 import {Link} from 'react-router-dom';
 import Google from '../../../pages/Login/Social/Google/Google';
 import Facebook from '../../../pages/Login/Social/Facebook/Facebook';
-import avatar from '../../../images/avatar.png';
 import { Button} from 'semantic-ui-react';
 import NiveauComponent from './NiveauComponent';
 //import database from '../../../firebase';
@@ -13,7 +12,9 @@ import Title from '../../general/Title/Title';
 import { useHistory } from "react-router-dom";
 import SchoolSearchInput from './SchoolSearchInput/SchoolSearchInput'
 
-
+import avatar from '../../../images/avatar.png';
+import { avatars } from '../../header/ProfileAvatars';
+import Avatar from '../../header/Avatar/Avatar';
 import {
     FacebookShareCount ,
     WhatsappShareButton,
@@ -35,6 +36,8 @@ import {
          "Seconde"
     ]);
     const [school , setSchool] = useState('')
+    const [avatar , setAvatar] = useState(null)
+    //const [clickedAvatar,setClickedAvatar] = useState(null)
     const history = useHistory();
    /*  useEffect(() => {
       
@@ -51,7 +54,12 @@ import {
             
     }, []); */
 
-
+    const handleAvatarClicked = src => setSourceImage(src);
+    const getAvatarClicked = (avatar) => {
+        setAvatar(avatar);    
+       // setClickedAvatar(avatar);
+        
+    }
     const handleSchoolChange = (e,result) => {
         
         setSchool(result.value)
@@ -59,6 +67,7 @@ import {
 
     const handleNiveauClicked = (src) => {
         setSourceImage(src)
+       
     }
     /* const HandleMatiereClicked = () => {
         console.log('clicked')
@@ -80,13 +89,21 @@ import {
 
             <Title text = 'CREE TON COMPTE' textcentered centerOverlined />
 
-            <div className="row justify-content-center align-items-center">
+            <div className="container-profil-images-scroll">
+                {avatars.map( (avatar , index) => {
+                        return(
+                            <Avatar avatarClicked = { handleAvatarClicked }  key={index} active = { sourceImage === avatar.image ? 'avatar_clicked' : 'image-avatar' }  getAvatar={getAvatarClicked} logo={avatar.image} name={avatar.name} />
+                        )
+                })}
+               
+            </div>
+            {/* <div className="row justify-content-center align-items-center">
                 <img src={avatar} alt = '' /> 
                 <p className="text-avatar"> {childData} </p>
-            </div>
+            </div> */}
 
             <p className="quel_classe">En quelle classe es-tu (2019-2020) ?</p>
-
+            
 
             <div className="row">
                 
@@ -101,7 +118,7 @@ import {
                                     passChildData={setChildData}
                                     niveauClicked = { handleNiveauClicked }
                                     active = { sourceImage === niveau ? 'niveaux_clicked' : 'niveaux' }
-                                    /* matiereClicked = {HandleMatiereClicked}  */
+                                    
                                     />  
                                     <div className="spacers"></div>
                                     
@@ -140,6 +157,7 @@ import {
                             pathname: "/sign-up",
                             state: {
                                 fonction:childData,
+                                avatar : avatar,
                                 etablissement : school
                             }
                         }}>

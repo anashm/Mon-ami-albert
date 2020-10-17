@@ -77,7 +77,7 @@ const  SignUp = (props) => {
             firstName: SignUpData.first_name,
             level:props.location.state.fonction,
             points : 50,
-            avatar : 'Boy-3',
+            avatar : props.location.state.avatar,
             pays : "fr",
             etablissement : props.location.state.etablissement,
            Progression : {
@@ -177,11 +177,13 @@ const  SignUp = (props) => {
 
                     <div className="col-md-4" style={{marginLeft:'4%'}}>
                         <div style={{float:"left",width:'20%'}}>
-                             <img src={avatar} style={{width : '70%'}} /> 
+                             {/* <img src={avatar} style={{width : '70%'}} /> */}
+                             <img src={require(`../../../images/avatars/${props.location.state.avatar}.png`)} style={{width : '80%'}} />  
                         </div>
                         
                         <p className="text-avatar"> <b> {props.location.state.fonction}</b>.&nbsp;&nbsp;
-                        <Link to="/eleve-create-account"> Modifier </Link></p>
+                            <Link to="/eleve-create-account"> Modifier </Link>
+                        </p>
                     </div>
                 </div>
 

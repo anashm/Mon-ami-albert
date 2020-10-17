@@ -5,6 +5,14 @@
     gap: 30px;
 }
 
+.mon-parcours-container{
+    text-align: center;
+}
+.text-mon-parcours-span{
+    color: #6BA4A5;
+    font-size: 18px;
+    font-weight: 800;
+}
 .cree_ton_compte{
     cursor: pointer;
     padding: 3% 0;
