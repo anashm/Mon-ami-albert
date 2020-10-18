@@ -16,7 +16,7 @@ import UserContext from '../../Context/UserContext/UserContext';
 import NiveauxSchool from './Matieres/NiveauxSchoolComponent';
 import AOS from 'aos';
 import { Icon , Divider , Breadcrumb , Loader} from 'semantic-ui-react';
-
+import Header from '../../components/header/Header';
 import { useHistory } from 'react-router-dom'
 
 
@@ -113,6 +113,8 @@ const  Dashboard = (props) => {
     }
 
         return (
+            <>
+            <Header />
             <div className="container dashboard-section">
                 <div className="breadcrumb-container">
                     <Breadcrumb>
@@ -176,7 +178,7 @@ const  Dashboard = (props) => {
                     </Modal>      
             </div>
 
-            
+          </>  
         )
    // }
 }

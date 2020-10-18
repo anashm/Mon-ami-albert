@@ -8,7 +8,7 @@ import ApplicationSection from './Application/ApplictaionSection';
 import ClassesSection from './ClassesSection/ClassesSection';
 /* import FreeChapterSection from './FreeChapterSection/FreeChapterSection';
  */import Footer from '../../footer/Footer';
-
+ import Header from '../../header/Header'
 import './style/homapage.scss';
 
 import UserContext from '../../../Context/UserContext/UserContext';
@@ -41,6 +41,8 @@ const HomePage =  memo( ({ loading }) => {
     }else{
       
       return(
+        <>
+        <Header />
         <section id = 'homepage'>
           <HeroSection userConnected={userContext.user} />
           <SchoolInfosSection />
@@ -52,6 +54,7 @@ const HomePage =  memo( ({ loading }) => {
           <ClassesSection />
           <Footer />
         </section>
+        </>
       )
     }
 })

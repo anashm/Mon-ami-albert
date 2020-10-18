@@ -10,6 +10,7 @@ import firebase_db from "firebase/app";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Modal from 'react-bootstrap/Modal';
+import Header from '../../components/header/Header';
 import {
     FacebookShareButton ,
     FacebookIcon,
@@ -154,6 +155,8 @@ export default function ProfilPage() {
     
 
     return (
+        <>
+        <Header />
         <div className = 'login-content-container'>
 
             <div className="profile-image-container">
@@ -275,5 +278,7 @@ export default function ProfilPage() {
                     </Modal.Body>
             </Modal>     
         </div>
+
+    </>
     )
 }

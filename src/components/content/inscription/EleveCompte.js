@@ -123,10 +123,10 @@ import {
 
                 <div className="email-login-container">
 
-                    {(childData && school) ? (<Link to={{
+                    {(school && level) ? (<Link to={{
                             pathname: "/sign-up",
                             state: {
-                                fonction:childData,
+                                fonction:level,
                                 avatar : avatar,
                                 etablissement : school
                             }

@@ -11,6 +11,7 @@ import AOS from 'aos';
 import { Alert } from 'react-bootstrap';
 import { Modal,Button } from 'react-bootstrap';
 import albert from '../../images/quizz/albert-quiz.png';
+import Header from '../../components/header/Header';
 
 const  Chapitres = ({match}) => {
 
@@ -105,6 +106,8 @@ const  Chapitres = ({match}) => {
     }
 
         return (
+            <>
+            <Header />
             <div className="container chapter-section" >
                 <div className="breadcrumb-container">
                     <Breadcrumb>
@@ -189,7 +192,9 @@ const  Chapitres = ({match}) => {
                        
                     </div>
                 </div>
-            </div>   
+            </div> 
+
+        </>  
         )
     
 }

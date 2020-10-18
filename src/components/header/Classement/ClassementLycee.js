@@ -5,6 +5,7 @@ import { useHistory } from "react-router-dom";
 import {  Table } from 'semantic-ui-react';
 import { Dimmer, Loader } from 'semantic-ui-react';
 import highfive from '../../../images/highFive/HIGHFIVE.svg';
+import Header from '../../header/Header';
 
 import './ClassementGeneral.css';
 
@@ -63,6 +64,8 @@ const ClassementLycee = () => {
       }, [userContext.user]);
 
     return (
+      <>
+      <Header />
         <div className = 'general-order-container'>
             <center> <h3>Classement lycée</h3> </center>
             
@@ -113,6 +116,8 @@ const ClassementLycee = () => {
             }
             
         </div>
+
+      </>
     )
 }
 export default ClassementLycee;

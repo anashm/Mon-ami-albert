@@ -65,7 +65,7 @@ const  App = () => {
 
   return (
     <Router>
-      <Header />
+     {/*  <Header /> */}
         <main className= { `main_content ${userContext.user ? 'pad-bottm-mobile' : ''}`}>
           <Switch>
             <Route exact path="/" render = { props => <HomePage { ...props } loading = { loading } /> } />

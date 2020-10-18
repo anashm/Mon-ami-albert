@@ -6,17 +6,14 @@ import UserContext from '../../Context/UserContext/UserContext';
 import courseImg from './assets/images/Cours.png';
 import quizzImg from './assets/images/Quiz.png';
 import exercisesImg from './assets/images/exercices.png';
-
 import Courses from './Courses/Courses';
 import Exrecises from './Exercises/Exercises';
 import Quizz from './Quizz/Quizz';
 import ChapterButton from './ChapterButton/ChapterButton';
-
 import {Breadcrumb} from 'semantic-ui-react';
 import { Link } from 'react-router-dom'
-
 import AOS from 'aos';
-
+import Header from '../../components/header/Header';
 
 
 import './style/Chapter.scss';
@@ -76,6 +73,8 @@ const Chapter = ({match}) => {
 
 
     return (
+        <>
+        <Header />
         <section className = 'container chapter-page-container'>
             <div className="breadcrumb-container">
                 <Breadcrumb>
@@ -104,6 +103,8 @@ const Chapter = ({match}) => {
                 { exercisesContent &&  <div className="chapter-quizz-container">  <Exrecises urlParams = {match.params} exercises = 'exercices' /> </div>}  
             </div>
         </section>
+
+    </>
     );
 }
 

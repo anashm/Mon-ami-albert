@@ -3,7 +3,7 @@ import QrReader from 'react-qr-reader'
 import UserContext from '../../Context/UserContext/UserContext';
 import { Button } from 'semantic-ui-react';
 import {FirebaseContext} from '../../firebase';
-
+import Header from '../../components/header/Header';
 const QRComponent = () => {
     const userContext = useContext(UserContext)
     const firebase = useContext(FirebaseContext)
@@ -96,6 +96,8 @@ const QRComponent = () => {
       }
    
     return (
+      <>
+      <Header />
         <div>
          
         
@@ -110,6 +112,8 @@ const QRComponent = () => {
             
             
         </div>
+
+      </>
     )
 }
 

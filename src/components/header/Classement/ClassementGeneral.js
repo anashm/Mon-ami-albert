@@ -6,6 +6,7 @@ import {  Table } from 'semantic-ui-react'
 import './ClassementGeneral.css';
 import { Dimmer, Loader } from 'semantic-ui-react';
 import highfive from '../../../images/highFive/HIGHFIVE.svg';
+import Header from '../../header/Header';
 
 const ClassementGeneral = () => {
 
@@ -71,6 +72,9 @@ const ClassementGeneral = () => {
     }, [userContext.user_informations , userContext.user]);
 
     return (
+
+        <>
+        <Header />
         <div className = 'general-order-container'>
 
 
@@ -125,6 +129,8 @@ const ClassementGeneral = () => {
                                 
             </div>
         </div>
+
+     </>
     )
 }
 
