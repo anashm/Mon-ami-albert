@@ -52,6 +52,7 @@ export default function ProfilPage() {
     const [showSocialIcons , setShowSocialIcons] = useState(false)
     const [ niveauxSchool , setNiveauxSchool ] = useState([])
     const [showScrollAvatars , setShowScrollAvatars] = useState(false);
+    const [fromFacebook , setFromFacebook] = useState(false)
   
     useEffect(() => {
         if( userContext.user && userContext.user_informations){
@@ -61,6 +62,7 @@ export default function ProfilPage() {
             setAvatar(userContext.user_informations.avatar);
             setEtablissement(userContext.user_informations.etablissement);
             setLevel(userContext.user_informations.level);
+            setFromFacebook(userContext.user_informations.fromFacebook)
             setLoading(false)
 
             if(niveauxSchool.length < 1){
@@ -128,60 +130,9 @@ export default function ProfilPage() {
             
             let utilisateur = firebase_db.auth().currentUser;
             
-            
-            if(clickedAvatar){
-                reference.child(userId).update({
-                    lastName:  lastName,
-                    firstName : firstName,
-                    avatar : clickedAvatar
-                }).then(() => {
-                    userContext.update_user_lastname(lastName)
-                    userContext.update_user_firstname(firstName)
-                    userContext.update_user_avatar(clickedAvatar)
-                    //history.push('/dashboard-user') 
-                    setShowToast(true)    
-                    toast.success("Votre Profil a été mis à jour ! 🧐");
-                })
-            }
-
-            else{
-
-                if(school){
-                    reference.child(userId).update({
-                        lastName: lastName ,
-                        firstName : firstName,
-                        etablissement :school
-                    }).then(() => {
-                        userContext.update_user_lastname(lastName)
-                        userContext.update_user_firstname(firstName)
-                        userContext.update_user_etablissement(school)
-                        //history.push('/dashboard-user') 
-                        setShowToast(true)    
-                        toast.success("Votre Profil a été mis à jour ! 🧐");
-                    })
-                }
-                else{
-                    reference.child(userId).update({
-                        lastName:  lastName,
-                        firstName : firstName
-                        
-                    }).then(() => {
-                        //history.push('/dashboard-user') 
-                        userContext.update_user_lastname(lastName)
-                        userContext.update_user_firstname(firstName)
-                        setShowToast(true)    
-                        toast.success("Votre Profil a été mis à jour ! 🧐");
-                    })
-                }
-                
-            }
-           /*  reauthenticates(currentPassword).then(() => {                  
-                user.updatePassword(newPassword).then(function() {
-                    
-                    }).catch(function(error) {
-                    
-                    });
-                    if(clickedAvatar){
+            //if user from Facebbok
+            if(fromFacebook){
+                if(clickedAvatar){
                     reference.child(userId).update({
                         lastName:  lastName,
                         firstName : firstName,
@@ -195,7 +146,9 @@ export default function ProfilPage() {
                         toast.success("Votre Profil a été mis à jour ! 🧐");
                     })
                 }
+    
                 else{
+    
                     if(school){
                         reference.child(userId).update({
                             lastName: lastName ,
@@ -225,11 +178,67 @@ export default function ProfilPage() {
                     }
                     
                 }
-
-                }).catch(function(error) {
-                    setShowToast(true) 
-                    toast.error("Ce mot de passe ne correspond pas à cet utilisateur!");
-                }); */
+            }
+           
+            //if user not from facebook
+            else{
+                reauthenticates(currentPassword).then(() => {                  
+                    user.updatePassword(newPassword).then(function() {
+                        
+                        }).catch(function(error) {
+                        
+                        });
+                        if(clickedAvatar){
+                        reference.child(userId).update({
+                            lastName:  lastName,
+                            firstName : firstName,
+                            avatar : clickedAvatar
+                        }).then(() => {
+                            userContext.update_user_lastname(lastName)
+                            userContext.update_user_firstname(firstName)
+                            userContext.update_user_avatar(clickedAvatar)
+                            //history.push('/dashboard-user') 
+                            setShowToast(true)    
+                            toast.success("Votre Profil a été mis à jour ! 🧐");
+                        })
+                    }
+                    else{
+                        if(school){
+                            reference.child(userId).update({
+                                lastName: lastName ,
+                                firstName : firstName,
+                                etablissement :school
+                            }).then(() => {
+                                userContext.update_user_lastname(lastName)
+                                userContext.update_user_firstname(firstName)
+                                userContext.update_user_etablissement(school)
+                                //history.push('/dashboard-user') 
+                                setShowToast(true)    
+                                toast.success("Votre Profil a été mis à jour ! 🧐");
+                            })
+                        }
+                        else{
+                            reference.child(userId).update({
+                                lastName:  lastName,
+                                firstName : firstName
+                                
+                            }).then(() => {
+                                //history.push('/dashboard-user') 
+                                userContext.update_user_lastname(lastName)
+                                userContext.update_user_firstname(firstName)
+                                setShowToast(true)    
+                                toast.success("Votre Profil a été mis à jour ! 🧐");
+                            })
+                        }
+                        
+                    }
+    
+                    }).catch(function(error) {
+                        setShowToast(true) 
+                        toast.error("Ce mot de passe ne correspond pas à cet utilisateur!");
+                    });
+            }
+           
             
         }
     }
@@ -349,28 +358,37 @@ export default function ProfilPage() {
                     <input placeholder='Nom' value={lastName} onChange={HandleChangeLastName}  />
                 </Form.Field>
                 {showToast ? <ToastContainer hideProgressBar={true} /> : ''}
-                {/*<Form.Field>
-                    <label>Votre mot de passe</label>
-                    <input type="password" placeholder='Votre mot de passe' value={currentPassword} onChange={(e) => { setcurrentPassword(e.target.value)}}  />
-                </Form.Field>
 
-                 <Form.Field>
-                    <Checkbox label="Modifier le mot de passe"  onChange={HandleCheckedPassword} />
-                </Form.Field>
-
-                
-                
                 {
-                    passwordChecked ? (
-                        <div>
-                            <Form.Field>
-                                <label>Nouveau mot de pass</label>
-                                <input type="password" placeholder='Nouveau mot de pass' value={newPassword} onChange={(e) => { setNewPassword(e.target.value)}} />
-                            </Form.Field>
-                        </div>
-                    ) : ''
-                } */}
-                {/* <Form.Field>
+                    fromFacebook ? 
+
+                    ''
+                    :
+                    <>
+                        <Form.Field>
+                        <label>Votre mot de passe</label>
+                        <input type="password" placeholder='Votre mot de passe' value={currentPassword} onChange={(e) => { setcurrentPassword(e.target.value)}}  />
+                        </Form.Field>
+
+                        <Form.Field>
+                            <Checkbox label="Modifier le mot de passe"  onChange={HandleCheckedPassword} />
+                        </Form.Field>
+
+                
+                
+                        {
+                            passwordChecked ? (
+                                <div>
+                                    <Form.Field>
+                                        <label>Nouveau mot de pass</label>
+                                        <input type="password" placeholder='Nouveau mot de pass' value={newPassword} onChange={(e) => { setNewPassword(e.target.value)}} />
+                                    </Form.Field>
+                                </div>
+                            ) : ''
+                        }
+                </>
+                }
+                               {/* <Form.Field>
                     <label>Email</label>
                     <input placeholder='Email' value={email} onChange={HandleChangeEmail}  />
                 </Form.Field> */}
