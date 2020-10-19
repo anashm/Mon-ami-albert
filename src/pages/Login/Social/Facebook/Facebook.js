@@ -80,7 +80,7 @@ const Facebook = ( props ) => {
     
     const responseFacebook = response => {
         //e.preventDefault();
-       
+       console.log('dkhal response')
         
         firebase.signupUser(response.email,'facebook')
         .then(user => {
