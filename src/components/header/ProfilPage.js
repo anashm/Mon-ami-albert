@@ -128,7 +128,54 @@ export default function ProfilPage() {
             
             let utilisateur = firebase_db.auth().currentUser;
             
-            reauthenticates(currentPassword).then(() => {                  
+            
+            if(clickedAvatar){
+                reference.child(userId).update({
+                    lastName:  lastName,
+                    firstName : firstName,
+                    avatar : clickedAvatar
+                }).then(() => {
+                    userContext.update_user_lastname(lastName)
+                    userContext.update_user_firstname(firstName)
+                    userContext.update_user_avatar(clickedAvatar)
+                    //history.push('/dashboard-user') 
+                    setShowToast(true)    
+                    toast.success("Votre Profil a été mis à jour ! 🧐");
+                })
+            }
+
+            else{
+
+                if(school){
+                    reference.child(userId).update({
+                        lastName: lastName ,
+                        firstName : firstName,
+                        etablissement :school
+                    }).then(() => {
+                        userContext.update_user_lastname(lastName)
+                        userContext.update_user_firstname(firstName)
+                        userContext.update_user_etablissement(school)
+                        //history.push('/dashboard-user') 
+                        setShowToast(true)    
+                        toast.success("Votre Profil a été mis à jour ! 🧐");
+                    })
+                }
+                else{
+                    reference.child(userId).update({
+                        lastName:  lastName,
+                        firstName : firstName
+                        
+                    }).then(() => {
+                        //history.push('/dashboard-user') 
+                        userContext.update_user_lastname(lastName)
+                        userContext.update_user_firstname(firstName)
+                        setShowToast(true)    
+                        toast.success("Votre Profil a été mis à jour ! 🧐");
+                    })
+                }
+                
+            }
+           /*  reauthenticates(currentPassword).then(() => {                  
                 user.updatePassword(newPassword).then(function() {
                     
                     }).catch(function(error) {
@@ -182,7 +229,7 @@ export default function ProfilPage() {
                 }).catch(function(error) {
                     setShowToast(true) 
                     toast.error("Ce mot de passe ne correspond pas à cet utilisateur!");
-            });
+                }); */
             
         }
     }
@@ -301,17 +348,17 @@ export default function ProfilPage() {
                     <label>Nom</label>
                     <input placeholder='Nom' value={lastName} onChange={HandleChangeLastName}  />
                 </Form.Field>
-
-                <Form.Field>
+                {showToast ? <ToastContainer hideProgressBar={true} /> : ''}
+                {/*<Form.Field>
                     <label>Votre mot de passe</label>
                     <input type="password" placeholder='Votre mot de passe' value={currentPassword} onChange={(e) => { setcurrentPassword(e.target.value)}}  />
                 </Form.Field>
 
-                <Form.Field>
+                 <Form.Field>
                     <Checkbox label="Modifier le mot de passe"  onChange={HandleCheckedPassword} />
                 </Form.Field>
 
-                {showToast ? <ToastContainer hideProgressBar={true} /> : ''}
+                
                 
                 {
                     passwordChecked ? (
@@ -322,12 +369,12 @@ export default function ProfilPage() {
                             </Form.Field>
                         </div>
                     ) : ''
-                }
+                } */}
                 {/* <Form.Field>
                     <label>Email</label>
                     <input placeholder='Email' value={email} onChange={HandleChangeEmail}  />
                 </Form.Field> */}
-                <Form.Field>
+                {/* <Form.Field>
                     <Checkbox label="Modifier l'avatar"  onChange={HandleChecked} />
                 </Form.Field>
 
@@ -340,7 +387,7 @@ export default function ProfilPage() {
                     })}
                     
                 </div>
-                ) : '' }
+                ) : '' } */}
                 
                 <Button type="submit"  className = 'profile-submit-btn' style={{color :'white'}}>Mettre à jour</Button>
             </Form>
