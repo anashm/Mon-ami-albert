@@ -87,7 +87,7 @@ const  App = () => {
             <Route exact path="/test_qr_code" component={QRCode} /> 
             <Route exact path="/nous_contacter" component={Contact} /> 
             <Route exact path="/404" component={NotFound} />
-            {/* <Redirect to="/404" /> */}
+            <Redirect to="/404" />
           </Switch>
         </main>
         { userContext.user && <FooterMenu /> } 

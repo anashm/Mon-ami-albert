@@ -22,6 +22,7 @@ const Facebook = ( props ) => {
             points : 50,
             avatar : 'Boy-3',
             pays : "fr",
+            fromFacebook : "oui",
             etablissement : '',
            Progression : {
                
