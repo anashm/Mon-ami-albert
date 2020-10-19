@@ -88,7 +88,7 @@ const Facebook = ( props ) => {
             console.log(user)
             saveUser(user).then( () => {
                 console.log('user saved') ;
-                props.navigation.history.push('/dashboard-user')
+                history.push('/dashboard-user')
             })
             //props.navigation.history.push('/dashboard-user')
         })
@@ -98,7 +98,8 @@ const Facebook = ( props ) => {
                 //console.log('authenticated')
                 firebase.loginUser(response.email,'facebook')
                 .then(user => {
-                    //console.log(user)
+                    console.log(user)
+                    console.log('dkhal hna')
                     history.push('/dashboard-user')
                 })
             }
