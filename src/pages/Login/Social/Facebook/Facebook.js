@@ -2,8 +2,9 @@ import React,{ useState,useContext } from 'react';
 import FacebookLogin from 'react-facebook-login';
 import {FirebaseContext} from '../../../../firebase'
 import firebases from 'firebase';
-
+import { useHistory } from "react-router-dom";
 const Facebook = ( props ) => {
+    const history = useHistory();
     const firebase = useContext(FirebaseContext)
 
     const appID = "2769237243305382"
@@ -92,13 +93,13 @@ const Facebook = ( props ) => {
             //props.navigation.history.push('/dashboard-user')
         })
         .catch(errors => {
-            console.log(errors)
+            //console.log(errors)
             if(errors.code='auth/email-already-in-use'){
-                console.log('authenticated')
+                //console.log('authenticated')
                 firebase.loginUser(response.email,'facebook')
                 .then(user => {
-                    console.log(user)
-                    props.navigation.history.push('/dashboard-user')
+                    //console.log(user)
+                    history.push('/dashboard-user')
                 })
             }
                 
