@@ -106,7 +106,7 @@ import {
                     </div>
                     
                     <div className="grid2">
-                        { console.log(school) }
+                    
                         {(level.length > 0) && <SchoolSearchInput changed = { handleChange } />  }
                     </div>    
                 </div>

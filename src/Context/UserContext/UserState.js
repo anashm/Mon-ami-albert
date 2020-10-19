@@ -16,7 +16,10 @@ import {
     UPDATE_USER_ON_QUIZZ_SUMMARY_PAGE,
     UPDATE_QUIZZ_NEXT_INDEX,
     UPDATE_USER_NOT_FOUND_ANSWER,
-    UPDATE_USER_COURSES
+    UPDATE_USER_COURSES,
+    UPDATE_USER_ETABLISSEMENT,
+    UPDATE_USER_FIRSTNAME,
+    UPDATE_USER_LASTNAME
 } from '../Types';
 
 import UserReducer from './UserReducer';
@@ -79,8 +82,11 @@ const UserState = ({ children }) => {
 
     const update_user_courses = course => dispatch({ type: UPDATE_USER_COURSES , payload: course });
 
+    const update_user_etablissement = etablissement => dispatch({ type: UPDATE_USER_ETABLISSEMENT , payload: etablissement });
 
+    const update_user_firstname = firstname  => dispatch({ type: UPDATE_USER_FIRSTNAME , payload: firstname });
 
+    const update_user_lastname = lastname  => dispatch({ type: UPDATE_USER_LASTNAME , payload: lastname });
 
 
 
@@ -104,6 +110,7 @@ const UserState = ({ children }) => {
             user_not_found_answer: state.user_not_found_answer,
             user_on_quizz_summary_page: state.user_on_quizz_summary_page,
             user_courses: state.user_courses,
+            etablissement : state.etablissement,
             update_quizz_questions,
             get_connected_user, 
             get_user_informations ,
@@ -120,7 +127,10 @@ const UserState = ({ children }) => {
             update_user_not_found_answer,
             update_user_on_quizz_summary_page,
             update_quizz_next_index,
-            update_user_courses
+            update_user_courses,
+            update_user_etablissement,
+            update_user_lastname,
+            update_user_firstname
         }} >
             {children}
         </UserContext.Provider>

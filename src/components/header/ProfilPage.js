@@ -1,9 +1,9 @@
 import React,{useEffect,useContext,useState , Fragment} from 'react'
-import { Input,Form,Button,Checkbox , Loader , Dimmer } from 'semantic-ui-react';
+import { Input,Form,Button,Checkbox ,Icon, Loader , Dimmer } from 'semantic-ui-react';
 import {FirebaseContext} from '../../firebase';
 import UserContext from '../../Context/UserContext/UserContext';
 import { useHistory } from "react-router-dom";
-
+import NiveauxSchool from '../../pages/LoggedIn/Matieres/NiveauxSchoolComponent';
 import Avatar from './Avatar/Avatar';
 import './ProfilPage.css';
 import firebase_db from "firebase/app";
@@ -11,6 +11,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Modal from 'react-bootstrap/Modal';
 import Header from '../../components/header/Header';
+import SchoolSearchInput from '../content/inscription/SchoolSearchInput/SchoolSearchInput'
 import {
     FacebookShareButton ,
     FacebookIcon,
@@ -45,9 +46,11 @@ export default function ProfilPage() {
     const [ etablissement ,setEtablissement] = useState('');
     const [ loading , setLoading ] = useState(true);
     const [showModal , setShowModal] = useState(false)
-    const [textModal , setTextModal] = useState('')
+   // const [textModal , setTextModal] = useState('')
+    const [showListInstitut , setShowListInstitut] = useState(false);
+    const [school , setSchool] = useState('')
     const [showSocialIcons , setShowSocialIcons] = useState(false)
-
+    const [ niveauxSchool , setNiveauxSchool ] = useState([])
   
     useEffect(() => {
         if( userContext.user && userContext.user_informations){
@@ -58,7 +61,17 @@ export default function ProfilPage() {
             setEtablissement(userContext.user_informations.etablissement);
             setLevel(userContext.user_informations.level);
             setLoading(false)
+
+            if(niveauxSchool.length < 1){
+                const database = firebase.getData();
+                const ref_niveaux = database.ref('schoolLevels/all');
+                ref_niveaux.on("value", snapshot => {
+                    setNiveauxSchool(snapshot.val());
+                })
+            }
         }
+
+        
 
     }, [userContext.user , userContext.user_informations]);
 
@@ -66,6 +79,8 @@ export default function ProfilPage() {
     const HandleChangeFirstName = (e) => setfirstName(e.target.value)
 
     const HandleChangeTelephone = (e) => setTelephone(e.target.value)
+
+    const handleChangeInstitut = value => setSchool(value);
 
     const HandleChangeEmail = (e) => setEmail(e.target.value)
     
@@ -83,7 +98,17 @@ export default function ProfilPage() {
         setAvatar(avatar);    
         setClickedAvatar(avatar);
     }
-    
+    const [ modalOpen , setModalOpen  ] = useState(false);
+    const [ useConnectedId , setUserConnectedId ] = useState(null);  
+    const handleShowModal = () => {
+        setModalOpen(true);
+    }
+
+    const handleCloseModal = () =>{ 
+        setModalOpen(false);
+    }
+
+
     const reauthenticates = (currentPassword) => {
         const utilisateur = firebase_db.auth().currentUser;
         const cred = firebase_db.auth.EmailAuthProvider.credential(utilisateur.email,currentPassword)
@@ -92,7 +117,7 @@ export default function ProfilPage() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
+        
         if(userContext.user){
             //code if realod page pour garder context api values
             const user =  userContext.user; 
@@ -110,24 +135,46 @@ export default function ProfilPage() {
                     });
                     if(clickedAvatar){
                     reference.child(userId).update({
-                        lastName:  firstName,
-                        firstName : lastName,
+                        lastName:  lastName,
+                        firstName : firstName,
                         avatar : clickedAvatar
                     }).then(() => {
+                        userContext.update_user_lastname(lastName)
+                        userContext.update_user_firstname(firstName)
                         //history.push('/dashboard-user') 
                         setShowToast(true)    
                         toast.success("Votre Profil a été mis à jour ! 🧐");
                     })
                 }
                 else{
-                    reference.child(userId).update({
-                        lastName:  firstName,
-                        firstName : lastName
-                    }).then(() => {
-                        //history.push('/dashboard-user') 
-                        setShowToast(true)    
-                        toast.success("Votre Profil a été mis à jour ! 🧐");
-                    })
+                    if(school){
+                        reference.child(userId).update({
+                            lastName: lastName ,
+                            firstName : firstName,
+                            etablissement :school
+                        }).then(() => {
+                            userContext.update_user_lastname(lastName)
+                            userContext.update_user_firstname(firstName)
+                            userContext.update_user_etablissement(school)
+                            //history.push('/dashboard-user') 
+                            setShowToast(true)    
+                            toast.success("Votre Profil a été mis à jour ! 🧐");
+                        })
+                    }
+                    else{
+                        reference.child(userId).update({
+                            lastName:  lastName,
+                            firstName : firstName
+                            
+                        }).then(() => {
+                            //history.push('/dashboard-user') 
+                            userContext.update_user_lastname(lastName)
+                            userContext.update_user_firstname(firstName)
+                            setShowToast(true)    
+                            toast.success("Votre Profil a été mis à jour ! 🧐");
+                        })
+                    }
+                    
                 }
 
                 }).catch(function(error) {
@@ -138,41 +185,53 @@ export default function ProfilPage() {
         }
     }
 
+   
+
     const HandleShowModalBesoinProf = () => {
         setShowModal(true)
-        setTextModal("T'inquiète,je vais te mettre bien ! Un de mes conseillers va t'appeler dans les 24 heures .")
+        //setTextModal("T'inquiète,je vais te mettre bien ! Un de mes conseillers va t'appeler dans les 24 heures .")
     }
 
     const HandleShowModalBesoinBilan = () => {
         setShowModal(true)
-        setTextModal(" T'inquiète,je gère! Un de mes conseillers  va t'appeler dans les 24 heures.")
+        //setTextModal(" T'inquiète,je gère! Un de mes conseillers  va t'appeler dans les 24 heures.")
     }
+
+   
 
     const HandleNumeroTelephone = (e) => {
          e.preventDefault();
+         console.log('hnaya '+telephone.length)
+         
         if(telephone == '')
             alert('Veuillez remplir le champ')
         
         else{
-             if(userContext.user){
-         
-                const user =  userContext.user; 
-                const userId = user.uid;                    
-                const database = firebase.getData();
-                const reference =  database.ref('users/')
-
-                reference.child(userId).update({
-                    telephone:  telephone
-                
-                }).then(() => {
-                    setShowModal(false)
-                    setTimeout(() => {
-                        setShowToast(true) 
-                        toast.success("C'est noté 😁");
-                    }, 500);
-                    
-                })
+            if(telephone.length != 10) {
+                alert('Le numéro doit contenir 10 caracteres !')
             }
+            else{
+                if(userContext.user){
+         
+                    const user =  userContext.user; 
+                    const userId = user.uid;                    
+                    const database = firebase.getData();
+                    const reference =  database.ref('users/')
+    
+                    reference.child(userId).update({
+                        telephone:  telephone
+                    
+                    }).then(() => {
+                        setShowModal(false)
+                        setTimeout(() => {
+                            setShowToast(true) 
+                            toast.success("C'est noté 😁");
+                        }, 500);
+                        
+                    })
+                }
+            }
+             
         }
        
         
@@ -197,9 +256,14 @@ export default function ProfilPage() {
                     { avatar ? <img src={require(`../../images/avatars/${avatar}.png`)} alt = '' /> : ''}
                 </div>
                 <div className="user-infos">
-                    <span>Niveau  : <span className="class-answers-etablissements"> {level} </span>  </span>
-                    <span>Institution  : <span className="class-answers-etablissements">  {etablissement} </span> </span>
+                    <span>Niveau  : <span className="class-answers-etablissements"> {level} </span> <Icon name = "edit" onClick = {handleShowModal} />  </span>
+                    <span>Institution  : <span className="class-answers-etablissements">  {etablissement} </span> <Icon name = "edit" onClick = {() => setShowListInstitut(true)} /> </span>
                 </div>
+                {showListInstitut ? 
+                    <SchoolSearchInput changed = { handleChangeInstitut } />
+                :
+                    ''
+                }
             </div>
 
             <Form onSubmit={handleSubmit} className = 'profile-form'>
@@ -310,14 +374,46 @@ export default function ProfilPage() {
                         <p>T'inquiète,je vais te mettre bien ! Un de mes <br/>
                         conseillers va t'appeler dans les 24 heures , laisse ton numéro ci-dessous.
                         <br/><br/>
-                        <Input placeholder='Votre numéro de Téléphone' className="input-numero-telephone-modal"  onChange={HandleChangeTelephone}  />
+                        <Input placeholder='Votre numéro de Téléphone'  type="number" className="input-numero-telephone-modal"  onChange={HandleChangeTelephone}  />
                         </p>
                     </Modal.Body>
                     <Modal.Footer>
                         <Button variant="secondary" id="okey-btn-model"  onClick={HandleNumeroTelephone} >Okey</Button>
                         <Button onClick={() => setShowModal(false)} id="nomMerci-btn-model" variant="light">Non Merci</Button>
                     </Modal.Footer>
-                </Modal>  
+                </Modal>
+
+
+
+                 <Modal
+                    size="lg"
+                    aria-labelledby="contained-modal-title-vcenter"
+                    centered
+                    show={modalOpen}
+                    onHide={handleCloseModal}
+                    className = 'dashboard-modal'
+                    >
+                        <Modal.Header closeButton>
+                            <Modal.Title id="contained-modal-title-vcenter">
+                                <h4 className = 'text-center'>ALLER EN ...</h4> 
+                            </Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body >
+                            <div className="niveaux_school">
+                                { niveauxSchool.map( (niveau,index) => (
+                                        <div key={index} >
+                                            <NiveauxSchool
+                                            userConnected={useConnectedId}
+                                            title={niveau} 
+                                            clicked = { handleCloseModal }
+                                            />
+                                            
+                                        </div>
+                                    ))
+                                }
+                            </div>
+                        </Modal.Body>
+                    </Modal>  
         </div>
 
     </>
