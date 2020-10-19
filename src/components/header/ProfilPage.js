@@ -51,6 +51,7 @@ export default function ProfilPage() {
     const [school , setSchool] = useState('')
     const [showSocialIcons , setShowSocialIcons] = useState(false)
     const [ niveauxSchool , setNiveauxSchool ] = useState([])
+    const [showScrollAvatars , setShowScrollAvatars] = useState(false);
   
     useEffect(() => {
         if( userContext.user && userContext.user_informations){
@@ -78,7 +79,7 @@ export default function ProfilPage() {
 
     const HandleChangeFirstName = (e) => setfirstName(e.target.value)
 
-    const HandleChangeTelephone = (e) => setTelephone(e.target.value)
+    const HandleChangeTelephone = (e) => {setTelephone(e.target.value)}
 
     const handleChangeInstitut = value => setSchool(value);
 
@@ -141,6 +142,7 @@ export default function ProfilPage() {
                     }).then(() => {
                         userContext.update_user_lastname(lastName)
                         userContext.update_user_firstname(firstName)
+                        userContext.update_user_avatar(clickedAvatar)
                         //history.push('/dashboard-user') 
                         setShowToast(true)    
                         toast.success("Votre Profil a été mis à jour ! 🧐");
@@ -201,23 +203,25 @@ export default function ProfilPage() {
 
     const HandleNumeroTelephone = (e) => {
          e.preventDefault();
-         console.log('hnaya '+telephone.length)
+         var letters = /^[0-9]+$/;
+
          
+
+        // console.log('hnaya '+typeof(telephone))
+     
         if(telephone == '')
             alert('Veuillez remplir le champ')
         
         else{
-            if(telephone.length != 10) {
-                alert('Le numéro doit contenir 10 caracteres !')
-            }
-            else{
+            if(telephone.match(letters) && telephone.length === 10)
+            {
                 if(userContext.user){
-         
+            
                     const user =  userContext.user; 
                     const userId = user.uid;                    
                     const database = firebase.getData();
                     const reference =  database.ref('users/')
-    
+
                     reference.child(userId).update({
                         telephone:  telephone
                     
@@ -229,8 +233,15 @@ export default function ProfilPage() {
                         }, 500);
                         
                     })
-                }
+                
             }
+
+            }
+            else {
+                alert('Veuillez entrer un numéro valide !')
+            }
+            
+                
              
         }
        
@@ -250,10 +261,24 @@ export default function ProfilPage() {
         <>
         <Header />
         <div className = 'login-content-container'>
+            {
+                showScrollAvatars ? 
+                    <div className="container-profil-images-scroll">
+                    {avatars.map( (avatar , index) => {
+                            return(
+                                <Avatar avatarClicked = { handleAvatarClicked }  key={index} active = { sourceImage === avatar.image ? 'avatar_clicked' : 'image-avatar' }  getAvatar={getAvatarClicked} logo={avatar.image} name={avatar.name} />
+                            )
+                    })}
+
+                    </div>
+                :
+                ''
+            }
+            
 
             <div className="profile-image-container">
                 <div className="image-container">
-                    { avatar ? <img src={require(`../../images/avatars/${avatar}.png`)} alt = '' /> : ''}
+                    { avatar ? <><img src={require(`../../images/avatars/${avatar}.png`)} alt = '' /><Icon name = "edit" onClick={ () => setShowScrollAvatars(true)}  /></> : ''}
                 </div>
                 <div className="user-infos">
                     <span>Niveau  : <span className="class-answers-etablissements"> {level} </span> <Icon name = "edit" onClick = {handleShowModal} />  </span>
@@ -374,7 +399,7 @@ export default function ProfilPage() {
                         <p>T'inquiète,je vais te mettre bien ! Un de mes <br/>
                         conseillers va t'appeler dans les 24 heures , laisse ton numéro ci-dessous.
                         <br/><br/>
-                        <Input placeholder='Votre numéro de Téléphone'  type="number" className="input-numero-telephone-modal"  onChange={HandleChangeTelephone}  />
+                        <Input placeholder='Votre numéro de Téléphone' maxLength="10" className="input-numero-telephone-modal"  onChange={HandleChangeTelephone}  />
                         </p>
                     </Modal.Body>
                     <Modal.Footer>

@@ -18,7 +18,8 @@ import  {
     UPDATE_USER_COURSES,
     UPDATE_USER_ETABLISSEMENT,
     UPDATE_USER_LASTNAME,
-    UPDATE_USER_FIRSTNAME
+    UPDATE_USER_FIRSTNAME,
+    UPDATE_USER_AVATAR
 } from "../Types"
 
 export default ( state , action) => {
@@ -161,6 +162,18 @@ export default ( state , action) => {
                 
             }          
         });
+
+        case(UPDATE_USER_AVATAR):
+        return({
+            ...state,
+            user_informations : {
+                ...state.user_informations,
+                avatar : action.payload
+                
+            }          
+        });
+
+
         default:
             return state;
     }

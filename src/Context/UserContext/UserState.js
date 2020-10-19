@@ -19,7 +19,8 @@ import {
     UPDATE_USER_COURSES,
     UPDATE_USER_ETABLISSEMENT,
     UPDATE_USER_FIRSTNAME,
-    UPDATE_USER_LASTNAME
+    UPDATE_USER_LASTNAME,
+    UPDATE_USER_AVATAR
 } from '../Types';
 
 import UserReducer from './UserReducer';
@@ -88,7 +89,7 @@ const UserState = ({ children }) => {
 
     const update_user_lastname = lastname  => dispatch({ type: UPDATE_USER_LASTNAME , payload: lastname });
 
-
+    const update_user_avatar = avatar => dispatch({ type: UPDATE_USER_AVATAR , payload: avatar });
 
 
 
@@ -130,7 +131,8 @@ const UserState = ({ children }) => {
             update_user_courses,
             update_user_etablissement,
             update_user_lastname,
-            update_user_firstname
+            update_user_firstname,
+            update_user_avatar
         }} >
             {children}
         </UserContext.Provider>
