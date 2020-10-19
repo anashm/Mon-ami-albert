@@ -31,6 +31,7 @@ export default function ProfilPage() {
     const userContext = useContext(UserContext)
     const history = useHistory();
     const [firstName , setfirstName] = useState('')
+    const [telephone , setTelephone] = useState('')
     const [lastName , setlastName] = useState('')
     const [email , setEmail] = useState('')
     const [checked , setChecked ] = useState(false)
@@ -63,6 +64,8 @@ export default function ProfilPage() {
 
 
     const HandleChangeFirstName = (e) => setfirstName(e.target.value)
+
+    const HandleChangeTelephone = (e) => setTelephone(e.target.value)
 
     const HandleChangeEmail = (e) => setEmail(e.target.value)
     
@@ -143,6 +146,36 @@ export default function ProfilPage() {
     const HandleShowModalBesoinBilan = () => {
         setShowModal(true)
         setTextModal(" T'inquiète,je gère! Un de mes conseillers  va t'appeler dans les 24 heures.")
+    }
+
+    const HandleNumeroTelephone = (e) => {
+         e.preventDefault();
+        if(telephone == '')
+            alert('Veuillez remplir le champ')
+        
+        else{
+             if(userContext.user){
+         
+                const user =  userContext.user; 
+                const userId = user.uid;                    
+                const database = firebase.getData();
+                const reference =  database.ref('users/')
+
+                reference.child(userId).update({
+                    telephone:  telephone
+                
+                }).then(() => {
+                    setShowModal(false)
+                    setTimeout(() => {
+                        setShowToast(true) 
+                        toast.success("C'est noté 😁");
+                    }, 500);
+                    
+                })
+            }
+        }
+       
+        
     }
 
     if(loading){
@@ -226,7 +259,7 @@ export default function ProfilPage() {
             <div>
                 <Button onClick={HandleShowModalBesoinProf}  id="button_besoin_prof">BESOIN D'UN PROF A TES COTES ?</Button>
 
-                <Button   id="button_inviter_ami" onClick={() => setShowSocialIcons(true)} >INVITER UN AMI</Button>
+               {/*  <Button   id="button_inviter_ami" onClick={() => setShowSocialIcons(true)} >INVITER UN AMI</Button>
                     {
                         showSocialIcons ? 
                         <div className="div_social_media_container">
@@ -253,30 +286,38 @@ export default function ProfilPage() {
                                     <FacebookIcon size={32} round />
                                     <span className="st-label">Partager</span>
                                 </div>
-                               {/* <Button>Share on facebook</Button>  */}
-                                {/* <FacebookIcon size={32} round /> */}
                             </FacebookShareButton>
                         </div> : ''
 
-                    }
+                    } */}
 
                 <Button onClick={HandleShowModalBesoinBilan} id="button_besoin_bilan"  >BESOIN D'UN BILAN PEDAGOGIQUE ?</Button>
             </div> 
 
-            <Modal
-                aria-labelledby="contained-modal-title-vcenter"
-                centered
+             <Modal
                 show={showModal}
                 onHide={() => setShowModal(false)}
+                    size="lg"
+                    aria-labelledby="contained-modal-title-vcenter"
+                    centered
                 >
                     <Modal.Header closeButton>
                         <Modal.Title id="contained-modal-title-vcenter">
+                             <span>Alert</span>
                         </Modal.Title>
                     </Modal.Header>
-                    <Modal.Body >
-                        {textModal}
+                    <Modal.Body>
+                        <p>T'inquiète,je vais te mettre bien ! Un de mes <br/>
+                        conseillers va t'appeler dans les 24 heures , laisse ton numéro ci-dessous.
+                        <br/><br/>
+                        <Input placeholder='Votre numéro de Téléphone' className="input-numero-telephone-modal"  onChange={HandleChangeTelephone}  />
+                        </p>
                     </Modal.Body>
-            </Modal>     
+                    <Modal.Footer>
+                        <Button variant="secondary" id="okey-btn-model"  onClick={HandleNumeroTelephone} >Okey</Button>
+                        <Button onClick={() => setShowModal(false)} id="nomMerci-btn-model" variant="light">Non Merci</Button>
+                    </Modal.Footer>
+                </Modal>  
         </div>
 
     </>

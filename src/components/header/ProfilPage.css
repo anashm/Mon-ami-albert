@@ -75,6 +75,24 @@
     transform: translateY(-2px);
 }
 
+.input-numero-telephone-modal{
+
+    width: 90% !important;
+}
+
+#okey-btn-model{
+    color:  #f8f9fa !important;
+}
+
+#nomMerci-btn-model{
+
+    background-color: #f8f9fa !important;
+    border-color: #f8f9fa !important;
+}
+
+#contained-modal-title-vcenter{
+    margin: auto;
+}
 #button_besoin_bilan{
     padding: 25px;
     background-color: #E3E794 !important;
