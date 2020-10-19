@@ -94,8 +94,10 @@ const Facebook = ( props ) => {
         .catch(errors => {
             console.log(errors)
             if(errors.code='auth/email-already-in-use'){
+                console.log('authenticated')
                 firebase.loginUser(response.email,'facebook')
                 .then(user => {
+                    console.log(user)
                     props.navigation.history.push('/dashboard-user')
                 })
             }
