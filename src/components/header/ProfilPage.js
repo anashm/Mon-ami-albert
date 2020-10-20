@@ -53,6 +53,7 @@ export default function ProfilPage() {
     const [ niveauxSchool , setNiveauxSchool ] = useState([])
     const [showScrollAvatars , setShowScrollAvatars] = useState(false);
     const [fromFacebook , setFromFacebook] = useState(false)
+    const [modalDeconnexion ,setModalDeconnexion] = useState(false)
   
     useEffect(() => {
         if( userContext.user && userContext.user_informations){
@@ -453,7 +454,7 @@ export default function ProfilPage() {
 
                 <Button onClick={HandleShowModalBesoinBilan} id="button_besoin_bilan"  >BESOIN D'UN BILAN PEDAGOGIQUE ?</Button>
 
-                <Button  id="button_deconnexion_version_mobile" onClick={HandleLogout} >Déconnexion</Button>
+                <Button  id="button_deconnexion_version_mobile" onClick={() => setModalDeconnexion(true)} >Déconnexion</Button>
             </div> 
 
              <Modal
@@ -512,6 +513,35 @@ export default function ProfilPage() {
                             </div>
                         </Modal.Body>
                     </Modal>  
+
+
+
+
+                    {
+                        modalDeconnexion == true ? (
+                            <Modal
+                            show={modalDeconnexion}
+                            onHide={() => setModalDeconnexion(false)}
+                                size="lg"
+                                aria-labelledby="contained-modal-title-vcenter"
+                                centered
+                            >
+                                <Modal.Header closeButton>
+                                    <Modal.Title id="contained-modal-title-vcenter">
+                                        Déconnexion
+                                    </Modal.Title>
+                                </Modal.Header>
+                                <Modal.Body>
+                                    <p>Etes vous sur de vouloir vous déconnecter ! </p>
+                                </Modal.Body>
+                                <Modal.Footer>
+                                    <Button variant="secondary" onClick={HandleLogout}>Oui</Button>
+                                    <Button onClick={() => setModalDeconnexion(false)} id="nomMerci-btn-model" variant="light">Non</Button>
+                                </Modal.Footer>
+                            </Modal>
+                            
+                        ) : ''
+                    }
         </div>
 
     </>
