@@ -256,6 +256,12 @@ export default function ProfilPage() {
     }
 
    
+    const HandleLogout = () => {
+        firebase.signOutUser();
+        userContext.get_connected_user(null);
+        history.push('/');
+    }
+
 
     const HandleNumeroTelephone = (e) => {
          e.preventDefault();
@@ -446,6 +452,8 @@ export default function ProfilPage() {
                     } */}
 
                 <Button onClick={HandleShowModalBesoinBilan} id="button_besoin_bilan"  >BESOIN D'UN BILAN PEDAGOGIQUE ?</Button>
+
+                <Button  id="button_deconnexion_version_mobile" onClick={HandleLogout} >Déconnexion</Button>
             </div> 
 
              <Modal
