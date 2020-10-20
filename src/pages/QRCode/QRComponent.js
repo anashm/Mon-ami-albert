@@ -65,7 +65,7 @@ const QRComponent = () => {
                         userContext.update_user_points_anas(Number(user_points) + Number(resultat[1]));
                         setPoints(Number(resultat[1]))
                         setModalBravo(true)
-                          alert('Bravo! vous avez gagné des points');
+                          //alert('Bravo! vous avez gagné des points');
                       })
                   } 
               }
@@ -75,7 +75,8 @@ const QRComponent = () => {
                     points : Number(user_points) + Number(resultat[1])
                   }).then(() => {
                     userContext.update_user_points_anas(Number(user_points) + Number(resultat[1]));
-                      alert('Bravo! vous avez gagné des points');
+                    setModalBravo(true)
+                      //alert('Bravo! vous avez gagné des points');
                   })
               }
                
