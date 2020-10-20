@@ -158,10 +158,10 @@ const QRComponent = () => {
             }
             
             {
-              showModal ? 
+              ModalBravo ? 
                 <Modal
-                  show={showModal}
-                  onHide={() => setShowModal(false)}
+                  show={ModalBravo}
+                  onHide={() => setModalBravo(false)}
                       size="lg"
                       aria-labelledby="contained-modal-title-vcenter"
                       centered
@@ -187,7 +187,7 @@ const QRComponent = () => {
                       </Modal.Body>
                       <Modal.Footer>
                           {/* <Button variant="secondary" id="okey-btn-model"   >Okey</Button> */}
-                          <Button onClick={() => setShowModal(false)}  variant="light">Fermer</Button>
+                          <Button onClick={() => setModalBravo(false)}  variant="light">Fermer</Button>
                       </Modal.Footer>
                   </Modal>
 
