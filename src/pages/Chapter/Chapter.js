@@ -87,9 +87,9 @@ const Chapter = ({match}) => {
                     <Breadcrumb.Section active> {match.params.chapitre} </Breadcrumb.Section>
                 </Breadcrumb>
             </div>
-            <div className="chapter-title-container">
+            {/* <div className="chapter-title-container">
                 <h2 className="chapter-title"> Les différentes écritures d'un nombre  </h2>
-            </div>
+            </div> */}
 
             <div className="chapter-features-container">
                 <ChapterButton name = 'Course' imgSrc = { courseImg }  clicked = { handleChapterCoursesButton } />

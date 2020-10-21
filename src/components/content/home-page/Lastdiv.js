@@ -5,7 +5,7 @@ export default function Lastdiv() {
     return (
         <div style={{background:'#FAFAFA',marginTop:'10px'}}>
             <br></br><br></br>
-             <h5 className="title_page"><center><hr className="hr"></hr> VOIR AUSSI +</center></h5>
+             <h5 className="title_page"><center><hr className="hr"></hr> VOIR + AUSSI </center></h5>
              <br></br><br></br>
             <div className="container">
                <div className="row">
@@ -57,7 +57,7 @@ export default function Lastdiv() {
                 <div className="col-md-3">
                     
                     <ul className="lists">
-                    <span className="list_title">AIDES</span>
+                    <span className="list_title">AIDE</span>
                         <br></br><br></br>
                         <li>Devoirs</li>
                         <li>Soutien scolaire</li>
@@ -65,7 +65,7 @@ export default function Lastdiv() {
                         <li>Comment bien réussir</li>
                         <li>Rentrée des classes</li>
                         <br></br><br></br>
-                        <li>Réformes 2019-2021</li>
+                        <li>RÉFORME 2019-2021</li>
                         <li>Réformes du lycée 2019</li>
                         <br></br><br></br>
                         <li>Partenaires</li>
