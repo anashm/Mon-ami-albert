@@ -45,7 +45,7 @@ const SchoolInfosSection = ()  => {
         {
             img: icon_challenge,
             title: 'Des résultats concrets et approuvés',
-            text: 'Nos étudiants gagnent jusqu’à 4.2 point sur leur moyenne générale.'
+            text: 'Nos étudiants gagnent jusqu’à 4.2 points sur leur moyenne générale.'
         }
     ];
 
