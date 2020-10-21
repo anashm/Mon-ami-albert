@@ -15,6 +15,12 @@
 
 .container-btn-comment-ca-marche{
     margin-top: 5%;
+    text-align: center;
+}
+
+#comment-ca-marche{
+
+    background-color: #dedede !important;
 }
 
 .modal-container-bravo-points{

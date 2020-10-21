@@ -123,7 +123,7 @@ const QRComponent = () => {
             </div>
 
             <div className="container-btn-comment-ca-marche">
-                <Button onClick={()=>setShowModal(true)}>Comment ça marche</Button>
+                <Button onClick={()=>setShowModal(true)} id="comment-ca-marche">Comment ça marche</Button>
             </div>  
               
             {
