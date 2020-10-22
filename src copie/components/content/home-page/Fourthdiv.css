@@ -1,0 +1,60 @@
+
+.slide_title{
+    margin-left: 30%;
+    font-family: Rubik-Medium;
+    color: #636363;
+}
+
+.text_slide{
+    font-family: Rubik-Regular;
+    color: #636363;
+    font-size: 12px;
+    margin-left: 30%;
+}
+
+.title_page{
+
+    padding:10px;
+    font-family: KGFallForYouBold;
+    font-size: 32px;
+}
+
+.hr{
+    border: 1px solid #212529;
+    
+    width: 10%;
+}
+
+.slick-next {
+    background: url('../../../images/arrow_right.svg') center center no-repeat!important;
+  
+    
+  }
+
+  .slick-next::before {
+    display: none !important;
+  }
+  
+  .slick-prev {
+    background: url('../../../images/arrow_left.svg') center center no-repeat!important;
+ 
+  }
+
+  .slick-prev::before {
+    display: none !important;
+  }
+
+@font-face{
+    font-family: Rubik-Medium;
+    src: url('../../../fonts/Rubik-Medium.ttf');
+}
+
+@font-face{
+    font-family: Rubik-Regular;
+    src: url('../../../fonts/Rubik-Regular.ttf');
+}
+
+@font-face{
+    font-family: KGFallForYouBold;
+    src: url('../../../fonts/KGFallForYouBold.ttf');
+}

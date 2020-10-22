@@ -1,0 +1,35 @@
+
+.form-sign-up{
+    margin : 0 auto;
+    width: 100%;
+    max-width: 500px;
+    margin-top: 4%;
+}
+
+.signup-section{
+    padding: 5% 0;
+}
+
+
+.form-sign-up .row{
+    margin: 20px 0;
+}
+
+
+
+.text_policy{
+    font-size: 12px;
+    font-family: Rubik-Regular;
+    color: #636363;
+}
+
+.col{
+    margin-top: 1%;
+}
+
+
+
+@font-face{
+    font-family: Rubik-Regular;
+    src: url('../../../fonts/Rubik-Regular.ttf');
+}

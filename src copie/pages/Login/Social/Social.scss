@@ -1,0 +1,65 @@
+.google-login-btn{
+    width: 100%;
+    border: 2px solid #707070 !important;
+    border-radius: 30px;
+    outline: none !important;
+    box-shadow: none !important;
+    border-radius: 30px !important;
+    padding: 0 20px !important;
+   
+
+
+    div{
+        background-color: transparent !important;
+    }
+
+    span{
+        margin-left: 25px;
+        text-transform: uppercase !important;
+        color: #707070;
+        font-size: 13px !important;
+        letter-spacing: 1px;
+        font-family: Rubik , 'sans-serif' !important;
+        font-weight: 300 !important;
+
+        @include media('<=phone'){
+            margin-left: 10px;
+        }
+    }
+}
+
+.facebook-login-btn{
+    width: 100%;
+    outline: none !important;
+    padding: 12px 0;
+    border-radius: 30px;
+    color: white;
+    background: #3E519A;
+    border: none;
+    cursor: pointer;
+    letter-spacing: 1px;
+    font-family: Rubik , 'sans-serif';
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 90px;
+    padding-left: 35px;
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 300 !important;
+    transition: all 0.3s;
+
+    i{
+        font-size: 18px;
+    }
+
+    &:hover{
+        opacity: 0.8;
+    }
+
+    @include media('<=phone'){
+        padding-right: 40px;
+        padding-left: 30px;
+    }
+}

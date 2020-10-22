@@ -1,0 +1,51 @@
+.title_page{
+
+    padding:10px;
+    font-family: KGFallForYouBold;
+    font-size: 32px;
+}
+
+.list_title{
+
+    font-family: Rubik-Medium;
+    color: #333333;
+}
+
+.lists{
+
+    list-style-type:none;
+    color: #707070;
+    font-size: 14px;
+  
+    
+   
+}
+
+.lists_one::-webkit-scrollbar {
+    width: 10px;               /* width of the entire scrollbar */
+  }
+  
+  .lists_one::-webkit-scrollbar-thumb {
+    background-color: #707070;    /* color of the scroll thumb */
+    border-radius: 20px;       /* roundness of the scroll thumb */
+    border: 3px solid #EAEAEA;  /* creates padding around scroll thumb */
+  }
+
+.lists_one{
+
+    list-style-type:none;
+    color: #707070;
+    font-size: 14px;
+    overflow-y:scroll;
+    height:75%;
+}
+
+@font-face{
+    font-family: KGFallForYouBold;
+    src: url('../../../fonts/KGFallForYouBold.ttf');
+}
+
+@font-face{
+    font-family: Rubik-Medium;
+    src: url('../../../fonts/Rubik-Medium.ttf');
+}

@@ -1,0 +1,65 @@
+.cree_ton_compte{
+    text-align: center;
+    font-family: KGFallForYouBold;
+    font-size: 50px;
+    margin-top:50px;
+
+    -webkit-animation: fade-in-top 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000)  both;
+    animation: fade-in-top 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000) both;
+}
+
+.span_description{
+
+    text-align: center;
+    font-family: Rubik-Regular;
+    font-size: 12px;
+    color: #636363;
+    
+}
+
+.images{
+
+    margin: 0 40px 0 0;
+}
+
+.deja_un_compte{
+
+    text-align: center;
+    font-family: Rubik-Regular;
+    font-size: 12px;
+    color: #636363;
+    margin: 0;
+}
+
+.title_image{
+
+    font-size: 12px;
+    font-family: Rubik-Regular;
+    margin-left: 60px;
+}
+
+
+
+@font-face{
+    font-family: KGFallForYouBold;
+    src: url('../../../fonts/KGFallForYouBold.ttf');
+}
+
+@font-face{
+    font-family: Rubik-Regular;
+    src: url('../../../fonts/Rubik-Regular.ttf');
+}
+
+@media only screen and (max-width: 460px) {
+    .images{
+        width: 30%;
+        display: block;
+        margin: 20px auto;
+    }
+
+    .title_image{
+        display: block;
+        text-align: center;
+        margin: 0;
+    }
+  }

@@ -1,0 +1,24 @@
+.download-btn-container{
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+
+    .download-btn{
+        display: block;
+        max-width: 400px;
+        width: 100%;
+        background-color: #707070;
+        padding: 10px;
+        text-align: center;
+        color: white;
+        text-transform: uppercase;
+        font-family: Rubik , 'sans-serif';
+        letter-spacing: 1px;
+        border-radius: 30px;
+        transition: all 0.3s;
+
+        &:hover{
+            opacity: 0.8;
+        }
+    }
+}
