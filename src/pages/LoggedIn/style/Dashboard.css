@@ -7,6 +7,7 @@
 
 .mon-parcours-container{
     text-align: center;
+    display: none;
 }
 .text-mon-parcours-span{
     color: #6BA4A5;
@@ -74,12 +75,16 @@
    
 }
 
-@media only screen and (max-width: 490px) {
+@media only screen and (max-width: 500px) {
     .dashboard-modal .modal-content{
         padding: 3% 0;
     }
     .dashboard-modal .modal-content h4{
         font-size: 20px;
+    }
+
+    .mon-parcours-container{
+        display: block;
     }
 }
 
