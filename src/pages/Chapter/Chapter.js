@@ -30,10 +30,6 @@ const Chapter = ({match}) => {
             duration: 2000,
         });
 
-        if(!userContext.user){
-            history.push('/404');
-        }
-
 
     } , [userContext.user]);
 
@@ -73,8 +69,7 @@ const Chapter = ({match}) => {
 
 
     return (
-        <>
-        <Header />
+     
         <section className = 'container chapter-page-container'>
             <div className="breadcrumb-container">
                 <Breadcrumb>
@@ -104,7 +99,6 @@ const Chapter = ({match}) => {
             </div>
         </section>
 
-    </>
     );
 }
 

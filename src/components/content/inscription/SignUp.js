@@ -171,8 +171,7 @@ const  SignUp = (props) => {
     const errorMsg = error !== '' ? <span style={{color: 'red',fontWeight: '400'}}>{error.message}</span> : null
 
     return (
-        <>
-        <Header/>
+      
         <section className="container signup-section">               
                 <Title text = 'CREEZ VOTRE COMPTE' textcentered centerOverlined />
 
@@ -255,7 +254,6 @@ const  SignUp = (props) => {
                 
         </section>
 
-    </>
     )
 }
 

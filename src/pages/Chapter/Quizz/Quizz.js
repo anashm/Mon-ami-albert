@@ -103,8 +103,6 @@ const Quizz = (props) => {
 
     if(userContext.user){
         return (
-            <>
-            <Header />
             <div className = 'quizz-container'>
                 <div className="container">
 
@@ -151,7 +149,6 @@ const Quizz = (props) => {
                     <Divider hidden />
                 </div>
             </div>
-         </>
         );
     }else{
         return(

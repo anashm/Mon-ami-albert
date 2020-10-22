@@ -1,4 +1,4 @@
-import React,{useState, Component,useEffect,useContext } from 'react';
+import React,{useState,useEffect,useContext } from 'react';
 import './EleveCompte.css';
 import {Link} from 'react-router-dom';
 import Google from '../../../pages/Login/Social/Google/Google';
@@ -22,7 +22,11 @@ import {
    
   } from "react-share";
 
+import UserContext from '../../../Context/UserContext/UserContext';
+
  const  EleveCompte = ( props ) =>  {
+
+    const history = useHistory();
     
     //const Firebase = useContext(FirebaseContext)
     const [ sourceImage , setSourceImage] = useState('');
@@ -56,6 +60,17 @@ import {
     } */
 
     const handleChange = value => setSchool(value);
+
+    const userContext = useContext(UserContext);
+
+
+    useEffect(() => {
+        userContext.update_current_location(history.location.pathname);
+        return () => {
+            userContext.update_current_location("");
+        }
+
+    } , [])
 
     return (        
         <div className="container eleve-compte-section">

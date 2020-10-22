@@ -105,8 +105,7 @@ const QRComponent = () => {
       }
    
     return (
-      <>
-      <Header />
+   
         <div>
           <div className="container-titles-qr-component">
             <span className="title-scan-qr-components">Trouves et scan des QRCODES M.A.A</span>
@@ -197,7 +196,6 @@ const QRComponent = () => {
             }
         </div>
 
-      </>
     )
 }
 

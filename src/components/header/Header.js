@@ -73,10 +73,8 @@ const Header = () =>  {
 
     const [ showModal , setShowModal ] = useState(false);
 
-   
-
     return (  
-        <header className = {`container-fluid header ${userContext.current_location === '/' ? 'd-none' : '' }`}>   
+        <header className = {`container-fluid header ${((userContext.current_location === '/' || userContext.current_location === '/eleve-create-account' || userContext.current_location === '/login') && window.innerWidth <= 500) ? 'd-none' : '' }`}>   
             <div className="container">
                 <div className="row header-row">
                     <div className="header-logo-container">

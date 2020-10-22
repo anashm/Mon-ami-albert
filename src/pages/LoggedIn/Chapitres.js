@@ -106,8 +106,6 @@ const  Chapitres = ({match}) => {
     }
 
         return (
-            <>
-            <Header />
             <div className="container chapter-section" >
                 <div className="breadcrumb-container hide-on-mobile">
                     <Breadcrumb>
@@ -205,7 +203,6 @@ const  Chapitres = ({match}) => {
                 </div>
             </div> 
 
-        </>  
         )
     
 }

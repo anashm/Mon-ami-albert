@@ -1,21 +1,39 @@
-import React from 'react';
+import React , { useEffect , useContext } from 'react';
 
-import Google from './Social/Google/Google';
+/* import Google from './Social/Google/Google';
+ */
 import Facebook from './Social/Facebook/Facebook';
 import LoginForm from './LoginForm/LoginForm' 
 
 import Title from '../../components/general/Title/Title';
 
 import { Divider } from 'semantic-ui-react';
-import Header from '../../components/header/Header';
+/* import Header from '../../components/header/Header';*/
+
+import { useHistory } from 'react-router-dom';
+
+import UserContext from '../../Context/UserContext/UserContext';
+
 import './style/Login.scss';
 
 const Login = (props) => {
 
+    const history = useHistory();
+
+    const userContext = useContext(UserContext);
+
+
+    useEffect(() => {
+        userContext.update_current_location(history.location.pathname);
+        return () => {
+            userContext.update_current_location("");
+        }
+
+    } , []);
+
 
     return (
-        <>
-        <Header />
+       
         <div className = 'login-content-container'>
 
             <Title text = 'Connecte toi' textcentered centerOverlined />
@@ -41,7 +59,6 @@ const Login = (props) => {
             </div>
         </div>
 
-    </>
     )
 }
 
