@@ -106,10 +106,8 @@ const  Chapitres = ({match}) => {
     }
 
         return (
-            <>
-            <Header />
             <div className="container chapter-section" >
-                <div className="breadcrumb-container">
+                <div className="breadcrumb-container hide-on-mobile">
                     <Breadcrumb>
                         <Breadcrumb.Section className = 'hide-on-mobile' > <Link to = '/'> Accueil </Link> </Breadcrumb.Section>
                         <Breadcrumb.Divider className = 'hide-on-mobile' icon='right chevron' />
@@ -118,6 +116,17 @@ const  Chapitres = ({match}) => {
                         <Breadcrumb.Section active>{matiere} </Breadcrumb.Section>
                     </Breadcrumb>
                 </div>
+
+                <div className="chapter-course-container">
+                    <p className = 'course'> {matiere} </p>
+                    <div className="chapter">
+                        <div className="chapter-number"> {chapters.length > 1 ? chapters.length : 0} </div>
+                        <p> Chapitres </p>
+                    </div>
+                </div>
+
+
+
                 <div className="exercices-container">
                     <div className = 'exercises-title-container ' onClick = { () => setOpenTab(!openTab) } >
                         <h2 className="exercises-title">Chapitres</h2>
@@ -194,7 +203,6 @@ const  Chapitres = ({match}) => {
                 </div>
             </div> 
 
-        </>  
         )
     
 }

@@ -10,16 +10,21 @@ import { useHistory } from "react-router-dom";
 import Avatar from '../../images/avatar.png'
 /* import { Button, Popup,Dropdown, DropdownMenu } from 'semantic-ui-react'; */
 import { Modal,Button } from 'react-bootstrap';
-import { Dropdown } from 'semantic-ui-react';
+import { Dropdown , Icon } from 'semantic-ui-react';
 import highfive from '../../images/highFive/HIGHFIVE.svg';
+
+import league from '../../pages/Chapter/Quizz/Progress/assets/Groupe 212.svg'
+
+import hands from '../../images/highFive/HIGHFIVE.svg';
 
 
 
 const Header = () =>  {
 
-  
 
     const history = useHistory();
+
+    console.log(history)
 
     const userContext = useContext(UserContext);
     const firebase = useContext(FirebaseContext)
@@ -39,7 +44,8 @@ const Header = () =>  {
  */
 
     useEffect( () => {
-        if(connectedUser){
+
+        if(userContext.user_informations){
             setLogout(false);
             
             //console.log('connectedUser' , connectedUser);
@@ -62,15 +68,13 @@ const Header = () =>  {
         }else{
             setLogout(true);
         }
-    }, [connectedUser,userContext.user_informations]);
+    }, [connectedUser , userContext.user_informations]);
 
 
     const [ showModal , setShowModal ] = useState(false);
 
-   
-
     return (  
-        <header className = 'container-fluid header'>   
+        <header className = {`container-fluid header ${((userContext.current_location === '/' || userContext.current_location === '/eleve-create-account' || userContext.current_location === '/login') && window.innerWidth <= 500) ? 'd-none' : '' }`}>   
             <div className="container">
                 <div className="row header-row">
                     <div className="header-logo-container">
@@ -79,10 +83,6 @@ const Header = () =>  {
 
                     <div className="contact-container">
                         
-                        {/* <div className = 'phone-left'>
-                        <span className="phone_number"> <FaPhoneAlt  /> &nbsp;&nbsp; 05 22 33 44 55</span>
-                        </div> */}
-
                         {
                             !logout && <Fragment>
                                 <div className = 'phone-right'>
@@ -93,7 +93,6 @@ const Header = () =>  {
                         </div>
 
                                 <div className="vertical-line">|</div>
-
                                 <div className="logout-container">
                                 {!logout ? 
                                     ( 
@@ -122,10 +121,7 @@ const Header = () =>  {
                                             
                                             </Dropdown.Menu>
                                         </Dropdown>
-                                    
-                                    
-                                    
-                                    
+
                                         {
                                             showModal == true ? (
                                                 <Modal
@@ -168,7 +164,8 @@ const Header = () =>  {
                         }
 
                         {
-                            logout && <Fragment>
+                            logout && 
+                            <Fragment>
                                 <div className = 'phone-right'>
                                 <div className="phone-number-container">  
                                 <span className="phone_number"> <FaPhoneAlt  /> &nbsp;&nbsp;  09 70 70 22 32</span> 
@@ -176,7 +173,6 @@ const Header = () =>  {
                                 <Link to = '/' className="contact-link dark-color">Contact</Link> 
                                 </div>
                                 </div>
-                                
                             </Fragment>
                         }
 
@@ -185,6 +181,32 @@ const Header = () =>  {
                     </div>
                     <HamburgerMenu />
                 </div>
+
+                
+                    <div className="mobile-header">
+                        <div className="header-col share-col">
+                            <Icon name = 'share alternate' />
+                        </div>
+
+                        <div className="header-col points-col">
+                            <p> {userContext.user_informations?.points} points </p>
+                            <img src={hands} alt=""/>
+                        </div>
+                        <div className="header-col ranking-col">
+                            <p> Classement </p>
+                            <img src={league} alt=""/>
+                        </div>
+                        <div className="header-col notification-col">
+                            <p> Quoi de neuf </p>
+                            <div>
+                                <Icon name = 'bell' />
+                            </div>
+                        </div>
+                    </div>
+                
+                
+
+                
             </div>
         </header>  
     )

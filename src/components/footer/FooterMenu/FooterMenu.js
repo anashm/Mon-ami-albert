@@ -1,13 +1,16 @@
-import React , { Fragment } from 'react';
+import React , { useContext } from 'react';
 
 import { Link } from 'react-router-dom'
 import { Icon } from 'semantic-ui-react';
 import { useHistory } from "react-router-dom";
 
+import UserContext from '../../../Context/UserContext/UserContext';
+
 
 const FooterMenu = () => {
 
     const history = useHistory();
+    const userContext = useContext(UserContext);
 
 
     const mobileFooter = [
@@ -44,7 +47,7 @@ const FooterMenu = () => {
 
 
     return (
-        <footer className = 'footer-menu'>
+        <footer className = {`footer-menu  ${userContext.current_location === '/' ? 'd-none' : ''}`}>
             
             {
                 mobileFooter.map(footer => {

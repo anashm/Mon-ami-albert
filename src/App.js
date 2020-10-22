@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'semantic-ui-css/semantic.min.css';
 import './style/_style.scss';
 import HomePage from './components/content/home-page/HomePage';
-import {BrowserRouter as Router,Switch,Route , Redirect} from 'react-router-dom';
+import {BrowserRouter as Router,Switch,Route , Redirect , useLocation} from 'react-router-dom';
 import CreatAccount  from './components/content/inscription/create_account';
 import EleveAccount from './components/content/inscription/EleveCompte';
 import Login from './pages/Login/Login';
@@ -60,13 +60,16 @@ const  App = () => {
           }
         });
       }
+
+
   },[]);
 
 
   return (
     <Router>
-     {/*  <Header /> */}
-        <main className= { `main_content ${userContext.user ? 'pad-bottm-mobile' : ''}`}>
+
+      <Header />
+        <main className= { `${( userContext.current_location !== '/') ? 'main_content' : ''}  ${(userContext.user && userContext.current_location !== '/') ? 'pad-bottm-mobile' : ''}`} style = {{ padding: `${userContext.current_location === '/' ? '0 !important' : null}` }} >
           <Switch>
             <Route exact path="/" render = { props => <HomePage { ...props } loading = { loading } /> } />
             <Route exact path="/login" component={Login} />
@@ -75,7 +78,6 @@ const  App = () => {
             <Route exact path="/individu-create-account" component={JeSuisUnComponent} />
             <Route exact path="/wich-enseignant" component={WichEnseigant} />
             <Route exact path="/chapter/:matieres/:chapitre" component={Chapter} />
-            <Route exact path="/quizz/:matieres/:chapitre" component={Quizz} />
             <Route exact path="/sign-up" component={SignUp} />
             <Route exact path="/dashboard-user"  render = { (props) => <Dashboard { ...props }  />  }  />
             <Route exact path="/chapitres/:matieres" component={Chapitres} />

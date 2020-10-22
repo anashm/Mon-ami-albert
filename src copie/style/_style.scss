@@ -1,0 +1,20 @@
+/* Entry point of all style */
+@import './breakpoints';
+@import './variables';
+@import './general';
+@import './library';
+@import './animations';
+
+
+/* From Components */
+
+@import '../pages/Login/style/Login.scss';
+@import '../pages/Chapter/style/Chapter.scss';
+@import '../pages/Chapter/Quizz/Quizz.scss';
+
+@import '../components/header/header.scss';
+@import '../components/footer/Footer.scss';
+
+@import '../components/footer/FooterMenu/FooterMenu.scss';
+
+

@@ -73,8 +73,6 @@ const ClassementGeneral = () => {
 
     return (
 
-        <>
-        <Header />
         <div className = 'general-order-container'>
 
 
@@ -130,7 +128,6 @@ const ClassementGeneral = () => {
             </div>
         </div>
 
-     </>
     )
 }
 

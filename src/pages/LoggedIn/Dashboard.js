@@ -88,13 +88,7 @@ const  Dashboard = (props) => {
                     setNiveauxSchool(snapshot.val());
                 })
             }
-        }else{
-            history.push('/404')
         }
-
-
-
-       
 
     }, [userContext.user]);
 
@@ -113,8 +107,6 @@ const  Dashboard = (props) => {
     }
 
         return (
-            <>
-            <Header />
             <div className="container dashboard-section">
                 <div className="breadcrumb-container">
                     <Breadcrumb>
@@ -178,7 +170,6 @@ const  Dashboard = (props) => {
                     </Modal>      
             </div>
 
-          </>  
         )
    // }
 }

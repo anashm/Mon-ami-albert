@@ -1,0 +1,32 @@
+.testimony-section-container{
+
+    background-color: #FAFAFA;
+    padding: 7% 0;
+
+    @include media('<=phone'){
+        display: none;
+    }
+
+
+    .testimonies-container{
+        padding-top: 5%;
+
+
+        .testimony-card-container{
+
+            width: 80%;
+            margin: 0 auto;
+
+
+            .user-testimony-name{
+                color: #333333;
+                text-align: center;
+            }
+
+            .user-testinony{
+                color: #636363;
+                text-align: center;
+            }
+        }
+    }
+}

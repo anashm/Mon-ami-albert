@@ -1,5 +1,5 @@
 
-import React,{useEffect , Fragment , useState , memo} from 'react'
+import React,{useEffect , Fragment , useState , memo , useContext} from 'react'
 import albert_image from '../../../images/quizz/albert-quiz.png';
 import './Firstdiv.css';
 import phones_photo from '../../../images/phones.jpg';
@@ -28,6 +28,9 @@ import arrow from '../../../animation/homepage/arrow-bottom.json';
 
 import AOS from 'aos';
 
+import UserContext from '../../../Context/UserContext/UserContext';
+
+import { useHistory } from 'react-router-dom'
 
 
 
@@ -77,6 +80,10 @@ const PopUp = ({ closeToast }) => (
 
 const HeroSection = memo( ( {userConnected} ) => {
 
+    const history = useHistory();
+
+    const userContext = useContext(UserContext);
+
 
     const text_slider = [
         {
@@ -123,10 +130,15 @@ const HeroSection = memo( ( {userConnected} ) => {
     
     useEffect(() => {
         /* setTimeout(() => { toast(<PopUp />)  },2000);  */
+        userContext.update_current_location(history.location.pathname);
         AOS.init({
             duration: 1500,
             offset: -50
         });
+
+        return () => {
+            userContext.update_current_location('');
+        }
         
     }, []);
 
@@ -142,7 +154,6 @@ const HeroSection = memo( ( {userConnected} ) => {
                             {View}
 
                             <img src={albert_image} alt="albert"  />
-
                             <div className="play-btn-container d-none" role = 'button' onClick = { () => setShowModal(true) }>
                                 <img src={playBtn} alt=""/>
                             </div>

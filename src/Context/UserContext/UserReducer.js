@@ -16,10 +16,11 @@ import  {
     UPDATE_QUIZZ_NEXT_INDEX,
     UPDATE_USER_NOT_FOUND_ANSWER,
     UPDATE_USER_COURSES,
+    UPDATE_CURRENT_LOCATION,
     UPDATE_USER_ETABLISSEMENT,
     UPDATE_USER_LASTNAME,
     UPDATE_USER_FIRSTNAME,
-    UPDATE_USER_AVATAR
+    UPDATE_USER_AVATAR,
 } from "../Types"
 
 export default ( state , action) => {
@@ -133,6 +134,13 @@ export default ( state , action) => {
             user_courses: action.payload
         });
 
+        case(UPDATE_CURRENT_LOCATION):
+        return({
+            ...state,
+            current_location: action.payload
+        });
+
+    
         case(UPDATE_USER_ETABLISSEMENT):
         return({    
             ...state,      

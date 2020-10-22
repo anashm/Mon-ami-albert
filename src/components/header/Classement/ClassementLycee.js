@@ -64,8 +64,7 @@ const ClassementLycee = () => {
       }, [userContext.user]);
 
     return (
-      <>
-      <Header />
+     
         <div className = 'general-order-container'>
             <center> <h3>Classement lycée</h3> </center>
             
@@ -117,7 +116,6 @@ const ClassementLycee = () => {
             
         </div>
 
-      </>
     )
 }
 export default ClassementLycee;

@@ -17,6 +17,7 @@ import {
     UPDATE_QUIZZ_NEXT_INDEX,
     UPDATE_USER_NOT_FOUND_ANSWER,
     UPDATE_USER_COURSES,
+    UPDATE_CURRENT_LOCATION,
     UPDATE_USER_ETABLISSEMENT,
     UPDATE_USER_FIRSTNAME,
     UPDATE_USER_LASTNAME,
@@ -44,7 +45,8 @@ const UserState = ({ children }) => {
         user_playing_quizz: false,
         user_on_quizz_summary_page: false,
         user_points_anas : 0,
-        user_courses: null
+        user_courses: null,
+        current_location: ''
     }
 
     const [ state , dispatch ] = useReducer(UserReducer , initialState);
@@ -83,6 +85,8 @@ const UserState = ({ children }) => {
 
     const update_user_courses = course => dispatch({ type: UPDATE_USER_COURSES , payload: course });
 
+    const update_current_location = location => dispatch({ type: UPDATE_CURRENT_LOCATION , payload:  location });
+
     const update_user_etablissement = etablissement => dispatch({ type: UPDATE_USER_ETABLISSEMENT , payload: etablissement });
 
     const update_user_firstname = firstname  => dispatch({ type: UPDATE_USER_FIRSTNAME , payload: firstname });
@@ -111,6 +115,7 @@ const UserState = ({ children }) => {
             user_not_found_answer: state.user_not_found_answer,
             user_on_quizz_summary_page: state.user_on_quizz_summary_page,
             user_courses: state.user_courses,
+            current_location: state.current_location,
             etablissement : state.etablissement,
             update_quizz_questions,
             get_connected_user, 
@@ -129,6 +134,7 @@ const UserState = ({ children }) => {
             update_user_on_quizz_summary_page,
             update_quizz_next_index,
             update_user_courses,
+            update_current_location,
             update_user_etablissement,
             update_user_lastname,
             update_user_firstname,

@@ -321,8 +321,7 @@ export default function ProfilPage() {
     
 
     return (
-        <>
-        <Header />
+      
         <div className = 'login-content-container'>
             {
                 showScrollAvatars ? 
@@ -544,6 +543,5 @@ export default function ProfilPage() {
                     }
         </div>
 
-    </>
     )
 }

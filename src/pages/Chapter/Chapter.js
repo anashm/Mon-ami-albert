@@ -30,10 +30,6 @@ const Chapter = ({match}) => {
             duration: 2000,
         });
 
-        if(!userContext.user){
-            history.push('/404');
-        }
-
 
     } , [userContext.user]);
 
@@ -62,7 +58,7 @@ const Chapter = ({match}) => {
         setQuizzContent(true);
         setCoursesContent(false);
         setExercisesContent(false);
-        history.push(`/quizz/${match.params.matieres}/${match.params.chapitre}`);
+        //history.push(`/quizz/${match.params.matieres}/${match.params.chapitre}`);
     }
 
     const handleChapterExercisesButton = () => {
@@ -73,8 +69,7 @@ const Chapter = ({match}) => {
 
 
     return (
-        <>
-        <Header />
+     
         <section className = 'container chapter-page-container'>
             <div className="breadcrumb-container">
                 <Breadcrumb>
@@ -92,19 +87,18 @@ const Chapter = ({match}) => {
             </div> */}
 
             <div className="chapter-features-container">
-                <ChapterButton name = 'Course' imgSrc = { courseImg }  clicked = { handleChapterCoursesButton } />
+                <ChapterButton name = 'Course' className = {coursesContent ? 'active' : ' '} imgSrc = { courseImg }  clicked = { handleChapterCoursesButton } />
                 <ChapterButton name = 'Quizz' imgSrc ={quizzImg} clicked = { handleChapterQuizzButton } />
                 <ChapterButton name = 'Exercise' imgSrc = {exercisesImg} clicked = {handleChapterExercisesButton} />
             </div>
 
             <div className="chapter-content">
                 { coursesContent && <div className="chapter-exercises-container"> <Courses urlParams = {match.params} courses_memoized = { courses_memoized } memoized = { (courses) => set_courses_memoized(courses) } /> </div>}
-                { quizzContent && <div className="chapter-courses-container"> <Quizz quizz = 'quizz' /> </div> }
+                { quizzContent && <div className="chapter-courses-container"> <Quizz chapitre = {match.params.chapitre} matiere = {match.params.matieres} /> </div> }
                 { exercisesContent &&  <div className="chapter-quizz-container">  <Exrecises urlParams = {match.params} exercises = 'exercices' /> </div>}  
             </div>
         </section>
 
-    </>
     );
 }
 

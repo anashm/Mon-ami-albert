@@ -20,10 +20,11 @@ import { Alert } from 'react-bootstrap';
 
 
 
-const Quizz = ({ match }) => {
+const Quizz = (props) => {
 
-    let matiere =  match.params.matieres;
-    let chapitre = match.params.chapitre;
+
+
+    const { matiere , chapitre } = props;
 
     //console.log(match)
     const firebase = useContext(FirebaseContext);
@@ -102,8 +103,6 @@ const Quizz = ({ match }) => {
 
     if(userContext.user){
         return (
-            <>
-            <Header />
             <div className = 'quizz-container'>
                 <div className="container">
 
@@ -150,7 +149,6 @@ const Quizz = ({ match }) => {
                     <Divider hidden />
                 </div>
             </div>
-         </>
         );
     }else{
         return(
