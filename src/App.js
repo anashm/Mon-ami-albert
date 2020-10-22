@@ -67,8 +67,10 @@ const  App = () => {
 
   return (
     <Router>
+
       <Header />
         <main className= { `${( userContext.current_location !== '/') ? 'main_content' : ''}  ${(userContext.user && userContext.current_location !== '/') ? 'pad-bottm-mobile' : ''}`} style = {{ padding: `${userContext.current_location === '/' ? '0 !important' : null}` }} >
+        <Header />
           <Switch>
             <Route exact path="/" render = { props => <HomePage { ...props } loading = { loading } /> } />
             <Route exact path="/login" component={Login} />

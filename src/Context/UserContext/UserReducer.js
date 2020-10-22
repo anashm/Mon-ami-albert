@@ -16,7 +16,11 @@ import  {
     UPDATE_QUIZZ_NEXT_INDEX,
     UPDATE_USER_NOT_FOUND_ANSWER,
     UPDATE_USER_COURSES,
-    UPDATE_CURRENT_LOCATION
+    UPDATE_CURRENT_LOCATION,
+    UPDATE_USER_ETABLISSEMENT,
+    UPDATE_USER_LASTNAME,
+    UPDATE_USER_FIRSTNAME,
+    UPDATE_USER_AVATAR,
 } from "../Types"
 
 export default ( state , action) => {
@@ -137,6 +141,47 @@ export default ( state , action) => {
         });
 
     
+        case(UPDATE_USER_ETABLISSEMENT):
+        return({    
+            ...state,      
+            user_informations : {
+                ...state.user_informations,
+                etablissement : action.payload
+                
+            }          
+        });
+
+        case(UPDATE_USER_FIRSTNAME):
+        return({  
+            ...state,        
+            user_informations : {
+                ...state.user_informations,
+                firstName : action.payload
+                
+            }          
+        });
+
+        case(UPDATE_USER_LASTNAME):
+        return({
+            ...state,
+            user_informations : {
+                ...state.user_informations,
+                lastName : action.payload
+                
+            }          
+        });
+
+        case(UPDATE_USER_AVATAR):
+        return({
+            ...state,
+            user_informations : {
+                ...state.user_informations,
+                avatar : action.payload
+                
+            }          
+        });
+
+
         default:
             return state;
     }

@@ -2,8 +2,9 @@ import React,{ useState,useContext } from 'react';
 import FacebookLogin from 'react-facebook-login';
 import {FirebaseContext} from '../../../../firebase'
 import firebases from 'firebase';
-
+import { useHistory } from "react-router-dom";
 const Facebook = ( props ) => {
+    const history = useHistory();
     const firebase = useContext(FirebaseContext)
 
     const appID = "2769237243305382"
@@ -21,6 +22,7 @@ const Facebook = ( props ) => {
             points : 50,
             avatar : 'Boy-3',
             pays : "fr",
+            fromFacebook : "oui",
             etablissement : '',
            Progression : {
                
@@ -80,23 +82,26 @@ const Facebook = ( props ) => {
     
     const responseFacebook = response => {
         //e.preventDefault();
-       
+       console.log('dkhal response')
         
         firebase.signupUser(response.email,'facebook')
         .then(user => {
             console.log(user)
             saveUser(user).then( () => {
                 console.log('user saved') ;
-                props.navigation.history.push('/dashboard-user')
+                history.push('/dashboard-user')
             })
             //props.navigation.history.push('/dashboard-user')
         })
         .catch(errors => {
-            //alert(errors)
+            //console.log(errors)
             if(errors.code='auth/email-already-in-use'){
+                //console.log('authenticated')
                 firebase.loginUser(response.email,'facebook')
                 .then(user => {
-                    props.navigation.history.push('/dashboard-user')
+                    console.log(user)
+                    console.log('dkhal hna')
+                    history.push('/dashboard-user')
                 })
             }
                 

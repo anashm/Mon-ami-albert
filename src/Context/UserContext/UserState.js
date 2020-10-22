@@ -17,7 +17,11 @@ import {
     UPDATE_QUIZZ_NEXT_INDEX,
     UPDATE_USER_NOT_FOUND_ANSWER,
     UPDATE_USER_COURSES,
-    UPDATE_CURRENT_LOCATION
+    UPDATE_CURRENT_LOCATION,
+    UPDATE_USER_ETABLISSEMENT,
+    UPDATE_USER_FIRSTNAME,
+    UPDATE_USER_LASTNAME,
+    UPDATE_USER_AVATAR
 } from '../Types';
 
 import UserReducer from './UserReducer';
@@ -83,10 +87,13 @@ const UserState = ({ children }) => {
 
     const update_current_location = location => dispatch({ type: UPDATE_CURRENT_LOCATION , payload:  location });
 
+    const update_user_etablissement = etablissement => dispatch({ type: UPDATE_USER_ETABLISSEMENT , payload: etablissement });
 
+    const update_user_firstname = firstname  => dispatch({ type: UPDATE_USER_FIRSTNAME , payload: firstname });
 
+    const update_user_lastname = lastname  => dispatch({ type: UPDATE_USER_LASTNAME , payload: lastname });
 
-
+    const update_user_avatar = avatar => dispatch({ type: UPDATE_USER_AVATAR , payload: avatar });
 
 
 
@@ -109,6 +116,7 @@ const UserState = ({ children }) => {
             user_on_quizz_summary_page: state.user_on_quizz_summary_page,
             user_courses: state.user_courses,
             current_location: state.current_location,
+            etablissement : state.etablissement,
             update_quizz_questions,
             get_connected_user, 
             get_user_informations ,
@@ -126,7 +134,11 @@ const UserState = ({ children }) => {
             update_user_on_quizz_summary_page,
             update_quizz_next_index,
             update_user_courses,
-            update_current_location
+            update_current_location,
+            update_user_etablissement,
+            update_user_lastname,
+            update_user_firstname,
+            update_user_avatar
         }} >
             {children}
         </UserContext.Provider>

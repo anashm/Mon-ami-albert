@@ -21,6 +21,7 @@
     overflow-x: scroll;
     margin: auto;
     width: 65%;
+    
 }
 .cree_ton_compte{
     text-align: center;
@@ -33,6 +34,7 @@
 
 .eleve-compte-section{
     padding: 3% 0;
+    margin-top: 10%;
 }
 
 .quel_classe {

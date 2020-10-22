@@ -5,6 +5,7 @@ const NiveauComponent = (props) => {
 
     const functionHandler = () => {
         props.setLevel(props.niveau);
+       
        /*  props.matiereClicked(props.niveau) */
     }
     

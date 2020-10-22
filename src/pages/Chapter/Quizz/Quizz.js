@@ -14,7 +14,7 @@ import './Quizz.scss';
 import {FirebaseContext} from '../../../firebase';
 import UserContext from '../../../Context/UserContext/UserContext';
 import { useHistory } from "react-router-dom";
-
+import Header from '../../../components/header/Header';
 import { Alert } from 'react-bootstrap';
 
 
@@ -103,6 +103,8 @@ const Quizz = (props) => {
 
     if(userContext.user){
         return (
+            <>
+            <Header />
             <div className = 'quizz-container'>
                 <div className="container">
 
@@ -149,6 +151,7 @@ const Quizz = (props) => {
                     <Divider hidden />
                 </div>
             </div>
+         </>
         );
     }else{
         return(

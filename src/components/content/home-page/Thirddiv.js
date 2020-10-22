@@ -40,7 +40,7 @@ const Thirddiv = () => {
 
         {
             index: 3,
-            text:   'Des quizz, des exemples de contrôles et des anales',
+            text:   'Des quizz, des exemples de contrôles et des annales',
         }
     ];
 

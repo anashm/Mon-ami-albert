@@ -16,7 +16,7 @@ const Sixthdiv = memo( ()  => {
 
     const text_slider = [
         {
-            title : 'Sarah S',
+            title : 'Sarah S.',
             text : 'les nombreux exercices et annales mis à disposition sur le site, m’ont permis de travailler d’avantage et de progresser assez vite. C’est un véritable complément de travail.'
         },
         {
@@ -25,7 +25,7 @@ const Sixthdiv = memo( ()  => {
         },
         {
             title : 'Julien M.',
-            text : 'Ce que j’aime en particulier chez Mon Ami Albert c’est la qualité du contenu proposé, on y trouve des millier d’exercices qui s’adapte à tous les niveaux avec leurs corrigés.'
+            text : 'Ce que j’aime en particulier chez Mon Ami Albert c’est la qualité du contenu proposé, on y trouve des milliers d’exercices qui s’adapte à tous les niveaux avec leurs corrigés.'
         },
     
     ];

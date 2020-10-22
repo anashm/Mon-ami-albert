@@ -7,13 +7,15 @@ import LoginForm from './LoginForm/LoginForm'
 import Title from '../../components/general/Title/Title';
 
 import { Divider } from 'semantic-ui-react';
-
+import Header from '../../components/header/Header';
 import './style/Login.scss';
 
 const Login = (props) => {
 
 
     return (
+        <>
+        <Header />
         <div className = 'login-content-container'>
 
             <Title text = 'Connecte toi' textcentered centerOverlined />
@@ -38,6 +40,8 @@ const Login = (props) => {
                     <LoginForm navigation={props} />
             </div>
         </div>
+
+    </>
     )
 }
 

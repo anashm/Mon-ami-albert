@@ -45,7 +45,7 @@ const SchoolInfosSection = ()  => {
         {
             img: icon_challenge,
             title: 'Des résultats concrets et approuvés',
-            text: 'Nos étudiants gagnent jusqu’à 4.2 point sur leur moyenne générale.'
+            text: 'Nos étudiants gagnent jusqu’à 4.2 points sur leur moyenne générale.'
         }
     ];
 
@@ -70,8 +70,8 @@ const SchoolInfosSection = ()  => {
                         once = 'true'
                         img = {image_einsten} 
                         text = {text}>
-                            <div>Le contenu proposés par Mon ami Albert est conçu pour permettre à l’étudiant d’apprendre tout en étant stimulé. Pour cela, nous avons développés une approche positive au cœur de notre plateforme. </div>
-                            <div>Un suivi pour le lycée et les classes prépa, des exercices corrigés, des jeux/Quizz et un classement pour vous challenger ! Ça plait aux étudiants, ça les motives et ça les rend autonomes</div>
+                            <div>Le contenu proposé par Mon ami Albert est conçu pour permettre à l’étudiant d’apprendre tout en étant stimulé. Pour cela, nous avons développés une approche positive au cœur de notre plateforme. </div>
+                            <div>Un suivi pour le lycée et les classes préparatoire, des exercices corrigés, des jeux/Quizz et un classement pour vous challenger ! Ça plait aux étudiants, ça les motives et ça les rend autonomes.</div>
                         </HorizontalCard>
                         <Divider hidden/>
                         <PrimaryLinkButton 
