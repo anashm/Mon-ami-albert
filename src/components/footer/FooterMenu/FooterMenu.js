@@ -24,7 +24,7 @@ const FooterMenu = () => {
             text: 'Parcours',
             icon: 'graduation',
             hasLink: true,
-            link: '/classement-general'
+            link: '/dashboard-user'
         },
 
         {
