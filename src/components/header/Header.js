@@ -31,7 +31,7 @@ const RankingModal = (props) => (
     >
          <Modal.Header closeButton >
             <Modal.Title >
-                Classement: 
+                
             </Modal.Title>
         </Modal.Header>
       
@@ -39,8 +39,8 @@ const RankingModal = (props) => (
 
         <Modal.Body>
 
-            <Link className = 'btn btn-secondary d-block' to = '/classement-general' onClick={props.onHide} >  général </Link>
-            <Link className = 'btn btn-secondary d-block mt-3' to = '/classement-lycee' onClick={props.onHide} >  Lycée </Link>
+            <Link className = 'btn btn-secondary d-block' to = '/classement-general' onClick={props.onHide} > Classement Général </Link>
+            <Link className = 'btn btn-secondary d-block mt-3' to = '/classement-lycee' onClick={props.onHide} > Classement Lycée </Link>
         </Modal.Body>
     </Modal>
 )
