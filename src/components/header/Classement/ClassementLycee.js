@@ -8,6 +8,7 @@ import highfive from '../../../images/highFive/HIGHFIVE.svg';
 import Header from '../../header/Header';
 
 import './ClassementGeneral.css';
+import { Tab,Tabs } from 'react-bootstrap';
 
 const ClassementLycee = () => {
     const firebase = useContext(FirebaseContext);
@@ -133,43 +134,90 @@ const ClassementLycee = () => {
      
         <div className = 'general-order-container'>
             <center> <h3>Classement lycée</h3> </center>
-            
-            <Table unstackable>
-                <Table.Body>
-            {
-                dataFrance ? 
-                dataFrance.map( ( lycee,index) => {
-                    return (
-                        <Table.Row key = {index}>
-                        <Table.Cell>
-                          <span className="index_style_classement"> {index+1}</span>
+            <br/><br/>
 
-                        </Table.Cell>
-                        
-                        <Table.Cell>
-                        <span className="identifiants-classement-user">
-                        {lycee[0]} 
-                        </span>
-                        
-                          
-                        </Table.Cell>
-                        <Table.Cell>
-                        <div className="high_fives_container">
-                                 <span className="high_fives_span"> 
-                                    <img src={highfive} className="high_fives_images" />
-                                </span>
-                            <span className="numbers_high_five">
-                                {lycee[1]} 
-                            </span>
-                            
-                        </div>
-                        </Table.Cell>
-                    </Table.Row>
-                    )   
-                }) : ''
-            }
-            </Table.Body>
-            </Table>
+
+
+            <Tabs defaultActiveKey="Lycées du Maroc" id="uncontrolled-tab-example">
+              <Tab eventKey="Lycées de France" title="Lycées de France">
+              <Table unstackable>
+                          <Table.Body>
+                      {
+                          dataFrance ? 
+                          dataFrance.map( ( lycee,index) => {
+                              return (
+                                  <Table.Row key = {index}>
+                                  <Table.Cell>
+                                    <span className="index_style_classement"> {index+1}</span>
+
+                                  </Table.Cell>
+                                  
+                                  <Table.Cell>
+                                  <span className="identifiants-classement-user">
+                                  {lycee[0]} 
+                                  </span>
+                                  
+                                    
+                                  </Table.Cell>
+                                  <Table.Cell>
+                                  <div className="high_fives_container">
+                                          <span className="high_fives_span"> 
+                                              <img src={highfive} className="high_fives_images" />
+                                          </span>
+                                      <span className="numbers_high_five">
+                                          {lycee[1]} 
+                                      </span>
+                                      
+                                  </div>
+                                  </Table.Cell>
+                              </Table.Row>
+                              )   
+                          }) : ''
+                      }
+                      </Table.Body>
+                      </Table>
+              </Tab>
+              <Tab eventKey="Lycées du Maroc" title="Lycées du Maroc">
+                    <Table unstackable>
+                          <Table.Body>
+                      {
+                          dataMaroc ? 
+                          dataMaroc.map( ( lycee,index) => {
+                              return (
+                                  <Table.Row key = {index}>
+                                  <Table.Cell>
+                                    <span className="index_style_classement"> {index+1}</span>
+
+                                  </Table.Cell>
+                                  
+                                  <Table.Cell>
+                                  <span className="identifiants-classement-user">
+                                  {lycee[0]} 
+                                  </span>
+                                  
+                                    
+                                  </Table.Cell>
+                                  <Table.Cell>
+                                  <div className="high_fives_container">
+                                          <span className="high_fives_span"> 
+                                              <img src={highfive} className="high_fives_images" />
+                                          </span>
+                                      <span className="numbers_high_five">
+                                          {lycee[1]} 
+                                      </span>
+                                      
+                                  </div>
+                                  </Table.Cell>
+                              </Table.Row>
+                              )   
+                          }) : ''
+                      }
+                      </Table.Body>
+                      </Table>
+              </Tab>
+              
+            </Tabs>
+          
 
             {
               dimmer ? <div className="loader-container" style = {{ height: '30vh' }}>

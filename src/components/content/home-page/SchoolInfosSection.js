@@ -78,7 +78,7 @@ const SchoolInfosSection = ()  => {
                             animation = 'fade'
                             delay = {200}
                             once = 'true'
-                            text = 'découvrez mon ami albert'
+                            text = 'découvre mon ami albert'
                             link = '/'
                         />
                     </div>

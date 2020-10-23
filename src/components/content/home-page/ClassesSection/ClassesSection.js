@@ -52,7 +52,7 @@ const ClassesSection = () => {
         <section className = 'container-fluid classes-section'>
 
             <div className="container">
-                <Title text = 'voir aussi +' centerOverlined textcentered />
+                <Title text = 'voir + aussi' centerOverlined textcentered />
                 <div className="row">
                     <Classes infos = { classes } />
 
