@@ -147,7 +147,7 @@ const  Chapitres = ({match}) => {
                             <div className="chapters">
                                 {  chapters.map( (chapitre,index) => {
                                     return (
-                                        <Link to={`/chapter/${matiere}/${chapitre.title}`} key = {index} data-aos-delay={50 + index*50} data-aos="fade-down" data-aos-once="true"> 
+                                        <Link to={`/chapter/${matiere}/${chapitre.title}`} key = {index} data-aos-delay={30} data-aos="fade-down" data-aos-once="true"> 
                                             <ChapitreComponent ordre={index+1} title={chapitre.title} percentage = { Math.floor((chapitre.points/SCORE_MAX)*100) } />
                                         </Link>
                                     )

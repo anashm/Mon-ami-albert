@@ -62,7 +62,7 @@ const ShareModal = (props) => (
         <Modal.Body className = 'header-share-btn'>
             <WhatsappShareButton
                 url="https://monamialbert.com/"
-                title="from app"
+                title="Hey, j'ai essayé l'application mon ami albert, et elle est geniale! Telecharge la, et rentre jeter un coup d'oeil sur les cours et les quizz. Ca t'aidera pour ton parcours scolaire ou universitaire. Mon ami albert, l'application qui te soutien gratuitement."
                 separator=":: "
                 className="Demo__some-network__share-button"
             >
@@ -71,7 +71,7 @@ const ShareModal = (props) => (
 
             <FacebookShareButton
                 url="https://monamialbert.com/"
-                title="from app"
+                title="Hey, j'ai essayé l'application mon ami albert, et elle est geniale! Telecharge la, et rentre jeter un coup d'oeil sur les cours et les quizz. Ca t'aidera pour ton parcours scolaire ou universitaire. Mon ami albert, l'application qui te soutien gratuitement."
                 separator=":: "
                 className="Demo__some-network__share-button"
             >
@@ -80,7 +80,7 @@ const ShareModal = (props) => (
 
             <EmailShareButton
                 url="https://monamialbert.com/"
-                title="from app"
+                title="Hey, j'ai essayé l'application mon ami albert, et elle est geniale! Telecharge la, et rentre jeter un coup d'oeil sur les cours et les quizz. Ca t'aidera pour ton parcours scolaire ou universitaire. Mon ami albert, l'application qui te soutien gratuitement."
                 separator=":: "
                 className="Demo__some-network__share-button"
             >
@@ -89,7 +89,7 @@ const ShareModal = (props) => (
 
             <LinkedinShareButton
                 url="https://monamialbert.com/"
-                title="from app"
+                title="Hey, j'ai essayé l'application mon ami albert, et elle est geniale! Telecharge la, et rentre jeter un coup d'oeil sur les cours et les quizz. Ca t'aidera pour ton parcours scolaire ou universitaire. Mon ami albert, l'application qui te soutien gratuitement."
                 separator=":: "
                 className="Demo__some-network__share-button"
             >
@@ -98,7 +98,7 @@ const ShareModal = (props) => (
 
             <TwitterShareButton
                 url="https://monamialbert.com/"
-                title="from app"
+                title="Hey, j'ai essayé l'application mon ami albert, et elle est geniale! Telecharge la, et rentre jeter un coup d'oeil sur les cours et les quizz. Ca t'aidera pour ton parcours scolaire ou universitaire. Mon ami albert, l'application qui te soutien gratuitement."
                 separator=":: "
                 className="Demo__some-network__share-button"
             >
@@ -107,7 +107,7 @@ const ShareModal = (props) => (
 
             <TelegramShareButton
                 url="https://monamialbert.com/"
-                title="from app"
+                title="Hey, j'ai essayé l'application mon ami albert, et elle est geniale! Telecharge la, et rentre jeter un coup d'oeil sur les cours et les quizz. Ca t'aidera pour ton parcours scolaire ou universitaire. Mon ami albert, l'application qui te soutien gratuitement."
                 separator=":: "
                 className="Demo__some-network__share-button"
             >
@@ -116,7 +116,7 @@ const ShareModal = (props) => (
 
             <PinterestShareButton
                 url="https://monamialbert.com/"
-                title="from app"
+                title="Hey, j'ai essayé l'application mon ami albert, et elle est geniale! Telecharge la, et rentre jeter un coup d'oeil sur les cours et les quizz. Ca t'aidera pour ton parcours scolaire ou universitaire. Mon ami albert, l'application qui te soutien gratuitement."
                 separator=":: "
                 className="Demo__some-network__share-button"
             >

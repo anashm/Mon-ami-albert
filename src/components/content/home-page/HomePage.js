@@ -62,9 +62,7 @@ const HomePage =  memo( ({ loading }) => {
             <FreeChapterSection /> */}
             <Sixthdiv />
             <ApplicationSection />
-            <ClassesSection />
           </section>
-          <Footer />
         </Fragment>
         
 

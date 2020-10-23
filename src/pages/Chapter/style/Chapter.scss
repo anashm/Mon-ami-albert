@@ -3,6 +3,11 @@
 .chapter-page-container{
     padding: 2% 0;
 
+    @media only screen and (max-width: 500px){
+        padding-top: 0;
+
+    }
+
     *:not(span) {
         font-family: Rubik , 'sans-serif';
         color: #707070;
@@ -38,6 +43,9 @@
     }
 
     .chapter-features-container{
+
+        display: flex;
+        justify-content: space-evenly;
 
         padding: 40px 50px;
 

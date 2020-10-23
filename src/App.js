@@ -33,6 +33,8 @@ import Contact from './pages/Contact/Contact';
 
 import Footer from './components/footer/Footer';
 
+import ClassesSection from './components/content/home-page/ClassesSection/ClassesSection';
+
 const  App = () => {
 
   /*   const errorContext = useContext(ErrorContext);
@@ -95,6 +97,8 @@ const  App = () => {
           </Switch>
         </main>
         { userContext.user && <FooterMenu /> } 
+        <ClassesSection />
+        <Footer />
       </Router>
   );
 }
