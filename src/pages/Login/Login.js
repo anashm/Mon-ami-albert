@@ -40,12 +40,7 @@ const Login = (props) => {
 
             <Divider hidden />
 
-
             <div className="social-login-container">
-                {/* <div className="google-login-btn-container">
-                    <Google />
-                </div> */}
-
                 <div className="facebook-login-btn-container">
                     <Facebook navigation={props}/>
                 </div>
@@ -53,9 +48,8 @@ const Login = (props) => {
 
             <Divider className = 'w-100 my-4' horizontal>Ou</Divider>
 
-
             <div className="login-form-container">
-                    <LoginForm navigation={props} />
+                <LoginForm navigation={props} />
             </div>
         </div>
 

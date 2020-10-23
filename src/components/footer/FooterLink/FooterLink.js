@@ -2,6 +2,8 @@ import React , { useEffect , useState , Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { Modal } from 'react-bootstrap';
 
+import img from '../Albert.png';
+
 
 function FooterModal(props) {
     return (
@@ -12,13 +14,19 @@ function FooterModal(props) {
         centered
         className = 'footer-modal'
       >
-        <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-vcenter">
-            {props.title}
-          </Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-            { props.jsx }
+        <Modal.Header closeButton />
+      
+      
+        <Modal.Body className = 'footer-modal-body'>
+          <div className="footer-modal-header">
+              <img src={img} alt=""/>
+              <h2 class="main-sectiontitle overlined-center    text-center"> {props.title} </h2>
+        </div>
+
+          <div className="footer-modal-body-content">
+          { props.jsx }
+          </div>
+
         </Modal.Body>
       </Modal>
     );
