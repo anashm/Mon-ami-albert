@@ -3,8 +3,19 @@
 @import '../LoginForm/form.scss';
 @import '../Social/Social.scss';
 
+.ui.horizontal.divider.w-100.my-4{
 
+    @include media('<=phone'){
+        padding: 0 5%;
+    }
+}
 
+.login-form-container .form-container{
+
+    @include media('<=phone'){
+        padding: 0 5%;
+    }
+}
 
 .login-content-container{
     width: 100%;
@@ -19,6 +30,8 @@
         padding: 5% 0;
     }
 
+
+
     .login-title-container{
 
         .login-title{
@@ -32,6 +45,10 @@
 
     .facebook-login-btn-container{
         margin-top: 15px;
+
+        @include media('<=phone'){
+            padding: 0 5%;
+        }
     }
 
     .login-link-container{
