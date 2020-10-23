@@ -17,6 +17,32 @@ const ClassementLycee = () => {
     const [dimmer , setDimmer ] = useState(true);
 
 
+    const trierLycee = (array) => {
+      let object = {};
+      array.forEach(function(childData){
+          if(childData.etablissement){
+            if(isNaN(object[`${childData.etablissement}`])){
+              object = {
+                ...object,
+              }
+              //console.log(childData.points)
+            
+              object[`${childData.etablissement}`] = childData.points;
+              
+
+            
+            }else{
+              //console.log(childData.points)
+              object[`${childData.etablissement}`] = object[`${childData.etablissement}`] + childData.points
+            
+            }
+          }
+      })
+      let sorted = Object.entries(object).sort((a, b) => b[1] - a[1]);
+      console.log(sorted)
+    }
+
+
     useEffect(() => {
 
         if(userContext.user){
@@ -25,38 +51,72 @@ const ClassementLycee = () => {
           //const mostViewedPosts = database.ref('users/'+userId).orderByChild('/points');
           /* mostViewedPosts.once("value", user_informations => {
             console.log(user_informations.val())
+
+
           }) */
+
+          let resultat_pays;
             reference.once("value", snapshot => {
               //const reducer = (accumulator, currentValue) => accumulator + currentValue;
               let object ={}
+              let array = [];
+
+              let maSchools = [];
+              let frSchools = [];
+
+             
+
+
               snapshot.forEach(function(childSnapshot) {
-                // key will be "ada" the first time and "alan" the second time
-                // childData will be the actual contents of the child
                 let childData = childSnapshot.val();
-                //console.log(childData.etablissement)
-              
-                if(childData.etablissement){
-                  if(isNaN(object[`${childData.etablissement}`])){
-                    object = {
-                      ...object,
-                    }
-                    //console.log(childData.points)
-                    object[`${childData.etablissement}`] = childData.points;
-                    
-                  }else{
-                    //console.log(childData.points)
-                    object[`${childData.etablissement}`] = object[`${childData.etablissement}`] + childData.points
+                if(childData.pays){
+                  if(childData.pays.toLowerCase().includes('ma')){
+                    console.log(childData.etablissement,childData.pays)
+                    maSchools.push(childData)
+                  }
+                  else{
+                    console.log(childData.etablissement,childData.pays);
+                    frSchools.push(childData)
                   }
                 }
-              });
+                
 
-              let sorted = Object.entries(object).sort((a, b) => b[1] - a[1]);
-              setClassement(sorted);
-              console.log(sorted)
+                let object_resultat={};
+                 
+                // key will be "ada" the first time and "alan" the second time
+                // childData will be the actual contents of the child
+                //let childData = childSnapshot.val();
+                //console.log(childData.etablissement,childData.pays)
+              
+                
+              });
+              //console.log(maSchools,frSchools);
+              resultat_pays = {
+                maroc : maSchools,
+                france : frSchools
+              }
+
+             
+              
+             
+              //setClassement(sorted);
+              //console.log(array)
               //console.log(sorted)
               //userContext.get_user_informations(user_informations.val());                   
             }).then( () => {
                 setDimmer(false);
+                return new Promise(function(resolve,reject){
+                  if(resultat_pays.maroc || resultat_pays.france){
+                    resolve(resultat_pays)
+                  }
+                  else 
+                    reject('Il y a aucun lycée')
+                })
+               
+            }).then((data)=>{
+              
+              trierLycee(data.maroc)
+              trierLycee(data.france)
             }).catch(e => {
               console.log(e);
               history.push('/404');
