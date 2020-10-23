@@ -18,6 +18,7 @@ import  {
     UPDATE_USER_COURSES,
     UPDATE_CURRENT_LOCATION,
     UPDATE_USER_ETABLISSEMENT,
+    UPDATE_USER_PAYS,
     UPDATE_USER_LASTNAME,
     UPDATE_USER_FIRSTNAME,
     UPDATE_USER_AVATAR,
@@ -147,6 +148,16 @@ export default ( state , action) => {
             user_informations : {
                 ...state.user_informations,
                 etablissement : action.payload
+                
+            }          
+        });
+
+        case(UPDATE_USER_PAYS):
+        return({    
+            ...state,      
+            user_informations : {
+                ...state.user_informations,
+                pays : action.payload
                 
             }          
         });

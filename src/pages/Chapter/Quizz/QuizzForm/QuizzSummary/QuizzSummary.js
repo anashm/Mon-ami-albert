@@ -179,9 +179,9 @@ const QuizzSummary = ({ quizz_questions , found_answer , chapter , img , course 
                     <div className="empty">
                     </div>
                 </div>
-                <p className="quizz-text-completed"> Vous avez complété le Quiz </p>
+                <p className="quizz-text-completed"> Tu as complété le Quiz </p>
                 {
-                    !finished &&  <p className="gained-points-text"> Vous avez gagné <span className = 'text-green'> { userContext.user_points } points </span> </p>
+                    !finished &&  <p className="gained-points-text"> Tu as gagné <span className = 'text-green'> { userContext.user_points } points </span> </p>
                 }
 
             </div>
@@ -191,10 +191,10 @@ const QuizzSummary = ({ quizz_questions , found_answer , chapter , img , course 
             </div>
 
             <div className="quizz-result-summary-container sm-shadow">
-                <p className="quizz-end-text">Vous avez terminé le questionnaire <span className = 'text-bold'> Quiz :  {chapter} </span> </p>
-                <p className="score-text"> Votre Score est de <span className = 'text-green'> {found_answer} sur {userContext.quizz_questions} </span> </p>
+                <p className="quizz-end-text">Tu as terminé le questionnaire <span className = 'text-bold'> Quiz :  {chapter} </span> </p>
+                <p className="score-text"> Ton Score est de <span className = 'text-green'> {found_answer} sur {userContext.quizz_questions} </span> </p>
                 <div className="custom-divider"/>
-                <p className="answers-text"> Vos réponses sont en gras, les bonnes réponses sont en vert. </p>
+                <p className="answers-text"> Tes réponses sont en gras, les bonnes réponses sont en vert. </p>
 
                 <div className="answers-container">
                     { quizz_questions.map((quizz_question , index) => (

@@ -57,7 +57,7 @@ const WichEnseignant = () => {
                     </Link>
                 </div>
             </div>
-            <p className="deja_un_compte">Vous avez déjà un compte ? <Link to="/login"> Connecte-toi </Link></p>
+            <p className="deja_un_compte">Tu as déjà un compte ? <Link to="/login"> Connecte-toi </Link></p>
         </div>
     )
 }

@@ -6,7 +6,7 @@ export const whoami = (
     <Fragment>
         <p>
             Mon ami Albert est un site et une application d’accompagnement scolaire qui accompagne les élèves du lycée et des classes préparatoires à combler leurs lacunes. La plateforme s’investit au quotidien pour les aider à progresser dans leur apprentissage et leur garantir de très bons résultats. <br /><br />
-            En assurant la correction automatique et en proposant plus de 4000 exercices, Mon Ami Albert vous accompagne dans votre quête de la réussite.
+            En assurant la correction automatique et en proposant plus de 4000 exercices, Mon Ami Albert t'accompagnes dans votre quête de la réussite.
         </p>
     </Fragment>
 );
@@ -52,15 +52,15 @@ export const methodologie = (
 
 export const contact = (
     <Fragment>
-        <h3 >Besoin de plus de renseignement ? toutes nos &eacute;quipes sont mobilis&eacute;s pour vous aider et vous conseiller.</h3>
-        <p>Vous pouvez les contacter par t&eacute;l&eacute;phone au <strong>09 70 70 22 32</strong></p>
+        <h3 >Besoin de plus de renseignement ? toutes nos &eacute;quipes sont mobilis&eacute;s pour t'aider et te conseiller.</h3>
+        <p>Tu peux les contacter par t&eacute;l&eacute;phone au <strong>09 70 70 22 32</strong></p>
         <p>Ou par mail : <a href="mailto:contact@cours-des-grands.fr" target="_blank" rel="noopener noreferrer">contact@cours-des-grands.fr</a></p>
     </Fragment>
 );
 
 export const help = (
     <Fragment>
-        <p >Vous avez des questions ? N&rsquo;h&eacute;sitez pas &agrave; consulter notre FAQ</p>
+        <p >Tu as des questions ? N&rsquo;h&eacute;sitez pas &agrave; consulter notre FAQ</p>
         <h3>Mention l&eacute;gal :</h3>
         <h4>Mon Ami Albert est &eacute;dit&eacute; par :</h4>
         <ul>

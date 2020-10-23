@@ -1,8 +1,8 @@
 import React , { useCallback , useReducer , useEffect , memo } from 'react';
 import _ from 'lodash'
 import { Search } from 'semantic-ui-react';
-import json from './new-etablissements.json';
-
+//import json from './new-etablissements.json';
+import json from './etablissement_france_maroc.json';
 
 const source = json;
 
@@ -10,6 +10,7 @@ const initialState = {
     loading: false,
     results: [],
     value: '',
+   pays : ''
 }
 
 function schoolReducer(state, action) {
@@ -21,7 +22,7 @@ function schoolReducer(state, action) {
         case 'FINISH_SEARCH':
             return { ...state, loading: false, results: action.results }
         case 'UPDATE_SELECTION':
-            return { ...state, value: action.selection }
+            return { ...state, value: action.selection,pays:action.pays }
         default:
         throw new Error()
     }
@@ -30,9 +31,10 @@ function schoolReducer(state, action) {
 const SchoolSearchInput = ({ changed }) => {
 
     const [state, dispatch] = useReducer(schoolReducer, initialState);
-    const { loading, results, value } = state;
-    changed(value);
-
+    const { loading, results, value,pays } = state;
+    //console.log(state)
+    changed(value,pays);
+  
     //send value to parent
     
 
@@ -74,11 +76,12 @@ const SchoolSearchInput = ({ changed }) => {
                 noResultsMessage = 'Aucune école trouvée :('
                 loading={loading}
                 onResultSelect={(e, data) =>
-                    dispatch({ type: 'UPDATE_SELECTION', selection: data.result.title })
+                    dispatch({ type: 'UPDATE_SELECTION', selection: data.result.title,pays:data.result.pays })
                 }
                 onSearchChange={handleSearchChange}
                 results={results.filter((data , index) => index < 6)}
                 value={value}
+                
             />
         </div>
         

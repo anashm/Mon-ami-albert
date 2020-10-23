@@ -32,7 +32,7 @@ import UserContext from '../../../Context/UserContext/UserContext';
     const [ sourceImage , setSourceImage] = useState('');
 
     const [childData, setChildData] = useState("");
-
+    const [pays , setPays] = useState('');
     const [level , setLevel] = useState('');
 
     const [niveaux , ] = useState([
@@ -59,7 +59,11 @@ import UserContext from '../../../Context/UserContext/UserContext';
         setSourceImage(src)
     } */
 
-    const handleChange = value => setSchool(value);
+    const handleChange = (value,pays) => {
+        //console.log(value,pays)
+        setSchool(value);
+        setPays(pays)
+    }
 
     const userContext = useContext(UserContext);
 
@@ -126,7 +130,7 @@ import UserContext from '../../../Context/UserContext/UserContext';
                     </div>    
                 </div>
             </div>
-            <p className="deja_un_compte">Vous avez déjà un compte ? <Link to="/login"> Connecte-toi </Link></p>
+            <p className="deja_un_compte">Tu as déjà un compte ? <Link to="/login"> Connecte-toi </Link></p>
             <div className="social-login-container">
                 {/* <div className="google-login-btn-container">
                     <Google />
@@ -143,7 +147,8 @@ import UserContext from '../../../Context/UserContext/UserContext';
                             state: {
                                 fonction:level,
                                 avatar : avatar,
-                                etablissement : school
+                                etablissement : school,
+                                pays : pays
                             }
                         }}>
                     <Button  className = 'submit-btn w-100'>S'inscrire avec un email</Button>
