@@ -1,5 +1,7 @@
 import React , { Fragment } from 'react';
-import QRComponent from '../../pages/QRCode/QRComponent'
+import QRComponent from '../../pages/QRCode/QRComponent';
+
+import img from './Albert.png';
 
 
 export const whoami = (
@@ -13,6 +15,8 @@ export const whoami = (
 
 export const ourValues = (
     <Fragment>
+
+
         <h3 > La culture Mon Ami Albert est basée sur 3 valeurs fondamentales qui constituent sa référence ultime :</h3>
         <ul>
             <li> Epanouissement </li>
