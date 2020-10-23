@@ -15,8 +15,8 @@ const ClassementLycee = () => {
     const history = useHistory();
     const [ classement , setClassement ] = useState([]);
     const [dimmer , setDimmer ] = useState(true);
-
-
+    const [dataMaroc , setDataMaroc] = useState([])
+    const [dataFrance , setDataFrance] = useState([])
     const trierLycee = (array) => {
       let object = {};
       array.forEach(function(childData){
@@ -40,6 +40,7 @@ const ClassementLycee = () => {
       })
       let sorted = Object.entries(object).sort((a, b) => b[1] - a[1]);
       console.log(sorted)
+      return sorted;
     }
 
 
@@ -115,8 +116,11 @@ const ClassementLycee = () => {
                
             }).then((data)=>{
               
-              trierLycee(data.maroc)
-              trierLycee(data.france)
+              
+              
+
+              setDataMaroc(trierLycee(data.maroc))
+              setDataFrance(trierLycee(data.france))
             }).catch(e => {
               console.log(e);
               history.push('/404');
@@ -133,8 +137,8 @@ const ClassementLycee = () => {
             <Table unstackable>
                 <Table.Body>
             {
-                classement ? 
-                classement.map( ( lycee,index) => {
+                dataFrance ? 
+                dataFrance.map( ( lycee,index) => {
                     return (
                         <Table.Row key = {index}>
                         <Table.Cell>

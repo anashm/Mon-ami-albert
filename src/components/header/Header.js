@@ -39,7 +39,7 @@ const RankingModal = (props) => (
 
         <Modal.Body>
 
-            <Link className = 'btn btn-secondary d-block' to = '/classement-general' onClick={props.onHide} >  général </Link>
+            <Link className = 'btn btn-secondary d-block' to = '/classement-general' onClick={props.onHide} >  Général </Link>
             <Link className = 'btn btn-secondary d-block mt-3' to = '/classement-lycee' onClick={props.onHide} >  Lycée </Link>
         </Modal.Body>
     </Modal>
