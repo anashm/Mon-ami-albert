@@ -41,16 +41,21 @@ const HomePage =  memo( ({ loading }) => {
     }else{
       
       return(
-        <section id = 'homepage'>
-          <HeroSection userConnected={userContext.user} />
-          <SchoolInfosSection />
-          <ThirdDiv /> 
-          {/*  <FourthDiv />
-          <FreeChapterSection /> */}
-          <Sixthdiv />
-          <ApplicationSection />
-          <ClassesSection />
-        </section>
+        <Fragment>
+          <section id = 'homepage'>
+            <HeroSection userConnected={userContext.user} />
+            <SchoolInfosSection />
+            <ThirdDiv /> 
+            {/*  <FourthDiv />
+            <FreeChapterSection /> */}
+            <Sixthdiv />
+            <ApplicationSection />
+            <ClassesSection />
+          </section>
+          <Footer />
+        </Fragment>
+        
+
       )
     }
 })

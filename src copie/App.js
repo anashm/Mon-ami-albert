@@ -91,7 +91,7 @@ const  App = () => {
             <Redirect to="/404" />
           </Switch>
         </main>
-        { userContext.user && <FooterMenu /> } 
+        <FooterMenu />  
       </Router>
   );
 }

@@ -31,6 +31,8 @@ import {FirebaseContext} from './firebase';
 import QRCode from './pages/QRCode/QRComponent';
 import Contact from './pages/Contact/Contact';
 
+import Footer from './components/footer/Footer';
+
 const  App = () => {
 
   /*   const errorContext = useContext(ErrorContext);
