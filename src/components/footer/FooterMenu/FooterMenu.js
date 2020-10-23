@@ -47,7 +47,7 @@ const FooterMenu = () => {
 
 
     return (
-        <footer className = {`footer-menu  ${userContext.current_location === '/' ? 'd-none' : ''}`}>
+        <footer className = {`footer-menu  ${(userContext.current_location === '/' &&  window.innerWidth <= 500) ? 'd-none' : ''}`}>
             
             {
                 mobileFooter.map(footer => {
