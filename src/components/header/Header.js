@@ -144,7 +144,6 @@ const Header = () =>  {
 
     const HandleLogout = () => {
         firebase.signOutUser();
-
         userContext.get_connected_user(null);
         userContext.get_user_informations(null);
         setShowModal(false);
@@ -162,7 +161,6 @@ const Header = () =>  {
 
     useEffect( () => {
 
-        alert('hello')
 
         if(userContext.user_informations){
             setLogout(false);
