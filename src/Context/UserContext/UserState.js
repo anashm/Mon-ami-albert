@@ -19,6 +19,7 @@ import {
     UPDATE_USER_COURSES,
     UPDATE_CURRENT_LOCATION,
     UPDATE_USER_ETABLISSEMENT,
+    UPDATE_USER_PAYS,
     UPDATE_USER_FIRSTNAME,
     UPDATE_USER_LASTNAME,
     UPDATE_USER_AVATAR
@@ -89,6 +90,8 @@ const UserState = ({ children }) => {
 
     const update_user_etablissement = etablissement => dispatch({ type: UPDATE_USER_ETABLISSEMENT , payload: etablissement });
 
+    const update_user_pays = pays => dispatch({ type: UPDATE_USER_PAYS , payload: pays });
+
     const update_user_firstname = firstname  => dispatch({ type: UPDATE_USER_FIRSTNAME , payload: firstname });
 
     const update_user_lastname = lastname  => dispatch({ type: UPDATE_USER_LASTNAME , payload: lastname });
@@ -117,6 +120,7 @@ const UserState = ({ children }) => {
             user_courses: state.user_courses,
             current_location: state.current_location,
             etablissement : state.etablissement,
+            pays:state.pays,
             update_quizz_questions,
             get_connected_user, 
             get_user_informations ,
@@ -136,6 +140,7 @@ const UserState = ({ children }) => {
             update_user_courses,
             update_current_location,
             update_user_etablissement,
+            update_user_pays,
             update_user_lastname,
             update_user_firstname,
             update_user_avatar

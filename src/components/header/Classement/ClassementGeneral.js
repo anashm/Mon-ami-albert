@@ -30,16 +30,11 @@ const ClassementGeneral = () => {
             const reference =  database.ref('users');
             reference.once("value", snapshot => {
                 let object_final = []
-                //let object ={}
-                //console.log(userContext)
+                
                 snapshot.forEach(function(childSnapshot) {
-                    // key will be "ada" the first time and "alan" the second time
-                    //const key = childSnapshot.key;
-                    // childData will be the actual contents of the child
+                  
                     const childData = childSnapshot.val();
-                    /* if (childData.firstName == 'Mouadina')
-                        console.log(childData) */
-                        //console.log(userContext.user_informations.level)
+                   
                     setLevel(userContext.user_informations.level)
 
                     if(childData.points)
@@ -54,10 +49,9 @@ const ClassementGeneral = () => {
                             
                         }
                     ]
-                    //console.log(childData)
+
                     object_final.sort((a, b) => b.points - a.points );
                     setClassement(object_final)
-                    //console.log(object_final);
                 });
             }).then( () => {
                 console.log('done');

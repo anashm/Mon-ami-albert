@@ -55,7 +55,7 @@ const QRComponent = () => {
             reference_user.once("value", user_informations => {
               if(user_informations.val().code_scanned){
                   if(user_informations.val().code_scanned === resultat[0]){
-                    alert('vous avez déja reçu les points')
+                    alert('Tu as déja reçu les points')
                   }
                   else{
                       reference.child(userId).update({
@@ -89,7 +89,7 @@ const QRComponent = () => {
     
           }
           else{
-            alert('vous devez vous connectez dabord !')
+            alert('Connectes-toi dabord !')
           }
             
 

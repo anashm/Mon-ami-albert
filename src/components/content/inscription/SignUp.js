@@ -65,11 +65,8 @@ const  SignUp = (props) => {
         setSignUpData({...SignUpData,[e.target.id] : e.target.value})
     }
 
-    const handleSchoolChange = (e,result) => {
-       
-
+    const handleSchoolChange = (e,result) => {       
         setSchool(result.value)
-
     }   
 
     const saveUser = (createdUser) => {
@@ -80,7 +77,7 @@ const  SignUp = (props) => {
             level:props.location.state.fonction,
             points : 50,
             avatar : props.location.state.avatar,
-            pays : "fr",
+            pays : props.location.state.pays,
             etablissement : props.location.state.etablissement,
            Progression : {
                
@@ -185,6 +182,7 @@ const  SignUp = (props) => {
                         </div>
                         
                         <p className="text-avatar"> <b> {props.location.state.fonction}</b>.&nbsp;&nbsp;
+                     
                             <Link to="/eleve-create-account"> Modifier </Link>
                         </p>
                     </div>
@@ -246,7 +244,7 @@ const  SignUp = (props) => {
                        {/*  <Link to="/dashboard-user">  */}
                             {btn}
                         {/* </Link>   */}
-                        <p className="deja_un_compte">Vous avez déjà un compte ? <Link to="/login"> Connecte-toi </Link></p>
+                        <p className="deja_un_compte">Tu as déjà un compte ? <Link to="/login"> Connecte-toi </Link></p>
                     </div>
                 </Form>
 

@@ -42,6 +42,7 @@ const ClassementLycee = () => {
                     }
                     //console.log(childData.points)
                     object[`${childData.etablissement}`] = childData.points;
+                    
                   }else{
                     //console.log(childData.points)
                     object[`${childData.etablissement}`] = object[`${childData.etablissement}`] + childData.points
@@ -51,6 +52,7 @@ const ClassementLycee = () => {
 
               let sorted = Object.entries(object).sort((a, b) => b[1] - a[1]);
               setClassement(sorted);
+              console.log(sorted)
               //console.log(sorted)
               //userContext.get_user_informations(user_informations.val());                   
             }).then( () => {

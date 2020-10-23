@@ -50,7 +50,7 @@ const SchoolInfosSection = ()  => {
     ];
 
     const text = `Le contenu proposés par Mon ami Albert est conçu pour permettre à l’étudiant d’apprendre tout en étant stimulé. Pour cela, nous avons développés une approche positive au cœur de notre plateforme. 
-    Un suivi pour le lycée et les classes prépa, des exercices corrigés, des jeux/Quizz et un classement pour vous challenger ! Ça plait aux étudiants, ça les motives et ça les rend autonomes`;
+    Un suivi pour le lycée et les classes prépa, des exercices corrigés, des jeux/Quizz et un classement pour te challenger ! Ça plait aux étudiants, ça les motives et ça les rend autonomes`;
     
     return (
         <section className="container-fluid school-infos-Section" data-aos="fade-up" data-aos-once="false" >
@@ -71,7 +71,7 @@ const SchoolInfosSection = ()  => {
                         img = {image_einsten} 
                         text = {text}>
                             <div>Le contenu proposé par Mon ami Albert est conçu pour permettre à l’étudiant d’apprendre tout en étant stimulé. Pour cela, nous avons développés une approche positive au cœur de notre plateforme. </div>
-                            <div>Un suivi pour le lycée et les classes préparatoire, des exercices corrigés, des jeux/Quizz et un classement pour vous challenger ! Ça plait aux étudiants, ça les motives et ça les rend autonomes.</div>
+                            <div>Un suivi pour le lycée et les classes préparatoire, des exercices corrigés, des jeux/Quizz et un classement pour te challenger ! Ça plait aux étudiants, ça les motives et ça les rend autonomes.</div>
                         </HorizontalCard>
                         <Divider hidden/>
                         <PrimaryLinkButton 

@@ -54,6 +54,7 @@ export default function ProfilPage() {
     const [showScrollAvatars , setShowScrollAvatars] = useState(false);
     const [fromFacebook , setFromFacebook] = useState(false)
     const [modalDeconnexion ,setModalDeconnexion] = useState(false)
+    const [pays,setPays] = useState('');
   
     useEffect(() => {
         if( userContext.user && userContext.user_informations){
@@ -84,7 +85,11 @@ export default function ProfilPage() {
 
     const HandleChangeTelephone = (e) => {setTelephone(e.target.value)}
 
-    const handleChangeInstitut = value => setSchool(value);
+    const handleChangeInstitut = (value,pays) => {
+        setPays(pays)
+        setSchool(value);
+
+    }
 
     const HandleChangeEmail = (e) => setEmail(e.target.value)
     
@@ -154,11 +159,13 @@ export default function ProfilPage() {
                         reference.child(userId).update({
                             lastName: lastName ,
                             firstName : firstName,
-                            etablissement :school
+                            etablissement :school,
+                            pays : pays
                         }).then(() => {
                             userContext.update_user_lastname(lastName)
                             userContext.update_user_firstname(firstName)
                             userContext.update_user_etablissement(school)
+                            userContext.update_user_pays(pays)
                             //history.push('/dashboard-user') 
                             setShowToast(true)    
                             toast.success("Votre Profil a été mis à jour ! 🧐");
@@ -208,11 +215,13 @@ export default function ProfilPage() {
                             reference.child(userId).update({
                                 lastName: lastName ,
                                 firstName : firstName,
-                                etablissement :school
+                                etablissement :school,
+                                pays:pays
                             }).then(() => {
                                 userContext.update_user_lastname(lastName)
                                 userContext.update_user_firstname(firstName)
                                 userContext.update_user_etablissement(school)
+                                userContext.update_user_pays(pays)
                                 //history.push('/dashboard-user') 
                                 setShowToast(true)    
                                 toast.success("Votre Profil a été mis à jour ! 🧐");
@@ -531,7 +540,7 @@ export default function ProfilPage() {
                                     </Modal.Title>
                                 </Modal.Header>
                                 <Modal.Body>
-                                    <p>Etes vous sur de vouloir vous déconnecter ! </p>
+                                    <p>Es tu sur de vouloir te déconnecter ! </p>
                                 </Modal.Body>
                                 <Modal.Footer>
                                     <Button variant="secondary" onClick={HandleLogout}>Oui</Button>

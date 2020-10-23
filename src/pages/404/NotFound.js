@@ -24,7 +24,7 @@ const NotFound = () => {
                 
             </div>
             <div >
-                <h2 className="title_not_found">Nous n'avons pas trouvé ce que vous recherchiez</h2>
+                <h2 className="title_not_found">Nous n'avons pas trouvé ce que tu cherches</h2>
             </div>
         </section>
     )
