@@ -474,7 +474,7 @@ export default function ProfilPage() {
                 >
                     <Modal.Header closeButton>
                         <Modal.Title id="contained-modal-title-vcenter">
-                             <span>Alert</span>
+                             
                         </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
