@@ -19,6 +19,115 @@ import hands from '../../images/highFive/HIGHFIVE.svg';
 
 
 
+import {  WhatsappShareButton , EmailShareButton , TwitterShareButton , TelegramShareButton , PinterestShareButton , LinkedinShareButton , WhatsappIcon , FacebookShareButton , FacebookIcon, EmailIcon, TwitterIcon, TelegramIcon, PinterestIcon, LinkedinIcon } from 'react-share'
+
+
+const RankingModal = (props) => (
+    <Modal
+        {...props}
+        size="lg"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+    >
+         <Modal.Header closeButton >
+            <Modal.Title >
+                Classement: 
+            </Modal.Title>
+        </Modal.Header>
+      
+        
+
+        <Modal.Body>
+
+            <Link className = 'btn btn-secondary d-block' to = '/classement-general' onClick={props.onHide} >  général </Link>
+            <Link className = 'btn btn-secondary d-block mt-3' to = '/classement-lycee' onClick={props.onHide} >  Lycée </Link>
+        </Modal.Body>
+    </Modal>
+)
+
+const ShareModal = (props) => (
+    <Modal
+        {...props}
+        size="lg"
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+    >
+        <Modal.Header closeButton >
+            <Modal.Title >
+                Partager sur : 
+            </Modal.Title>
+        </Modal.Header>
+
+
+        <Modal.Body className = 'header-share-btn'>
+            <WhatsappShareButton
+                url="https://monamialbert.com/"
+                title="from app"
+                separator=":: "
+                className="Demo__some-network__share-button"
+            >
+                <WhatsappIcon size={32} round />
+            </WhatsappShareButton>
+
+            <FacebookShareButton
+                url="https://monamialbert.com/"
+                title="from app"
+                separator=":: "
+                className="Demo__some-network__share-button"
+            >
+                <FacebookIcon size={32} round />
+            </FacebookShareButton>
+
+            <EmailShareButton
+                url="https://monamialbert.com/"
+                title="from app"
+                separator=":: "
+                className="Demo__some-network__share-button"
+            >
+                <EmailIcon size={32} round />
+            </EmailShareButton>
+
+            <LinkedinShareButton
+                url="https://monamialbert.com/"
+                title="from app"
+                separator=":: "
+                className="Demo__some-network__share-button"
+            >
+                <LinkedinIcon size={32} round />
+            </LinkedinShareButton>
+
+            <TwitterShareButton
+                url="https://monamialbert.com/"
+                title="from app"
+                separator=":: "
+                className="Demo__some-network__share-button"
+            >
+                <TwitterIcon size={32} round />
+            </TwitterShareButton>
+
+            <TelegramShareButton
+                url="https://monamialbert.com/"
+                title="from app"
+                separator=":: "
+                className="Demo__some-network__share-button"
+            >
+                <TelegramIcon size={32} round />
+            </TelegramShareButton>
+
+            <PinterestShareButton
+                url="https://monamialbert.com/"
+                title="from app"
+                separator=":: "
+                className="Demo__some-network__share-button"
+            >
+                <PinterestIcon size={32} round />
+            </PinterestShareButton>
+
+        </Modal.Body>
+    </Modal>
+)
+        
+
 const Header = () =>  {
 
 
@@ -43,28 +152,21 @@ const Header = () =>  {
 /*     const database = firebase.getData();
  */
 
+    const [rankingModalShow, setRankingModalShow] = useState(false);
+    const [shareModalShow, setShareModalShow] = useState(false);
+
+
+ 
+
     useEffect( () => {
 
         if(userContext.user_informations){
             setLogout(false);
-            
             //console.log('connectedUser' , connectedUser);
-           
             if(userContext.user_informations){
-                
-                console.log(userContext.user_informations.points)
+                //console.log(userContext.user_informations.points)
                 setPoints(userContext.user_informations.points)
             }
-            
-            /* const userId = connectedUser.uid;                      
-            const reference =  database.ref(`users/${userId}`);
-
-            reference.once('value' , points => {
-                if(points.val())
-                    setPoints(points.val().points);
-            }) */
-
-
         }else{
             setLogout(true);
         }
@@ -125,7 +227,7 @@ const Header = () =>  {
                                         </Dropdown>
 
                                         {
-                                            showModal == true ? (
+                                            showModal === true ? (
                                                 <Modal
                                                 show={showModal}
                                                 onHide={() => setShowModal(false)}
@@ -177,8 +279,6 @@ const Header = () =>  {
                                 </div>
                             </Fragment>
                         }
-
-
                         
                     </div>
                     <HamburgerMenu />
@@ -186,7 +286,7 @@ const Header = () =>  {
 
                 
                     <div className="mobile-header">
-                        <div className="header-col share-col">
+                        <div className="header-col share-col" role = 'button' onClick = { () => setShareModalShow(true) }>
                             <Icon name = 'share alternate' />
                         </div>
 
@@ -194,10 +294,11 @@ const Header = () =>  {
                             <p> {userContext.user_informations?.points} points </p>
                             <img src={hands} alt=""/>
                         </div>
-                        <div className="header-col ranking-col">
+                        <div className="header-col ranking-col" role = 'button' onClick = { () => setRankingModalShow(true)}>
                             <p> Classement </p>
                             <img src={league} alt=""/>
                         </div>
+                        
                         <div className="header-col notification-col">
                             <p> Quoi de neuf </p>
                             <div>
@@ -205,10 +306,8 @@ const Header = () =>  {
                             </div>
                         </div>
                     </div>
-                
-                
-
-                
+                    <RankingModal show={rankingModalShow} onHide={() => setRankingModalShow(false) } />
+                    <ShareModal show={shareModalShow} onHide={() => setShareModalShow(false) }  />
             </div>
         </header>  
     )

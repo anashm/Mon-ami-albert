@@ -1,4 +1,4 @@
-import React , { Fragment , useContext , memo } from 'react'
+import React , { Fragment , useContext , memo , useEffect , useState } from 'react'
 import HeroSection from './HeroSection';
 import SchoolInfosSection from './SchoolInfosSection';
 import ThirdDiv from './Thirddiv';
@@ -14,6 +14,7 @@ import './style/homapage.scss';
 import UserContext from '../../../Context/UserContext/UserContext';
 /* import firebase from 'firebase';
  */
+import { Redirect } from 'react-router-dom';
 import { Dimmer, Loader } from 'semantic-ui-react';
 
 
@@ -22,12 +23,19 @@ import { Dimmer, Loader } from 'semantic-ui-react';
 
 const HomePage =  memo( ({ loading }) => {
 
-
+  const [ redirect , setRedirect ] = useState(false);
 
     console.log(' from homepage' ,loading)
-
     const userContext = useContext(UserContext);
     //console.log(userContext);
+
+    useEffect(() => {
+
+      if(userContext.user && window.innerWidth <= 500){
+        setRedirect(true);
+      }
+
+    } , [userContext.user])
 
 
     if(loading ){
@@ -39,6 +47,10 @@ const HomePage =  memo( ({ loading }) => {
         </Fragment>
       )
     }else{
+
+      if(redirect){
+        return <Redirect to = '/dashboard-user' />
+      }
       
       return(
         <Fragment>
