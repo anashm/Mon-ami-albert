@@ -76,7 +76,7 @@ const Courses = ({ urlParams , memoized , courses_memoized }) => {
                                                                     <div key={index} className="lines-container">
                                                                         
                                                                             <img src={line} alt = '' />
-                                                                        
+                                                            
                                                                     </div>
                                                                     
                                                                 )
