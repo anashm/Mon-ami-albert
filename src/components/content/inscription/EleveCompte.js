@@ -69,8 +69,10 @@ import UserContext from '../../../Context/UserContext/UserContext';
 
 
     useEffect(() => {
+        
         userContext.update_current_location(history.location.pathname);
         return () => {
+            
             userContext.update_current_location("");
         }
 
@@ -142,7 +144,7 @@ import UserContext from '../../../Context/UserContext/UserContext';
 
                 <div className="email-login-container">
 
-                    {(school && level) ? (<Link to={{
+                    {(school && level && avatar) ? (<Link to={{
                             pathname: "/sign-up",
                             state: {
                                 fonction:level,
