@@ -191,12 +191,16 @@ const Header = () =>  {
                         
                         {
                             !logout && <Fragment>
+                                 
                                 <div className = 'phone-right'>
+                                {/* <Link className = 'hero-section-button dashboard-button' to = '/dashboard-user'>  Mon Parcours </Link>  
+                                 <div className="vertical-line">|</div> */}
+
                                 <div className="phone-number-container">  
                             { !logout ?  <span className="phone_number"> <FaPhoneAlt  /> &nbsp;&nbsp;  09 70 70 22 32</span> : null } 
                             { logout ?  <Link to = '/' className="contact-link dark-color">Contact</Link> : null}
                            
-                        </div>
+                            </div>
 
                                 <div className="vertical-line">|</div>
                                 <div className="logout-container">
