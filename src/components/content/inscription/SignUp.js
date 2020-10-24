@@ -1,7 +1,7 @@
-import React,{useState,useContext} from 'react';
+import React,{useState,useContext , useEffect} from 'react';
 import './SignUp.css';
 import avatar from '../../../images/avatar.png';
-import { Link } from 'react-router-dom';
+import { Link , useHistory } from 'react-router-dom';
 import { Button, Form,Select} from 'semantic-ui-react';
 import Animation from './AnimationLottie';
 import {FirebaseContext} from '../../../firebase'
@@ -11,11 +11,17 @@ import etablissements from '../../../json/new-etablissements.json';
 import Header from '../../header/Header';
 
 
+
+import UserContext from '../../../Context/UserContext/UserContext';
+
 const  SignUp = (props) => {
 
    
     const Firebase = useContext(FirebaseContext)
     //const database = Firebase.getData();
+
+    const userContext = useContext(UserContext);
+    const history = useHistory();
    
     const genderOptions = [
         { text: 'Etablissement 1', value: 'Etablissement 1' },
@@ -167,6 +173,17 @@ const  SignUp = (props) => {
                 <Button  disabled className = 'submit-btn w-100' style={{marginTop:'5%',marginBottom:'10%'}}>S'inscrire</Button>
     const errorMsg = error !== '' ? <span style={{color: 'red',fontWeight: '400'}}>{error.message}</span> : null
 
+    
+    useEffect(() => {
+        userContext.update_current_location(history.location.pathname);
+        return () => {
+            userContext.update_current_location("");
+        }
+
+    } , []);
+
+    
+    
     return (
       
         <section className="container signup-section">               
