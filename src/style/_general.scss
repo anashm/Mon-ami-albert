@@ -24,6 +24,26 @@ body{
     font-size: 16px !important;
 }
 
+.login.main_content {
+    @include media('<=phone'){
+        
+        height: 100vh;
+        padding: 0 !important;
+        display: flex;
+
+    }
+}
+
+.eleve-create-account.main_content  {
+    @include media('<=phone'){
+        height: 100vh;
+        padding: 0 !important;
+        display: flex;
+        align-items: center;
+
+    }
+}
+
 
 @media only screen and (max-width: 490px) {
     .mt-20-percent{

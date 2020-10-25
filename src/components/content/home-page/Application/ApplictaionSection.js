@@ -15,6 +15,8 @@ import { useLottie } from "lottie-react";
 import phoneLottie from '../../../../animation/homepage/phoneLottie.json';
 import newphoneLottie from '../../../../animation/homepage/animationphones.json';
 
+import PrimaryLinkButton from '../../../general/PrimaryLinkButton/PrimaryLinkButton';
+
 
 import { Divider } from 'semantic-ui-react';
 
@@ -68,6 +70,14 @@ const ApplictaionSection = () => {
                         <Title text = 'Télécharge notre application' leftOverlined />
                         <Divider hidden/>
                         <Paragraphe text = 'Télécharge notre application mobile sur Play Store ou sur App Store pour pouvoir réviser partout où que tu sois.' />
+                        <Divider hidden/>
+                        <PrimaryLinkButton 
+                            animation = 'fade'
+                            delay = {200}
+                            once = 'true'
+                            text = 'découvre mon ami albert'
+                            link = '/'
+                        />
                         <Divider hidden/>
                         <div className="application-download-link-button">
                             <DownloadButton title = 'Télécharger' subTitle = 'sur App Store' img = {appleStore} />

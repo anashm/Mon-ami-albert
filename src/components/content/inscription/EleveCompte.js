@@ -81,95 +81,43 @@ import UserContext from '../../../Context/UserContext/UserContext';
     return (        
         <div className="container eleve-compte-section">
 
-            {/* <WhatsappShareButton
-            url="https://preprod.monamialbert.com/"
-            title="from app"
-            separator=":: "
-            className="Demo__some-network__share-button"
-          >
-            <WhatsappIcon size={32} round />
-          </WhatsappShareButton> */}
-
             <Title text = 'CREE TON COMPTE' textcentered centerOverlined />
 
+            <p className="quel_classe">En quelle classe es-tu en { new Date().getUTCFullYear() - 1 } - { new Date().getUTCFullYear() } ?</p>
+
             <div className="container-profil-images-scroll">
-                {avatars.map( (avatar , index) => {
-                        return(
-                            <Avatar avatarClicked = { handleAvatarClicked }  key={index} active = { sourceImage === avatar.image ? 'avatar_clicked' : 'image-avatar' }  getAvatar={getAvatarClicked} logo={avatar.image} name={avatar.name} />
-                        )
-                })}
-
+                {avatars.map( (avatar , index) => <Avatar avatarClicked = { handleAvatarClicked }  key={index} active = { sourceImage === avatar.image ? 'avatar_clicked' : 'image-avatar' }  getAvatar={getAvatarClicked} logo={avatar.image} name={avatar.name} />)}
             </div>
-            {/* <div className="row justify-content-center align-items-center">
-                <img src={avatar} alt = '' /> 
-                <p className="text-avatar"> {childData} </p>
-            </div> */}
-
-            <p className="quel_classe">En quelle classe es-tu (2019-2020) ?</p>
-            
-
-            <div className="row">
-                
-                <div className="col">
-                    <div className="grid1"> 
-                        {niveaux.map( (niveau,index) => {
-                            return (
-                                <span key={index}>
-                                <NiveauComponent 
-                                    key={index} 
-                                    niveau={niveau}
-                                    setLevel = {setLevel}
-                                    level = {level}
-                                />  
-                                </span>
-                            )                   
-                        }) }          
-                    </div>
-                    
-                    <div className="grid2">
-                    
-                        {(level.length > 0) && <SchoolSearchInput changed = { handleChange } />  }
-                    </div>    
-                </div>
+            <div className="grid1 mt-4">
+                {niveaux.map( (niveau,index) => <span key={index}> <NiveauComponent key={index} niveau={niveau} setLevel = {setLevel} level = {level} /> </span> ) }
             </div>
+
+            <div className="grid2">
+                {(level.length > 0) && <SchoolSearchInput changed = { handleChange } /> }
+            </div>
+
             <p className="deja_un_compte">Tu as déjà un compte ? <Link to="/login"> Connecte-toi </Link></p>
-            <div className="social-login-container">
-                {/* <div className="google-login-btn-container">
-                    <Google />
-                </div> */}
 
-                <div className="facebook-login-btn-container">
-                    <Facebook navigation={props} />
-                </div>
 
-                <div className="email-login-container">
-
-                    {(school && level && avatar) ? (<Link to={{
-                            pathname: "/sign-up",
-                            state: {
-                                fonction:level,
-                                avatar : avatar,
-                                etablissement : school,
-                                pays : pays
-                            }
-                        }}>
-                    <Button  className = 'submit-btn w-100'>S'inscrire avec un email</Button>
-                    </Link> ) : <Button disabled  className = 'submit-btn w-100'>S'inscrire avec un email</Button>}
-                   
-                  {/*  <Link to={{
-                            pathname: "/sign-up",
-                            state: {
-                                fonction:childData
-                            }
-                        }}>
-                    <Button  className = 'submit-btn w-100'>S'inscrire avec un email</Button>
-                    </Link>  */}
-                </div>
+            <div className="email-login-container">
+                {(school && level && avatar) ? (<Link to={{
+                    pathname: "/sign-up",
+                    state: {
+                        fonction:level,
+                        avatar : avatar,
+                        etablissement : school,
+                        pays : pays
+                    }
+                }}>
+                <Button className = 'submit-btn w-100'>S'inscrire avec un email</Button>
+                </Link> ) : <Button disabled className = 'submit-btn w-100'>S'inscrire avec un email</Button>}
             </div>
-           
+
+            <div className="facebook-login-btn-container mt-3">
+                <Facebook navigation={props} />
+            </div>
         </div>
     )
-  
 }
 
 
