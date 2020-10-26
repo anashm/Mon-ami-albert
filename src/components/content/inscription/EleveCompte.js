@@ -11,7 +11,7 @@ import { Form,Select} from 'semantic-ui-react';
 import Title from '../../general/Title/Title';
 import { useHistory } from "react-router-dom";
 import SchoolSearchInput from './SchoolSearchInput/SchoolSearchInput'
-
+import DefaultAvatar from '../../../images/avatars/Boy-3.png';
 import avatar from '../../../images/avatar.png';
 import { avatars } from '../../header/ProfileAvatars';
 import Avatar from '../../header/Avatar/Avatar';
@@ -96,7 +96,7 @@ import UserContext from '../../../Context/UserContext/UserContext';
 
             <Title text = 'CREE TON COMPTE' textcentered centerOverlined />
             <div className="container-selectionne-ton-avatar">
-                <h3 className="selectionne-ton-avatar">Selectionne Ton Avatar</h3>
+                <h3 className="selectionne-ton-avatar">Sélectionne ton Avatar</h3>
             </div>
             
             <div className="container-profil-images-scroll">
