@@ -3,6 +3,10 @@
 @import './breakpoints';
 
 
+.cursor-not-allowed{
+    cursor: not-allowed;
+}
+
 .submit-btn{
     background-color: $secondary-dark-gray-color !important;
     color: white !important;
