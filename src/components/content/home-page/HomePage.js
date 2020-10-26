@@ -63,6 +63,7 @@ const HomePage =  memo( ({ loading }) => {
             <ApplicationSection />
             <ClassesSection />
           </section>
+          <Footer />
           </Fragment>
         
       )

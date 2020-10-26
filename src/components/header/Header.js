@@ -265,6 +265,16 @@ const Header = () =>  {
                             </div>
                                 </div>
                                 <div className="vertical-line">|</div>
+
+                                {(userContext.current_location !== '/' && userContext.current_location !== '/dashboard-user') &&  
+                                    <Fragment>
+                                        <Link className="header-dashboard-button" to="/dashboard-user">  Mon Parcours </Link>
+                                        <div className="vertical-line">|</div>
+                                    </Fragment>
+                                   
+                                }
+
+                               
                                 <div className = 'medal-container'> 
                                     <span>{points} Points </span>
                                     <img src={highfive} alt=""/>
