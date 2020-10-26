@@ -1,12 +1,13 @@
 import React,{useState,useContext} from 'react';
 import QrReader from 'react-qr-reader'
 import UserContext from '../../Context/UserContext/UserContext';
-import { Button } from 'semantic-ui-react';
+
 import {FirebaseContext} from '../../firebase';
 import Header from '../../components/header/Header';
 import './QRComponent.css';
 import Modal from 'react-bootstrap/Modal';
 import highfive from '../../images/highFive/HIGHFIVE.svg';
+import {Form,Button} from 'semantic-ui-react';
 
 const QRComponent = () => {
     const userContext = useContext(UserContext)
@@ -15,6 +16,7 @@ const QRComponent = () => {
     const [showModal ,setShowModal] = useState(false)
     const [ModalBravo ,setModalBravo] = useState(false)
     const [points , setPoints] = useState(0)
+    const [showCodeInput , setShowCodeInput] = useState(false);
     /* const[idCode,setIdCode] = useState('');
     const[nbrPoints,setNbrPoint] = useState(0); */
    
@@ -35,6 +37,10 @@ const QRComponent = () => {
 
       }
     } */
+
+    const HandleCodeManuel = () => {
+      setShowCodeInput(true)
+    }
 
     const handleScan = data => {
       
@@ -101,7 +107,7 @@ const QRComponent = () => {
       }
     const handleError = err => {
         console.error(err)
-     
+        
       }
    
     return (
@@ -124,7 +130,23 @@ const QRComponent = () => {
             <div className="container-btn-comment-ca-marche">
                 <Button onClick={()=>setShowModal(true)} id="comment-ca-marche">Comment ça marche</Button>
             </div>  
+            <div className="container-souci-camera">
+              <p className = 'subscribe-text text-center'> <span> Un soucis avec la Camera ? </span>  <small className = 'entrer-qr-code-manuellement' onClick={HandleCodeManuel}>  Entre ton code manuellement! </small> </p>  
+              {
+                showCodeInput ? 
+                <>
+                  <Form.Field>
+                    <label>Code Promotionnel</label>
+                    <input type="text" placeholder='Entrer le Code' />
+                  </Form.Field>
+                  <Button  >Entrer Code</Button>
+                </>
+                :
+                ''
+              }
               
+             
+            </div>  
             {
               showModal ? 
                 <Modal
