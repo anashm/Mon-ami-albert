@@ -14,7 +14,14 @@
     src: url('../../../fonts/Rubik-Regular.ttf');
 }
 
+.selectionne-ton-avatar{
+    font-family: Rubik-Regular;
+    text-align: center;
+}
 
+.container-selectionne-ton-avatar{
+    margin: 20px 0px 20px 0px;
+}
 
 .container-profil-images-scroll{
     display: flex;
