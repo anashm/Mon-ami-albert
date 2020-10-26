@@ -24,23 +24,13 @@ body{
     font-size: 16px !important;
 }
 
-.login.main_content {
+.login.main_content , .sign-up.main_content , .eleve-create-account.main_content  {
     @include media('<=phone'){
         
         height: 100vh;
         padding: 0 !important;
         display: flex;
-
-    }
-}
-
-.eleve-create-account.main_content  {
-    @include media('<=phone'){
-        height: 100vh;
-        padding: 0 !important;
-        display: flex;
         align-items: center;
-
     }
 }
 
