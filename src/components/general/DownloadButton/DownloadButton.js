@@ -1,8 +1,8 @@
 import React from 'react';
 
-const DownloadButton = ({ title ,  subTitle , img }) => {
+const DownloadButton = ({ title ,  subTitle , img , src }) => {
     return (
-        <a href="#" className = 'download-btn-link'>
+        <a href={src} className = 'download-btn-link'>
             <div className="img">
                 <img src={img} alt=""/>
             </div>

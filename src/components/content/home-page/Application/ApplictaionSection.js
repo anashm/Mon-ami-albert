@@ -71,17 +71,20 @@ const ApplictaionSection = () => {
                         <Divider hidden/>
                         <Paragraphe text = 'Télécharge notre application mobile sur Play Store ou sur App Store pour pouvoir réviser partout où que tu sois.' />
                         <Divider hidden/>
-                        <PrimaryLinkButton 
-                            animation = 'fade'
-                            delay = {200}
-                            once = 'true'
-                            text = 'découvre mon ami albert'
-                            link = '/'
-                        />
+                        <div className = 'd-flex justify-content-center'>
+                            <PrimaryLinkButton 
+                                animation = 'fade'
+                                delay = {200}
+                                once = 'true'
+                                text = 'découvre mon ami albert'
+                                link = '/'
+                            />
+                        </div>
+                        
                         <Divider hidden/>
-                        <div className="application-download-link-button">
-                            <DownloadButton title = 'Télécharger' subTitle = 'sur App Store' img = {appleStore} />
-                            <DownloadButton title = 'Télécharger' subTitle = 'sur Play Store' img = {playstore} />
+                        <div className="application-download-link-button d-flex justify-content-center">
+                            <DownloadButton title = 'Télécharger' subTitle = 'sur App Store' img = {appleStore} src = 'https://play.google.com/store/apps/details?id=com.monami.albert&gl=MA' />
+                            <DownloadButton title = 'Télécharger' subTitle = 'sur Play Store' img = {playstore} src = 'https://play.google.com/store/apps/details?id=com.monami.albert&gl=MA' />
                         </div>
                     </div>
 
