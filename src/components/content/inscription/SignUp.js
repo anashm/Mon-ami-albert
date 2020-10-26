@@ -167,8 +167,8 @@ const  SignUp = (props) => {
     }
 
     const btn = (SignUpData.first_name !== '' && SignUpData.last_name !== '' && SignUpData.password !=='' &&
-                SignUpData.re_password !=='' && SignUpData.email !== '' && SignUpData.re_password === SignUpData.password ) ?  <Button   className = 'submit-btn w-100' style={{marginTop:'5%',marginBottom:'10%'}}>S'inscrire</Button> :
-                <Button  disabled className = 'submit-btn w-100' style={{marginTop:'5%',marginBottom:'10%'}}>S'inscrire</Button>
+                SignUpData.re_password !=='' && SignUpData.email !== '' && SignUpData.re_password === SignUpData.password ) ? <div className="row"><div className="col"><Button   className = 'submit-btn w-100' style={{marginTop:'5%',marginBottom:'10%'}}>S'inscrire</Button> </div></div>  :
+                <div className="row"><div className="col"><Button  disabled className = 'submit-btn w-100' style={{marginTop:'5%',marginBottom:'10%'}}>S'inscrire</Button></div></div>
     const errorMsg = error !== '' ? <span style={{color: 'red',fontWeight: '400'}}>{error.message}</span> : null
 
     
@@ -186,6 +186,8 @@ const  SignUp = (props) => {
       
         <section className="container signup-section">               
                 <Title text = 'CREEZ VOTRE COMPTE' textcentered centerOverlined />
+
+                
 
                 <div className="row" style={{marginTop:'-2%'}}>
                     <div className="col-md-4"></div>
