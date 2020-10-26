@@ -42,7 +42,7 @@ const QuizzSummary = ({ quizz_questions , found_answer , chapter , img , course 
     const congratulations = {
         seconde: {
             first: `Le passage en première n'est pas encore gagné, mais ne crains rien je suis avec toi !`,
-            second : `Est ce vraiment ton meilleur travail ? Je suis ceratin que tu peux mieux faire !`,
+            second : `Est ce vraiment ton meilleur travail ? Je suis certain que tu peux mieux faire !`,
             third: `Tiens tiens, un majorant se cache en toi !`,
             fourth: `Bien joué ! Tu serai pas majorant comme par hasard ?`
         },
@@ -54,19 +54,19 @@ const QuizzSummary = ({ quizz_questions , found_answer , chapter , img , course 
         },
         terminale: {
             first: `Pour le moment, on oublie la prépa !`,
-            second : `Est ce vraiment ton meilleur travail ? Je suis ceratin que tu peux mieux faire !`,
+            second : `Est ce vraiment ton meilleur travail ? Je suis certain que tu peux mieux faire !`,
             third: `Si tu continue ça, la mention très bien est à toi !`,
             fourth: `Bien joué ! la mention très bien est dans la poche.`
         },
         mathssup: {
             first: `Bon, le passage en Spé n'est pas gagné, mais ne crains rien , je suis avec toi !`,
-            second : `Est ce vraiment ton meilleur travail ? Je suis ceratin que tu peux mieux faire !`,
+            second : `Est ce vraiment ton meilleur travail ? Je suis certain que tu peux mieux faire !`,
             third: `Le passage en étoile n'est pas encore d'actualité mais tu es sur la bonne voie !`,
             fourth: `Bien joué ! si tu continues comme ça, la classe étoile est dans la poche.`
         },
         ecs1ece1ect1: {
             first: `Bon, le passage en carré n'est pas gagné, mais ne crains rien je suis avec toi`,
-            second : `Est ce vraiment ton meilleur travail ? Je suis ceratin que tu peux mieux faire !`,
+            second : `Est ce vraiment ton meilleur travail ? Je suis certain que tu peux mieux faire !`,
             third: `Intégrer HEC n'est pas encore d'actualité mais tu es sur le bon chemin !`,
             fourth: `Bien joué ! si tu continues comme ça, HEC est dans la poche.`
         },

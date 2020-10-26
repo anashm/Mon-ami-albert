@@ -79,10 +79,8 @@ const  Dashboard = (props) => {
             duration: 800
         });
         userContext.update_current_location(history.location.pathname);
-        return () => {
-            userContext.update_current_location('');
-        }
         
+
         if(userContext.user){
             if(niveauxSchool.length < 1){
                 const database = firebase.getData();
@@ -92,6 +90,10 @@ const  Dashboard = (props) => {
                     setNiveauxSchool(snapshot.val());
                 })
             }
+        }
+
+        return () => {
+            userContext.update_current_location('');
         }
 
     }, [userContext.user]);
