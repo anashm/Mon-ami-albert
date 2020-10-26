@@ -46,10 +46,14 @@ import UserContext from '../../../Context/UserContext/UserContext';
     const [avatar , setAvatar] = useState('')
 
 
-    const handleAvatarClicked = src => setSourceImage(src);
+    const handleAvatarClicked = src =>{
+        setSourceImage(src);
+        //console.log('hnaya' ,src)
+    } 
 
     const getAvatarClicked = (avatar) => {
-        setAvatar(avatar);    
+        setAvatar(avatar); 
+        
     }
    /*  const handleSchoolChange = (e,result) => {
         setSchool(result.value)
@@ -66,10 +70,10 @@ import UserContext from '../../../Context/UserContext/UserContext';
     }
 
     const userContext = useContext(UserContext);
-
+    
 
     useEffect(() => {
-        
+        //setAvatar('Boy-3')
         userContext.update_current_location(history.location.pathname);
         return () => {
             
@@ -91,7 +95,10 @@ import UserContext from '../../../Context/UserContext/UserContext';
           </WhatsappShareButton> */}
 
             <Title text = 'CREE TON COMPTE' textcentered centerOverlined />
-
+            <div className="container-selectionne-ton-avatar">
+                <h3 className="selectionne-ton-avatar">Selectionne Ton Avatar</h3>
+            </div>
+            
             <div className="container-profil-images-scroll">
                 {avatars.map( (avatar , index) => {
                         return(
@@ -144,7 +151,7 @@ import UserContext from '../../../Context/UserContext/UserContext';
 
                 <div className="email-login-container">
 
-                    {(school && level && avatar) ? (<Link to={{
+                    {(school && level ) ? (<Link to={{
                             pathname: "/sign-up",
                             state: {
                                 fonction:level,

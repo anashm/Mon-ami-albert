@@ -1,6 +1,6 @@
 import React,{useState,useContext} from 'react';
 import './SignUp.css';
-import avatar from '../../../images/avatar.png';
+import avatar from '../../../images/avatars/Boy-3.png';
 import { Link } from 'react-router-dom';
 import { Button, Form,Select} from 'semantic-ui-react';
 import Animation from './AnimationLottie';
@@ -76,7 +76,7 @@ const  SignUp = (props) => {
             firstName: SignUpData.first_name,
             level:props.location.state.fonction,
             points : 50,
-            avatar : props.location.state.avatar,
+            avatar : props.location.state.avatar ? props.location.state.avatar : 'Boy-3',
             pays : props.location.state.pays,
             etablissement : props.location.state.etablissement,
            Progression : {
@@ -178,7 +178,13 @@ const  SignUp = (props) => {
                     <div className="col-md-4" style={{marginLeft:'4%'}}>
                         <div style={{float:"left",width:'20%'}}>
                              {/* <img src={avatar} style={{width : '70%'}} /> */}
-                             <img src={require(`../../../images/avatars/${props.location.state.avatar}.png`)} style={{width : '80%'}} />  
+                             {
+                                 props.location.state.avatar ? 
+                                    <img src={require(`../../../images/avatars/${props.location.state.avatar}.png`)} style={{width : '80%'}} />
+                                 :
+                                    <img src={avatar} style={{width : '70%'}} />
+                             }
+                               
                         </div>
                         
                         <p className="text-avatar"> <b> {props.location.state.fonction}</b>.&nbsp;&nbsp;
