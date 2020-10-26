@@ -78,7 +78,7 @@ const  Dashboard = (props) => {
         AOS.init({
             duration: 800
         });
-        userContext.update_current_location(history.location.pathname);
+       
         
 
         if(userContext.user){
@@ -92,9 +92,7 @@ const  Dashboard = (props) => {
             }
         }
 
-        return () => {
-            userContext.update_current_location('');
-        }
+       
 
     }, [userContext.user]);
 
