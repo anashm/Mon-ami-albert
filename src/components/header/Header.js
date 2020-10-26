@@ -178,8 +178,7 @@ const Header = () =>  {
     const [ showModal , setShowModal ] = useState(false);
 
     return (  
-        <header className = {`container-fluid header ${( ( (userContext.current_location === '/'  ) || userContext.current_location === '/eleve-create-account' || userContext.current_location === '/login') && window.innerWidth <= 500) ? 'd-none' : '' }`}>   
-            { console.log((( userContext.current_location === '/'  || userContext.current_location === '/eleve-create-account' || userContext.current_location === '/login') && window.innerWidth <= 500) ) }
+        <header className = {`container-fluid header ${( ( (userContext.current_location === '/'  ) || userContext.current_location === '/eleve-create-account' || userContext.current_location === '/login' || userContext.current_location === '/sign-up') && window.innerWidth <= 500) ? 'd-none' : '' }`}>   
             
             <div className="container">
                 <div className="row header-row">

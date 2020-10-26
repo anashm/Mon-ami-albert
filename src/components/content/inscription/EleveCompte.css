@@ -83,7 +83,7 @@
     margin-top: 2% !important;
 }
 
-@media only screen and (max-width: 450px) {
+@media only screen and (max-width: 500px) {
     .deja_un_compte{
         margin: 30px 0 !important;
     }
@@ -112,6 +112,7 @@
         flex-wrap: wrap;
         justify-content: center;
         gap: 10px;
+        padding: 0 3%;
     }
     .main_content{
         min-height: unset;
@@ -174,8 +175,18 @@
 } */
 
 .email-login-container{
+    margin: 0 auto;
     margin-top: 15px;
+    max-width: 400px;
+    
 }
+
+@media only screen and (max-width: 500px) {
+   
+    .email-login-container{
+        padding: 0 5%;
+    }
+  }
 
 .w-100 div{
     width: 100% !important;

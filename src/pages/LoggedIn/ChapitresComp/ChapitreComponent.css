@@ -30,6 +30,12 @@
     border-radius: 5px;
     color: #707070;
 
+    height: 100%;
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
 }
 
 .ins-progress{
@@ -57,6 +63,11 @@
         background: #707070;
         color: white;
     }
+}
+
+.chapitre-container{
+    align-self: stretch;
+    height: 100%;
 }
 
 

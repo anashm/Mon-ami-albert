@@ -73,7 +73,7 @@ const  App = () => {
     <Router>
 
       <Header />
-        <main className= { `${( userContext.current_location !== '/') ? 'main_content' : ''}  ${(userContext.user && userContext.current_location !== '/') ? 'pad-bottm-mobile' : ''}`} style = {{ padding: `${userContext.current_location === '/' ? '0 !important' : null}` }} >
+        <main className= { ` ${userContext.current_location.replace('/' , '')} ${( userContext.current_location !== '/') ? 'main_content' : ''}  ${(userContext.user && userContext.current_location !== '/') ? 'pad-bottm-mobile' : ''}`} style = {{ padding: `${userContext.current_location === '/' ? '0 !important' : null}` }} >
           <Switch>
             <Route exact path="/" render = { props => <HomePage { ...props } loading = { loading } /> } />
             <Route exact path="/login" component={Login} />
@@ -97,8 +97,8 @@ const  App = () => {
           </Switch>
         </main>
         { userContext.user && <FooterMenu /> } 
-        <ClassesSection />
-        <Footer />
+        { window.innerWidth > 500 &&  <ClassesSection />}
+        { userContext.current_location === '/' && <Footer />}
       </Router>
   );
 }

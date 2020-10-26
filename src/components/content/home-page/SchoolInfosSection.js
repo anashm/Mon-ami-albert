@@ -73,14 +73,7 @@ const SchoolInfosSection = ()  => {
                             <div>Le contenu proposé par Mon ami Albert est conçu pour permettre à l’étudiant d’apprendre tout en étant stimulé. Pour cela, nous avons développés une approche positive au cœur de notre plateforme. </div>
                             <div>Un suivi pour le lycée et les classes préparatoire, des exercices corrigés, des jeux/Quizz et un classement pour te challenger ! Ça plait aux étudiants, ça les motives et ça les rend autonomes.</div>
                         </HorizontalCard>
-                        <Divider hidden/>
-                        <PrimaryLinkButton 
-                            animation = 'fade'
-                            delay = {200}
-                            once = 'true'
-                            text = 'découvre mon ami albert'
-                            link = '/'
-                        />
+
                     </div>
 
                     <Propositions propositions = { propositions } />
