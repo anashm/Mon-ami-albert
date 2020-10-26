@@ -190,7 +190,7 @@ const QuizzSummary = ({
           </div>
 
           <div className="congratulation-trophee">
-            {userContext.user_points > 50 ? (
+            {1 === 0 ? (
               <div> {View} </div>
             ) : (
               <Fragment>

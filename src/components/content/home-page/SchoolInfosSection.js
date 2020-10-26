@@ -8,7 +8,7 @@ import icon_challenge from "../../../images/challenge.svg";
 
 import Title from "../../general/Title/Title";
 import HorizontalCard from "../../general/HorizontalCard/HorizontalCard";
-import PrimaryLinkButton from "../../general/PrimaryLinkButton/PrimaryLinkButton";
+// import PrimaryLinkButton from "../../general/PrimaryLinkButton/PrimaryLinkButton";
 import Propositions from "../../general/Proposistions/Proposistions";
 
 import { Divider } from "semantic-ui-react";

@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import FacebookLogin from "react-facebook-login";
 import { FirebaseContext } from "../../../../firebase";
 import firebases from "firebase";
