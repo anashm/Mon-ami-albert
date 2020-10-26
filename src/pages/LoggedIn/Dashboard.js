@@ -92,6 +92,12 @@ const  Dashboard = (props) => {
             }
         }
 
+        userContext.update_current_location(history.location.pathname);
+
+        return () => {
+            userContext.update_current_location('');
+        }
+
        
 
     }, [userContext.user]);

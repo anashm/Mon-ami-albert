@@ -97,7 +97,6 @@ const  App = () => {
           </Switch>
         </main>
         { userContext.user && <FooterMenu /> } 
-         <Footer />
       </Router>
   );
 }
