@@ -97,8 +97,7 @@ const  App = () => {
           </Switch>
         </main>
         { userContext.user && <FooterMenu /> } 
-        { window.innerWidth > 500 &&  <ClassesSection />}
-        { userContext.current_location === '/' && <Footer />}
+         <Footer />
       </Router>
   );
 }

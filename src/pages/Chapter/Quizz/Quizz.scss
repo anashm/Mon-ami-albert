@@ -18,19 +18,25 @@
         > div{
             display: flex;
             padding: 0 20px; 
+            align-items: center;
 
             @media only screen and (max-width: 500px) {
                 justify-content: center;
-            }     
+            }  
+            
+            i{
+                font-size: 25px !important;
+            }
 
             &.good-answer-container{
-                p{
-                    color: #79B600;
+               
+                p , i{
+                    color: #79B600 !important;
                 }
             }
 
             &.bad-answer-container{
-                p{
+                p , i{
                     color: crimson;
                 }
             }
