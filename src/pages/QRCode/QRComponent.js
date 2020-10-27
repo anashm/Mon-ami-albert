@@ -42,6 +42,10 @@ const QRComponent = () => {
       setShowCodeInput(true)
     }
 
+    const ValiderCodeInput = () => {
+      
+    }
+
     const handleScan = data => {
       
         if (data) {
@@ -139,7 +143,7 @@ const QRComponent = () => {
                     <label>Code Promotionnel</label>
                     <input type="text" placeholder='Entrer le Code' />
                   </Form.Field>
-                  <Button  >Entrer Code</Button>
+                  <Button  onClick={ValiderCodeInput}>Entrer Code</Button>
                 </>
                 :
                 ''
