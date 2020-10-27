@@ -369,11 +369,11 @@ main.main_content.pad-bottm-mobile {
   font-size: 16px;
   font-weight: 200;
   font-style: italic;
-  line-height: 24px;
+  line-height: 20px;
   width: 300px;
   background: gray;
   border-radius: 40px;
-  padding: 24px;
+  padding: 20px;
   text-align: center;
   color: white !important;
 
@@ -381,10 +381,12 @@ main.main_content.pad-bottm-mobile {
 
   left: 50%;
 
-  @media only screen and (max-width: 490px) {
+  @media only screen and (max-width: 500px) {
     width: 80%;
     left: 20%;
     z-index: 1;
+    padding: 15px;
+    font-size: 14px;
   }
 }
 

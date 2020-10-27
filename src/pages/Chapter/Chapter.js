@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from "react";
-import { useHistory } from "react-router-dom";
 import UserContext from "../../Context/UserContext/UserContext";
 
 import courseImg from "./assets/images/Cours.png";
@@ -17,7 +16,7 @@ import AOS from "aos";
 
 import "./style/Chapter.scss";
 
-import { animateScroll as scroll, scrollSpy, scroller } from "react-scroll";
+import { animateScroll as scroll } from "react-scroll";
 
 const Chapter = ({ match }) => {
   const userContext = useContext(UserContext);

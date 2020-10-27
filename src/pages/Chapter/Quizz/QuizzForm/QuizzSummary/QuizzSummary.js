@@ -177,7 +177,7 @@ const QuizzSummary = ({
 
   return (
     <div className="quizz-summary-container">
-      <div className="quizz-congratulation-container sm-shadow">
+      <div className="quizz-congratulation-container">
         {/* message.length > 1 && <Message visible warning className = 'text-center'>  { message } </Message > */}
 
         {userContext.user_points > 50 && (
@@ -194,7 +194,10 @@ const QuizzSummary = ({
               <div> {View} </div>
             ) : (
               <Fragment>
-                <div className="bubble bubble-bottom-left"> {message} </div>
+                <div className="bubble bubble-bottom-left">
+                  {message} <br /> <br /> Tu as gagné : <br />
+                  {userContext.user_points} points
+                </div>
                 <img src={albertImage} alt="" className="albert-img" />
               </Fragment>
             )}
@@ -202,9 +205,9 @@ const QuizzSummary = ({
 
           <div className="empty"></div>
         </div>
-        <p className="quizz-text-completed"> Tu as complété le Quiz </p>
+        <p className="quizz-text-completed d-none"> Tu as complété le Quiz </p>
         {!finished && (
-          <p className="gained-points-text">
+          <p className="gained-points-text d-none">
             {" "}
             Tu as gagné{" "}
             <span className="text-green">
