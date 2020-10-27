@@ -10,7 +10,6 @@ import {
   Switch,
   Route,
   Redirect,
-  useLocation,
 } from "react-router-dom";
 import CreatAccount from "./components/content/inscription/create_account";
 import EleveAccount from "./components/content/inscription/EleveCompte";
@@ -21,7 +20,7 @@ import Chapter from "./pages/Chapter/Chapter";
 import SignUp from "./components/content/inscription/SignUp";
 import Dashboard from "./pages/LoggedIn/Dashboard";
 import Chapitres from "./pages/LoggedIn/Chapitres";
-import Quizz from "./pages/Chapter/Quizz/Quizz";
+// import Quizz from "./pages/Chapter/Quizz/Quizz";
 import TestPDF from "./pages/Chapter/Exercises/Exercise/TestPDF";
 import Profil from "./components/header/ProfilPage";
 import NotFound from "./pages/404/NotFound";
@@ -37,9 +36,9 @@ import { FirebaseContext } from "./firebase";
 import QRCode from "./pages/QRCode/QRComponent";
 import Contact from "./pages/Contact/Contact";
 
-import Footer from "./components/footer/Footer";
+// import Footer from "./components/footer/Footer";
 
-import ClassesSection from "./components/content/home-page/ClassesSection/ClassesSection";
+// import ClassesSection from "./components/content/home-page/ClassesSection/ClassesSection";
 
 const App = () => {
   /*   const errorContext = useContext(ErrorContext);
@@ -114,7 +113,6 @@ const App = () => {
             render={(props) => <Dashboard {...props} />}
           />
           <Route exact path="/chapitres/:matieres" component={Chapitres} />
-          <Route exact path="/test-pdf" component={TestPDF} />
           <Route exact path="/profil" component={Profil} />
           <Route
             exact

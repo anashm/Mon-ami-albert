@@ -11,9 +11,9 @@ import AOS from 'aos';
 import { Alert } from 'react-bootstrap';
 import { Modal,Button } from 'react-bootstrap';
 import albert from '../../images/quizz/albert-quiz.png';
-import Header from '../../components/header/Header';
+// import Header from '../../components/header/Header';
 
-import {Events ,  animateScroll as scroll, scrollSpy, scroller } from 'react-scroll';
+import { animateScroll as scroll } from 'react-scroll';
 
 
 const  Chapitres = ({match}) => {
@@ -25,11 +25,11 @@ const  Chapitres = ({match}) => {
     let matiere = match.params.matieres;
     const firebase = useContext(FirebaseContext);
     const userContext = useContext(UserContext);
-    const [infosLevel , setinfosLevel ] = useState(null);
+    const [ , setinfosLevel ] = useState(null);
     const [ chapters , setChapters ] = useState([]);
 
 
-    const [ loading , setLoading ] = useState(true);
+    // const [ loading , setLoading ] = useState(true);
     const [textMatiere ,setTextMatiere] = useState('')
     const [showModal , setShowModal] = useState(false)
     const [dimmer , setDimmer ] = useState(true);

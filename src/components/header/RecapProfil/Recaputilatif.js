@@ -11,7 +11,7 @@ export default function Recaputilatif() {
   const userContext = useContext(UserContext);
   const history = useHistory();
 
-  const path = "../../images/avatars";
+  //   const path = "../../images/avatars";
   const [avatar, setAvatar] = useState(null);
   const [level, setLevel] = useState(null);
   const [etablissement, setEtablissement] = useState(null);

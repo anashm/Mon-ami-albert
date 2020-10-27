@@ -7,7 +7,7 @@ import { FirebaseContext } from "../../firebase";
 import UserContext from "../../Context/UserContext/UserContext";
 import HamburgerMenu from "./Menu/HamburgerMenu/HamburgerMenu";
 import { useHistory } from "react-router-dom";
-import Avatar from "../../images/avatar.png";
+// import Avatar from "../../images/avatar.png";
 /* import { Button, Popup,Dropdown, DropdownMenu } from 'semantic-ui-react'; */
 import { Modal, Button } from "react-bootstrap";
 import { Dropdown, Icon } from "semantic-ui-react";

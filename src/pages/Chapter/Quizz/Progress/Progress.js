@@ -1,29 +1,20 @@
-import React, {
-  useContext,
-  useEffect,
-  useState,
-  Fragment,
-  useRef,
-} from "react";
+import React, { useContext, useEffect, useState, Fragment } from "react";
 import UserContext from "../../../../Context/UserContext/UserContext";
 import { Icon } from "semantic-ui-react";
-import Lottie from "lottie-react";
+// import Lottie from "lottie-react";
 
 import "./Progress.scss";
 
 import svg from "./assets/Groupe 212.svg";
 import avatar from "./assets/Boy.png";
-import lottieTrophy from "./assets/lottie/trophy.json";
+// import lottieTrophy from "./assets/lottie/trophy.json";
 
 const Progress = () => {
-  const lottieRef = useRef();
-
   const userContext = useContext(UserContext);
 
   const [progression, setProgression] = useState(0);
   const [quizzQuestionsNumber, setQuizzQuestionsNumber] = useState(0);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [playLottie, setPlayLottie] = useState(false);
 
   const [avatarImage, setAvatarImage] = useState("");
   const handleProgression = (progression) => setProgression(progression);
