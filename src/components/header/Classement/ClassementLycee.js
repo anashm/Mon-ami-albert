@@ -18,6 +18,7 @@ const ClassementLycee = () => {
   const [dimmer, setDimmer] = useState(true);
   const [dataMaroc, setDataMaroc] = useState([]);
   const [dataFrance, setDataFrance] = useState([]);
+  const [paysEleve , setPaysEleve] = useState('');
   const trierLycee = (array) => {
     let object = {};
     array.forEach(function (childData) {
@@ -42,7 +43,10 @@ const ClassementLycee = () => {
   };
 
   useEffect(() => {
-    if (userContext.user) {
+    
+    if (userContext.user && userContext.user_informations) {
+      
+        setPaysEleve(userContext.user_informations.pays)
       const database = firebase.getData();
       const reference = database.ref("users");
       //const mostViewedPosts = database.ref('users/'+userId).orderByChild('/points');
@@ -66,7 +70,7 @@ const ClassementLycee = () => {
             let childData = childSnapshot.val();
             if (childData.pays) {
               if (childData.pays.toLowerCase().includes("ma")) {
-                console.log(childData.etablissement, childData.pays);
+                
                 maSchools.push(childData);
               } else {
                 //console.log(childData.etablissement, childData.pays);
@@ -109,7 +113,7 @@ const ClassementLycee = () => {
           history.push("/404");
         });
     }
-  }, [userContext.user]);
+  }, [userContext]);
 
   return (
     <div className="general-order-container">
@@ -120,8 +124,8 @@ const ClassementLycee = () => {
       <br />
       <br />
 
-      <Tabs defaultActiveKey="Lycées du Maroc" id="uncontrolled-tab-example">
-        <Tab eventKey="Lycées de France" title="Lycées de France">
+        {
+          paysEleve.toLowerCase() === 'fr' ?
           <Table unstackable>
             <Table.Body>
               {dataFrance
@@ -159,47 +163,52 @@ const ClassementLycee = () => {
                 : ""}
             </Table.Body>
           </Table>
-        </Tab>
-        <Tab eventKey="Lycées du Maroc" title="Lycées du Maroc">
-          <Table unstackable>
-            <Table.Body>
-              {dataMaroc
-                ? dataMaroc.map((lycee, index) => {
-                    return (
-                      <Table.Row key={index}>
-                        <Table.Cell>
-                          <span className="index_style_classement">
-                            {" "}
-                            {index + 1}
-                          </span>
-                        </Table.Cell>
 
-                        <Table.Cell>
-                          <span className="identifiants-classement-user">
-                            {lycee[0]}
+          :
+           
+          <Table unstackable>
+          <Table.Body>
+            {dataMaroc
+              ? dataMaroc.map((lycee, index) => {
+                  return (
+                    <Table.Row key={index}>
+                      <Table.Cell>
+                        <span className="index_style_classement">
+                          {" "}
+                          {index + 1}
+                        </span>
+                      </Table.Cell>
+
+                      <Table.Cell>
+                        <span className="identifiants-classement-user">
+                          {lycee[0]}
+                        </span>
+                      </Table.Cell>
+                      <Table.Cell>
+                        <div className="high_fives_container">
+                          <span className="high_fives_span">
+                            <img
+                              src={highfive}
+                              className="high_fives_images"
+                            />
                           </span>
-                        </Table.Cell>
-                        <Table.Cell>
-                          <div className="high_fives_container">
-                            <span className="high_fives_span">
-                              <img
-                                src={highfive}
-                                className="high_fives_images"
-                              />
-                            </span>
-                            <span className="numbers_high_five">
-                              {lycee[1]}
-                            </span>
-                          </div>
-                        </Table.Cell>
-                      </Table.Row>
-                    );
-                  })
-                : ""}
-            </Table.Body>
-          </Table>
-        </Tab>
-      </Tabs>
+                          <span className="numbers_high_five">
+                            {lycee[1]}
+                          </span>
+                        </div>
+                      </Table.Cell>
+                    </Table.Row>
+                  );
+                })
+              : ""}
+          </Table.Body>
+        </Table>
+      
+
+        }
+      
+          
+        
 
       {dimmer ? (
         <div className="loader-container" style={{ height: "30vh" }}>

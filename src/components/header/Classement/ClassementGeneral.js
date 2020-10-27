@@ -17,11 +17,14 @@ const ClassementGeneral = () => {
   const [classement, setClassement] = useState([]);
   const [dimmer, setDimmer] = useState(true);
   const [level, setLevel] = useState("");
-
+  const [paysEleve , setPaysEleve] = useState('');
   const [eleveMaroc, setEleveMaroc] = useState([]);
   const [eleveFrance, setEleveFrance] = useState([]);
   useEffect(() => {
     if (userContext.user && userContext.user_informations) {
+
+      setPaysEleve(userContext.user_informations.pays)
+
       //code if realod page pour garder context api values
       //const userId = userContext.user.uid;
       const database = firebase.getData();
@@ -104,94 +107,103 @@ const ClassementGeneral = () => {
     <div className="general-order-container">
       <h3>Classement Général {level ? level : ""} </h3>
 
-      <Tabs defaultActiveKey="Lycées du Maroc" id="uncontrolled-tab-example">
-        <Tab eventKey="Lycées de France" title="Lycées de France">
-          <Table unstackable>
-            <Table.Body>
-              {eleveFrance
-                ? eleveFrance.map((user, index) => {
-                    return (
-                      <Table.Row key={index}>
-                        <Table.Cell>
-                          <span className="index_style_classement">
-                            {index + 1}
-                          </span>
-                        </Table.Cell>
+    {
+      paysEleve.toLowerCase() === 'fr' ?
 
-                        <Table.Cell>
-                          <span className="identifiants-classement-user">
-                            {" "}
-                            {user.lastName} {user.firstName}{" "}
-                          </span>
-                          <br></br>
-                          <span> {user.etablissement} </span>
-                        </Table.Cell>
-                        <Table.Cell key={index}>
-                          <div className="high_fives_container">
-                            <span className="high_fives_span">
-                              <img
-                                src={highfive}
-                                className="high_fives_images"
-                                alt=""
-                              />
-                            </span>
-                            <span className="numbers_high_five">
-                              {" "}
-                              {user.points}
-                            </span>
-                          </div>
-                        </Table.Cell>
-                      </Table.Row>
-                    );
-                  })
-                : ""}
-            </Table.Body>
-          </Table>
-        </Tab>
-        <Tab eventKey="Lycées du Maroc" title="Lycées du Maroc">
-          <Table unstackable>
-            <Table.Body>
-              {eleveMaroc
-                ? eleveMaroc.map((user, index) => {
-                    return (
-                      <Table.Row key={index}>
-                        <Table.Cell>
-                          <span className="index_style_classement">
-                            {index + 1}
-                          </span>
-                        </Table.Cell>
 
-                        <Table.Cell>
-                          <span className="identifiants-classement-user">
-                            {" "}
-                            {user.lastName} {user.firstName}{" "}
+          <Table unstackable>
+          <Table.Body>
+            {eleveFrance
+              ? eleveFrance.map((user, index) => {
+                  return (
+                    <Table.Row key={index}>
+                      <Table.Cell>
+                        <span className="index_style_classement">
+                          {index + 1}
+                        </span>
+                      </Table.Cell>
+
+                      <Table.Cell>
+                        <span className="identifiants-classement-user">
+                          {" "}
+                          {user.lastName} {user.firstName}{" "}
+                        </span>
+                        <br></br>
+                        <span> {user.etablissement} </span>
+                      </Table.Cell>
+                      <Table.Cell key={index}>
+                        <div className="high_fives_container">
+                          <span className="high_fives_span">
+                            <img
+                              src={highfive}
+                              className="high_fives_images"
+                              alt=""
+                            />
                           </span>
-                          <br></br>
-                          <span> {user.etablissement} </span>
-                        </Table.Cell>
-                        <Table.Cell key={index}>
-                          <div className="high_fives_container">
-                            <span className="high_fives_span">
-                              <img
-                                src={highfive}
-                                className="high_fives_images"
-                                alt=""
-                              />
+                          <span className="numbers_high_five">
+                            {" "}
+                            {user.points}
+                          </span>
+                        </div>
+                      </Table.Cell>
+                    </Table.Row>
+                  );
+                })
+              : ""}
+          </Table.Body>
+        </Table>
+
+      :
+
+
+        <Table unstackable>
+              <Table.Body>
+                {eleveMaroc
+                  ? eleveMaroc.map((user, index) => {
+                      return (
+                        <Table.Row key={index}>
+                          <Table.Cell>
+                            <span className="index_style_classement">
+                              {index + 1}
                             </span>
-                            <span className="numbers_high_five">
+                          </Table.Cell>
+
+                          <Table.Cell>
+                            <span className="identifiants-classement-user">
                               {" "}
-                              {user.points}
+                              {user.lastName} {user.firstName}{" "}
                             </span>
-                          </div>
-                        </Table.Cell>
-                      </Table.Row>
-                    );
-                  })
-                : ""}
-            </Table.Body>
-          </Table>
-        </Tab>
-      </Tabs>
+                            <br></br>
+                            <span> {user.etablissement} </span>
+                          </Table.Cell>
+                          <Table.Cell key={index}>
+                            <div className="high_fives_container">
+                              <span className="high_fives_span">
+                                <img
+                                  src={highfive}
+                                  className="high_fives_images"
+                                  alt=""
+                                />
+                              </span>
+                              <span className="numbers_high_five">
+                                {" "}
+                                {user.points}
+                              </span>
+                            </div>
+                          </Table.Cell>
+                        </Table.Row>
+                      );
+                    })
+                  : ""}
+              </Table.Body>
+            </Table>
+    }
+      
+         
+       
+        
+          
+        
 
       <div className="loader-container" style={{ height: "30vh" }}>
         {dimmer ? (
