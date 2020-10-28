@@ -49,7 +49,7 @@ const Progress = () => {
         {avatarImage ? (
           <img
             src={require(`../../../../images/avatars/${avatarImage}.png`)}
-            style={{ maxWidth: "80px" }}
+            style={{ maxWidth: "60px" }}
             alt=""
           />
         ) : (

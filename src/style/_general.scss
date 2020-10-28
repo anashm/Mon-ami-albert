@@ -12,6 +12,17 @@ body {
   //font-size: 62.5%;
   //background-color: $blue-primary;
 }
+.hide-tail.mtight svg {
+  fill: #707070 !important;
+  width: 20px !important;
+  height: 15px !important;
+}
+
+.hide-tail svg {
+  width: 30px !important;
+  fill: #707070 !important;
+  height: 20px !important;
+}
 
 .divider {
   background-color: transparent !important;
