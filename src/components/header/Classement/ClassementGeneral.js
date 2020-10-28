@@ -9,6 +9,10 @@ import highfive from "../../../images/highFive/HIGHFIVE.svg";
 import Header from "../../header/Header";
 import { Tab, Tabs } from "react-bootstrap";
 
+import OrderRow from "./OrderRow/OrderRow";
+
+import "./style.scss";
+
 const ClassementGeneral = () => {
   const firebase = useContext(FirebaseContext);
   const userContext = useContext(UserContext);
@@ -17,13 +21,12 @@ const ClassementGeneral = () => {
   const [classement, setClassement] = useState([]);
   const [dimmer, setDimmer] = useState(true);
   const [level, setLevel] = useState("");
-  const [paysEleve , setPaysEleve] = useState('');
+  const [paysEleve, setPaysEleve] = useState("");
   const [eleveMaroc, setEleveMaroc] = useState([]);
   const [eleveFrance, setEleveFrance] = useState([]);
   useEffect(() => {
     if (userContext.user && userContext.user_informations) {
-
-      setPaysEleve(userContext.user_informations.pays)
+      setPaysEleve(userContext.user_informations.pays);
 
       //code if realod page pour garder context api values
       //const userId = userContext.user.uid;
@@ -107,113 +110,51 @@ const ClassementGeneral = () => {
     <div className="general-order-container">
       <h3>Classement Général {level ? level : ""} </h3>
 
-    {
-      paysEleve.toLowerCase() === 'fr' ?
+      {paysEleve.toLowerCase() === "fr" ? (
+        <div className="orderRow-container">
+          {eleveFrance
+            ? eleveFrance.map((user, index) => {
+                return (
+                  <OrderRow
+                    key={index}
+                    order={index + 1}
+                    name={`${user.lastName} ${user.firstName}`}
+                    school={user.etablissement}
+                    points={user.points}
+                  />
+                );
+              })
+            : ""}
+        </div>
+      ) : (
+        <div className="orderRow-container">
+          {eleveMaroc
+            ? eleveMaroc.map((user, index) => {
+                return (
+                  <OrderRow
+                    key={index}
+                    order={index + 1}
+                    name={`${user.lastName} ${user.firstName}`}
+                    school={user.etablissement}
+                    points={user.points}
+                  />
+                );
+              })
+            : ""}
+        </div>
+      )}
 
-
-          <Table unstackable>
-          <Table.Body>
-            {eleveFrance
-              ? eleveFrance.map((user, index) => {
-                  return (
-                    <Table.Row key={index}>
-                      <Table.Cell>
-                        <span className="index_style_classement">
-                          {index + 1}
-                        </span>
-                      </Table.Cell>
-
-                      <Table.Cell>
-                        <span className="identifiants-classement-user">
-                          {" "}
-                          {user.lastName} {user.firstName}{" "}
-                        </span>
-                        <br></br>
-                        <span> {user.etablissement} </span>
-                      </Table.Cell>
-                      <Table.Cell key={index}>
-                        <div className="high_fives_container">
-                          <span className="high_fives_span">
-                            <img
-                              src={highfive}
-                              className="high_fives_images"
-                              alt=""
-                            />
-                          </span>
-                          <span className="numbers_high_five">
-                            {" "}
-                            {user.points}
-                          </span>
-                        </div>
-                      </Table.Cell>
-                    </Table.Row>
-                  );
-                })
-              : ""}
-          </Table.Body>
-        </Table>
-
-      :
-
-
-        <Table unstackable>
-              <Table.Body>
-                {eleveMaroc
-                  ? eleveMaroc.map((user, index) => {
-                      return (
-                        <Table.Row key={index}>
-                          <Table.Cell>
-                            <span className="index_style_classement">
-                              {index + 1}
-                            </span>
-                          </Table.Cell>
-
-                          <Table.Cell>
-                            <span className="identifiants-classement-user">
-                              {" "}
-                              {user.lastName} {user.firstName}{" "}
-                            </span>
-                            <br></br>
-                            <span> {user.etablissement} </span>
-                          </Table.Cell>
-                          <Table.Cell key={index}>
-                            <div className="high_fives_container">
-                              <span className="high_fives_span">
-                                <img
-                                  src={highfive}
-                                  className="high_fives_images"
-                                  alt=""
-                                />
-                              </span>
-                              <span className="numbers_high_five">
-                                {" "}
-                                {user.points}
-                              </span>
-                            </div>
-                          </Table.Cell>
-                        </Table.Row>
-                      );
-                    })
-                  : ""}
-              </Table.Body>
-            </Table>
-    }
-      
-         
-       
-        
-          
-        
-
-      <div className="loader-container" style={{ height: "30vh" }}>
-        {dimmer ? (
-          <Dimmer active inverted>
-            <Loader inverted content="Chargement en cours..." />
-          </Dimmer>
-        ) : (
-          ""
-        )}
-      </div>
+      {dimmer && (
+        <div className="loader-container" style={{ height: "30vh" }}>
+          {dimmer ? (
+            <Dimmer active inverted>
+              <Loader inverted content="Chargement en cours..." />
+            </Dimmer>
+          ) : (
+            ""
+          )}
+        </div>
+      )}
     </div>
   );
 };

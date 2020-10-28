@@ -1,0 +1,59 @@
+.orderRow-container {
+  width: 100%;
+  background: #fff;
+  border: 1px solid rgba(34, 36, 38, 0.15);
+  padding: 2%;
+  border-radius: 0.28571429rem;
+
+  .orderRow {
+    display: grid;
+    grid-template-columns: auto 1fr auto auto;
+    padding: 3% 0;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid rgba(34, 36, 38, 0.15);
+    }
+
+    > div {
+      padding: 0.3em 0.5em;
+      display: flex;
+      align-items: center;
+    }
+
+    .order {
+      font-size: 22px;
+      font-weight: 800;
+    }
+
+    .points {
+      font-size: 22px;
+      font-weight: 800;
+      color: #8bc7cc !important;
+      padding: 0 !important;
+    }
+
+    .student-name {
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .school-name {
+      color: gray;
+    }
+
+    .highfive {
+      width: 40px;
+      img {
+        max-width: 30px !important;
+      }
+    }
+  }
+}
+
+.general-order-container h3 {
+  @media only screen and (max-width: 500px) {
+    padding: 7% 0;
+    padding-bottom: 5%;
+    margin: 0 !important;
+  }
+}

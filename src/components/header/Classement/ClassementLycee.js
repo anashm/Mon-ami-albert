@@ -10,6 +10,8 @@ import Header from "../../header/Header";
 import "./ClassementGeneral.css";
 import { Tab, Tabs } from "react-bootstrap";
 
+import OrderRow from "./OrderRow/OrderRow";
+
 const ClassementLycee = () => {
   const firebase = useContext(FirebaseContext);
   const userContext = useContext(UserContext);
@@ -18,7 +20,7 @@ const ClassementLycee = () => {
   const [dimmer, setDimmer] = useState(true);
   const [dataMaroc, setDataMaroc] = useState([]);
   const [dataFrance, setDataFrance] = useState([]);
-  const [paysEleve , setPaysEleve] = useState('');
+  const [paysEleve, setPaysEleve] = useState("");
   const trierLycee = (array) => {
     let object = {};
     array.forEach(function (childData) {
@@ -43,10 +45,8 @@ const ClassementLycee = () => {
   };
 
   useEffect(() => {
-    
     if (userContext.user && userContext.user_informations) {
-      
-        setPaysEleve(userContext.user_informations.pays)
+      setPaysEleve(userContext.user_informations.pays);
       const database = firebase.getData();
       const reference = database.ref("users");
       //const mostViewedPosts = database.ref('users/'+userId).orderByChild('/points');
@@ -70,7 +70,6 @@ const ClassementLycee = () => {
             let childData = childSnapshot.val();
             if (childData.pays) {
               if (childData.pays.toLowerCase().includes("ma")) {
-                
                 maSchools.push(childData);
               } else {
                 //console.log(childData.etablissement, childData.pays);
@@ -117,99 +116,37 @@ const ClassementLycee = () => {
 
   return (
     <div className="general-order-container">
-      <center>
-        {" "}
-        <h3>Classement lycée</h3>{" "}
-      </center>
-      <br />
-      <br />
-
-        {
-          paysEleve.toLowerCase() === 'fr' ?
-          <Table unstackable>
-            <Table.Body>
-              {dataFrance
-                ? dataFrance.map((lycee, index) => {
-                    return (
-                      <Table.Row key={index}>
-                        <Table.Cell>
-                          <span className="index_style_classement">
-                            {" "}
-                            {index + 1}
-                          </span>
-                        </Table.Cell>
-
-                        <Table.Cell>
-                          <span className="identifiants-classement-user">
-                            {lycee[0]}
-                          </span>
-                        </Table.Cell>
-                        <Table.Cell>
-                          <div className="high_fives_container">
-                            <span className="high_fives_span">
-                              <img
-                                src={highfive}
-                                className="high_fives_images"
-                              />
-                            </span>
-                            <span className="numbers_high_five">
-                              {lycee[1]}
-                            </span>
-                          </div>
-                        </Table.Cell>
-                      </Table.Row>
-                    );
-                  })
-                : ""}
-            </Table.Body>
-          </Table>
-
-          :
-           
-          <Table unstackable>
-          <Table.Body>
-            {dataMaroc
-              ? dataMaroc.map((lycee, index) => {
-                  return (
-                    <Table.Row key={index}>
-                      <Table.Cell>
-                        <span className="index_style_classement">
-                          {" "}
-                          {index + 1}
-                        </span>
-                      </Table.Cell>
-
-                      <Table.Cell>
-                        <span className="identifiants-classement-user">
-                          {lycee[0]}
-                        </span>
-                      </Table.Cell>
-                      <Table.Cell>
-                        <div className="high_fives_container">
-                          <span className="high_fives_span">
-                            <img
-                              src={highfive}
-                              className="high_fives_images"
-                            />
-                          </span>
-                          <span className="numbers_high_five">
-                            {lycee[1]}
-                          </span>
-                        </div>
-                      </Table.Cell>
-                    </Table.Row>
-                  );
-                })
-              : ""}
-          </Table.Body>
-        </Table>
-      
-
-        }
-      
-          
-        
-
+      <h3>Classement lycée</h3>{" "}
+      {paysEleve.toLowerCase() === "fr" ? (
+        <div className="orderRow-container">
+          {dataFrance
+            ? dataFrance.map((lycee, index) => {
+                return (
+                  <OrderRow
+                    key={index}
+                    order={index + 1}
+                    name={lycee[0]}
+                    points={lycee[1]}
+                  />
+                );
+              })
+            : ""}
+        </div>
+      ) : (
+        <div className="orderRow-container">
+          {dataMaroc
+            ? dataMaroc.map((lycee, index) => {
+                return (
+                  <OrderRow
+                    order={index + 1}
+                    name={lycee[0]}
+                    points={lycee[1]}
+                  />
+                );
+              })
+            : ""}
+        </div>
+      )}
       {dimmer ? (
         <div className="loader-container" style={{ height: "30vh" }}>
           (
