@@ -204,7 +204,7 @@ const QRComponent = () => {
                 <div className="subscribe-text text-center promo">
                  
                 
-                  <div className="ui form" style ={{maxWidth:'500px',margin:'auto'}}>
+                  <div className="ui form" style ={{maxWidth:'300px',margin:'auto'}}>
 
                     <div className="field" style={{display:'flex',alignItems:'center'}}>
                       
