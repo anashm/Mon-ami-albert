@@ -17,33 +17,91 @@ const QRComponent = () => {
     const [ModalBravo ,setModalBravo] = useState(false)
     const [points , setPoints] = useState(0)
     const [showCodeInput , setShowCodeInput] = useState(false);
+    const [codePromo , setCodePromo] = useState('')
     /* const[idCode,setIdCode] = useState('');
     const[nbrPoints,setNbrPoint] = useState(0); */
    
 
    
-   /*  const HandleTest = () => {
-
-      if(userContext.user){
-        const user =  userContext.user; 
-        const userId = user.uid;  
-        
-        const database = firebase.getData();
-        const reference =  database.ref('users/')
-        const user_points = userContext.user_informations.points
-        console.log(Number(user_points) + Number('30'))
-        
-            
-
-      }
-    } */
+   
 
     const HandleCodeManuel = () => {
       setShowCodeInput(true)
     }
 
     const ValiderCodeInput = () => {
+      var existence = 0;
+      var object_promotionnel = {};
+      if(userContext.user){
+        const user =  userContext.user; 
+        const userId = user.uid;  
+        
+        const database = firebase.getData();
+        const reference =  database.ref('qr-code/all/')
+
+
+        reference.once("value", codes => {
+          var element_object = codes.val()
+          console.log(codes.val())
+          element_object.forEach(element => {
+            
+            if(element.code === codePromo){
+              existence = 1;
+              object_promotionnel.code = element.code
+              object_promotionnel.points = element.points
+              console.log('hna ',element.code,element.points)
+            }
+            
+              
+          })
+
+        }).then(()=>{
+          if(existence == 1){
+
+            const userId = user.uid; 
+            const reference_user =  database.ref(`users/${userId}`)
+            const reference_update =  database.ref('users/')
+            const user_points = userContext.user_informations.points
+            reference_user.once("value", user_informations => {
+              if(user_informations.val().code_scanned){
+                  if(user_informations.val().code_scanned === object_promotionnel.code){
+                    alert('Tu as déja reçu les points')
+                  }
+                  else{
+                    reference_update.child(userId).update({
+                        code_scanned : object_promotionnel.code,
+                        points : Number(user_points) + Number(object_promotionnel.points)
+                      }).then(() => {
+                        userContext.update_user_points_anas(Number(user_points) + Number(object_promotionnel.points));
+                        setPoints(Number(object_promotionnel.points))
+                        setModalBravo(true)
+                          //alert('Bravo! vous avez gagné des points');
+                      })
+                  } 
+              }
+              else{
+                  reference_update.child(userId).update({
+                    code_scanned : object_promotionnel.code,
+                    points : Number(user_points) + Number(object_promotionnel.points)
+                  }).then(() => {
+                    userContext.update_user_points_anas(Number(user_points) + Number(object_promotionnel.points));
+                    setModalBravo(true)
+                      //alert('Bravo! vous avez gagné des points');
+                  })
+              }
+               
+            });
+
+
+          }
+          
+        })
+      }
       
+    }
+
+    const HandleChangeCodePromo = (e) =>{
+      setCodePromo(e.target.value)
     }
 
     const handleScan = data => {
@@ -141,7 +199,7 @@ const QRComponent = () => {
                 <>
                   <Form.Field>
                     <label>Code Promotionnel</label>
-                    <input type="text" placeholder='Entrer le Code' />
+                    <input type="text" onChange={HandleChangeCodePromo} placeholder='Entrer le Code' />
                   </Form.Field>
                   <Button  onClick={ValiderCodeInput}>Entrer Code</Button>
                 </>
