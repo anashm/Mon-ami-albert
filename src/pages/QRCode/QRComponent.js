@@ -42,14 +42,14 @@ const QRComponent = () => {
 
         reference.once("value", codes => {
           var element_object = codes.val()
-          console.log(codes.val())
+         
           element_object.forEach(element => {
             
             if(element.code === codePromo){
               existence = 1;
               object_promotionnel.code = element.code
               object_promotionnel.points = element.points
-              console.log('hna ',element.code,element.points)
+              
             }
             
               
@@ -204,11 +204,14 @@ const QRComponent = () => {
                 <div className="subscribe-text text-center promo">
                   <Form.Field>
                     
-                    <label>Code Promotionnel</label>
+                    <label>Code &nbsp;&nbsp;&nbsp;</label>
                     
                     <input type="text" onChange={HandleChangeCodePromo} placeholder='Entrer le Code' />
                   </Form.Field>
-                  <Button  onClick={ValiderCodeInput}>Entrer Code</Button>
+                  <div className="container-btn-entrer-code">
+                      <Button  onClick={ValiderCodeInput} id="comment-ca-marche">Entrer Code</Button>
+                  </div>
+                  
                 </div>
                 :
                 ''
