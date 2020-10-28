@@ -198,21 +198,24 @@ const QRComponent = () => {
             </div>  
             <div className="container-souci-camera">
               <p className = 'subscribe-text text-center'> <span> Un soucis avec la Camera ? </span>  <small className = 'entrer-qr-code-manuellement' onClick={HandleCodeManuel}>  Entre ton code manuellement! </small> </p>  
+            </div>   
               {
                 showCodeInput ? 
-                <>
+                <div className="subscribe-text text-center promo">
                   <Form.Field>
+                    
                     <label>Code Promotionnel</label>
+                    
                     <input type="text" onChange={HandleChangeCodePromo} placeholder='Entrer le Code' />
                   </Form.Field>
                   <Button  onClick={ValiderCodeInput}>Entrer Code</Button>
-                </>
+                </div>
                 :
                 ''
               }
               
              
-            </div>  
+            
             {
               showModal ? 
                 <Modal
