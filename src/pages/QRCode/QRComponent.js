@@ -94,6 +94,10 @@ const QRComponent = () => {
 
 
           }
+
+          else{
+            alert('Le code est erroné')
+          }
           
         })
       }
