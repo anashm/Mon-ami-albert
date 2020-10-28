@@ -202,14 +202,19 @@ const QRComponent = () => {
               {
                 showCodeInput ? 
                 <div className="subscribe-text text-center promo">
-                  <Form.Field>
+                 
+                
+                  <div className="ui form" style ={{maxWidth:'500px',margin:'auto'}}>
+
+                    <div className="field" style={{display:'flex',alignItems:'center'}}>
+                      
+                      <label style={{marginRight:'15px'}}>Code</label>
                     
-                    <label>Code &nbsp;&nbsp;&nbsp;</label>
-                    
-                    <input type="text" onChange={HandleChangeCodePromo} placeholder='Entrer le Code' />
-                  </Form.Field>
+                      <input type="text" onChange={HandleChangeCodePromo} placeholder='Entrer le Code' />
+                    </div>
+                  </div>
                   <div className="container-btn-entrer-code">
-                      <Button  onClick={ValiderCodeInput} id="comment-ca-marche">Entrer Code</Button>
+                      <Button  onClick={ValiderCodeInput} id="comment-ca-marche">Valider Code</Button>
                   </div>
                   
                 </div>
