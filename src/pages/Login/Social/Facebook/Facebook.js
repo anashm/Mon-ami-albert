@@ -95,7 +95,7 @@ const Facebook = (props) => {
         if ((errors.code = "auth/email-already-in-use")) {
           //console.log('authenticated')
           firebase.loginUser(response.email, "facebook").then((user) => {
-            //console.log(user);
+            console.log(user);
             //console.log("dkhal hna");
             history.push("/dashboard-user");
           });
