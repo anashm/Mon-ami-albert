@@ -85,7 +85,7 @@ const Facebook = (props) => {
       .signupUser(response.email, "facebook")
       .then((user) => {
         saveUser(user).then(() => {
-          console.log(user)
+          console.log(response)
           //console.log("user saved");
           history.push("/dashboard-user");
         });
