@@ -594,7 +594,7 @@ export default function ProfilPage() {
         </Modal.Header>
         <Modal.Body>
           <p>
-            T'inquiète,je vais te mettre bien ! Un de mes <br />
+            T'inquiète, je vais te mettre bien ! Un de mes <br />
             conseillers va t'appeler dans les 24 heures , laisse ton numéro
             ci-dessous.
             <br />
