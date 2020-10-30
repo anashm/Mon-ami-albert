@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext,useState } from "react";
 import FacebookLogin from "react-facebook-login";
 import { FirebaseContext } from "../../../../firebase";
 import firebases from "firebase";
@@ -13,10 +13,12 @@ const Facebook = (props) => {
     usersRef: firebases.database().ref("users"),
   };
 
+  const [nameFracebook , setNameFacebook] = useState('')
+
   const saveUser = (createdUser) => {
     return data.usersRef.child(createdUser.user.uid).set({
-      lastName: "userFromFacebook",
-      firstName: "userFromFacebook",
+      lastName: nameFracebook,
+      firstName: "",
       level: "Terminale",
       points: 50,
       avatar: "Boy-3",
@@ -85,7 +87,8 @@ const Facebook = (props) => {
       .signupUser(response.email, "facebook")
       .then((user) => {
         saveUser(user).then(() => {
-          console.log(response)
+          
+          setNameFacebook(response.name);
           //console.log("user saved");
           history.push("/dashboard-user");
         });
@@ -96,8 +99,7 @@ const Facebook = (props) => {
         if ((errors.code = "auth/email-already-in-use")) {
           //console.log('authenticated')
           firebase.loginUser(response.email, "facebook").then((user) => {
-            console.log(user);
-            console.log("dkhal hna");
+            
             history.push("/dashboard-user");
           });
         }
