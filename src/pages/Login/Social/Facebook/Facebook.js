@@ -15,7 +15,7 @@ const Facebook = (props) => {
 
   const [nameFracebook , setNameFacebook] = useState('')
 
-  const saveUser = (createdUser) => {
+  const saveUser = (createdUser,nameFracebook) => {
     return data.usersRef.child(createdUser.user.uid).set({
       lastName: nameFracebook,
       firstName: "",
@@ -86,7 +86,7 @@ const Facebook = (props) => {
     firebase
       .signupUser(response.email, "facebook")
       .then((user) => {
-        saveUser(user).then(() => {
+        saveUser(user,response.name).then(() => {
           
           setNameFacebook(response.name);
           //console.log("user saved");
