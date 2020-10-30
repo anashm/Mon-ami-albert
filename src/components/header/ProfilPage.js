@@ -600,7 +600,7 @@ export default function ProfilPage() {
             <br />
             <br />
             <Input
-              placeholder="Votre numéro de Téléphone"
+              placeholder="Ton numéro de Téléphone"
               maxLength="10"
               className="input-numero-telephone-modal"
               onChange={HandleChangeTelephone}
