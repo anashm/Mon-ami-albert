@@ -8,7 +8,7 @@ import Animation from "./AnimationLottie";
 import { FirebaseContext } from "../../../firebase";
 import firebase from "firebase";
 import Title from "../../general/Title/Title";
-import etablissements from "../../../json/new-etablissements.json";
+//import etablissements from "../../../json/new-etablissements.json";
 import Header from "../../header/Header";
 import UserContext from "../../../Context/UserContext/UserContext";
 
