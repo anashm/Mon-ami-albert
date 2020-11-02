@@ -53,7 +53,7 @@ const Courses = ({ urlParams , memoized , courses_memoized }) => {
                 return(
                     <div key={index}>
                         <div className="bigTitle-container">
-                            <h4 className="span-big-title"> {cours.index} &nbsp;&nbsp; {cours.bigTitle} </h4>
+                            <h4 className="span-big-title"> {cours.index} &nbsp;&nbsp;<Latex>{String.raw`${cours.bigTitle}`}</Latex>  </h4>
                         </div> 
                         
                         {cours.subTitles.map((subs , index) => {
@@ -68,7 +68,7 @@ const Courses = ({ urlParams , memoized , courses_memoized }) => {
                                                     {(type.type) === 'Picture' ? 
                                                         <div>
                                                             <div className="type-container">
-                                                                <p className="class-type">{type.type}</p> 
+                                                                <p className="class-type"><Latex>{String.raw`${type.type}`}</Latex></p> 
                                                             </div> 
                                                             {type.lines.map( (line ,index) => {
                                                             
@@ -85,7 +85,10 @@ const Courses = ({ urlParams , memoized , courses_memoized }) => {
                                                     : 
                                                         <div>
                                                             <div className="type-container">
-                                                                <p className="class-type">{type.type}</p> 
+                                                                {type.type == undefined ? '' : 
+                                                                <p className="class-type"><Latex>{String.raw`${type.type}`}</Latex></p>
+                                                                }
+                                                                 
                                                             </div> 
                                                             
                                                             {type.lines.map( (line ,index) => {
