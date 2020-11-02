@@ -667,7 +667,7 @@ export default function ProfilPage() {
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <p>Es-tu sûr de vouloir te déconnecter ! </p>
+            <p>Es-tu sûr de vouloir te déconnecter ? </p>
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={HandleLogout}>
