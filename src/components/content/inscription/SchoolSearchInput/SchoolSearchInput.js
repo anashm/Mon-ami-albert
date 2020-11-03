@@ -1,8 +1,9 @@
 import React , { useCallback , useReducer , useEffect , memo } from 'react';
-import _ from 'lodash'
+import _, { result } from 'lodash'
 import { Search } from 'semantic-ui-react';
 //import json from './new-etablissements.json';
 import json from './etablissement_france_maroc.json';
+import fuzz from 'fuzzball';
 
 const source = json;
 
@@ -27,6 +28,18 @@ function schoolReducer(state, action) {
         throw new Error()
     }
 }
+
+
+const filterString = (source , resultat) => {
+
+  
+   return source.filter(school =>{
+        
+        return school.value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().includes(resultat.toLowerCase())
+    
+    })
+   
+} 
 
 const SchoolSearchInput = ({ changed }) => {
 
@@ -53,9 +66,11 @@ const SchoolSearchInput = ({ changed }) => {
             const re = new RegExp(_.escapeRegExp(data.value), 'i')
             const isMatch = (result) => re.test(result.value)
 
+            
             dispatch({
                 type: 'FINISH_SEARCH',
-                results: _.filter(source, isMatch),
+                //results: _.filter(source, isMatch),
+                results : filterString(source,data.value)
             })
         }, 300);
 
