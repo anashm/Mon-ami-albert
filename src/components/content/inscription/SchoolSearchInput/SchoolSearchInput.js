@@ -32,8 +32,6 @@ function schoolReducer(state, action) {
 
 const filterString = (source , resultat) => {
 
-  
-    
    return source.filter(school =>{
         
         return school.value.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().includes(resultat.toLowerCase())
