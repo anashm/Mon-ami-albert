@@ -23,12 +23,6 @@ const HomePage = memo(({ loading }) => {
   const userContext = useContext(UserContext);
   //console.log(userContext);
 
-  useEffect(() => {
-    if (userContext.user && window.innerWidth <= 500) {
-      setRedirect(true);
-    }
-  }, [userContext.user]);
-
   if (loading) {
     return (
       <Fragment>

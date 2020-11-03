@@ -1,59 +1,51 @@
-.application-section{
+.application-section {
+  padding: 5% 0;
 
-    padding: 5% 0;
+  @include media("<=phone") {
+    padding: 20% 0;
+    padding-bottom: 10%;
+  }
 
-    @include media('<=phone'){
-        padding: 20% 0;
-        padding-bottom: 10%;
+  .row {
+    align-items: center;
+
+    .application-section-container {
+      flex: 0 0 55%;
+
+      @include media("<=phone") {
+        flex: 0 0 100%;
+        //display: none;
+      }
+
+      p {
+        padding: 3% 0;
+        margin-bottom: 0;
+
+        @include media("<=phone") {
+          padding: 0 3%;
+        }
+      }
+
+      .application-download-link-button {
+        display: flex;
+
+        @include media("<=tablet") {
+          flex-direction: column;
+          flex: 0 0 100%;
+        }
+      }
+    }
+
+    .application-section-image-container {
+      flex: 0 0 45%;
+
+      @include media("<=phone") {
         display: none;
+      }
+
+      img {
+        width: 80%;
+      }
     }
-
-
-    .row{
-
-        align-items: center;
-
-
-        .application-section-container{
-            flex: 0 0 55%;
-
-            @include media('<=phone'){
-                flex: 0 0 100%;
-               //display: none;
-            }
-
-            p{
-                padding: 3% 0;
-                margin-bottom: 0;
-
-
-                @include media('<=phone'){
-                    padding: 0 3%;
-                }
-            }
-
-            .application-download-link-button{
-                display: flex;
-
-                @include media('<=tablet'){
-                    flex-direction: column;
-                    flex: 0 0 100%;
-                }
-
-            }
-        }
-
-        .application-section-image-container{
-            flex: 0 0 45%;
-
-
-            @include media('<=phone'){
-                display: none;
-            }
-
-            img{
-                width: 80%;
-            }
-        }
-    }
+  }
 }

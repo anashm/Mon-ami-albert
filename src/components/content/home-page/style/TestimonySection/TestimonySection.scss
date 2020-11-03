@@ -1,32 +1,23 @@
-.testimony-section-container{
+.testimony-section-container {
+  background-color: #fafafa;
+  padding: 7% 0;
 
-    background-color: #FAFAFA;
-    padding: 7% 0;
+  .testimonies-container {
+    padding-top: 5%;
 
-    @include media('<=phone'){
-        display: none;
+    .testimony-card-container {
+      width: 80%;
+      margin: 0 auto;
+
+      .user-testimony-name {
+        color: #333333;
+        text-align: center;
+      }
+
+      .user-testinony {
+        color: #636363;
+        text-align: center;
+      }
     }
-
-
-    .testimonies-container{
-        padding-top: 5%;
-
-
-        .testimony-card-container{
-
-            width: 80%;
-            margin: 0 auto;
-
-
-            .user-testimony-name{
-                color: #333333;
-                text-align: center;
-            }
-
-            .user-testinony{
-                color: #636363;
-                text-align: center;
-            }
-        }
-    }
+  }
 }

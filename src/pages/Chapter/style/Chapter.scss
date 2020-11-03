@@ -1,139 +1,125 @@
+.chapter-page-container {
+  padding: 2% 0;
 
+  @media only screen and (max-width: 500px) {
+    padding-top: 0;
+  }
 
-.chapter-page-container{
-    padding: 2% 0;
+  *:not(span) {
+    font-family: Rubik, "sans-serif";
+    color: #707070;
+    font-weight: 500;
+  }
 
-    @media only screen and (max-width: 500px){
-        padding-top: 0;
+  i {
+    font-family: Icons;
+    color: white;
+  }
 
-    }
-
-    *:not(span) {
-        font-family: Rubik , 'sans-serif';
-        color: #707070;
-        font-weight: 500;
-    }
-
-    i{
-        font-family: Icons;
-        color: white;
-    }
-
-    .bubble bubble-bottom-left{
-        color: white !important;
-    }
-
-    .chapter-title-container{
-        padding-top: 3%;
-    }
-
-    .chapter-title{
-        font-size: 20px;
-        padding: 0 40px;
-        @media only screen and (max-width: 768px) {
-            padding: 0;
-        }
-        
-
-        @media only screen and (max-width: 490px) {
-            padding: 0 3%;
-        }
-
-      
-    }
-
-    .chapter-features-container{
-
-        display: flex;
-        justify-content: space-evenly;
-
-        padding: 40px 50px;
-
-        @media only screen and (max-width: 768px) {
-            padding: 5% 0;
-            
-        }
-
-        @media only screen and (max-width: 500px) {
-            padding: 2% 3%;
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 5%;
-            position: sticky;
-            top: 7vh;
-            background-color: white;
-            z-index: 100;
-            box-shadow: 0px 10px 30px 0px rgba(82, 63, 105, 0.08);
-        }
-
-
-       
-
-        
-    }
-
-    .chapter-content{
-        padding: 0 50px;
-
-        @media only screen and (max-width: 768px) {
-            padding: 0;
-        }
-
-        @media only screen and (max-width: 490px) {
-            padding: 3% 3%;
-        }
-
-       
-    }
-
-}
-
-.back-top{
-    position: fixed;
-    right: 5%;
-    bottom: 5%;
-    border: none;
-    background: #707070;
-    height: 40px;
-    width: 40px;
+  .bubble bubble-bottom-left {
     color: white !important;
-    border-radius: 3px;
-    cursor: pointer;
-    transition: all .2s cubic-bezier(.7,0,.3,1);
-    outline: none;
-    -webkit-animation: action 1s infinite  alternate;
-        animation: action 1s infinite  alternate;
+  }
 
+  .chapter-title-container {
+    padding-top: 3%;
+  }
+
+  .chapter-title {
+    font-size: 20px;
+    padding: 0 40px;
+    @media only screen and (max-width: 768px) {
+      padding: 0;
+    }
+
+    @media only screen and (max-width: 490px) {
+      padding: 0 3%;
+    }
+  }
+
+  .chapter-features-container {
+    display: flex;
+    justify-content: space-evenly;
+
+    padding: 40px 50px;
+
+    @media only screen and (max-width: 768px) {
+      padding: 5% 0;
+    }
 
     @media only screen and (max-width: 500px) {
-       bottom: 9vh;
+      padding: 2% 3%;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 5%;
+      position: sticky;
+      top: 0;
+      background-color: white;
+      z-index: 20;
+      box-shadow: 0px 10px 30px 0px rgba(82, 63, 105, 0.08);
+    }
+  }
+
+  .chapter-content {
+    padding: 0 50px;
+
+    @media only screen and (max-width: 768px) {
+      padding: 0;
     }
 
-    &:focus{
-        outline: none;
+    @media only screen and (max-width: 490px) {
+      padding: 3% 3%;
     }
+  }
+}
 
-    svg{
-        fill: white;
-        width: 20px;
-        height: 20px;
-    }
+.back-top {
+  position: fixed;
+  right: 5%;
+  bottom: 5%;
+  border: none;
+  background: #707070;
+  height: 40px;
+  width: 40px;
+  color: white !important;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.7, 0, 0.3, 1);
+  outline: none;
+  -webkit-animation: action 1s infinite alternate;
+  animation: action 1s infinite alternate;
 
-    &:hover{
-        opacity: 0.8;
-    }
-    
+  @media only screen and (max-width: 500px) {
+    bottom: 9vh;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  svg {
+    fill: white;
+    width: 20px;
+    height: 20px;
+  }
+
+  &:hover {
+    opacity: 0.8;
+  }
 }
 
 @-webkit-keyframes action {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(8px); }
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(8px);
+  }
 }
 @keyframes action {
-    0% { transform: translateY(0); }
-    100% { transform: translateY(8px); }
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(8px);
+  }
 }
-
-
-
-

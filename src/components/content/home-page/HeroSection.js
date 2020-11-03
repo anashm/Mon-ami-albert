@@ -155,9 +155,8 @@ const HeroSection = memo(({ userConnected }) => {
               {/* <img src={photo_einstein} alt=""/> */}
               {View}
 
-              <img src={albert_image} alt="albert" />
               <div
-                className="play-btn-container d-none"
+                className="play-btn-container "
                 role="button"
                 onClick={() => setShowModal(true)}
               >
@@ -166,7 +165,7 @@ const HeroSection = memo(({ userConnected }) => {
             </div>
 
             <div
-              className="testimonies-container"
+              className="testimonies-container d-none"
               data-aos="fade-up"
               data-aos-once="true"
               data-aos-delay="100"

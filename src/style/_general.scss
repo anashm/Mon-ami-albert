@@ -38,8 +38,10 @@ body {
 .sign-up.main_content,
 .eleve-create-account.main_content {
   @include media("<=phone") {
-    height: 100vh;
+    //height: 100vh;
     padding: 0 !important;
+    padding-top: 10% !important;
+
     display: flex;
     align-items: center;
   }
@@ -53,8 +55,8 @@ body {
 
 main.main_content.pad-bottm-mobile {
   @include media("<=phone") {
-    padding-bottom: 9vh;
-    padding-top: 8vh;
+    /* padding-bottom: 9vh;
+    padding-top: 8vh; */
   }
 }
 
