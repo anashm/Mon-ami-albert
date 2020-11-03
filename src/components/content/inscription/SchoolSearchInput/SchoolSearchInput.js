@@ -3,7 +3,7 @@ import _, { result } from 'lodash'
 import { Search } from 'semantic-ui-react';
 //import json from './new-etablissements.json';
 import json from './etablissement_france_maroc.json';
-import fuzz from 'fuzzball';
+
 
 const source = json;
 
