@@ -4,8 +4,8 @@ import UserContext from "../../../Context/UserContext/UserContext";
 import "./Recaputilatif.css";
 import { useHistory } from "react-router-dom";
 //import Avatar from '../../images/avatars'
-import { FaUserEdit, FaSignOutAlt } from "react-icons/fa";
-
+/* import { FaUserEdit, FaSignOutAlt } from "react-icons/fa"; */
+import {  Icon } from "semantic-ui-react";
 export default function Recaputilatif() {
   const firebase = useContext(FirebaseContext);
   const userContext = useContext(UserContext);
@@ -53,10 +53,10 @@ export default function Recaputilatif() {
       </span>
       <br></br>
       <div className="div-mettre-a-jour">
-        <FaUserEdit /> <span>Mettre à jour mon profil</span>
+          <Icon name="edit" /> <span>Mettre à jour mon profil</span>
       </div>
       <div className="div-mettre-a-jour">
-        <FaSignOutAlt /> <span>Se déconnecter</span>
+          <Icon name="sign-out" /> <span>Se déconnecter</span>
       </div>
 
       {avatar ? (
