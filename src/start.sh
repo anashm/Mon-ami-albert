@@ -1,3 +1,3 @@
 #!/bin/bash
-cd /MonAmiAlbert/Mon-ami-albert/src/
+cd /MonAmiAlbert/Mon-ami-albert/
 npm start &
