@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext, Fragment } from "react";
 import "./header.scss";
 import logo from "../../images/MON_AMIALBERT2.svg";
-import { FaPhoneAlt } from "react-icons/fa";
+/* import { FaPhoneAlt } from "react-icons/fa"; */
 import { Link } from "react-router-dom";
 import { FirebaseContext } from "../../firebase";
 import UserContext from "../../Context/UserContext/UserContext";
@@ -203,9 +203,12 @@ const Header = () => {
                   <div className="phone-number-container">
                     {!logout ? (
                       <span className="phone_number">
-                        {" "}
-                        <FaPhoneAlt /> &nbsp;&nbsp; 09 70 70 22 32
+                      {" "}
+                      <span className="icon-number">
+                        <Icon name="phone" />
                       </span>
+                      &nbsp;&nbsp; 09 70 70 22 32
+                    </span>
                     ) : null}
                     {logout ? (
                       <Link to="/" className="contact-link dark-color">
@@ -341,9 +344,11 @@ const Header = () => {
               <Fragment>
                 <div className="phone-right">
                   <div className="phone-number-container">
-                    <span className="phone_number">
+                  <span className="phone_number">
                       {" "}
-                      <FaPhoneAlt /> &nbsp;&nbsp; 09 70 70 22 32
+                      <span className="icon-number">
+                        <Icon name="phone" />
+                      </span>&nbsp;&nbsp; 09 70 70 22 32
                     </span>
                     <div
                       className="vertical-line"
