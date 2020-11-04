@@ -1,5 +1,5 @@
 import React , { useCallback , useReducer , useEffect , memo } from 'react';
-import _, { result } from 'lodash'
+/* import _, { result } from 'lodash' */
 import { Search } from 'semantic-ui-react';
 //import json from './new-etablissements.json';
 import json from './etablissement_france_maroc.json';
@@ -62,8 +62,8 @@ const SchoolSearchInput = ({ changed }) => {
                 return
             }
 
-            const re = new RegExp(_.escapeRegExp(data.value), 'i')
-            const isMatch = (result) => re.test(result.value)
+            /* const re = new RegExp(_.escapeRegExp(data.value), 'i')
+            const isMatch = (result) => re.test(result.value) */
 
             
             dispatch({
