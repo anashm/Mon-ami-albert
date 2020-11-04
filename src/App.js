@@ -14,7 +14,7 @@ import {
 import CreatAccount from "./components/content/inscription/create_account";
 import EleveAccount from "./components/content/inscription/EleveCompte";
 import Login from "./pages/Login/Login";
-import JeSuisUnComponent from "./components/content/inscription/JesuisUnComponent";
+
 import WichEnseigant from "./components/content/inscription/WichEnseignant";
 import Chapter from "./pages/Chapter/Chapter";
 import SignUp from "./components/content/inscription/SignUp";
@@ -95,11 +95,7 @@ const App = () => {
           <Route exact path="/login" component={Login} />
           <Route exact path="/creat-account" component={CreatAccount} />
           <Route exact path="/eleve-create-account" component={EleveAccount} />
-          <Route
-            exact
-            path="/individu-create-account"
-            component={JeSuisUnComponent}
-          />
+          
           <Route exact path="/wich-enseignant" component={WichEnseigant} />
           <Route
             exact

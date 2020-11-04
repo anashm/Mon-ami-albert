@@ -1,7 +1,7 @@
 import React,{useState,useEffect,useContext } from 'react';
 import './EleveCompte.css';
 import {Link} from 'react-router-dom';
-import Google from '../../../pages/Login/Social/Google/Google';
+
 import Facebook from '../../../pages/Login/Social/Facebook/Facebook';
 import { Button} from 'semantic-ui-react';
 import NiveauComponent from './NiveauComponent';
