@@ -21,7 +21,7 @@ import SignUp from "./components/content/inscription/SignUp";
 import Dashboard from "./pages/LoggedIn/Dashboard";
 import Chapitres from "./pages/LoggedIn/Chapitres";
 // import Quizz from "./pages/Chapter/Quizz/Quizz";
-import TestPDF from "./pages/Chapter/Exercises/Exercise/TestPDF";
+
 import Profil from "./components/header/ProfilPage";
 import NotFound from "./pages/404/NotFound";
 import "aos/dist/aos.css";

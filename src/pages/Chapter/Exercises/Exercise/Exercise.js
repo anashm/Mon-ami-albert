@@ -4,8 +4,7 @@ import Modal from 'react-bootstrap/Modal';
 import './Exercise.scss';
 import MathJax from 'react-mathjax-preview'
 import { Dimmer, Loader, Image, Segment } from 'semantic-ui-react'
-import PDFComponent from './PDFComponent';
-import Pdf from "react-to-pdf";
+
 import DownloadButton from '../../../Chapter/Quizz/DownloadButton/DownloadButton'
 
 
@@ -95,7 +94,7 @@ const Exercise = ( { title ,   downloadLink , index , enonce_intitule , enonce_c
                 
             { loader ? <Dimmer active inverted><Loader /></Dimmer> : ''} 
                
-               <div style={{display: 'flex',justifyContent: 'flex-end'}}>
+               {/* <div style={{display: 'flex',justifyContent: 'flex-end'}}>
                         <Pdf targetRef={reference_pdf} filename="exercices.pdf">
                             {({ toPdf }) => 
                                 <div className = 'download-btn-container'>
@@ -103,7 +102,7 @@ const Exercise = ( { title ,   downloadLink , index , enonce_intitule , enonce_c
                                     <button className = 'download-btn'  onClick={toPdf}><Icon name='file pdf'/>Export PDF</button>
                                 </div>}
                         </Pdf>
-               </div>
+               </div> */}
 
                         
               
@@ -114,7 +113,7 @@ const Exercise = ( { title ,   downloadLink , index , enonce_intitule , enonce_c
                 <div className="enonce-container" >
                      <h3>Enoncé</h3>
                      {isValidUrl(enonce_intitule) == 'true' ? <img src={enonce_intitule} width='25%' /> : <p> <MathJax  math={enonce_intitule} /></p>  }
-                     {/* <p> <MathJax  math={enonce_intitule} /></p> */}
+                   
                      <p className="enonce-choix">
                         {intitule_choices.map( (choix,index) => {
                             return (
@@ -129,7 +128,7 @@ const Exercise = ( { title ,   downloadLink , index , enonce_intitule , enonce_c
                 <div className="corrige-container">             
                     <h3>Corrigé</h3>  
                     {isValidUrl(corrige_intitule) == 'true' ? <img src={corrige_intitule} width='25%'  /> : <p> <MathJax  math={corrige_intitule} /></p>  }
-                    {/* <p> <MathJax  math={corrige_intitule} /> </p> */}
+               
                     <p className="enonce-choix">   
                         {corrige_choix.map( (choix,index) => {
                         return (

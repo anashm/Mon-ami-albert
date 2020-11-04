@@ -6,8 +6,7 @@ import './Exercises.scss';
 import { useHistory } from "react-router-dom";
 import {FirebaseContext} from '../../../firebase';
 import UserContext from '../../../Context/UserContext/UserContext';
-import Pdf from "react-to-pdf";
-import PDF from './Exercise/TestPDF';
+
 
 
 const Exercises = ({urlParams}) => {
