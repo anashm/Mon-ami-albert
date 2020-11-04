@@ -204,7 +204,10 @@ const Header = () => {
                     {!logout ? (
                       <span className="phone_number">
                       {" "}
-                      <Icon name="phone" />&nbsp;&nbsp; 09 70 70 22 32
+                      <span className="icon-number">
+                        <Icon name="phone" />
+                      </span>
+                      &nbsp;&nbsp; 09 70 70 22 32
                     </span>
                     ) : null}
                     {logout ? (
@@ -343,7 +346,9 @@ const Header = () => {
                   <div className="phone-number-container">
                   <span className="phone_number">
                       {" "}
-                      <Icon name="phone" />&nbsp;&nbsp; 09 70 70 22 32
+                      <span className="icon-number">
+                        <Icon name="phone" />
+                      </span>&nbsp;&nbsp; 09 70 70 22 32
                     </span>
                     <div
                       className="vertical-line"
