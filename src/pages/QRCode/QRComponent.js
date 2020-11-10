@@ -312,7 +312,7 @@ const QRComponent = () => {
                           </Modal.Title>
                       </Modal.Header>
                       <Modal.Body>
-                          <p>Tu as déja reçu les points</p>
+                          <p>Tu as déja utilisé ce QRcode</p>
                       </Modal.Body>
                       <Modal.Footer>
                           {/* <Button variant="secondary" id="okey-btn-model"   >Okey</Button> */}
