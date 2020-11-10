@@ -53,7 +53,7 @@
 .high_fives_container_modal{
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: center;
     font-size: 20px;
     font-weight: 600;
     margin:auto;

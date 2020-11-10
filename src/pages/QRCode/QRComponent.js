@@ -15,6 +15,7 @@ const QRComponent = () => {
 
     const [showModal ,setShowModal] = useState(false)
     const [ModalBravo ,setModalBravo] = useState(false)
+    const [TuasDejaPoints ,setTuasDejaPoints] = useState(false)
     const [points , setPoints] = useState(0)
     const [showCodeInput , setShowCodeInput] = useState(false);
     const [codePromo , setCodePromo] = useState('')
@@ -65,7 +66,8 @@ const QRComponent = () => {
             reference_user.once("value", user_informations => {
               if(user_informations.val().code_scanned){
                   if(user_informations.val().code_scanned === object_promotionnel.code){
-                    alert('Tu as déja reçu les points')
+                    setTuasDejaPoints(true)
+                    //alert('Tu as déja reçu les points')
                   }
                   else{
                     reference_update.child(userId).update({
@@ -127,7 +129,8 @@ const QRComponent = () => {
             reference_user.once("value", user_informations => {
               if(user_informations.val().code_scanned){
                   if(user_informations.val().code_scanned === resultat[0]){
-                    alert('Tu as déja reçu les points')
+                    setTuasDejaPoints(true)
+                    //alert('Tu as déja reçu les points')
                   }
                   else{
                       reference.child(userId).update({
@@ -266,12 +269,12 @@ const QRComponent = () => {
                   >
                       <Modal.Header closeButton>
                           <Modal.Title id="contained-modal-title-vcenter">
-                              Bravo
+                              
                           </Modal.Title>
                       </Modal.Header>
                       <Modal.Body>
                           <div className="modal-container-bravo-points">
-                            <span className="tu-as-ganer">Tu as gagner</span>
+                            <span className="tu-as-ganer">Tu as gagné</span>
                             <div className="high_fives_container_modal">
                                  <span className="high_fives_span"> 
                                     <img src={highfive} className="high_fives_images" />
@@ -286,6 +289,34 @@ const QRComponent = () => {
                       <Modal.Footer>
                           {/* <Button variant="secondary" id="okey-btn-model"   >Okey</Button> */}
                           <Button onClick={() => setModalBravo(false)}  variant="light">Fermer</Button>
+                      </Modal.Footer>
+                  </Modal>
+
+                :
+
+                ''
+            }
+
+            {
+              TuasDejaPoints ? 
+                <Modal
+                  show={TuasDejaPoints}
+                  onHide={() => setTuasDejaPoints(false)}
+                      size="lg"
+                      aria-labelledby="contained-modal-title-vcenter"
+                      centered
+                  >
+                      <Modal.Header closeButton>
+                          <Modal.Title id="contained-modal-title-vcenter">
+                              
+                          </Modal.Title>
+                      </Modal.Header>
+                      <Modal.Body>
+                          <p>Tu as déja reçu les points</p>
+                      </Modal.Body>
+                      <Modal.Footer>
+                          {/* <Button variant="secondary" id="okey-btn-model"   >Okey</Button> */}
+                          <Button onClick={() => setTuasDejaPoints(false)}  variant="light">Fermer</Button>
                       </Modal.Footer>
                   </Modal>
 
