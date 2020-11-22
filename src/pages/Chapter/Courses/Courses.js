@@ -5,6 +5,7 @@ import UserContext from '../../../Context/UserContext/UserContext';
 import './Courses.css';
 import { Alert } from 'react-bootstrap';
 import Latex from 'react-latex';
+import parse from 'html-react-parser'
 
 const Courses = ({ urlParams , memoized , courses_memoized }) => {
 
@@ -96,27 +97,22 @@ const Courses = ({ urlParams , memoized , courses_memoized }) => {
                                                                 return (
                                                                     <div key={index} className="lines-container">
                                                                         <p >
-                                                                            {/* <MathJax   math={line} /> */}
-                                                                            {/* <TeX block>{line.split('$').join(' ').split(`'`).join('')}</TeX> */}
-
-                                                                            {line.includes(`substack`) ? console.log(line) : '' }
-
-                                                                            <Latex>{String.raw`${line}`}</Latex>
+                                                                            {
+                                                                                (line.startsWith("<p>")) ? 
+                                                                                <>
+                                                                               
+                                                                                <Latex>{String.raw`${parse(line)[0].props.children}`}</Latex>
+                                                                                </>
+                                                                                :
+                                                                                <>
+                                                                               
+                                                                                <Latex>{String.raw`${line}`}</Latex>
+                                                                                </>
+                                                                            }
+                                                                           
                                                                         </p>
                                                                     
-                                                                    {/*  <Accordion defaultActiveKey="0">
-                                                                        <Card>
-                                                                            <Card.Header>
-                                                                            <Accordion.Toggle as={Button} variant="link" eventKey="0">
-                                                                                Click me!
-                                                                            </Accordion.Toggle>
-                                                                            </Card.Header>
-                                                                            <Accordion.Collapse eventKey="0">
-                                                                            <Card.Body><MathJax   math={line} /></Card.Body>
-                                                                            </Accordion.Collapse>
-                                                                        </Card>
-                                                    
-                                                                    </Accordion> */}
+                                                                    
                                                                     </div>
                                                                 )
                                                             })}
