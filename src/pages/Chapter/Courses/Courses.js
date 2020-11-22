@@ -104,9 +104,8 @@ const Courses = ({ urlParams , memoized , courses_memoized }) => {
                                                                                 <Latex>{String.raw`${parse(line)[0].props.children}`}</Latex>
                                                                                 </>
                                                                                 :
-                                                                                <>
-                                                                               
-                                                                                <Latex>{String.raw`${line}`}</Latex>
+                                                                                <>                                                                               
+                                                                               <Latex>{String.raw`${line}`}</Latex>
                                                                                 </>
                                                                             }
                                                                            
