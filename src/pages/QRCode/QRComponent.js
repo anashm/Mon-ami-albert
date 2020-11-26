@@ -18,7 +18,9 @@ const QRComponent = () => {
     const [TuasDejaPoints ,setTuasDejaPoints] = useState(false)
     const [points , setPoints] = useState(0)
     const [showCodeInput , setShowCodeInput] = useState(false);
+    const [showModalDateExpiree , setShowModalDateExpiree] = useState(false)
     const [codePromo , setCodePromo] = useState('')
+    const [textModal,setTextModal] = useState('')
     /* const[idCode,setIdCode] = useState('');
     const[nbrPoints,setNbrPoint] = useState(0); */
    
@@ -50,7 +52,8 @@ const QRComponent = () => {
               existence = 1;
               object_promotionnel.code = element.code
               object_promotionnel.points = element.points
-              
+              object_promotionnel.date_expiration = element.date_expiration
+              object_promotionnel.deleted = element.deleted
             }
             
               
@@ -58,7 +61,7 @@ const QRComponent = () => {
 
         }).then(()=>{
           if(existence == 1){
-
+           
             const userId = user.uid; 
             const reference_user =  database.ref(`users/${userId}`)
             const reference_update =  database.ref('users/')
@@ -70,26 +73,52 @@ const QRComponent = () => {
                     //alert('Tu as déja reçu les points')
                   }
                   else{
-                    reference_update.child(userId).update({
+
+                    var split = object_promotionnel.date_expiration.split('/');
+                    var date = new Date(split[2], split[1] - 1, split[0]); //Y M D 
+                    var timestamp = date.getTime();
+                    if(timestamp > Date.now() && object_promotionnel.deleted !== 1){
+                      
+                        reference_update.child(userId).update({
+                          code_scanned : object_promotionnel.code,
+                          points : Number(user_points) + Number(object_promotionnel.points)
+                        }).then(() => {
+                          userContext.update_user_points_anas(Number(user_points) + Number(object_promotionnel.points));
+                          setPoints(Number(object_promotionnel.points))
+                          setModalBravo(true)
+                            //alert('Bravo! vous avez gagné des points');
+                        })
+                    }
+                    else{
+                      setShowModalDateExpiree(true)
+                      setTextModal('le code est expiré')
+                    }
+
+                    
+                  } 
+              }
+              else{
+                
+                var split = object_promotionnel.date_expiration.split('/');
+                    var date = new Date(split[2], split[1] - 1, split[0]); //Y M D 
+                    var timestamp = date.getTime();
+                    if(timestamp > Date.now() && object_promotionnel.deleted != 1){
+                      
+                      reference_update.child(userId).update({
                         code_scanned : object_promotionnel.code,
                         points : Number(user_points) + Number(object_promotionnel.points)
                       }).then(() => {
                         userContext.update_user_points_anas(Number(user_points) + Number(object_promotionnel.points));
-                        setPoints(Number(object_promotionnel.points))
                         setModalBravo(true)
                           //alert('Bravo! vous avez gagné des points');
                       })
-                  } 
-              }
-              else{
-                  reference_update.child(userId).update({
-                    code_scanned : object_promotionnel.code,
-                    points : Number(user_points) + Number(object_promotionnel.points)
-                  }).then(() => {
-                    userContext.update_user_points_anas(Number(user_points) + Number(object_promotionnel.points));
-                    setModalBravo(true)
-                      //alert('Bravo! vous avez gagné des points');
-                  })
+                    }
+                    else{
+                      setShowModalDateExpiree(true)
+                      setTextModal('le code est expiré')
+                      
+                    }
+                  
               }
                
             });
@@ -122,37 +151,83 @@ const QRComponent = () => {
             const user_points = userContext.user_informations.points
 
             let resultat = data.split('###');
-            /* setIdCode(resultat[0]);
-            setNbrPoint(resultat[1]); */
+            
 
             const reference_user =  database.ref(`users/${userId}`)
             reference_user.once("value", user_informations => {
+              // code non existant dans la collection users
               if(user_informations.val().code_scanned){
                   if(user_informations.val().code_scanned === resultat[0]){
                     setTuasDejaPoints(true)
                     //alert('Tu as déja reçu les points')
                   }
                   else{
-                      reference.child(userId).update({
-                        code_scanned : resultat[0],
-                        points : Number(user_points) + Number(resultat[1])
-                      }).then(() => {
-                        userContext.update_user_points_anas(Number(user_points) + Number(resultat[1]));
-                        setPoints(Number(resultat[1]))
-                        setModalBravo(true)
-                          //alert('Bravo! vous avez gagné des points');
-                      })
+
+                    //test sur la collection qr code validité du code
+                    const reference_code = database.ref("qr-code/all")
+                    reference_code.once("value", snapshot => {
+
+                      snapshot.forEach(element => {
+                        if(element.val().code === resultat[0]){
+
+                          var split = element.val().date_expiration.split('/');
+                          var date = new Date(split[2], split[1] - 1, split[0]); //Y M D 
+                          var timestamp = date.getTime();
+                          if(timestamp > Date.now() ){
+                            reference.child(userId).update({
+                              code_scanned : resultat[0],
+                              points : Number(user_points) + Number(resultat[1])
+                            }).then(() => {
+                              userContext.update_user_points_anas(Number(user_points) + Number(resultat[1]));
+                              setPoints(Number(resultat[1]))
+                              setModalBravo(true)
+                                //alert('Bravo! vous avez gagné des points');
+                            })
+                          }
+                          else{
+                            alert('le code est expiré')
+                          }
+
+                        }
+                      });
+                    })
+
+                     
                   } 
               }
               else{
-                  reference.child(userId).update({
-                    code_scanned : resultat[0],
-                    points : Number(user_points) + Number(resultat[1])
-                  }).then(() => {
-                    userContext.update_user_points_anas(Number(user_points) + Number(resultat[1]));
-                    setModalBravo(true)
-                      //alert('Bravo! vous avez gagné des points');
+
+
+                const reference_code = database.ref("qr-code/all")
+                reference_code.once("value", snapshot => {
+
+                  snapshot.forEach(element => {
+                    if(element.val().code === resultat[0]){
+
+                      var split = element.val().date_expiration.split('/');
+                          var date = new Date(split[2], split[1] - 1, split[0]); //Y M D 
+                          var timestamp = date.getTime();
+                          if(timestamp > Date.now() ){
+                              reference.child(userId).update({
+                                code_scanned : resultat[0],
+                                points : Number(user_points) + Number(resultat[1])
+                              }).then(() => {
+                                userContext.update_user_points_anas(Number(user_points) + Number(resultat[1]));
+                                setModalBravo(true)
+                                  //alert('Bravo! vous avez gagné des points');
+                              })
+                          }
+                          else{
+                              alert('le code est expiré')
+                          }
+
+                    }
+                   
+
                   })
+
+                })
+                  
               }
                
             });
@@ -323,6 +398,34 @@ const QRComponent = () => {
                 :
 
                 ''
+            }
+
+            {
+              showModalDateExpiree ? 
+              <Modal
+                show={showModalDateExpiree}
+                onHide={() => setShowModalDateExpiree(false)}
+                    size="lg"
+                    aria-labelledby="contained-modal-title-vcenter"
+                    centered
+                >
+                    <Modal.Header closeButton>
+                        <Modal.Title id="contained-modal-title-vcenter">
+                            
+                        </Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <p> {textModal} </p>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        {/* <Button variant="secondary" id="okey-btn-model"   >Okey</Button> */}
+                        <Button onClick={() => setShowModalDateExpiree(false)}  variant="light">Fermer</Button>
+                    </Modal.Footer>
+                </Modal>
+
+              :
+
+              ''
             }
         </div>
 
