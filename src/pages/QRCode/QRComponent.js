@@ -77,7 +77,7 @@ const QRComponent = () => {
                     var split = object_promotionnel.date_expiration.split('/');
                     var date = new Date(split[2], split[1] - 1, split[0]); //Y M D 
                     var timestamp = date.getTime();
-                    if(timestamp > Date.now() && object_promotionnel.deleted !== 1){
+                    if(timestamp > Date.now() && object_promotionnel.deleted !== 1 && object_promotionnel.disabled !=1){
                       
                         reference_update.child(userId).update({
                           code_scanned : object_promotionnel.code,
@@ -102,7 +102,7 @@ const QRComponent = () => {
                 var split = object_promotionnel.date_expiration.split('/');
                     var date = new Date(split[2], split[1] - 1, split[0]); //Y M D 
                     var timestamp = date.getTime();
-                    if(timestamp > Date.now() && object_promotionnel.deleted != 1){
+                    if(timestamp > Date.now() && object_promotionnel.deleted != 1 && object_promotionnel.disabled !=1){
                       
                       reference_update.child(userId).update({
                         code_scanned : object_promotionnel.code,
@@ -173,7 +173,7 @@ const QRComponent = () => {
                           var split = element.val().date_expiration.split('/');
                           var date = new Date(split[2], split[1] - 1, split[0]); //Y M D 
                           var timestamp = date.getTime();
-                          if(timestamp > Date.now() ){
+                          if(timestamp > Date.now() && element.val().disabled !=1 && element.val().deleted !=1){
                             reference.child(userId).update({
                               code_scanned : resultat[0],
                               points : Number(user_points) + Number(resultat[1])
@@ -185,7 +185,8 @@ const QRComponent = () => {
                             })
                           }
                           else{
-                            alert('le code est expiré')
+                            setShowModalDateExpiree(true)
+                            setTextModal('le code est expiré')
                           }
 
                         }
@@ -207,7 +208,7 @@ const QRComponent = () => {
                       var split = element.val().date_expiration.split('/');
                           var date = new Date(split[2], split[1] - 1, split[0]); //Y M D 
                           var timestamp = date.getTime();
-                          if(timestamp > Date.now() ){
+                          if(timestamp > Date.now() && element.val().disabled !=1 && element.val().deleted !=1 ){
                               reference.child(userId).update({
                                 code_scanned : resultat[0],
                                 points : Number(user_points) + Number(resultat[1])
@@ -218,7 +219,8 @@ const QRComponent = () => {
                               })
                           }
                           else{
-                              alert('le code est expiré')
+                            setShowModalDateExpiree(true)
+                            setTextModal('le code est expiré')
                           }
 
                     }
