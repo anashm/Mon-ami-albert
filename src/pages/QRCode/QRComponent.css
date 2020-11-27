@@ -60,3 +60,8 @@
     margin-top: 5%;
     margin-bottom: 10%;
 }
+
+.rescanner_qr_code{
+    background-color: #f8f9fa !important;
+    border-color: #f8f9fa !important;
+}

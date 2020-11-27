@@ -412,7 +412,7 @@ const QRComponent = () => {
                       </Modal.Body>
                       <Modal.Footer>
                           <Button variant="secondary" onClick={HandleAnnulerModal}    >Annuler</Button>
-                          <Button onClick={() => setTuasDejaPoints(false)}  variant="light">Rescanner</Button>
+                          <Button onClick={() => setTuasDejaPoints(false)} className="rescanner_qr_code"  variant="light">Rescanner</Button>
                       </Modal.Footer>
                   </Modal>
 
@@ -440,7 +440,7 @@ const QRComponent = () => {
                     </Modal.Body>
                     <Modal.Footer>
                         <Button variant="secondary" onClick={HandleAnnuleModalDateExpiree}    >Annuler</Button>
-                        <Button onClick={() => setShowModalDateExpiree(false)}  variant="light">Rescanner</Button>
+                        <Button onClick={() => setShowModalDateExpiree(false)} className="rescanner_qr_code"  variant="light">Rescanner</Button>
                     </Modal.Footer>
                 </Modal>
 
