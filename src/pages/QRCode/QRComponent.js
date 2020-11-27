@@ -8,10 +8,14 @@ import './QRComponent.css';
 import Modal from 'react-bootstrap/Modal';
 import highfive from '../../images/highFive/HIGHFIVE.svg';
 import {Form,Button} from 'semantic-ui-react';
+import { useHistory } from "react-router-dom";
+
 
 const QRComponent = () => {
     const userContext = useContext(UserContext)
     const firebase = useContext(FirebaseContext)
+    const history = useHistory();
+
 
     const [showModal ,setShowModal] = useState(false)
     const [ModalBravo ,setModalBravo] = useState(false)
@@ -138,6 +142,12 @@ const QRComponent = () => {
     const HandleChangeCodePromo = (e) =>{
       setCodePromo(e.target.value)
     }
+
+    const HandleCloseModalBravo = () =>{
+      history.push("/profil");
+      setModalBravo(false)
+    }
+
 
     const handleScan = data => {
       
@@ -339,7 +349,7 @@ const QRComponent = () => {
               ModalBravo ? 
                 <Modal
                   show={ModalBravo}
-                  onHide={() => setModalBravo(false)}
+                  onHide={HandleCloseModalBravo}
                       size="lg"
                       aria-labelledby="contained-modal-title-vcenter"
                       centered
@@ -365,7 +375,7 @@ const QRComponent = () => {
                       </Modal.Body>
                       <Modal.Footer>
                           {/* <Button variant="secondary" id="okey-btn-model"   >Okey</Button> */}
-                          <Button onClick={() => setModalBravo(false)}  variant="light">Fermer</Button>
+                          <Button onClick={HandleCloseModalBravo}  variant="light">Fermer</Button>
                       </Modal.Footer>
                   </Modal>
 
