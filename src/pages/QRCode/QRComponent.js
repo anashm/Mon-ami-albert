@@ -30,7 +30,7 @@ const QRComponent = () => {
    
 
    
-   
+
 
     const HandleCodeManuel = () => {
       setShowCodeInput(true)
@@ -139,12 +139,21 @@ const QRComponent = () => {
       
     }
 
+    const HandleAnnuleModalDateExpiree = () => {
+      history.push("/dashboard-user");
+      setShowModalDateExpiree(false)
+    }
+
+    const HandleAnnulerModal = () => {
+      history.push("/dashboard-user");
+      setTuasDejaPoints(false)
+    }
     const HandleChangeCodePromo = (e) =>{
       setCodePromo(e.target.value)
     }
 
     const HandleCloseModalBravo = () =>{
-      history.push("/profil");
+      history.push("/dashboard-user");
       setModalBravo(false)
     }
 
@@ -375,7 +384,7 @@ const QRComponent = () => {
                       </Modal.Body>
                       <Modal.Footer>
                           {/* <Button variant="secondary" id="okey-btn-model"   >Okey</Button> */}
-                          <Button onClick={HandleCloseModalBravo}  variant="light">Fermer</Button>
+                          <Button onClick={HandleCloseModalBravo}  variant="light">Ok</Button>
                       </Modal.Footer>
                   </Modal>
 
@@ -388,7 +397,7 @@ const QRComponent = () => {
               (TuasDejaPoints && !ModalBravo) ? 
                 <Modal
                   show={TuasDejaPoints}
-                  onHide={() => setTuasDejaPoints(false)}
+                  onHide={HandleAnnulerModal}
                       size="lg"
                       aria-labelledby="contained-modal-title-vcenter"
                       centered
@@ -402,8 +411,8 @@ const QRComponent = () => {
                           <p>Tu as déja utilisé ce QRcode</p>
                       </Modal.Body>
                       <Modal.Footer>
-                          {/* <Button variant="secondary" id="okey-btn-model"   >Okey</Button> */}
-                          <Button onClick={() => setTuasDejaPoints(false)}  variant="light">Fermer</Button>
+                          <Button variant="secondary" onClick={HandleAnnulerModal}    >Annuler</Button>
+                          <Button onClick={() => setTuasDejaPoints(false)}  variant="light">Rescanner</Button>
                       </Modal.Footer>
                   </Modal>
 
@@ -416,7 +425,7 @@ const QRComponent = () => {
               showModalDateExpiree ? 
               <Modal
                 show={showModalDateExpiree}
-                onHide={() => setShowModalDateExpiree(false)}
+                onHide={HandleAnnuleModalDateExpiree}
                     size="lg"
                     aria-labelledby="contained-modal-title-vcenter"
                     centered
@@ -430,8 +439,8 @@ const QRComponent = () => {
                         <p> {textModal} </p>
                     </Modal.Body>
                     <Modal.Footer>
-                        {/* <Button variant="secondary" id="okey-btn-model"   >Okey</Button> */}
-                        <Button onClick={() => setShowModalDateExpiree(false)}  variant="light">Fermer</Button>
+                        <Button variant="secondary" onClick={HandleAnnuleModalDateExpiree}    >Annuler</Button>
+                        <Button onClick={() => setShowModalDateExpiree(false)}  variant="light">Rescanner</Button>
                     </Modal.Footer>
                 </Modal>
 
