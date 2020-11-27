@@ -375,7 +375,7 @@ const QRComponent = () => {
             }
 
             {
-              TuasDejaPoints ? 
+              (TuasDejaPoints && !ModalBravo) ? 
                 <Modal
                   show={TuasDejaPoints}
                   onHide={() => setTuasDejaPoints(false)}
