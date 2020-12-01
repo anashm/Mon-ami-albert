@@ -131,7 +131,9 @@ const QRComponent = () => {
           }
 
           else{
-            alert('Le code est erroné')
+            setShowModalDateExpiree(true)
+            setTextModal('le code est expiré')
+            //alert('Le code est erroné')
           }
           
         })
