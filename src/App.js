@@ -31,6 +31,8 @@ import UserContext from "./Context/UserContext/UserContext";
 import { FirebaseContext } from "./firebase";
 import Chapter from"./pages/Chapter/Chapter";
 import Dashboard from "./pages/LoggedIn/Dashboard";
+import WichEnseigant from "./components/content/inscription/WichEnseignant";
+import CreatAccount from "./components/content/inscription/create_account";
 
 const Profil =  lazy(() => import("./components/header/ProfilPage"));
 const QRCode =  lazy(() => import("./pages/QRCode/QRComponent"));
@@ -102,7 +104,10 @@ const App = () => {
           />
          
           
+         <Route exact path="/creat-account" component={CreatAccount} />
+       
           
+          <Route exact path="/wich-enseignant" component={WichEnseigant} />
        
          
          
