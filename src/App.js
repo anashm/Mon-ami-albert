@@ -17,29 +17,31 @@ import Login from "./pages/Login/Login";
 
 import WichEnseigant from "./components/content/inscription/WichEnseignant";
 import Chapter from "./pages/Chapter/Chapter";
-import SignUp from "./components/content/inscription/SignUp";
-import Dashboard from "./pages/LoggedIn/Dashboard";
-import Chapitres from "./pages/LoggedIn/Chapitres";
+
+
 // import Quizz from "./pages/Chapter/Quizz/Quizz";
 
 
 import NotFound from "./pages/404/NotFound";
 import "aos/dist/aos.css";
 
-import Recaputilatif from "./components/header/RecapProfil/Recaputilatif";
+
 import FooterMenu from "./components/footer/FooterMenu/FooterMenu";
 import UserContext from "./Context/UserContext/UserContext";
 /* import ErrorContext from './Context/ErrorContext/ErrorContext';
  */ import firebase from "firebase";
 import { FirebaseContext } from "./firebase";
 
-import Contact from "./pages/Contact/Contact";
 
 
 const Profil =  lazy(() => import("./components/header/ProfilPage"));
 const QRCode =  lazy(() => import("./pages/QRCode/QRComponent"));
 const ClassementGeneral =  lazy(() => import("./components/header/Classement/ClassementGeneral"));
 const ClassementLycee =  lazy(() => import("./components/header/Classement/ClassementLycee"));
+const SignUp =  lazy(() => import("./components/content/inscription/SignUp"));
+const Dashboard =  lazy(() => import("./pages/LoggedIn/Dashboard"));
+
+const Chapitres =  lazy(() => import( "./pages/LoggedIn/Chapitres"));
 // import Footer from "./components/footer/Footer";
 
 // import ClassesSection from "./components/content/home-page/ClassesSection/ClassesSection";
@@ -106,17 +108,18 @@ const App = () => {
             path="/chapter/:matieres/:chapitre"
             component={Chapter}
           />
-          <Route exact path="/sign-up" component={SignUp} />
-          <Route
-            exact
-            path="/dashboard-user"
-            render={(props) => <Dashboard {...props} />}
-          />
-          <Route exact path="/chapitres/:matieres" component={Chapitres} />
+         
          
           
 
           <Suspense fallback={<div></div>}>
+            <Route exact path="/sign-up" component={SignUp} />
+            <Route
+              exact
+              path="/dashboard-user"
+              render={(props) => <Dashboard {...props} />}
+            />
+            <Route exact path="/chapitres/:matieres" component={Chapitres} />
               <Route exact path="/profil" component={Profil} />
               <Route
                 exact
@@ -126,10 +129,7 @@ const App = () => {
               <Route exact path="/classement-lycee" component={ClassementLycee} />
               <Route exact path="/test_qr_code" component={QRCode} />
           </Suspense>
-          
-          <Route exact path="/recapitulatif" component={Recaputilatif} />
          
-          <Route exact path="/nous_contacter" component={Contact} />
           <Route exact path="/404" component={NotFound} />
           <Redirect to="/404" />
         </Switch>
