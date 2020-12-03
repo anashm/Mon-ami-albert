@@ -11,12 +11,10 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
-import CreatAccount from "./components/content/inscription/create_account";
-import EleveAccount from "./components/content/inscription/EleveCompte";
-import Login from "./pages/Login/Login";
 
-import WichEnseigant from "./components/content/inscription/WichEnseignant";
-import Chapter from "./pages/Chapter/Chapter";
+
+
+
 
 
 // import Quizz from "./pages/Chapter/Quizz/Quizz";
@@ -42,6 +40,10 @@ const SignUp =  lazy(() => import("./components/content/inscription/SignUp"));
 const Dashboard =  lazy(() => import("./pages/LoggedIn/Dashboard"));
 
 const Chapitres =  lazy(() => import( "./pages/LoggedIn/Chapitres"));
+const Login =  lazy(() => import( "./pages/Login/Login"));
+const Chapter =  lazy(() => import( "./pages/Chapter/Chapter"));
+
+const EleveAccount =  lazy(() => import( "./components/content/inscription/EleveCompte"));
 // import Footer from "./components/footer/Footer";
 
 // import ClassesSection from "./components/content/home-page/ClassesSection/ClassesSection";
@@ -98,21 +100,24 @@ const App = () => {
             path="/"
             render={(props) => <HomePage {...props} loading={loading} />}
           />
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/creat-account" component={CreatAccount} />
-          <Route exact path="/eleve-create-account" component={EleveAccount} />
+         
           
-          <Route exact path="/wich-enseignant" component={WichEnseigant} />
-          <Route
-            exact
-            path="/chapter/:matieres/:chapitre"
-            component={Chapter}
-          />
+          
+       
+         
          
          
           
 
           <Suspense fallback={<div></div>}>
+           
+            <Route exact path="/eleve-create-account" component={EleveAccount} />
+            <Route exact path="/login" component={Login} />
+            <Route
+              exact
+              path="/chapter/:matieres/:chapitre"
+              component={Chapter}
+            />
             <Route exact path="/sign-up" component={SignUp} />
             <Route
               exact
