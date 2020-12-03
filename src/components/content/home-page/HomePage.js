@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, memo, useEffect, useState,Suspense,lazy } from "react";
+import React, { Fragment, useContext, memo, useEffect, useState} from "react";
 import HeroSection from "./HeroSection";
 
 /* import FreeChapterSection from './FreeChapterSection/FreeChapterSection';*/
@@ -11,12 +11,12 @@ import UserContext from "../../../Context/UserContext/UserContext";
 import { Redirect } from "react-router-dom";
 import { Dimmer, Loader } from "semantic-ui-react";
 
-const SchoolInfosSection  =  lazy(() => import( "./SchoolInfosSection"));
-const ThirdDiv  =  lazy(() => import( "./Thirddiv"));
-const Sixthdiv  =  lazy(() => import( "./Sixthdiv"));
-const ApplicationSection  =  lazy(() => import( "./Application/ApplictaionSection"));
-const ClassesSection  =  lazy(() => import( "./ClassesSection/ClassesSection"));
-const Footer =  lazy(() => import( "../../footer/Footer"));
+import SchoolInfosSection  from "./SchoolInfosSection";
+import ThirdDiv  from "./Thirddiv";
+import Sixthdiv  from "./Sixthdiv";
+import ApplicationSection  from "./Application/ApplictaionSection";
+import ClassesSection  from "./ClassesSection/ClassesSection";
+import Footer from "../../footer/Footer";
 
 const HomePage = memo(({ loading }) => {
   const [redirect, setRedirect] = useState(false);
@@ -45,17 +45,17 @@ const HomePage = memo(({ loading }) => {
             <HeroSection userConnected={userContext.user} />
             
               <SchoolInfosSection />
-              <Suspense fallback={<div></div>}>
+           
                 <ThirdDiv />
               
                 <Sixthdiv />
                 <ApplicationSection />
                 <ClassesSection />
-              </Suspense>
+              
         </section>
-        <Suspense fallback={<div></div>}>
+      
           <Footer />
-        </Suspense>
+       
       </Fragment>
     );
   }
