@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect,Suspense,lazy } from "react";
 import Header from "./components/header/Header";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -22,20 +22,24 @@ import Dashboard from "./pages/LoggedIn/Dashboard";
 import Chapitres from "./pages/LoggedIn/Chapitres";
 // import Quizz from "./pages/Chapter/Quizz/Quizz";
 
-import Profil from "./components/header/ProfilPage";
+
 import NotFound from "./pages/404/NotFound";
 import "aos/dist/aos.css";
-import ClassementGeneral from "./components/header/Classement/ClassementGeneral";
-import ClassementLycee from "./components/header/Classement/ClassementLycee";
+
 import Recaputilatif from "./components/header/RecapProfil/Recaputilatif";
 import FooterMenu from "./components/footer/FooterMenu/FooterMenu";
 import UserContext from "./Context/UserContext/UserContext";
 /* import ErrorContext from './Context/ErrorContext/ErrorContext';
  */ import firebase from "firebase";
 import { FirebaseContext } from "./firebase";
-import QRCode from "./pages/QRCode/QRComponent";
+
 import Contact from "./pages/Contact/Contact";
 
+
+const Profil =  lazy(() => import("./components/header/ProfilPage"));
+const QRCode =  lazy(() => import("./pages/QRCode/QRComponent"));
+const ClassementGeneral =  lazy(() => import("./components/header/Classement/ClassementGeneral"));
+const ClassementLycee =  lazy(() => import("./components/header/Classement/ClassementLycee"));
 // import Footer from "./components/footer/Footer";
 
 // import ClassesSection from "./components/content/home-page/ClassesSection/ClassesSection";
@@ -109,15 +113,22 @@ const App = () => {
             render={(props) => <Dashboard {...props} />}
           />
           <Route exact path="/chapitres/:matieres" component={Chapitres} />
-          <Route exact path="/profil" component={Profil} />
-          <Route
-            exact
-            path="/classement-general"
-            component={ClassementGeneral}
-          />
-          <Route exact path="/classement-lycee" component={ClassementLycee} />
+         
+          
+
+          <Suspense fallback={<div></div>}>
+              <Route exact path="/profil" component={Profil} />
+              <Route
+                exact
+                path="/classement-general"
+                component={ClassementGeneral}
+              />
+              <Route exact path="/classement-lycee" component={ClassementLycee} />
+              <Route exact path="/test_qr_code" component={QRCode} />
+          </Suspense>
+          
           <Route exact path="/recapitulatif" component={Recaputilatif} />
-          <Route exact path="/test_qr_code" component={QRCode} />
+         
           <Route exact path="/nous_contacter" component={Contact} />
           <Route exact path="/404" component={NotFound} />
           <Redirect to="/404" />
