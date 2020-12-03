@@ -43,15 +43,15 @@ const HomePage = memo(({ loading }) => {
         <section id="homepage">
         
             <HeroSection userConnected={userContext.user} />
-            <Suspense fallback={<div></div>}>
+            
               <SchoolInfosSection />
-              <ThirdDiv />
-              {/*  <FourthDiv />
-                <FreeChapterSection /> */}
-              <Sixthdiv />
-              <ApplicationSection />
-              <ClassesSection />
-            </Suspense>
+              <Suspense fallback={<div></div>}>
+                <ThirdDiv />
+              
+                <Sixthdiv />
+                <ApplicationSection />
+                <ClassesSection />
+              </Suspense>
         </section>
         <Suspense fallback={<div></div>}>
           <Footer />
