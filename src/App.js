@@ -29,7 +29,7 @@ import UserContext from "./Context/UserContext/UserContext";
 /* import ErrorContext from './Context/ErrorContext/ErrorContext';
  */ import firebase from "firebase";
 import { FirebaseContext } from "./firebase";
-
+import Chapter from"./pages/Chapter/Chapter";
 
 
 const Profil =  lazy(() => import("./components/header/ProfilPage"));
@@ -41,7 +41,7 @@ const Dashboard =  lazy(() => import("./pages/LoggedIn/Dashboard"));
 
 const Chapitres =  lazy(() => import( "./pages/LoggedIn/Chapitres"));
 const Login =  lazy(() => import( "./pages/Login/Login"));
-const Chapter =  lazy(() => import( "./pages/Chapter/Chapter"));
+
 
 const EleveAccount =  lazy(() => import( "./components/content/inscription/EleveCompte"));
 // import Footer from "./components/footer/Footer";
