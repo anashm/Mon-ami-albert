@@ -41,19 +41,20 @@ const HomePage = memo(({ loading }) => {
     return (
       <Fragment>
         <section id="homepage">
-        <Suspense fallback={<div></div>}>
-          <HeroSection userConnected={userContext.user} />
-          <SchoolInfosSection />
-          <ThirdDiv />
-          {/*  <FourthDiv />
-            <FreeChapterSection /> */}
-          <Sixthdiv />
-          <ApplicationSection />
-          <ClassesSection />
-        </Suspense>
+        
+            <HeroSection userConnected={userContext.user} />
+            <Suspense fallback={<div></div>}>
+              <SchoolInfosSection />
+              <ThirdDiv />
+              {/*  <FourthDiv />
+                <FreeChapterSection /> */}
+              <Sixthdiv />
+              <ApplicationSection />
+              <ClassesSection />
+            </Suspense>
         </section>
         <Suspense fallback={<div></div>}>
-        <Footer />
+          <Footer />
         </Suspense>
       </Fragment>
     );
