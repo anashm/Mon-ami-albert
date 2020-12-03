@@ -30,14 +30,14 @@ import UserContext from "./Context/UserContext/UserContext";
  */ import firebase from "firebase";
 import { FirebaseContext } from "./firebase";
 import Chapter from"./pages/Chapter/Chapter";
-
+import Dashboard from "./pages/LoggedIn/Dashboard";
 
 const Profil =  lazy(() => import("./components/header/ProfilPage"));
 const QRCode =  lazy(() => import("./pages/QRCode/QRComponent"));
 const ClassementGeneral =  lazy(() => import("./components/header/Classement/ClassementGeneral"));
 const ClassementLycee =  lazy(() => import("./components/header/Classement/ClassementLycee"));
 const SignUp =  lazy(() => import("./components/content/inscription/SignUp"));
-const Dashboard =  lazy(() => import("./pages/LoggedIn/Dashboard"));
+
 
 const Chapitres =  lazy(() => import( "./pages/LoggedIn/Chapitres"));
 const Login =  lazy(() => import( "./pages/Login/Login"));
