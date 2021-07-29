@@ -73,7 +73,7 @@ const ApplictaionSection = () => {
                         <Divider hidden/>
                         
                         <div className="application-download-link-button">
-                        <DownloadButton title = 'Télécharger' subTitle = 'sur Play Store' img = {playstore} src = 'https://play.google.com/store/apps/details?id=com.monami.albert&gl=MA' />
+                        <DownloadButton title = 'Télécharger' subTitle = 'sur Play Store' img = {playstore} src = 'https://play.google.com/store/apps/details?id=ma.dba.monamialbert' />
                             <DownloadButton title = 'Télécharger' subTitle = 'sur App Store' img = {appleStore} src = '/' />
                         </div>
                     </div>

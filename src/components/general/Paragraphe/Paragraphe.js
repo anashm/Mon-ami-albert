@@ -1,8 +1,8 @@
 import React from 'react'
 
-const Paragraphe = ({ text }) => {
+const Paragraphe = ({ text , className , ...props }) => {
     return (
-        <p className="paragraphe">
+        <p {...props}  className={`paragraphe ${!!className ? className : '' }`}>
             { text }
         </p>
     );

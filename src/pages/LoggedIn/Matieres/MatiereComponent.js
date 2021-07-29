@@ -12,9 +12,6 @@ const MatiereComponent = (props) => {
 
     const database = firebase.getData();
 
-
-
-
     const userContext = useContext(UserContext);
 
     const [ proress , setProgress ] = useState(0);
@@ -38,7 +35,7 @@ const MatiereComponent = (props) => {
 
                 if(chapter_infos.val()){
 
-                    if(levels[user_level][`${ props.course.includes('Math') ? 'Mathematique' :  props.course }`]){
+                    if(levels[user_level] && levels[user_level][`${ props.course.includes('Math') ? 'Mathematique' :  props.course }`]){
                         let total_points = 0;
                         const progress_matiere = Object.values(levels[user_level][`${ props.course.includes('Math') ? 'Mathematique' :  props.course }`]);
                         const chapter_length = chapter_infos.val().all.length;

@@ -211,7 +211,7 @@ const Header = () => {
                     </span>
                     ) : null}
                     {logout ? (
-                      <Link to="/" className="contact-link dark-color">
+                      <Link to="/contact" className="contact-link dark-color">
                         Contact
                       </Link>
                     ) : null}
@@ -356,7 +356,7 @@ const Header = () => {
                     >
                       |
                     </div>
-                    <Link to="/" className="contact-link dark-color">
+                    <Link to="/contact" className="contact-link dark-color">
                       Contact
                     </Link>
                   </div>

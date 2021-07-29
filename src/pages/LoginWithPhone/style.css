@@ -1,0 +1,14 @@
+.register-form {
+  max-width: 500px !important;
+  margin: 0 auto;
+}
+
+.react-code-input input{
+  outline: none;
+  font-family: 'Lato' , Arial, Helvetica, sans-serif;
+}
+
+.text-center * {
+  text-align: center !important;
+}
+/*# sourceMappingURL=style.css.map */

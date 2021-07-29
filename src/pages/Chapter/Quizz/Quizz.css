@@ -1,0 +1,63 @@
+.quizz-container {
+  padding: 0;
+}
+
+.quizz-container .quizz-show-answer-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+@media only screen and (max-width: 500px) {
+  .quizz-container .quizz-show-answer-container {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    display: none;
+  }
+}
+
+.quizz-container .quizz-show-answer-container > div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0 20px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@media only screen and (max-width: 500px) {
+  .quizz-container .quizz-show-answer-container > div {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+
+.quizz-container .quizz-show-answer-container > div i {
+  font-size: 25px !important;
+}
+
+.quizz-container .quizz-show-answer-container > div.good-answer-container p, .quizz-container .quizz-show-answer-container > div.good-answer-container i {
+  color: #79B600 !important;
+}
+
+.quizz-container .quizz-show-answer-container > div.bad-answer-container p, .quizz-container .quizz-show-answer-container > div.bad-answer-container i {
+  color: crimson;
+}
+
+.quizz-container .quizz-show-answer-container > div h4 {
+  color: #707070;
+}
+
+.quizz-container .quizz-show-answer-container > div p {
+  padding-left: 10px;
+}
+/*# sourceMappingURL=Quizz.css.map */

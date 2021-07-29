@@ -1,0 +1,24 @@
+.testimony-section-container {
+  background-color: #fafafa;
+  padding: 7% 0;
+}
+
+.testimony-section-container .testimonies-container {
+  padding-top: 5%;
+}
+
+.testimony-section-container .testimonies-container .testimony-card-container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.testimony-section-container .testimonies-container .testimony-card-container .user-testimony-name {
+  color: #333333;
+  text-align: center;
+}
+
+.testimony-section-container .testimonies-container .testimony-card-container .user-testinony {
+  color: #636363;
+  text-align: center;
+}
+/*# sourceMappingURL=TestimonySection.css.map */

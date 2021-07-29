@@ -1,0 +1,30 @@
+.download-btn-container {
+  margin: 20px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.download-btn-container .download-btn {
+  display: block;
+  max-width: 400px;
+  width: 100%;
+  background-color: #707070;
+  padding: 10px;
+  text-align: center;
+  color: white;
+  text-transform: uppercase;
+  font-family: Rubik , 'sans-serif';
+  letter-spacing: 1px;
+  border-radius: 30px;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.download-btn-container .download-btn:hover {
+  opacity: 0.8;
+}
+/*# sourceMappingURL=DownloadButton.css.map */

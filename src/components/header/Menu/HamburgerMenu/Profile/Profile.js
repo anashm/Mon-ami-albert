@@ -50,7 +50,7 @@ const Profile = ({ close }) => {
           <Link to="/profil">
             {" "}
             <img
-              src={require(`../../../../../images/avatars/${avatarPath}.png`)}
+              src={require(`../../../../../images/avatars/${avatarPath?.includes('.png') ? avatarPath?.split('.png')[0] :  avatarPath }.png`)}
               alt=""
             />{" "}
           </Link>

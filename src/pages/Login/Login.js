@@ -9,9 +9,7 @@ import Title from '../../components/general/Title/Title';
 
 import { Divider } from 'semantic-ui-react';
 /* import Header from '../../components/header/Header';*/
-
 import { useHistory } from 'react-router-dom';
-
 import UserContext from '../../Context/UserContext/UserContext';
 
 import './style/Login.scss';

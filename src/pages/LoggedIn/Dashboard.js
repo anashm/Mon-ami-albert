@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect, Fragment } from "react";
+import React, { useState, useContext, useEffect, Fragment, useCallback } from "react";
 import MatiereComponent from "./Matieres/MatiereComponent";
 import "./style/Dashboard.css";
 import LogoMath from "../../images/Logo-math.png";
@@ -9,15 +9,58 @@ import LogoPhilo from "../../images/logo-philo.png";
 import LogoSVT from "../../images/logo-svt.png";
 // import LogoIng from '../../images/logo-ing.png';
 // import LogoJeux from '../../images/logo-jeux.png';
-import { Link } from "react-router-dom";
+import { Link , useHistory } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
 import { FirebaseContext } from "../../firebase";
 import UserContext from "../../Context/UserContext/UserContext";
+// import LevelsContext from "../../Context/Levels/Context";
 import NiveauxSchool from "./Matieres/NiveauxSchoolComponent";
 import AOS from "aos";
 import { Icon, Breadcrumb, Loader } from "semantic-ui-react";
 // import Header from '../../components/header/Header';
-import { useHistory } from "react-router-dom";
+
+const matieres = [
+  {
+    title: "Mathématiques",
+    logo: LogoMath,
+    urlParam: "Mathematique",
+  },
+  {
+    title: "Physique",
+    logo: LogoPhysique,
+    urlParam: "Physique",
+  },
+  {
+    title: "Anglais",
+    logo: LogoAnglais,
+    urlParam: "Anglais",
+  },
+  {
+    title: "Histoire Géo",
+    logo: LogoGeo,
+    urlParam: "Histoire-Geo",
+  },
+  {
+    title: "Philosophie",
+    logo: LogoPhilo,
+    urlParam: "Philosophie",
+  },
+  {
+    title: "SVT",
+    logo: LogoSVT,
+    urlParam: "SVT",
+  },
+  /* {
+      title : "Ingénierie",
+      logo : LogoIng,
+      urlParam : "Ingenierie"
+  },
+  {
+      title : "Jeux",
+      logo : LogoJeux,
+      urlParam : "Jeux"
+  } */
+];
 
 const Dashboard = (props) => {
   const firebase = useContext(FirebaseContext);
@@ -25,76 +68,13 @@ const Dashboard = (props) => {
 
   const history = useHistory();
 
-  const [niveauxSchool, setNiveauxSchool] = useState([]);
+  // const [niveauxSchool, setNiveauxSchool] = useState([]);
   const [useConnectedId] = useState(null);
-
-  const matieres = [
-    {
-      title: "Mathématiques",
-      logo: LogoMath,
-      urlParam: "Mathematique",
-    },
-    {
-      title: "Physique",
-      logo: LogoPhysique,
-      urlParam: "Physique",
-    },
-    {
-      title: "Anglais",
-      logo: LogoAnglais,
-      urlParam: "Anglais",
-    },
-    {
-      title: "Histoire Géo",
-      logo: LogoGeo,
-      urlParam: "Histoire-Geo",
-    },
-    {
-      title: "Philosophie",
-      logo: LogoPhilo,
-      urlParam: "Philosophie",
-    },
-    {
-      title: "SVT",
-      logo: LogoSVT,
-      urlParam: "SVT",
-    },
-    /* {
-        title : "Ingénierie",
-        logo : LogoIng,
-        urlParam : "Ingenierie"
-    },
-    {
-        title : "Jeux",
-        logo : LogoJeux,
-        urlParam : "Jeux"
-    } */
-  ];
-
-  useEffect(() => {
-    AOS.init({
-      duration: 800,
-    });
-
-    if (userContext.user) {
-      if (niveauxSchool.length < 1) {
-        const database = firebase.getData();
-        const ref_niveaux = database.ref("schoolLevels/all");
-        ref_niveaux.on("value", (snapshot) => {
-          // const messageObject = snapshot.val();
-          setNiveauxSchool(snapshot.val());
-        });
-      }
-    }
-
-    userContext.update_current_location(history.location.pathname);
-
-    return () => {
-      userContext.update_current_location("");
-    };
-  }, [userContext.user]);
-
   const [modalOpen, setModalOpen] = useState(false);
+
+  const [ allLevels , setAllLevels ] = useState([]);
+  const [ allLevelsLoading , setAllLevelsLoading ] = useState(false);
+
 
   const handleShowModal = () => {
     setModalOpen(true);
@@ -103,6 +83,59 @@ const Dashboard = (props) => {
   const handleCloseModal = () => {
     setModalOpen(false);
   };
+
+  const fetchAllLevels = useCallback(async () => {
+    
+    try {
+      setAllLevelsLoading(true);
+      const database = firebase.getData();
+      const levelsRef = database.ref(`schoolLevels`);
+      const levelsSnapshot = await levelsRef.once('value');
+      const levels = levelsSnapshot.val();
+
+      if(levels){
+        const filteredLevels = Object.keys(levels)
+        .filter( (key) => key?.toLocaleLowerCase()?.trim() !== 'all')
+        .map( (level , index) => ({
+            id : index,
+            name : level,
+        }) )
+
+        // console.log(filteredLevels)
+        setAllLevels(filteredLevels);
+        setAllLevelsLoading(false);
+      }
+      
+    } catch (error) {
+      setAllLevelsLoading(false);
+      console.log(error?.message);
+    }
+  } , [firebase])
+
+  useEffect(() => {
+    AOS.init({
+      duration: 800,
+    });
+
+    userContext.update_current_location(history.location.pathname);
+
+    return () => {
+      userContext.update_current_location("");
+    };
+  }, [userContext.user]);
+
+  
+
+      
+
+  useEffect(() => {
+    fetchAllLevels()
+  } , [fetchAllLevels])
+
+
+
+
+
 
   return (
     <div className="container dashboard-section">
@@ -121,7 +154,7 @@ const Dashboard = (props) => {
       </div>
 
       <p className="cree_ton_compte" onClick={handleShowModal}>
-        {userContext.user_informations ? (
+        {userContext.user_informations && !allLevelsLoading ? (
           <Fragment>
             {" "}
             <span>{userContext.user_informations.level}</span>{" "}
@@ -139,7 +172,7 @@ const Dashboard = (props) => {
           return (
             <Link
               key={index}
-              to={`/chapitres/${matiere.urlParam}`}
+              to={ userContext?.user_informations?.level ? `/chapitres/${userContext?.user_informations?.level}/${matiere.urlParam}` : '#'}
               data-aos="fade-down"
               data-aos-delay={50 + index * 100}
               data-aos-once="true"
@@ -169,11 +202,11 @@ const Dashboard = (props) => {
         </Modal.Header>
         <Modal.Body>
           <div className="niveaux_school">
-            {niveauxSchool.map((niveau, index) => (
+            {allLevels.map((level, index) => (
               <div key={index}>
                 <NiveauxSchool
                   userConnected={useConnectedId}
-                  title={niveau}
+                  title={level?.name}
                   clicked={handleCloseModal}
                 />
               </div>

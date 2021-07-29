@@ -50,8 +50,8 @@ const firebaseConfig = {
 
   export default Firebase;
 
-/*  const firebaseApp = firebase.initializeApp(firebaseConfig);
+// const firebaseApp = firebase.initializeApp(firebaseConfig);
 
-
-  const database = firebaseApp.database();
-  export default database; */
+// export {
+//   firebaseApp
+// }

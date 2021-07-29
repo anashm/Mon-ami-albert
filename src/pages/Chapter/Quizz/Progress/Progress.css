@@ -1,0 +1,122 @@
+.quizz-progress-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  padding: 0 5%;
+}
+
+@media (max-width: 490px) {
+  .quizz-progress-container {
+    padding: 0;
+    padding-bottom: 8%;
+  }
+}
+
+@media (max-width: 490px) {
+  .quizz-progress-container .profile-container img {
+    max-width: 60px;
+  }
+}
+
+.quizz-progress-container .progress-wrapper {
+  width: 80%;
+  -ms-flex-item-align: stretch;
+      align-self: stretch;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding-top: calc(3% - 15px);
+}
+
+.quizz-progress-container .progress-wrapper .answer-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0 10px;
+}
+
+@media (max-width: 490px) {
+  .quizz-progress-container .progress-wrapper .answer-wrapper {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+  }
+}
+
+.quizz-progress-container .progress-wrapper .answer-wrapper p {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 10px;
+  text-align: center;
+}
+
+@media (max-width: 490px) {
+  .quizz-progress-container .progress-wrapper .answer-wrapper p {
+    margin: 2px;
+  }
+}
+
+.quizz-progress-container .progress-wrapper .answer-wrapper p i {
+  font-size: 18px;
+}
+
+.quizz-progress-container .progress-wrapper .answer-wrapper .questions-repo {
+  color: #707070;
+}
+
+.quizz-progress-container .progress-wrapper .progress {
+  height: 14px;
+  border: 1px solid #cbcacd;
+  background-color: white;
+  border-radius: 100px;
+}
+
+.quizz-progress-container .progress-wrapper .progress .progression {
+  width: 10%;
+  background-color: #79b600;
+  border-radius: 100px;
+  background: #1d976c;
+  /* fallback for old browsers */
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: -webkit-gradient(linear, left top, right top, from(#79b600), to(#79b600));
+  background: linear-gradient(to right, #79b600, #79b600);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+@media (max-width: 490px) {
+  .quizz-progress-container .score-container img {
+    max-width: 40px;
+  }
+}
+
+.quizz-progress-container .score-container .score {
+  font-size: 18px;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -60%);
+          transform: translate(-50%, -60%);
+  color: white;
+}
+
+.quizz-progress-container .score-container div {
+  max-width: 100px;
+}
+/*# sourceMappingURL=Progress.css.map */

@@ -23,6 +23,7 @@ const  Chapitres = ({match}) => {
 
     const SCORE_MAX = 60;
     let matiere = match.params.matieres;
+    const level = match.params.level;
     const firebase = useContext(FirebaseContext);
     const userContext = useContext(UserContext);
     const [ , setinfosLevel ] = useState(null);
@@ -88,35 +89,63 @@ const  Chapitres = ({match}) => {
 
             setinfosLevel(userContext.user_informations.level);
 
-            const reference_chapitres = database.ref('schoolLevels/'+userContext.user_informations.level+'/subjects/'+matiere+'/all');
-            reference_chapitres.on("value", chapitres => {
-                if(chapitres.val()){
-                    chapitres.val().map(chapter => {
-                        const reference =  database.ref(`users/${userId}/Progression/${userContext.user_informations.level}/${matiere}/${chapter}/progression`);                  
-                        reference.once('value' , data => {
-                            if(data.val()){
-                                setChapters(prevState => [...prevState , {
-                                    title: chapter,
-                                    points: data.val().points
-                                }]);
-                            }
-                            
-                            if(!data.val()){
-                                setChapters(prevState => [...prevState , {
-                                    title: chapter,
-                                    points: 0
-                                }]);
-                            }
-                        });
-                    });
-                }
-                
-                //close loader
-                else{
-                    setDimmer(false)
-                }
+        
 
-            });
+            const chapterRef = database.ref(`schoolLevels/${level}/subjects/${matiere}`);
+            const userRef = database.ref(`users/${userId}`);
+
+            userRef.once('value' , userData => {
+
+                const allUserData = userData.val();
+                const allUserProgression = allUserData?.Progression;
+    
+                if(allUserData){
+                    chapterRef.on('value' , async chapterResponse => {
+                        const allChapters = chapterResponse.val();
+                        // console.log(allChapters)
+                        if(!allUserProgression && allChapters && Object.entries(allChapters).length > 0){
+                            const filteredChapters = Object.entries(allChapters).filter(([ chapter , _ ] , index) => chapter?.trim()?.toLowerCase() !== 'all' );
+                            const finalData = filteredChapters?.map( ( [ chapter , content ] , index ) => {
+                                // console.log(content?.order);
+                                // console.log(`${Math.trunc((allUserProgression[level][course][chapter]?.progression?.points || 0) / SCORE_MAX)}%`)
+                                return {
+                                    id : chapter,
+                                    title : chapter,
+                                    content ,
+                                    progression : `0%`,
+                                    order : parseInt(content?.order || 1)
+                                }
+                            } )?.sort( (a , b) => a.order - b.order);
+                            console.log(finalData)
+                            setChapters(finalData);
+                        }
+        
+                        if(allChapters && Object.entries(allChapters).length > 0){
+                            
+                            const filteredChapters = Object.entries(allChapters).filter(([ chapter , _ ] , index) => chapter?.trim()?.toLowerCase() !== 'all' );
+                            const finalData = filteredChapters?.map( ( [ chapter , content ] , index ) => {
+                                // console.log(`${Math.trunc((allUserProgression[level][course][chapter]?.progression?.points || 0) / SCORE_MAX)}%`)
+                                return {
+                                    id : chapter,
+                                    title : chapter,
+                                    content ,
+                                    progression : `${((( allUserProgression && allUserProgression[level] && allUserProgression[level][matiere] && allUserProgression[level][matiere][chapter]?.progression?.points || 0) / SCORE_MAX) * 100).toFixed(1)}%`,
+                                    order : parseInt(content?.order ?? 1)
+                                }
+                            } )?.sort( (a , b) => a.order - b.order);
+                            console.log(finalData)
+                            setChapters(finalData);
+    
+                        }
+        
+                   
+                    })
+    
+                }
+    
+    
+              
+            } )
             
 
         }
@@ -170,11 +199,14 @@ const  Chapitres = ({match}) => {
                             <div className="chapters">
                                 {  chapters.map( (chapitre,index) => {
                                     return (
-                                        <Link to={`/chapter/${matiere}/${chapitre.title}`} key = {index} data-aos-delay={30} data-aos="fade-down" data-aos-once="true"> 
-                                            <ChapitreComponent ordre={index+1} title={chapitre.title} percentage = { Math.floor((chapitre.points/SCORE_MAX)*100) } />
+                                        <Link to={`/chapitres/${level}/${matiere}/${chapitre?.title}/cours`} key = {index} data-aos-delay={30} data-aos="fade-down" data-aos-once="true"> 
+                                            <ChapitreComponent 
+                                                ordre={index+1} 
+                                                chapter={`Chapitre ${index+1}`}
+                                                title={chapitre?.title} 
+                                                percentage = { chapitre?.progression } />
                                         </Link>
                                     )
-                                    
                                 })  }
                             </div> : ''
                         }

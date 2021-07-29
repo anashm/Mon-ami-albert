@@ -1,0 +1,67 @@
+.orderRow-container {
+  width: 100%;
+  background: #fff;
+  border: 1px solid rgba(34, 36, 38, 0.15);
+  padding: 2%;
+  border-radius: 0.28571429rem;
+}
+
+.orderRow-container .orderRow {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto 1fr auto auto;
+      grid-template-columns: auto 1fr auto auto;
+  padding: 3% 0;
+}
+
+.orderRow-container .orderRow:not(:last-child) {
+  border-bottom: 1px solid rgba(34, 36, 38, 0.15);
+}
+
+.orderRow-container .orderRow > div {
+  padding: 0.3em 0.5em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.orderRow-container .orderRow .order {
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.orderRow-container .orderRow .points {
+  font-size: 22px;
+  font-weight: 800;
+  color: #8bc7cc !important;
+  padding: 0 !important;
+}
+
+.orderRow-container .orderRow .student-name {
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.orderRow-container .orderRow .school-name {
+  color: gray;
+}
+
+.orderRow-container .orderRow .highfive {
+  width: 40px;
+}
+
+.orderRow-container .orderRow .highfive img {
+  max-width: 30px !important;
+}
+
+@media only screen and (max-width: 500px) {
+  .general-order-container h3 {
+    padding: 7% 0;
+    padding-bottom: 5%;
+    margin: 0 !important;
+  }
+}
+/*# sourceMappingURL=style.css.map */

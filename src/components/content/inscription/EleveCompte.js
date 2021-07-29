@@ -76,7 +76,6 @@ import UserContext from '../../../Context/UserContext/UserContext';
         //setAvatar('Boy-3')
         userContext.update_current_location(history.location.pathname);
         return () => {
-            
             userContext.update_current_location("");
         }
 
@@ -106,8 +105,8 @@ import UserContext from '../../../Context/UserContext/UserContext';
 
             <p className="deja_un_compte">Tu as déjà un compte ? <Link to="/login"> Connecte-toi </Link></p>
 
-
-            <div className="email-login-container">
+            {
+                process.env.NODE_ENV === 'production' ?         <div className="email-login-container">
                 {(school && level) ? (<Link to={{
                     pathname: "/sign-up",
                     state: {
@@ -117,9 +116,24 @@ import UserContext from '../../../Context/UserContext/UserContext';
                         pays : pays
                     }
                 }}>
-                <Button className = 'submit-btn w-100'>S'inscrire avec un email</Button>
-                </Link> ) : <Button disabled className = 'submit-btn w-100'>S'inscrire avec un email</Button>}
+                <Button className = 'submit-btn w-100'>S'inscrire</Button>
+                </Link> ) : <Button disabled className = 'submit-btn w-100'>S'inscrire</Button>}
+                </div> :        <div className="email-login-container">
+                {(school && level) ? (<Link to={{
+                    pathname: "/register",
+                    state: {
+                        fonction:level,
+                        avatar : avatar,
+                        etablissement : school,
+                        pays : pays
+                    }
+                }}>
+                <Button className = 'submit-btn w-100'>S'inscrire</Button>
+                </Link> ) : <Button disabled className = 'submit-btn w-100'>S'inscrire</Button>}
             </div>
+            }
+
+     
 
             <div className="facebook-login-btn-container mt-3">
                 <Facebook navigation={props} />

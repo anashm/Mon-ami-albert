@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect,Suspense,lazy } from "react";
+import React, { useContext  , useCallback, useState, useEffect,Suspense,lazy } from "react";
 import Header from "./components/header/Header";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -12,7 +12,7 @@ import {
   Redirect,
 } from "react-router-dom";
 
-
+import PrivateRoute from './components/PrivateRoute'
 
 
 
@@ -33,12 +33,17 @@ import Chapter from"./pages/Chapter/Chapter";
 import Dashboard from "./pages/LoggedIn/Dashboard";
 import WichEnseigant from "./components/content/inscription/WichEnseignant";
 import CreatAccount from "./components/content/inscription/create_account";
+import Contact from "./pages/Contact";
 
 const Profil =  lazy(() => import("./components/header/ProfilPage"));
 const QRCode =  lazy(() => import("./pages/QRCode/QRComponent"));
 const ClassementGeneral =  lazy(() => import("./components/header/Classement/ClassementGeneral"));
 const ClassementLycee =  lazy(() => import("./components/header/Classement/ClassementLycee"));
 const SignUp =  lazy(() => import("./components/content/inscription/SignUp"));
+const Register =  lazy(() => import("./pages/Register"));
+const LoginWithPhone = lazy(() => import("./pages/LoginWithPhone"));
+// const Contact =  lazy(() => import("./pages/Contact"));
+
 
 
 const Chapitres =  lazy(() => import( "./pages/LoggedIn/Chapitres"));
@@ -57,30 +62,38 @@ const App = () => {
   const firebaseContext = useContext(FirebaseContext);
   const [loading, setLoading] = useState(true);
 
+  const authenticateUser = useCallback(async () => {
+    try {
+      firebase.auth().onAuthStateChanged(  user => {
+        console.log(user)
+        if(!user) return setLoading(false); 
+      
+        userContext.get_connected_user(user);
+        setLoading(false);
+        const userId = user.uid;
+        const database = firebaseContext.getData();
+        const reference = database.ref(`users/${userId}`);
+        reference.once("value", (user_informations) => {
+          userContext.get_user_informations(user_informations.val());
+        });
+      } );
+      
+    } catch (error) {
+      console.log(error?.message);
+      setLoading(false);
+    }
+  } , [])
+
+
   useEffect(() => {
     //console.log(errorContext.hasError);
-    if (!userContext.user) {
-      //console.log('inside app')
-      firebase.auth().onAuthStateChanged((user) => {
-        if (user) {
-          userContext.get_connected_user(user);
-          setLoading(false);
-          const userId = user.uid;
-          const database = firebaseContext.getData();
-          const reference = database.ref(`users/${userId}`);
-          reference.once("value", (user_informations) => {
-            userContext.get_user_informations(user_informations.val());
-          });
-        } else {
-          //console.log("not logged in");
-          setLoading(false);
-        }
-      });
-    }
-  }, []);
+    authenticateUser();
+  }, [authenticateUser]);
 
   return (
     <Router>
+      <div id="recaptcha-container" style = {{ display : 'none' }}></div>
+
       <Header />
       <main
         className={` ${userContext.current_location.replace("/", "")} ${
@@ -102,6 +115,9 @@ const App = () => {
             path="/"
             render={(props) => <HomePage {...props} loading={loading} />}
           />
+
+          <Route exact path="/contact" component={Contact} />
+
          
           
          <Route exact path="/creat-account" component={CreatAccount} />
@@ -115,29 +131,32 @@ const App = () => {
           
 
           <Suspense fallback={<div></div>}>
+           <Route exact path="/register" component={Register} />
+           <Route exact path="/login" component={LoginWithPhone} />
+
            
             <Route exact path="/eleve-create-account" component={EleveAccount} />
-            <Route exact path="/login" component={Login} />
-            <Route
+            {/* <Route exact path="/login" component={Login} /> */}
+            <PrivateRoute
               exact
-              path="/chapter/:matieres/:chapitre"
+              path="/chapitres/:level/:course/:chapter/cours"
               component={Chapter}
             />
             <Route exact path="/sign-up" component={SignUp} />
-            <Route
+            <PrivateRoute
               exact
               path="/dashboard-user"
-              render={(props) => <Dashboard {...props} />}
+              component={Dashboard}
             />
-            <Route exact path="/chapitres/:matieres" component={Chapitres} />
-              <Route exact path="/profil" component={Profil} />
-              <Route
-                exact
-                path="/classement-general"
-                component={ClassementGeneral}
-              />
-              <Route exact path="/classement-lycee" component={ClassementLycee} />
-              <Route exact path="/test_qr_code" component={QRCode} />
+            <PrivateRoute exact path="/chapitres/:level/:matieres" component={Chapitres} />
+            <PrivateRoute exact path="/profil" component={Profil} />
+            <PrivateRoute
+              exact
+              path="/classement-general"
+              component={ClassementGeneral}
+            />
+              <PrivateRoute exact path="/classement-lycee" component={ClassementLycee} />
+              <PrivateRoute exact path="/test_qr_code" component={QRCode} />
           </Suspense>
          
           <Route exact path="/404" component={NotFound} />

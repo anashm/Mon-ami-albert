@@ -18,12 +18,14 @@ import ApplicationSection  from "./Application/ApplictaionSection";
 import ClassesSection  from "./ClassesSection/ClassesSection";
 import Footer from "../../footer/Footer";
 
+import phone from '../../../assets/images/phone-icon.png';
+
 const HomePage = memo(({ loading }) => {
   const [redirect, setRedirect] = useState(false);
 
-  console.log(" from homepage", loading);
-  const userContext = useContext(UserContext);
+  // console.log(" from homepage", loading);
   //console.log(userContext);
+  const userContext = useContext(UserContext);
 
   if (loading) {
     return (
@@ -43,14 +45,21 @@ const HomePage = memo(({ loading }) => {
         <section id="homepage">
         
             <HeroSection userConnected={userContext.user} />
-            
-              <SchoolInfosSection />
-           
-                <ThirdDiv />
-              
-                <Sixthdiv />
-                <ApplicationSection />
-                <ClassesSection />
+            <SchoolInfosSection />
+            <ThirdDiv />
+            <Sixthdiv />
+            <ApplicationSection />
+            <ClassesSection />
+            <a target = '_blank' rel= "noopener norefferer" href = 'https://play.google.com/store/apps/details?id=ma.dba.monamialbert'>
+
+              <div className="use-on-phone">
+                <img src={phone} className="float-phone" alt="phone" />
+                  <span class="ml-20">
+                    <span class="font-w700">Télécharge l'application</span>
+                    <br/>Pour une meilleure expérience.
+                  </span>
+              </div>
+            </a>
               
         </section>
       

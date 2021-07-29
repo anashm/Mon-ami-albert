@@ -9,7 +9,7 @@ import Exrecises from "./Exercises/Exercises";
 import Quizz from "./Quizz/Quizz";
 import ChapterButton from "./ChapterButton/ChapterButton";
 import { Breadcrumb } from "semantic-ui-react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import AOS from "aos";
 
 // import { Icon } from 'semantic-ui-react';
@@ -22,6 +22,11 @@ const Chapter = ({ match }) => {
   const userContext = useContext(UserContext);
   // const history = useHistory();
   const Scroll = scroll;
+
+  const {level , course , chapter } = useParams();
+
+  console.log({level , course , chapter })
+
 
   /* Component data */
   //console.log(match)
@@ -103,13 +108,13 @@ const Chapter = ({ match }) => {
             {" "}
             <Link to={`/chapitres/${match.params.matieres}`}>
               {" "}
-              {match.params.matieres}{" "}
+              {level}{" "}
             </Link>{" "}
           </Breadcrumb.Section>
           <Breadcrumb.Divider icon="right chevron" />
           <Breadcrumb.Section active>
             {" "}
-            {match.params.chapitre}{" "}
+            {chapter}{" "}
           </Breadcrumb.Section>
         </Breadcrumb>
       </div>

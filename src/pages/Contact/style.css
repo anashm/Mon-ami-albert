@@ -1,0 +1,32 @@
+.contact-page .header{
+    min-height: 40vh;
+    background: url('../../assets/images/forme.png');
+    background-size: cover;
+    background-position: center  center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 50px;
+}
+
+.contact-page .header img{
+    max-width: 200px;
+    margin-bottom: 20px;
+}
+
+.contact-page .main .main-content h3 {
+    text-align: start;
+    font-size: 20px;
+    color: #707070;
+}
+
+.contact-page .main .main-content p {
+    text-align: start;
+    font-size: 16px;
+    color: #636363;
+}
+
+.contact-page .main .main-content p a{
+    color: #6BA4A5;
+}

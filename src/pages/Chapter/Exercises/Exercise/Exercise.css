@@ -1,0 +1,75 @@
+.enonce-container {
+  border-color: #d2f4ff;
+  border-style: solid;
+  border-width: 1px 1px 1px 3px;
+  padding: 3px 0px 3px 0px;
+  margin: 5px 0px 0px 5px;
+  background: #f8f9f0;
+  margin-bottom: 20px;
+}
+
+.container-pdf {
+  width: 100%;
+  display: table;
+  padding: 0px 0px 100%;
+}
+
+.corrige-container {
+  background-color: #FBEFF2;
+  border-width: 0px 1px 1px 3px;
+  border-style: solid;
+  padding: 3px 0px 3px 0px;
+  border-color: #d2f4ff;
+}
+
+.enonce-choix {
+  -webkit-padding-start: 40px;
+          padding-inline-start: 40px;
+}
+
+.exercise-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 10px 20px;
+}
+
+.exercise-container .exercise-number {
+  padding-right: 20px;
+}
+
+.exercise-container .exercise-text {
+  margin: 0;
+  max-width: 80%;
+}
+
+.exercise-container .exercise-icons-container {
+  margin-left: auto;
+}
+
+.exercise-container .exercise-icons-container i {
+  opacity: 0.6;
+  font-size: 18px;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.exercise-container .exercise-icons-container .download-link:hover i {
+  opacity: 1;
+}
+
+.exercise-container .exercise-icons-container .open-exercise {
+  border: none;
+  margin-left: 10px;
+  background-color: transparent;
+  cursor: pointer;
+  outline: none !important;
+}
+
+.exercise-container .exercise-icons-container .open-exercise:hover i {
+  opacity: 1;
+}
+/*# sourceMappingURL=Exercise.css.map */

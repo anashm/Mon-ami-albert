@@ -5,16 +5,17 @@ import * as serviceWorker from './serviceWorker';
 import Firebase , {FirebaseContext}  from './firebase';
 import UserState from './Context/UserContext/UserState';
 import ErrorState from './Context/ErrorContext/ErrorState';
+import LevelsState from './Context/Levels/State';
 
 
 
 ReactDOM.render(
   <FirebaseContext.Provider value={new Firebase()}>
-    <ErrorState>
-      <UserState>
-      <App />
-      </UserState>
-    </ErrorState>
+      <ErrorState>
+        <UserState>
+        <App />
+        </UserState>
+      </ErrorState>
   </FirebaseContext.Provider>,
   document.getElementById('root')
 );
